@@ -14,6 +14,13 @@
 		65D0CA47214F9B0000A3DB66 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 65D0CA46214F9B0000A3DB66 /* Assets.xcassets */; };
 		65D0CA4A214F9B0000A3DB66 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 65D0CA48214F9B0000A3DB66 /* LaunchScreen.storyboard */; };
 		65D0CA4D214F9B0000A3DB66 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 65D0CA4C214F9B0000A3DB66 /* main.m */; };
+		65D0CA652151ECEE00A3DB66 /* MBProgressHUD+Helper.m in Sources */ = {isa = PBXBuildFile; fileRef = 65D0CA5B2151ECEE00A3DB66 /* MBProgressHUD+Helper.m */; };
+		65D0CA662151ECEE00A3DB66 /* NSString+Helper.m in Sources */ = {isa = PBXBuildFile; fileRef = 65D0CA5D2151ECEE00A3DB66 /* NSString+Helper.m */; };
+		65D0CA672151ECEE00A3DB66 /* NSDate+Helper.m in Sources */ = {isa = PBXBuildFile; fileRef = 65D0CA602151ECEE00A3DB66 /* NSDate+Helper.m */; };
+		65D0CA682151ECEE00A3DB66 /* UIView+Helper.m in Sources */ = {isa = PBXBuildFile; fileRef = 65D0CA642151ECEE00A3DB66 /* UIView+Helper.m */; };
+		65D0CA6C2151EEE000A3DB66 /* BaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 65D0CA6B2151EEE000A3DB66 /* BaseViewController.m */; };
+		65D0CA6F2151EF0B00A3DB66 /* CustomNavigationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 65D0CA6E2151EF0B00A3DB66 /* CustomNavigationViewController.m */; };
+		65D0CA742151F08200A3DB66 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 65D0CA732151F08200A3DB66 /* LoginViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -29,6 +36,24 @@
 		65D0CA49214F9B0000A3DB66 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		65D0CA4B214F9B0000A3DB66 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		65D0CA4C214F9B0000A3DB66 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		65D0CA542151ECDA00A3DB66 /* UtilsMacros.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UtilsMacros.h; sourceTree = "<group>"; };
+		65D0CA552151ECDA00A3DB66 /* PathMacros.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PathMacros.h; sourceTree = "<group>"; };
+		65D0CA562151ECDA00A3DB66 /* PrefixHeader.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
+		65D0CA572151ECDA00A3DB66 /* DimensMacros.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DimensMacros.h; sourceTree = "<group>"; };
+		65D0CA5A2151ECEE00A3DB66 /* MBProgressHUD+Helper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MBProgressHUD+Helper.h"; sourceTree = "<group>"; };
+		65D0CA5B2151ECEE00A3DB66 /* MBProgressHUD+Helper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "MBProgressHUD+Helper.m"; sourceTree = "<group>"; };
+		65D0CA5D2151ECEE00A3DB66 /* NSString+Helper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Helper.m"; sourceTree = "<group>"; };
+		65D0CA5E2151ECEE00A3DB66 /* NSString+Helper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Helper.h"; sourceTree = "<group>"; };
+		65D0CA602151ECEE00A3DB66 /* NSDate+Helper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+Helper.m"; sourceTree = "<group>"; };
+		65D0CA612151ECEE00A3DB66 /* NSDate+Helper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+Helper.h"; sourceTree = "<group>"; };
+		65D0CA632151ECEE00A3DB66 /* UIView+Helper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Helper.h"; sourceTree = "<group>"; };
+		65D0CA642151ECEE00A3DB66 /* UIView+Helper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Helper.m"; sourceTree = "<group>"; };
+		65D0CA6A2151EEE000A3DB66 /* BaseViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BaseViewController.h; sourceTree = "<group>"; };
+		65D0CA6B2151EEE000A3DB66 /* BaseViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BaseViewController.m; sourceTree = "<group>"; };
+		65D0CA6D2151EF0B00A3DB66 /* CustomNavigationViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CustomNavigationViewController.h; sourceTree = "<group>"; };
+		65D0CA6E2151EF0B00A3DB66 /* CustomNavigationViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CustomNavigationViewController.m; sourceTree = "<group>"; };
+		65D0CA722151F08200A3DB66 /* LoginViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
+		65D0CA732151F08200A3DB66 /* LoginViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
 		BF01A99C77AD457283247280 /* Pods-qingsonghuan.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-qingsonghuan.release.xcconfig"; path = "Pods/Target Support Files/Pods-qingsonghuan/Pods-qingsonghuan.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -65,6 +90,10 @@
 		65D0CA3C214F9AFD00A3DB66 /* qingsonghuan */ = {
 			isa = PBXGroup;
 			children = (
+				65D0CA702151F06200A3DB66 /* Controllers */,
+				65D0CA692151EDFE00A3DB66 /* BaseViewControllers */,
+				65D0CA582151ECEE00A3DB66 /* Category */,
+				65D0CA532151ECDA00A3DB66 /* Macros */,
 				65D0CA3D214F9AFD00A3DB66 /* AppDelegate.h */,
 				65D0CA3E214F9AFD00A3DB66 /* AppDelegate.m */,
 				65D0CA40214F9AFD00A3DB66 /* ViewController.h */,
@@ -76,6 +105,92 @@
 				65D0CA4C214F9B0000A3DB66 /* main.m */,
 			);
 			path = qingsonghuan;
+			sourceTree = "<group>";
+		};
+		65D0CA532151ECDA00A3DB66 /* Macros */ = {
+			isa = PBXGroup;
+			children = (
+				65D0CA542151ECDA00A3DB66 /* UtilsMacros.h */,
+				65D0CA552151ECDA00A3DB66 /* PathMacros.h */,
+				65D0CA562151ECDA00A3DB66 /* PrefixHeader.pch */,
+				65D0CA572151ECDA00A3DB66 /* DimensMacros.h */,
+			);
+			path = Macros;
+			sourceTree = "<group>";
+		};
+		65D0CA582151ECEE00A3DB66 /* Category */ = {
+			isa = PBXGroup;
+			children = (
+				65D0CA592151ECEE00A3DB66 /* MBProgressHUD+Helper */,
+				65D0CA5C2151ECEE00A3DB66 /* NSString+Helper */,
+				65D0CA5F2151ECEE00A3DB66 /* NSDate+Helper */,
+				65D0CA622151ECEE00A3DB66 /* UIView+Helper */,
+			);
+			path = Category;
+			sourceTree = "<group>";
+		};
+		65D0CA592151ECEE00A3DB66 /* MBProgressHUD+Helper */ = {
+			isa = PBXGroup;
+			children = (
+				65D0CA5A2151ECEE00A3DB66 /* MBProgressHUD+Helper.h */,
+				65D0CA5B2151ECEE00A3DB66 /* MBProgressHUD+Helper.m */,
+			);
+			path = "MBProgressHUD+Helper";
+			sourceTree = "<group>";
+		};
+		65D0CA5C2151ECEE00A3DB66 /* NSString+Helper */ = {
+			isa = PBXGroup;
+			children = (
+				65D0CA5D2151ECEE00A3DB66 /* NSString+Helper.m */,
+				65D0CA5E2151ECEE00A3DB66 /* NSString+Helper.h */,
+			);
+			path = "NSString+Helper";
+			sourceTree = "<group>";
+		};
+		65D0CA5F2151ECEE00A3DB66 /* NSDate+Helper */ = {
+			isa = PBXGroup;
+			children = (
+				65D0CA602151ECEE00A3DB66 /* NSDate+Helper.m */,
+				65D0CA612151ECEE00A3DB66 /* NSDate+Helper.h */,
+			);
+			path = "NSDate+Helper";
+			sourceTree = "<group>";
+		};
+		65D0CA622151ECEE00A3DB66 /* UIView+Helper */ = {
+			isa = PBXGroup;
+			children = (
+				65D0CA632151ECEE00A3DB66 /* UIView+Helper.h */,
+				65D0CA642151ECEE00A3DB66 /* UIView+Helper.m */,
+			);
+			path = "UIView+Helper";
+			sourceTree = "<group>";
+		};
+		65D0CA692151EDFE00A3DB66 /* BaseViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				65D0CA6A2151EEE000A3DB66 /* BaseViewController.h */,
+				65D0CA6B2151EEE000A3DB66 /* BaseViewController.m */,
+				65D0CA6D2151EF0B00A3DB66 /* CustomNavigationViewController.h */,
+				65D0CA6E2151EF0B00A3DB66 /* CustomNavigationViewController.m */,
+			);
+			path = BaseViewControllers;
+			sourceTree = "<group>";
+		};
+		65D0CA702151F06200A3DB66 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				65D0CA712151F07100A3DB66 /* Login */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		65D0CA712151F07100A3DB66 /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				65D0CA722151F08200A3DB66 /* LoginViewController.h */,
+				65D0CA732151F08200A3DB66 /* LoginViewController.m */,
+			);
+			path = Login;
 			sourceTree = "<group>";
 		};
 		978D342F849E3CA3DEF5C5BF /* Frameworks */ = {
@@ -216,9 +331,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				65D0CA672151ECEE00A3DB66 /* NSDate+Helper.m in Sources */,
+				65D0CA6C2151EEE000A3DB66 /* BaseViewController.m in Sources */,
+				65D0CA662151ECEE00A3DB66 /* NSString+Helper.m in Sources */,
 				65D0CA42214F9AFD00A3DB66 /* ViewController.m in Sources */,
+				65D0CA742151F08200A3DB66 /* LoginViewController.m in Sources */,
+				65D0CA652151ECEE00A3DB66 /* MBProgressHUD+Helper.m in Sources */,
 				65D0CA4D214F9B0000A3DB66 /* main.m in Sources */,
 				65D0CA3F214F9AFD00A3DB66 /* AppDelegate.m in Sources */,
+				65D0CA6F2151EF0B00A3DB66 /* CustomNavigationViewController.m in Sources */,
+				65D0CA682151ECEE00A3DB66 /* UIView+Helper.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -361,7 +483,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = qingsonghuan/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = xybk.qingsonghuan;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -375,7 +500,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = qingsonghuan/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = xybk.qingsonghuan;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";
