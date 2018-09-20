@@ -9,6 +9,8 @@
 #import "AppDelegate.h"
 #import "CustomNavigationViewController.h"
 #import "LoginViewController.h"
+//三方键盘
+#import <IQKeyboardManager.h>
 @interface AppDelegate ()
 
 @end
@@ -17,6 +19,11 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+    //开启三方键盘关闭设置为NO, 默认值为NO.
+    [IQKeyboardManager sharedManager].enable = YES;
+    [IQKeyboardManager sharedManager].shouldResignOnTouchOutside = YES;
+    [IQKeyboardManager sharedManager].enableAutoToolbar = NO;
+    
     self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
     self.window.backgroundColor = [UIColor whiteColor];
     [self setRootViewControoler];

@@ -21,6 +21,8 @@
 		65D0CA6C2151EEE000A3DB66 /* BaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 65D0CA6B2151EEE000A3DB66 /* BaseViewController.m */; };
 		65D0CA6F2151EF0B00A3DB66 /* CustomNavigationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 65D0CA6E2151EF0B00A3DB66 /* CustomNavigationViewController.m */; };
 		65D0CA742151F08200A3DB66 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 65D0CA732151F08200A3DB66 /* LoginViewController.m */; };
+		65D0CA7F21521F7600A3DB66 /* XYTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 65D0CA7E21521F7600A3DB66 /* XYTextField.m */; };
+		65D0CA82215233AC00A3DB66 /* RegisterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 65D0CA81215233AC00A3DB66 /* RegisterViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -54,6 +56,10 @@
 		65D0CA6E2151EF0B00A3DB66 /* CustomNavigationViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CustomNavigationViewController.m; sourceTree = "<group>"; };
 		65D0CA722151F08200A3DB66 /* LoginViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
 		65D0CA732151F08200A3DB66 /* LoginViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
+		65D0CA7D21521F7600A3DB66 /* XYTextField.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XYTextField.h; sourceTree = "<group>"; };
+		65D0CA7E21521F7600A3DB66 /* XYTextField.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XYTextField.m; sourceTree = "<group>"; };
+		65D0CA80215233AC00A3DB66 /* RegisterViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RegisterViewController.h; sourceTree = "<group>"; };
+		65D0CA81215233AC00A3DB66 /* RegisterViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RegisterViewController.m; sourceTree = "<group>"; };
 		BF01A99C77AD457283247280 /* Pods-qingsonghuan.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-qingsonghuan.release.xcconfig"; path = "Pods/Target Support Files/Pods-qingsonghuan/Pods-qingsonghuan.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -94,6 +100,7 @@
 				65D0CA692151EDFE00A3DB66 /* BaseViewControllers */,
 				65D0CA582151ECEE00A3DB66 /* Category */,
 				65D0CA532151ECDA00A3DB66 /* Macros */,
+				65D0CA7921521ECD00A3DB66 /* CommonView */,
 				65D0CA3D214F9AFD00A3DB66 /* AppDelegate.h */,
 				65D0CA3E214F9AFD00A3DB66 /* AppDelegate.m */,
 				65D0CA40214F9AFD00A3DB66 /* ViewController.h */,
@@ -141,8 +148,8 @@
 		65D0CA5C2151ECEE00A3DB66 /* NSString+Helper */ = {
 			isa = PBXGroup;
 			children = (
-				65D0CA5D2151ECEE00A3DB66 /* NSString+Helper.m */,
 				65D0CA5E2151ECEE00A3DB66 /* NSString+Helper.h */,
+				65D0CA5D2151ECEE00A3DB66 /* NSString+Helper.m */,
 			);
 			path = "NSString+Helper";
 			sourceTree = "<group>";
@@ -150,8 +157,8 @@
 		65D0CA5F2151ECEE00A3DB66 /* NSDate+Helper */ = {
 			isa = PBXGroup;
 			children = (
-				65D0CA602151ECEE00A3DB66 /* NSDate+Helper.m */,
 				65D0CA612151ECEE00A3DB66 /* NSDate+Helper.h */,
+				65D0CA602151ECEE00A3DB66 /* NSDate+Helper.m */,
 			);
 			path = "NSDate+Helper";
 			sourceTree = "<group>";
@@ -189,8 +196,19 @@
 			children = (
 				65D0CA722151F08200A3DB66 /* LoginViewController.h */,
 				65D0CA732151F08200A3DB66 /* LoginViewController.m */,
+				65D0CA80215233AC00A3DB66 /* RegisterViewController.h */,
+				65D0CA81215233AC00A3DB66 /* RegisterViewController.m */,
 			);
 			path = Login;
+			sourceTree = "<group>";
+		};
+		65D0CA7921521ECD00A3DB66 /* CommonView */ = {
+			isa = PBXGroup;
+			children = (
+				65D0CA7D21521F7600A3DB66 /* XYTextField.h */,
+				65D0CA7E21521F7600A3DB66 /* XYTextField.m */,
+			);
+			path = CommonView;
 			sourceTree = "<group>";
 		};
 		978D342F849E3CA3DEF5C5BF /* Frameworks */ = {
@@ -336,7 +354,9 @@
 				65D0CA662151ECEE00A3DB66 /* NSString+Helper.m in Sources */,
 				65D0CA42214F9AFD00A3DB66 /* ViewController.m in Sources */,
 				65D0CA742151F08200A3DB66 /* LoginViewController.m in Sources */,
+				65D0CA7F21521F7600A3DB66 /* XYTextField.m in Sources */,
 				65D0CA652151ECEE00A3DB66 /* MBProgressHUD+Helper.m in Sources */,
+				65D0CA82215233AC00A3DB66 /* RegisterViewController.m in Sources */,
 				65D0CA4D214F9B0000A3DB66 /* main.m in Sources */,
 				65D0CA3F214F9AFD00A3DB66 /* AppDelegate.m in Sources */,
 				65D0CA6F2151EF0B00A3DB66 /* CustomNavigationViewController.m in Sources */,
@@ -482,14 +502,17 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 2RNL836XEW;
+				GCC_PREFIX_HEADER = "$(SRCROOT)/qingsonghuan/Macros/PrefixHeader.pch";
 				INFOPLIST_FILE = qingsonghuan/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = xybk.qingsonghuan;
+				PRODUCT_BUNDLE_IDENTIFIER = com.nongfaziran.nongfaziran;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -499,14 +522,17 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 2RNL836XEW;
+				GCC_PREFIX_HEADER = "$(SRCROOT)/qingsonghuan/Macros/PrefixHeader.pch";
 				INFOPLIST_FILE = qingsonghuan/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = xybk.qingsonghuan;
+				PRODUCT_BUNDLE_IDENTIFIER = com.nongfaziran.nongfaziran;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
