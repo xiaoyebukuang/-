@@ -23,6 +23,8 @@
 		65D0CA742151F08200A3DB66 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 65D0CA732151F08200A3DB66 /* LoginViewController.m */; };
 		65D0CA7F21521F7600A3DB66 /* XYTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 65D0CA7E21521F7600A3DB66 /* XYTextField.m */; };
 		65D0CA82215233AC00A3DB66 /* RegisterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 65D0CA81215233AC00A3DB66 /* RegisterViewController.m */; };
+		65D0CA852153439F00A3DB66 /* XYLineView.m in Sources */ = {isa = PBXBuildFile; fileRef = 65D0CA842153439F00A3DB66 /* XYLineView.m */; };
+		65D0CA8921536D6E00A3DB66 /* UIColor+Helper.m in Sources */ = {isa = PBXBuildFile; fileRef = 65D0CA8821536D6E00A3DB66 /* UIColor+Helper.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -60,6 +62,10 @@
 		65D0CA7E21521F7600A3DB66 /* XYTextField.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XYTextField.m; sourceTree = "<group>"; };
 		65D0CA80215233AC00A3DB66 /* RegisterViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RegisterViewController.h; sourceTree = "<group>"; };
 		65D0CA81215233AC00A3DB66 /* RegisterViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RegisterViewController.m; sourceTree = "<group>"; };
+		65D0CA832153439F00A3DB66 /* XYLineView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XYLineView.h; sourceTree = "<group>"; };
+		65D0CA842153439F00A3DB66 /* XYLineView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XYLineView.m; sourceTree = "<group>"; };
+		65D0CA8721536D6E00A3DB66 /* UIColor+Helper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIColor+Helper.h"; sourceTree = "<group>"; };
+		65D0CA8821536D6E00A3DB66 /* UIColor+Helper.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIColor+Helper.m"; sourceTree = "<group>"; };
 		BF01A99C77AD457283247280 /* Pods-qingsonghuan.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-qingsonghuan.release.xcconfig"; path = "Pods/Target Support Files/Pods-qingsonghuan/Pods-qingsonghuan.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -128,6 +134,7 @@
 		65D0CA582151ECEE00A3DB66 /* Category */ = {
 			isa = PBXGroup;
 			children = (
+				65D0CA8621536D5B00A3DB66 /* UIColor+Helper */,
 				65D0CA592151ECEE00A3DB66 /* MBProgressHUD+Helper */,
 				65D0CA5C2151ECEE00A3DB66 /* NSString+Helper */,
 				65D0CA5F2151ECEE00A3DB66 /* NSDate+Helper */,
@@ -207,8 +214,19 @@
 			children = (
 				65D0CA7D21521F7600A3DB66 /* XYTextField.h */,
 				65D0CA7E21521F7600A3DB66 /* XYTextField.m */,
+				65D0CA832153439F00A3DB66 /* XYLineView.h */,
+				65D0CA842153439F00A3DB66 /* XYLineView.m */,
 			);
 			path = CommonView;
+			sourceTree = "<group>";
+		};
+		65D0CA8621536D5B00A3DB66 /* UIColor+Helper */ = {
+			isa = PBXGroup;
+			children = (
+				65D0CA8721536D6E00A3DB66 /* UIColor+Helper.h */,
+				65D0CA8821536D6E00A3DB66 /* UIColor+Helper.m */,
+			);
+			path = "UIColor+Helper";
 			sourceTree = "<group>";
 		};
 		978D342F849E3CA3DEF5C5BF /* Frameworks */ = {
@@ -360,7 +378,9 @@
 				65D0CA4D214F9B0000A3DB66 /* main.m in Sources */,
 				65D0CA3F214F9AFD00A3DB66 /* AppDelegate.m in Sources */,
 				65D0CA6F2151EF0B00A3DB66 /* CustomNavigationViewController.m in Sources */,
+				65D0CA8921536D6E00A3DB66 /* UIColor+Helper.m in Sources */,
 				65D0CA682151ECEE00A3DB66 /* UIView+Helper.m in Sources */,
+				65D0CA852153439F00A3DB66 /* XYLineView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

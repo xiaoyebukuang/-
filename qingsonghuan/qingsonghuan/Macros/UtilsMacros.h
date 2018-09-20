@@ -29,12 +29,17 @@
 #define RGB(r,g,b)                    RGBA(r,g,b,1.0f)
 #define COLOR_RGB_ALPHA(rgbValue,a)   [UIColor colorWithRed:((float)(((rgbValue) & 0xFF0000) >> 16))/255.0 green:((float)(((rgbValue) & 0xFF00)>>8))/255.0 blue: ((float)((rgbValue) & 0xFF))/255.0 alpha:(a)]
 #define COLOR_RGB(rgbValue,a)         [UIColor colorWithRed:((float)(((rgbValue) & 0xFF0000) >> 16))/255.0 green:((float)(((rgbValue) & 0xFF00)>>8))/255.0 blue: ((float)((rgbValue) & 0xFF))/255.0 alpha:(1.0)]
+/**
+ * 16进制颜色定义
+ */
+#define UIColorFromRGB(rgbValue) [UIColor colorWithRed:((float)((rgbValue & 0xFF0000) >> 16))/255.0 green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/255.0 alpha:1.0]
+
 
 
 /** 字体 */
 #define SYSTEM_BOLD_FONT(FONTSIZE)      [UIFont boldSystemFontOfSize:FONTSIZE]
 #define SYSTEM_FONT(FONTSIZE)           [UIFont systemFontOfSize:FONTSIZE]
-
+#define SYSTEM_FONT_15                  [UIFont systemFontOfSize:15]
 
 
 
