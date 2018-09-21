@@ -42,6 +42,7 @@
 #define SYSTEM_FONT_13                  [UIFont systemFontOfSize:13]
 #define SYSTEM_FONT_15                  [UIFont systemFontOfSize:15]
 #define SYSTEM_FONT_17                  [UIFont systemFontOfSize:17]
+#define SYSTEM_FONT_20                  [UIFont systemFontOfSize:20]
 
 
 

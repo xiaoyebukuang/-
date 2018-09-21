@@ -16,34 +16,21 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    [self setUpLeftBarBtnItem];
 }
 - (void)setUpLeftBarBtnItem {
-//    UIButton *btn = [UIButton buttonWithType:<#(UIButtonType)#>]
-//    
-//    
-//    let btn = ButtonFactory.buttonWithImage(frame: CGRect(x: 0, y: 0, width: 20, height: 44), imageStr: "back")
-//    btn.addTarget(self, action: #selector(backVC(_:)), for: .touchUpInside)
-//    let leftButtonItem = UIBarButtonItem.init(customView: btn)
-//    let nagetiveSpacer = UIBarButtonItem.init(barButtonSystemItem: .fixedSpace, target: nil, action: nil)
-//    nagetiveSpacer.width = -10;
-//    self.navigationItem.leftBarButtonItems = [nagetiveSpacer, leftButtonItem]
+    UIButton *btn = [UIButton buttonWithImage:@"back"];
+    btn.frame = CGRectMake(0, 0, 40, 40);
+    [btn addTarget:self action:@selector(backVC:) forControlEvents:UIControlEventTouchUpInside];
+    UIBarButtonItem *leftButtonItem = [[UIBarButtonItem alloc]initWithCustomView:btn];
+    UIBarButtonItem *nagetiveSpacer = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemFixedSpace target:nil action:nil];
+    nagetiveSpacer.width = -10;
+    self.navigationItem.leftBarButtonItems = @[nagetiveSpacer, leftButtonItem];
+}
+- (void)backVC:(UIButton *)sender {
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end

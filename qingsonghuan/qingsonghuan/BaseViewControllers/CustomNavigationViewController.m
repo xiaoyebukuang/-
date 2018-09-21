@@ -17,6 +17,9 @@
 - (void)viewDidLoad{
     self.delegate = self;
     self.navigationBar.translucent = NO;
+    self.interactivePopGestureRecognizer.delegate = self;
+    self.navigationBar.titleTextAttributes = @{NSFontAttributeName: SYSTEM_FONT_20,NSForegroundColorAttributeName: [UIColor color_FFFFFF]};
+    [self.navigationBar setBackgroundImage:[UIImage imageNamed:@"nav_bar"] forBarMetrics:UIBarMetricsDefault];
 }
 
 - (void)pushViewController:(UIViewController *)viewController animated:(BOOL)animated {

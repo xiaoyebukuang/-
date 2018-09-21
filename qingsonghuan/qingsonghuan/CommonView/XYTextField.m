@@ -12,7 +12,8 @@ static CGFloat const LOGIN_WIDTH_SIZE = 50.0;
 typedef NS_ENUM(NSInteger, UITextFieldViewType) {
     UITextFieldViewLeft,            //左侧图标+填充
     UITextFieldViewLeftRight,       //左侧图标+右侧图标（可点击）+填充
-    UITextFieldViewSelect           //左侧图标+右侧图标（不可点击）+选择
+    UITextFieldViewSelect,          //左侧图标+右侧图标（不可点击）+选择
+    UITextFieldViewCode             //左侧图标+右侧验证码+填充
 };
 
 
@@ -29,37 +30,59 @@ typedef NS_ENUM(NSInteger, UITextFieldViewType) {
  输入框
  */
 @property (nonatomic, strong) XYTextField *textField;
+
+/**
+ 定时器
+ */
+@property (nonatomic, strong) UIButton *timeBtn;
+
 /**
  分割线
  */
 @property (nonatomic, strong) XYLineView *lineV;
 
+/**
+ 定时器
+ */
+@property (nonatomic, strong) dispatch_source_t timer;
+
+/**
+ 倒计时
+ */
+@property (nonatomic, assign) NSInteger timeCount;
+
 @end
 
 @implementation XYTextFieldView
 
-- (instancetype)initWithType:(UITextFieldType)filedType logoImageV:(NSString *)logoStr placeHolder:(NSString *)placeHolder {
+- (instancetype)initWithLeftType:(UITextFieldType)filedType logoImageV:(NSString *)logoStr placeHolder:(NSString *)placeHolder {
     self = [super init];
     if (self) {
         [self setupViewWithViewType:UITextFieldViewLeft logoImageV:logoStr arrowImageVNormal:nil arrowImageVSelect:nil placeHolder:placeHolder type:filedType];
     }
     return self;
 }
-- (instancetype)initWithType:(UITextFieldType)filedType logoImageV:(NSString *)logoStr arrowImageVNormal:(NSString *)normalArrowStr arrowImageVSelect:(NSString *)selectArrowStr placeHolder:(NSString *)placeHolder {
+- (instancetype)initWithLeftRightType:(UITextFieldType)filedType logoImageV:(NSString *)logoStr arrowImageVNormal:(NSString *)normalArrowStr arrowImageVSelect:(NSString *)selectArrowStr placeHolder:(NSString *)placeHolder {
     self = [super init];
     if (self) {
         [self setupViewWithViewType:UITextFieldViewLeftRight logoImageV:logoStr arrowImageVNormal:normalArrowStr arrowImageVSelect:selectArrowStr placeHolder:placeHolder type:filedType];
     }
     return self;
 }
-- (instancetype)initWithType:(UITextFieldType)filedType logoImageV:(NSString *)logoStr arrowImageV:(NSString *)arrowStr  placeHolder:(NSString *)placeHolder {
+- (instancetype)initWithSelectType:(UITextFieldType)filedType logoImageV:(NSString *)logoStr arrowImageV:(NSString *)arrowStr  placeHolder:(NSString *)placeHolder {
     self = [super init];
     if (self) {
         [self setupViewWithViewType:UITextFieldViewSelect logoImageV:logoStr arrowImageVNormal:arrowStr arrowImageVSelect:arrowStr placeHolder:placeHolder type:filedType];
     }
     return self;
 }
-
+- (instancetype)initWithCodeType:(UITextFieldType)filedType logoImageV:(NSString *)logoStr placeHolder:(NSString *)placeHolder {
+    self = [super init];
+    if (self) {
+        [self setupViewWithViewType:UITextFieldViewCode logoImageV:logoStr arrowImageVNormal:nil arrowImageVSelect:nil placeHolder:placeHolder type:filedType];
+    }
+    return self;
+}
 
 - (void)setupViewWithViewType:(UITextFieldViewType)fieldVeiwType logoImageV:(NSString *)logoStr arrowImageVNormal:(NSString *)normalArrowStr arrowImageVSelect:(NSString *)selectArrowStr placeHolder:(NSString *)placeHolder type:(UITextFieldType)filedType{
     [self addSubview:self.logoImageV];
@@ -93,13 +116,28 @@ typedef NS_ENUM(NSInteger, UITextFieldViewType) {
     switch (fieldVeiwType) {
         case UITextFieldViewLeft:
         {
+            //只有左侧图标
             self.arrowBtn.hidden = YES;
         }
             break;
         case UITextFieldViewSelect:
         {
+            //选择框
             self.arrowBtn.enabled = NO;
             self.textField.enabled = NO;
+        }
+            break;
+        case UITextFieldViewCode:
+        {
+            //验证码
+            [self.arrowBtn removeFromSuperview];
+            [self addSubview:self.timeBtn];
+            [self.timeBtn addTarget:self action:@selector(timeBtnEvent:) forControlEvents:UIControlEventTouchUpInside];
+            [self.timeBtn mas_makeConstraints:^(MASConstraintMaker *make) {
+                make.centerY.right.equalTo(self);
+                make.height.mas_equalTo(40);
+                make.width.mas_offset(120);
+            }];
         }
             break;
         default:
@@ -107,9 +145,54 @@ typedef NS_ENUM(NSInteger, UITextFieldViewType) {
     }
 }
 #pragma mark -- event
+//右侧图标点击
 - (void)arrowBtnEvent:(UIButton *)sender {
     sender.selected = !sender.selected;
     self.textField.secureTextEntry = sender.selected;
+}
+//定时器
+- (void)timeBtnEvent:(UIButton *)sender {
+//请求完成后开始倒计时
+    if (!_timer) {
+        self.timeCount = 10;
+        //定时器开始执行的延时时间
+        NSTimeInterval delayTime = 1.0f;
+        //定时器间隔时间
+        NSTimeInterval timeInterval = 1.0f;
+        //创建子线程队列
+        dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
+        //使用之前创建的队列来创建计时器
+        _timer = dispatch_source_create(DISPATCH_SOURCE_TYPE_TIMER, 0, 0, queue);
+        //设置延时执行时间，delayTime为要延时的秒数
+        dispatch_time_t startDelayTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delayTime * NSEC_PER_SEC));
+        //设置计时器
+        dispatch_source_set_timer(_timer, startDelayTime, timeInterval * NSEC_PER_SEC, 0.1 * NSEC_PER_SEC);
+        dispatch_source_set_event_handler(_timer, ^{
+            dispatch_async(dispatch_get_main_queue(), ^{
+                self.timeCount --;
+            });
+        });
+        // 启动计时器
+        dispatch_resume(_timer);
+    }
+}
+
+- (void)setTimeCount:(NSInteger)timeCount {
+    if (timeCount == 0) {
+        dispatch_source_cancel(self.timer);
+        self.timer = nil;
+        self.timeBtn.enabled = YES;
+    } else {
+        _timeCount = timeCount;
+        self.timeBtn.enabled = NO;
+        [self.timeBtn setTitle:[NSString stringWithFormat:@"%lds后重新发送",_timeCount] forState:UIControlStateDisabled];
+    }
+}
+- (void)dealloc {
+    if (self.timer) {
+        dispatch_source_cancel(self.timer);
+        self.timer = nil;
+    }
 }
 
 #pragma mrak -- setup
@@ -133,6 +216,14 @@ typedef NS_ENUM(NSInteger, UITextFieldViewType) {
     }
     return _arrowBtn;
 }
+
+- (UIButton *)timeBtn {
+    if (!_timeBtn) {
+        _timeBtn = [UIButton buttonWithTitle:@"发送验证码" font:SYSTEM_FONT_15 normalColor:[UIColor color_FFFFFF] disabledColor:[UIColor redColor] normalBackgroundImage:@"login_time_normal" disabledBackgroundImage:@"login_time_disabled"];
+    }
+    return _timeBtn;
+}
+
 - (XYLineView *)lineV {
     if (!_lineV) {
         _lineV = [[XYLineView alloc]init];
@@ -171,7 +262,7 @@ typedef NS_ENUM(NSInteger, UITextFieldViewType) {
     self.delegate = self;
     self.autocorrectionType = UITextAutocorrectionTypeNo;
     self.font = SYSTEM_FONT_15;
-    self.textColor = [UIColor redColor];
+    self.textColor = [UIColor color_333333];
     [self setValue:[UIColor color_ABABAB] forKeyPath:@"_placeholderLabel.textColor"];
     [self addTarget:self action:@selector(changeFieldValue:) forControlEvents:UIControlEventEditingChanged];
     if (placeHolder) {
@@ -192,6 +283,13 @@ typedef NS_ENUM(NSInteger, UITextFieldViewType) {
             self.borderStyle = UITextBorderStyleNone;
         }
             break;
+        case UITextFieldCode:
+        {
+            self.numberCount = 6;
+            self.keyboardType = UIKeyboardTypeNumberPad;
+            self.borderStyle = UITextBorderStyleNone;
+        }
+            break;
         default:
             break;
     }
@@ -209,6 +307,7 @@ typedef NS_ENUM(NSInteger, UITextFieldViewType) {
 - (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string {
     switch (self.filedType) {
             case UITextFieldTel:
+            case UITextFieldCode:
         {
             NSUInteger length = string.length;
             for (int loopIndex = 0; loopIndex < length; loopIndex ++) {

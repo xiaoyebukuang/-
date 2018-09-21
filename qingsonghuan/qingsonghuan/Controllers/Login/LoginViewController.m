@@ -8,6 +8,7 @@
 
 #import "LoginViewController.h"
 #import "RegisterViewController.h"
+#import "ForgetViewController.h"
 /**
  登录
  */
@@ -136,7 +137,8 @@
 }
 //忘记密码
 - (void)forgetBtnEvent:(UIButton *)sender {
-    
+    ForgetViewController *vc = [[ForgetViewController alloc]init];
+    [self.navigationController pushViewController:vc animated:YES];    
 }
 
 #pragma mark -- setup
@@ -150,14 +152,14 @@
 
 - (XYTextFieldView *)telTFieldView {
     if (!_telTFieldView) {
-        _telTFieldView = [[XYTextFieldView alloc]initWithType:UITextFieldTel logoImageV:@"login_tel" placeHolder:@"请输入电话号码"];
+        _telTFieldView = [[XYTextFieldView alloc]initWithLeftType:UITextFieldTel logoImageV:@"login_tel" placeHolder:@"请输入电话号码"];
     }
     return _telTFieldView;
 }
 
 - (XYTextFieldView *)pwTFieldView {
     if (!_pwTFieldView) {
-        _pwTFieldView = [[XYTextFieldView alloc]initWithType:UITextFieldPassword logoImageV:@"login_psw" arrowImageVNormal:@"login_eye_open" arrowImageVSelect:@"login_psw" placeHolder:@"请输入密码"];
+        _pwTFieldView = [[XYTextFieldView alloc]initWithLeftRightType:UITextFieldPassword logoImageV:@"login_psw" arrowImageVNormal:@"login_eye_open" arrowImageVSelect:@"login_psw" placeHolder:@"请输入密码"];
     }
     return _pwTFieldView;
 }

@@ -37,4 +37,33 @@
                    titleColor:(UIColor *)titleColor
               backgroundImage:(NSString *)backgroundImage;
 
+
+/**
+ 创建button（图片）
+
+ @param image 图片
+ @return button
+ */
++ (UIButton *)buttonWithImage:(NSString *)image;
+
+
+/**
+ 创建button（定时器）
+
+ @param title 定时器标题
+ @param font 字体带下
+ @param normalColor 正常颜色
+ @param disabledColor 禁用颜色
+ @param normalBackgroundImage 正常背景图片
+ @param disabledBackgroundImage 禁用背景图片
+ @return button
+ */
++ (UIButton *)buttonWithTitle:(NSString *)title
+                         font:(UIFont *)font
+                  normalColor:(UIColor *)normalColor
+                disabledColor:(UIColor *)disabledColor
+        normalBackgroundImage:(NSString *)normalBackgroundImage
+      disabledBackgroundImage:(NSString *)disabledBackgroundImage;
+
+
 @end

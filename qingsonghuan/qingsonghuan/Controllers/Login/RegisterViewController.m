@@ -53,13 +53,13 @@ static CGFloat const LOGIN_SPACE_SIZE = 20.0;
 #pragma mark -- setup
 - (XYTextFieldView *)companyView {
     if (!_companyView) {
-        _companyView = [[XYTextFieldView alloc]initWithType:UITextFieldPassword logoImageV:@"login_tel" arrowImageV:@"login_tel" placeHolder:@"请选择航空公司名称"];
+        _companyView = [[XYTextFieldView alloc]initWithSelectType:UITextFieldNormal logoImageV:@"login_tel" arrowImageV:@"login_tel" placeHolder:@"请选择航空公司名称"];
     }
     return _companyView;
 }
 - (XYTextFieldView *)areaView {
     if (!_areaView) {
-        _areaView = [[XYTextFieldView alloc]initWithType:UITextFieldPassword logoImageV:@"login_tel" arrowImageV:@"login_tel" placeHolder:@"请选择所属地区"];
+        _areaView = [[XYTextFieldView alloc]initWithSelectType:UITextFieldNormal logoImageV:@"login_tel" arrowImageV:@"login_tel" placeHolder:@"请选择所属地区"];
     }
     return _areaView;
 }
