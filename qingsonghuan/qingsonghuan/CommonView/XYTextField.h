@@ -11,12 +11,15 @@ typedef NS_ENUM(NSInteger, UITextFieldType) {
     UITextFieldTel,             //电话，限制数字，11位
     UITextFieldPassword         //密码，限制数字，字母，10位
 };
+
+typedef void(^SelectBlock)(void);
+
+
 @interface XYTextFieldView : UIView
 /**
  输入框内容
  */
 @property (nonatomic, copy) NSString *text;
-
 
 /**
 设置类型的XYTextFieldView（左侧图标+填充）
@@ -39,6 +42,18 @@ typedef NS_ENUM(NSInteger, UITextFieldType) {
  @return XYTextFieldView
  */
 - (instancetype)initWithType:(UITextFieldType)filedType logoImageV:(NSString *)logoStr arrowImageVNormal:(NSString *)normalArrowStr arrowImageVSelect:(NSString *)selectArrowStr placeHolder:(NSString *)placeHolder;;
+
+/**
+ 设置类型的XYTextFieldView（左侧图标+右侧图标（不可点击）+选择）
+
+ @param filedType UITextFiled类型
+ @param logoStr LOGO图片
+ @param arrowStr 右侧图标
+ @param placeHolder 提示语句
+ @return XYTextFieldView
+ */
+
+- (instancetype)initWithType:(UITextFieldType)filedType logoImageV:(NSString *)logoStr arrowImageV:(NSString *)arrowStr  placeHolder:(NSString *)placeHolder;
 
 @end
 

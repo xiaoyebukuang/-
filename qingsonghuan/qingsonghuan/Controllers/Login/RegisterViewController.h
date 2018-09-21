@@ -6,8 +6,8 @@
 //  Copyright © 2018年 XYBK. All rights reserved.
 //
 
-#import "BaseViewController.h"
+#import "BaseMultiViewController.h"
 
-@interface RegisterViewController : BaseViewController
+@interface RegisterViewController : BaseMultiViewController
 
 @end

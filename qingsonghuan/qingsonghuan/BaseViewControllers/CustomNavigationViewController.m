@@ -16,6 +16,7 @@
 
 - (void)viewDidLoad{
     self.delegate = self;
+    self.navigationBar.translucent = NO;
 }
 
 - (void)pushViewController:(UIViewController *)viewController animated:(BOOL)animated {

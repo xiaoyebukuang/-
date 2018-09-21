@@ -25,6 +25,9 @@
 		65D0CA82215233AC00A3DB66 /* RegisterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 65D0CA81215233AC00A3DB66 /* RegisterViewController.m */; };
 		65D0CA852153439F00A3DB66 /* XYLineView.m in Sources */ = {isa = PBXBuildFile; fileRef = 65D0CA842153439F00A3DB66 /* XYLineView.m */; };
 		65D0CA8921536D6E00A3DB66 /* UIColor+Helper.m in Sources */ = {isa = PBXBuildFile; fileRef = 65D0CA8821536D6E00A3DB66 /* UIColor+Helper.m */; };
+		65D0CA95215487CE00A3DB66 /* UILabel+Helper.m in Sources */ = {isa = PBXBuildFile; fileRef = 65D0CA94215487CE00A3DB66 /* UILabel+Helper.m */; };
+		65D0CA98215489F700A3DB66 /* BaseMultiViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 65D0CA97215489F700A3DB66 /* BaseMultiViewController.m */; };
+		65D0CA9C21548AB100A3DB66 /* UIButton+Helper.m in Sources */ = {isa = PBXBuildFile; fileRef = 65D0CA9B21548AB100A3DB66 /* UIButton+Helper.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -66,6 +69,12 @@
 		65D0CA842153439F00A3DB66 /* XYLineView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XYLineView.m; sourceTree = "<group>"; };
 		65D0CA8721536D6E00A3DB66 /* UIColor+Helper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIColor+Helper.h"; sourceTree = "<group>"; };
 		65D0CA8821536D6E00A3DB66 /* UIColor+Helper.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIColor+Helper.m"; sourceTree = "<group>"; };
+		65D0CA93215487CE00A3DB66 /* UILabel+Helper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UILabel+Helper.h"; sourceTree = "<group>"; };
+		65D0CA94215487CE00A3DB66 /* UILabel+Helper.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UILabel+Helper.m"; sourceTree = "<group>"; };
+		65D0CA96215489F700A3DB66 /* BaseMultiViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BaseMultiViewController.h; sourceTree = "<group>"; };
+		65D0CA97215489F700A3DB66 /* BaseMultiViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BaseMultiViewController.m; sourceTree = "<group>"; };
+		65D0CA9A21548AB100A3DB66 /* UIButton+Helper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIButton+Helper.h"; sourceTree = "<group>"; };
+		65D0CA9B21548AB100A3DB66 /* UIButton+Helper.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIButton+Helper.m"; sourceTree = "<group>"; };
 		BF01A99C77AD457283247280 /* Pods-qingsonghuan.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-qingsonghuan.release.xcconfig"; path = "Pods/Target Support Files/Pods-qingsonghuan/Pods-qingsonghuan.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -134,6 +143,8 @@
 		65D0CA582151ECEE00A3DB66 /* Category */ = {
 			isa = PBXGroup;
 			children = (
+				65D0CA9921548AA400A3DB66 /* UIButton+Helper */,
+				65D0CA92215487C200A3DB66 /* UILabel+Helper */,
 				65D0CA8621536D5B00A3DB66 /* UIColor+Helper */,
 				65D0CA592151ECEE00A3DB66 /* MBProgressHUD+Helper */,
 				65D0CA5C2151ECEE00A3DB66 /* NSString+Helper */,
@@ -184,6 +195,8 @@
 			children = (
 				65D0CA6A2151EEE000A3DB66 /* BaseViewController.h */,
 				65D0CA6B2151EEE000A3DB66 /* BaseViewController.m */,
+				65D0CA96215489F700A3DB66 /* BaseMultiViewController.h */,
+				65D0CA97215489F700A3DB66 /* BaseMultiViewController.m */,
 				65D0CA6D2151EF0B00A3DB66 /* CustomNavigationViewController.h */,
 				65D0CA6E2151EF0B00A3DB66 /* CustomNavigationViewController.m */,
 			);
@@ -227,6 +240,24 @@
 				65D0CA8821536D6E00A3DB66 /* UIColor+Helper.m */,
 			);
 			path = "UIColor+Helper";
+			sourceTree = "<group>";
+		};
+		65D0CA92215487C200A3DB66 /* UILabel+Helper */ = {
+			isa = PBXGroup;
+			children = (
+				65D0CA93215487CE00A3DB66 /* UILabel+Helper.h */,
+				65D0CA94215487CE00A3DB66 /* UILabel+Helper.m */,
+			);
+			path = "UILabel+Helper";
+			sourceTree = "<group>";
+		};
+		65D0CA9921548AA400A3DB66 /* UIButton+Helper */ = {
+			isa = PBXGroup;
+			children = (
+				65D0CA9A21548AB100A3DB66 /* UIButton+Helper.h */,
+				65D0CA9B21548AB100A3DB66 /* UIButton+Helper.m */,
+			);
+			path = "UIButton+Helper";
 			sourceTree = "<group>";
 		};
 		978D342F849E3CA3DEF5C5BF /* Frameworks */ = {
@@ -371,10 +402,13 @@
 				65D0CA6C2151EEE000A3DB66 /* BaseViewController.m in Sources */,
 				65D0CA662151ECEE00A3DB66 /* NSString+Helper.m in Sources */,
 				65D0CA42214F9AFD00A3DB66 /* ViewController.m in Sources */,
+				65D0CA95215487CE00A3DB66 /* UILabel+Helper.m in Sources */,
+				65D0CA9C21548AB100A3DB66 /* UIButton+Helper.m in Sources */,
 				65D0CA742151F08200A3DB66 /* LoginViewController.m in Sources */,
 				65D0CA7F21521F7600A3DB66 /* XYTextField.m in Sources */,
 				65D0CA652151ECEE00A3DB66 /* MBProgressHUD+Helper.m in Sources */,
 				65D0CA82215233AC00A3DB66 /* RegisterViewController.m in Sources */,
+				65D0CA98215489F700A3DB66 /* BaseMultiViewController.m in Sources */,
 				65D0CA4D214F9B0000A3DB66 /* main.m in Sources */,
 				65D0CA3F214F9AFD00A3DB66 /* AppDelegate.m in Sources */,
 				65D0CA6F2151EF0B00A3DB66 /* CustomNavigationViewController.m in Sources */,

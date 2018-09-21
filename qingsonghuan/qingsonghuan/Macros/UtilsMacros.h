@@ -39,7 +39,9 @@
 /** 字体 */
 #define SYSTEM_BOLD_FONT(FONTSIZE)      [UIFont boldSystemFontOfSize:FONTSIZE]
 #define SYSTEM_FONT(FONTSIZE)           [UIFont systemFontOfSize:FONTSIZE]
+#define SYSTEM_FONT_13                  [UIFont systemFontOfSize:13]
 #define SYSTEM_FONT_15                  [UIFont systemFontOfSize:15]
+#define SYSTEM_FONT_17                  [UIFont systemFontOfSize:17]
 
 
 

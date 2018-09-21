@@ -13,6 +13,13 @@
  */
 @interface LoginViewController ()
 
+
+/**
+ Logo
+ */
+@property (nonatomic, strong) UIImageView *logoImageV;
+
+
 /**
  电话号码
  */
@@ -58,12 +65,19 @@
 }
 
 - (void)setupView {
+    
+    [self.view addSubview:self.logoImageV];
+    [self.logoImageV mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(self.view).offset(100);
+        make.centerX.equalTo(self.view);
+    }];
+    
     [self.view addSubview:self.telTFieldView];
     [self.telTFieldView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(self.view).offset(20);
         make.right.equalTo(self.view).offset(-20);
         make.height.mas_equalTo(50);
-        make.top.equalTo(self.view).offset(320);
+        make.top.equalTo(self.logoImageV.mas_bottom).offset(80);
     }];
     [self.view addSubview:self.pwTFieldView];
     [self.pwTFieldView mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -83,13 +97,14 @@
     [self.sView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(self.loginBtn.mas_bottom).offset(10);
         make.width.mas_equalTo(0.5);
-        make.height.mas_equalTo(20);
+        make.height.mas_equalTo(15);
         make.centerX.equalTo(self.view);
     }];
     
     [self.view addSubview:self.registerBtn];
     [self.registerBtn mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.height.equalTo(self.sView);
+        make.centerY.equalTo(self.sView);
+        make.height.mas_equalTo(20);
         make.width.mas_equalTo(80);
         make.right.equalTo(self.sView.mas_left);
     }];
@@ -99,6 +114,15 @@
         make.width.top.height.equalTo(self.registerBtn);
         make.left.equalTo(self.sView.mas_right);
     }];
+    
+    [self.view addSubview:self.desLabel];
+    [self.desLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.bottom.equalTo(self.view).offset(-50);
+        make.centerX.equalTo(self.view);
+    }];
+    
+    
+    
 }
 #pragma mark -- event
 //登录
@@ -116,6 +140,13 @@
 }
 
 #pragma mark -- setup
+- (UIImageView *)logoImageV {
+    if (!_logoImageV) {
+        _logoImageV = [[UIImageView alloc]init];
+        _logoImageV.image = [UIImage imageNamed:@"logo"];
+    }
+    return _logoImageV;
+}
 
 - (XYTextFieldView *)telTFieldView {
     if (!_telTFieldView) {
@@ -133,44 +164,39 @@
 
 - (UIButton *)loginBtn {
     if (!_loginBtn) {
-        _loginBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-        [_loginBtn setTitle:@"登 录" forState:UIControlStateNormal];
-        _loginBtn.titleLabel.font = SYSTEM_FONT_15;
-        [_loginBtn setTitleColor:[UIColor color_FFFFFF] forState:UIControlStateNormal];
+        _loginBtn = [UIButton buttonWithTitle:@"登 录" font:SYSTEM_FONT_17 titleColor:[UIColor color_FFFFFF] backgroundImage:@"login_btn_bg"];
         [_loginBtn addTarget:self action:@selector(loginBtnEvent:) forControlEvents:UIControlEventTouchUpInside];
-        _loginBtn.backgroundColor = [UIColor redColor];
     }
     return _loginBtn;
 }
 - (UIView *)sView {
     if (!_sView) {
         _sView = [[UIView alloc]init];
-        _sView.backgroundColor = [UIColor color_ABABAB];
+        _sView.backgroundColor = [UIColor color_99D3F8];
     }
     return _sView;
 }
 
 - (UIButton *)registerBtn {
     if (!_registerBtn) {
-        _registerBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-        [_registerBtn setTitle:@"账号注册>" forState:UIControlStateNormal];
-        _registerBtn.titleLabel.font = SYSTEM_FONT_15;
+        _registerBtn = [UIButton buttonWithTitle:@"账号注册>" font:SYSTEM_FONT_13 titleColor:[UIColor color_99D3F8]];
         [_registerBtn addTarget:self action:@selector(registerBtnEvent:) forControlEvents:UIControlEventTouchUpInside];
-        [_registerBtn setTitleColor:[UIColor color_ABABAB] forState:UIControlStateNormal];
     }
     return _registerBtn;
 }
 
 - (UIButton *)forgetBtn {
     if (!_forgetBtn) {
-        _forgetBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-        [_forgetBtn setTitle:@"忘记密码>" forState:UIControlStateNormal];
-        _forgetBtn.titleLabel.font = SYSTEM_FONT_15;
+        _forgetBtn = [UIButton buttonWithTitle:@"忘记密码>" font:SYSTEM_FONT_13 titleColor:[UIColor color_99D3F8]];
         [_forgetBtn addTarget:self action:@selector(forgetBtnEvent:) forControlEvents:UIControlEventTouchUpInside];
-        [_forgetBtn setTitleColor:[UIColor color_ABABAB] forState:UIControlStateNormal];
     }
     return _forgetBtn;
 }
-
+- (UILabel *)desLabel {
+    if (!_desLabel) {
+        _desLabel = [[UILabel alloc]initWithText:@"———— 轻松换 ————" font:SYSTEM_FONT_13 textColor:[UIColor color_C7C7C7]];
+    }
+    return _desLabel;
+}
 
 @end

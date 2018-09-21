@@ -11,7 +11,8 @@ static CGFloat const LOGIN_WIDTH_SIZE = 50.0;
 
 typedef NS_ENUM(NSInteger, UITextFieldViewType) {
     UITextFieldViewLeft,            //左侧图标+填充
-    UITextFieldViewLeftRight        //左侧图标+右侧图标（可点击）+填充
+    UITextFieldViewLeftRight,       //左侧图标+右侧图标（可点击）+填充
+    UITextFieldViewSelect           //左侧图标+右侧图标（不可点击）+选择
 };
 
 
@@ -51,6 +52,14 @@ typedef NS_ENUM(NSInteger, UITextFieldViewType) {
     }
     return self;
 }
+- (instancetype)initWithType:(UITextFieldType)filedType logoImageV:(NSString *)logoStr arrowImageV:(NSString *)arrowStr  placeHolder:(NSString *)placeHolder {
+    self = [super init];
+    if (self) {
+        [self setupViewWithViewType:UITextFieldViewSelect logoImageV:logoStr arrowImageVNormal:arrowStr arrowImageVSelect:arrowStr placeHolder:placeHolder type:filedType];
+    }
+    return self;
+}
+
 
 - (void)setupViewWithViewType:(UITextFieldViewType)fieldVeiwType logoImageV:(NSString *)logoStr arrowImageVNormal:(NSString *)normalArrowStr arrowImageVSelect:(NSString *)selectArrowStr placeHolder:(NSString *)placeHolder type:(UITextFieldType)filedType{
     [self addSubview:self.logoImageV];
@@ -81,6 +90,21 @@ typedef NS_ENUM(NSInteger, UITextFieldViewType) {
         make.bottom.left.right.equalTo(self);
         make.height.mas_equalTo(0.5);
     }];
+    switch (fieldVeiwType) {
+        case UITextFieldViewLeft:
+        {
+            self.arrowBtn.hidden = YES;
+        }
+            break;
+        case UITextFieldViewSelect:
+        {
+            self.arrowBtn.enabled = NO;
+            self.textField.enabled = NO;
+        }
+            break;
+        default:
+            break;
+    }
 }
 #pragma mark -- event
 - (void)arrowBtnEvent:(UIButton *)sender {
