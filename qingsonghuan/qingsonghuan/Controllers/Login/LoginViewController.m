@@ -159,7 +159,7 @@
 
 - (XYTextFieldView *)pwTFieldView {
     if (!_pwTFieldView) {
-        _pwTFieldView = [[XYTextFieldView alloc]initWithLeftRightType:UITextFieldPassword logoImageV:@"login_psw" arrowImageVNormal:@"login_eye_open" arrowImageVSelect:@"login_psw" placeHolder:@"请输入密码"];
+        _pwTFieldView = [[XYTextFieldView alloc]initWithLeftRightType:UITextFieldPassword logoImageV:@"login_psw" arrowImageVNormal:@"login_eye_open" arrowImageVSelect:@"login_eye_close" placeHolder:@"请输入密码"];
     }
     return _pwTFieldView;
 }
@@ -196,7 +196,7 @@
 }
 - (UILabel *)desLabel {
     if (!_desLabel) {
-        _desLabel = [[UILabel alloc]initWithText:@"———— 轻松换 ————" font:SYSTEM_FONT_13 textColor:[UIColor color_C7C7C7]];
+        _desLabel = [[UILabel alloc]initWithText:@"———— 轻松换app ————" font:SYSTEM_FONT_13 textColor:[UIColor color_C7C7C7]];
     }
     return _desLabel;
 }

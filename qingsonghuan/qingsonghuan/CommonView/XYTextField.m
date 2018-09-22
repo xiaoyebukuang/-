@@ -51,6 +51,11 @@ typedef NS_ENUM(NSInteger, UITextFieldViewType) {
  */
 @property (nonatomic, assign) NSInteger timeCount;
 
+/**
+ 选择框
+ */
+@property (nonatomic, strong) UIControl *control;
+
 @end
 
 @implementation XYTextFieldView
@@ -125,6 +130,10 @@ typedef NS_ENUM(NSInteger, UITextFieldViewType) {
             //选择框
             self.arrowBtn.enabled = NO;
             self.textField.enabled = NO;
+            [self addSubview:self.control];
+            [self.control mas_makeConstraints:^(MASConstraintMaker *make) {
+                make.edges.equalTo(self.textField);
+            }];
         }
             break;
         case UITextFieldViewCode:
@@ -132,7 +141,6 @@ typedef NS_ENUM(NSInteger, UITextFieldViewType) {
             //验证码
             [self.arrowBtn removeFromSuperview];
             [self addSubview:self.timeBtn];
-            [self.timeBtn addTarget:self action:@selector(timeBtnEvent:) forControlEvents:UIControlEventTouchUpInside];
             [self.timeBtn mas_makeConstraints:^(MASConstraintMaker *make) {
                 make.centerY.right.equalTo(self);
                 make.height.mas_equalTo(40);
@@ -145,6 +153,12 @@ typedef NS_ENUM(NSInteger, UITextFieldViewType) {
     }
 }
 #pragma mark -- event
+//选择回调
+- (void)controlEvent:(UIControl *)sender {
+    if (self.selectBlock) {
+        self.selectBlock();
+    }
+}
 //右侧图标点击
 - (void)arrowBtnEvent:(UIButton *)sender {
     sender.selected = !sender.selected;
@@ -217,9 +231,18 @@ typedef NS_ENUM(NSInteger, UITextFieldViewType) {
     return _arrowBtn;
 }
 
+- (UIControl *)control {
+    if (!_control) {
+        _control = [[UIControl alloc]init];
+        [_control addTarget:self action:@selector(controlEvent:) forControlEvents:UIControlEventTouchUpInside];
+    }
+    return _control;
+}
+
 - (UIButton *)timeBtn {
     if (!_timeBtn) {
-        _timeBtn = [UIButton buttonWithTitle:@"发送验证码" font:SYSTEM_FONT_15 normalColor:[UIColor color_FFFFFF] disabledColor:[UIColor redColor] normalBackgroundImage:@"login_time_normal" disabledBackgroundImage:@"login_time_disabled"];
+        _timeBtn = [UIButton buttonWithTitle:@"发送验证码" font:SYSTEM_FONT_15 normalColor:[UIColor color_FFFFFF] disabledColor:[UIColor color_FFFFFF] normalBackgroundImage:@"login_time_normal" disabledBackgroundImage:@"login_time_disabled"];
+        [_timeBtn addTarget:self action:@selector(timeBtnEvent:) forControlEvents:UIControlEventTouchUpInside];
     }
     return _timeBtn;
 }

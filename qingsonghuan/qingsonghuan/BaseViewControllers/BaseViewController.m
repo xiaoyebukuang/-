@@ -18,4 +18,7 @@
     [super viewDidLoad];
     self.view.backgroundColor = [UIColor color_FFFFFF];
 }
+- (void)dealloc {
+    NSLog(@"release-------%@",[self class]);
+}
 @end

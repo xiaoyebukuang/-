@@ -92,20 +92,20 @@
 
 - (XYTextFieldView *)pwTFieldView {
     if (!_pwTFieldView) {
-        _pwTFieldView = [[XYTextFieldView alloc]initWithLeftRightType:UITextFieldPassword logoImageV:@"login_psw" arrowImageVNormal:@"login_eye_open" arrowImageVSelect:@"login_psw" placeHolder:@"请输入密码"];
+        _pwTFieldView = [[XYTextFieldView alloc]initWithLeftRightType:UITextFieldPassword logoImageV:@"login_psw" arrowImageVNormal:@"login_eye_open" arrowImageVSelect:@"login_eye_close" placeHolder:@"请输入密码"];
     }
     return _pwTFieldView;
 }
 
 - (XYTextFieldView *)againPwTFieldView {
     if (!_againPwTFieldView) {
-        _againPwTFieldView = [[XYTextFieldView alloc]initWithLeftRightType:UITextFieldPassword logoImageV:@"login_psw" arrowImageVNormal:@"login_eye_open" arrowImageVSelect:@"login_psw" placeHolder:@"请再次输入密码"];
+        _againPwTFieldView = [[XYTextFieldView alloc]initWithLeftRightType:UITextFieldPassword logoImageV:@"login_psw" arrowImageVNormal:@"login_eye_open" arrowImageVSelect:@"login_eye_close" placeHolder:@"请再次输入密码"];
     }
     return _againPwTFieldView;
 }
 - (XYTextFieldView *)codeTFieldView {
     if (!_codeTFieldView) {
-        _codeTFieldView = [[XYTextFieldView alloc]initWithCodeType:UITextFieldCode logoImageV:@"login_psw" placeHolder:@"请输入验证码"];
+        _codeTFieldView = [[XYTextFieldView alloc]initWithCodeType:UITextFieldCode logoImageV:@"login_code" placeHolder:@"请输入验证码"];
     }
     return _codeTFieldView;
 }

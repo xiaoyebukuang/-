@@ -29,6 +29,7 @@
 		65D0CA98215489F700A3DB66 /* BaseMultiViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 65D0CA97215489F700A3DB66 /* BaseMultiViewController.m */; };
 		65D0CA9C21548AB100A3DB66 /* UIButton+Helper.m in Sources */ = {isa = PBXBuildFile; fileRef = 65D0CA9B21548AB100A3DB66 /* UIButton+Helper.m */; };
 		65D0CA9F2154B80D00A3DB66 /* ForgetViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 65D0CA9E2154B80D00A3DB66 /* ForgetViewController.m */; };
+		65D0CAA22154F34500A3DB66 /* XYPickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 65D0CAA12154F34500A3DB66 /* XYPickerViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -78,6 +79,8 @@
 		65D0CA9B21548AB100A3DB66 /* UIButton+Helper.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIButton+Helper.m"; sourceTree = "<group>"; };
 		65D0CA9D2154B80C00A3DB66 /* ForgetViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ForgetViewController.h; sourceTree = "<group>"; };
 		65D0CA9E2154B80D00A3DB66 /* ForgetViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ForgetViewController.m; sourceTree = "<group>"; };
+		65D0CAA02154F34500A3DB66 /* XYPickerViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XYPickerViewController.h; sourceTree = "<group>"; };
+		65D0CAA12154F34500A3DB66 /* XYPickerViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XYPickerViewController.m; sourceTree = "<group>"; };
 		BF01A99C77AD457283247280 /* Pods-qingsonghuan.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-qingsonghuan.release.xcconfig"; path = "Pods/Target Support Files/Pods-qingsonghuan/Pods-qingsonghuan.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -223,6 +226,8 @@
 				65D0CA81215233AC00A3DB66 /* RegisterViewController.m */,
 				65D0CA9D2154B80C00A3DB66 /* ForgetViewController.h */,
 				65D0CA9E2154B80D00A3DB66 /* ForgetViewController.m */,
+				65D0CAA02154F34500A3DB66 /* XYPickerViewController.h */,
+				65D0CAA12154F34500A3DB66 /* XYPickerViewController.m */,
 			);
 			path = Login;
 			sourceTree = "<group>";
@@ -406,6 +411,7 @@
 				65D0CA672151ECEE00A3DB66 /* NSDate+Helper.m in Sources */,
 				65D0CA6C2151EEE000A3DB66 /* BaseViewController.m in Sources */,
 				65D0CA662151ECEE00A3DB66 /* NSString+Helper.m in Sources */,
+				65D0CAA22154F34500A3DB66 /* XYPickerViewController.m in Sources */,
 				65D0CA42214F9AFD00A3DB66 /* ViewController.m in Sources */,
 				65D0CA95215487CE00A3DB66 /* UILabel+Helper.m in Sources */,
 				65D0CA9C21548AB100A3DB66 /* UIButton+Helper.m in Sources */,

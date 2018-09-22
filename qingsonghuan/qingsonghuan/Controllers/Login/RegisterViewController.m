@@ -7,8 +7,8 @@
 //
 
 #import "RegisterViewController.h"
-
-static CGFloat const LOGIN_SPACE_SIZE = 20.0;
+#import "XYPickerViewController.h"
+static CGFloat const LOGIN_SPACE_SIZE = 10.0;
 
 
 /**
@@ -32,6 +32,7 @@ static CGFloat const LOGIN_SPACE_SIZE = 20.0;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.title = @"注册";
     [self setupView];
 }
 - (void)setupView {
@@ -49,6 +50,16 @@ static CGFloat const LOGIN_SPACE_SIZE = 20.0;
         make.top.equalTo(self.companyView.mas_bottom).offset(LOGIN_SPACE_SIZE);
     }];
     
+    
+    __weak __typeof(self)weakSelf = self;
+    self.companyView.selectBlock = ^{
+        NSLog(@"请选择航空公司名称");
+        XYPickerViewController *pickerVC = [[XYPickerViewController alloc]init];
+        [weakSelf presentViewController:pickerVC animated:YES completion:nil];
+    };
+    self.areaView.selectBlock = ^{
+        NSLog(@"请选择所属地区");
+    };
 }
 #pragma mark -- setup
 - (XYTextFieldView *)companyView {
