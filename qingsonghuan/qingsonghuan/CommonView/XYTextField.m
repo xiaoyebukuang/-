@@ -110,7 +110,7 @@ typedef NS_ENUM(NSInteger, UITextFieldViewType) {
     [self.textField mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(self.logoImageV.mas_right);
         make.right.equalTo(self.arrowBtn.mas_left);
-        make.top.bottom.equalTo(self);
+        make.centerY.equalTo(self);
     }];
 
     [self addSubview:self.lineV];
@@ -143,7 +143,7 @@ typedef NS_ENUM(NSInteger, UITextFieldViewType) {
             [self addSubview:self.timeBtn];
             [self.timeBtn mas_makeConstraints:^(MASConstraintMaker *make) {
                 make.centerY.right.equalTo(self);
-                make.height.mas_equalTo(40);
+                make.height.mas_equalTo(35);
                 make.width.mas_offset(120);
             }];
         }
@@ -152,6 +152,7 @@ typedef NS_ENUM(NSInteger, UITextFieldViewType) {
             break;
     }
 }
+
 #pragma mark -- event
 //选择回调
 - (void)controlEvent:(UIControl *)sender {

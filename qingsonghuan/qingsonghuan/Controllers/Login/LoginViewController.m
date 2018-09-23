@@ -118,7 +118,7 @@
     
     [self.view addSubview:self.desLabel];
     [self.desLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.bottom.equalTo(self.view).offset(-50);
+        make.bottom.equalTo(self.view).offset(-30);
         make.centerX.equalTo(self.view);
     }];
     
@@ -152,14 +152,14 @@
 
 - (XYTextFieldView *)telTFieldView {
     if (!_telTFieldView) {
-        _telTFieldView = [[XYTextFieldView alloc]initWithLeftType:UITextFieldTel logoImageV:@"login_tel" placeHolder:@"请输入电话号码"];
+        _telTFieldView = [[XYTextFieldView alloc]initWithLeftType:UITextFieldTel logoImageV:@"login_tel" placeHolder:LOGIN_TEL_PLACEHOLDER];
     }
     return _telTFieldView;
 }
 
 - (XYTextFieldView *)pwTFieldView {
     if (!_pwTFieldView) {
-        _pwTFieldView = [[XYTextFieldView alloc]initWithLeftRightType:UITextFieldPassword logoImageV:@"login_psw" arrowImageVNormal:@"login_eye_open" arrowImageVSelect:@"login_eye_close" placeHolder:@"请输入密码"];
+        _pwTFieldView = [[XYTextFieldView alloc]initWithLeftRightType:UITextFieldPassword logoImageV:@"login_psw" arrowImageVNormal:@"login_eye_open" arrowImageVSelect:@"login_eye_close" placeHolder:LOGIN_PSW_PLACEHOLDER];
     }
     return _pwTFieldView;
 }

@@ -44,6 +44,22 @@
 #define SYSTEM_FONT_17                  [UIFont systemFontOfSize:17]
 #define SYSTEM_FONT_20                  [UIFont systemFontOfSize:20]
 
+//登录提示语句
+#define LOGIN_TEL_PLACEHOLDER           @"请输入手机号"
+#define LOGIN_PSW_PLACEHOLDER           @"请输入密码"
+#define LOGIN_AGAIN_PSW_PLACEHOLDER     @"请再次输入密码"
+#define LOGIN_CODE_PLACEHOLDER          @"请输入验证码"
+
+#define LOGIN_COMPANY_PLACEHOLDER       @"选择航空公司"
+#define LOGIN_AREA_PLACEHOLDER          @"所属分子公司"
+#define LOGIN_POST_PLACEHOLDER          @"选择职务等级"
+#define LOGIN_VISA_PLACEHOLDER          @"选择签证类型"
+#define LOGIN_CARD_PLACEHOLDER          @"输入登记证号"
+#define LOGIN_SEX_PLACEHOLDER           @"选择性别"
+
+
+
+
 
 
 #endif /* UtilsMacros_h */

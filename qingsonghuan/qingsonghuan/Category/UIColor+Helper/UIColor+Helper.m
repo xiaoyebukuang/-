@@ -35,4 +35,8 @@
     UIColor *color = UIColorFromRGB(0x333333);
     return color;
 }
++ (UIColor *)color_000000:(CGFloat)a {
+    UIColor *color = COLOR_RGB_ALPHA(0x000000,a);
+    return color;
+}
 @end

@@ -54,19 +54,19 @@
     [self.view addSubview:self.pwTFieldView];
     [self.pwTFieldView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.right.height.mas_equalTo(self.telTFieldView);
-        make.top.equalTo(self.telTFieldView.mas_bottom).offset(10);
+        make.top.equalTo(self.telTFieldView.mas_bottom);
     }];
     
     [self.view addSubview:self.againPwTFieldView];
     [self.againPwTFieldView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.right.height.mas_equalTo(self.telTFieldView);
-        make.top.equalTo(self.pwTFieldView.mas_bottom).offset(10);
+        make.top.equalTo(self.pwTFieldView.mas_bottom);
     }];
     
     [self.view addSubview:self.codeTFieldView];
     [self.codeTFieldView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.right.height.mas_equalTo(self.telTFieldView);
-        make.top.equalTo(self.againPwTFieldView.mas_bottom).offset(10);
+        make.top.equalTo(self.againPwTFieldView.mas_bottom);
     }];
     
     [self.view addSubview:self.resetBtn];
@@ -85,27 +85,27 @@
 #pragma mark -- setup
 - (XYTextFieldView *)telTFieldView {
     if (!_telTFieldView) {
-        _telTFieldView = [[XYTextFieldView alloc]initWithLeftType:UITextFieldTel logoImageV:@"login_tel" placeHolder:@"请输入电话号码"];
+        _telTFieldView = [[XYTextFieldView alloc]initWithLeftType:UITextFieldTel logoImageV:@"login_tel" placeHolder:LOGIN_TEL_PLACEHOLDER];
     }
     return _telTFieldView;
 }
 
 - (XYTextFieldView *)pwTFieldView {
     if (!_pwTFieldView) {
-        _pwTFieldView = [[XYTextFieldView alloc]initWithLeftRightType:UITextFieldPassword logoImageV:@"login_psw" arrowImageVNormal:@"login_eye_open" arrowImageVSelect:@"login_eye_close" placeHolder:@"请输入密码"];
+        _pwTFieldView = [[XYTextFieldView alloc]initWithLeftRightType:UITextFieldPassword logoImageV:@"login_psw" arrowImageVNormal:@"login_eye_open" arrowImageVSelect:@"login_eye_close" placeHolder:LOGIN_PSW_PLACEHOLDER];
     }
     return _pwTFieldView;
 }
 
 - (XYTextFieldView *)againPwTFieldView {
     if (!_againPwTFieldView) {
-        _againPwTFieldView = [[XYTextFieldView alloc]initWithLeftRightType:UITextFieldPassword logoImageV:@"login_psw" arrowImageVNormal:@"login_eye_open" arrowImageVSelect:@"login_eye_close" placeHolder:@"请再次输入密码"];
+        _againPwTFieldView = [[XYTextFieldView alloc]initWithLeftRightType:UITextFieldPassword logoImageV:@"login_psw" arrowImageVNormal:@"login_eye_open" arrowImageVSelect:@"login_eye_close" placeHolder:LOGIN_AGAIN_PSW_PLACEHOLDER];
     }
     return _againPwTFieldView;
 }
 - (XYTextFieldView *)codeTFieldView {
     if (!_codeTFieldView) {
-        _codeTFieldView = [[XYTextFieldView alloc]initWithCodeType:UITextFieldCode logoImageV:@"login_code" placeHolder:@"请输入验证码"];
+        _codeTFieldView = [[XYTextFieldView alloc]initWithCodeType:UITextFieldCode logoImageV:@"login_code" placeHolder:LOGIN_CODE_PLACEHOLDER];
     }
     return _codeTFieldView;
 }

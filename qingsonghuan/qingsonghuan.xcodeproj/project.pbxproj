@@ -138,9 +138,9 @@
 		65D0CA532151ECDA00A3DB66 /* Macros */ = {
 			isa = PBXGroup;
 			children = (
+				65D0CA562151ECDA00A3DB66 /* PrefixHeader.pch */,
 				65D0CA542151ECDA00A3DB66 /* UtilsMacros.h */,
 				65D0CA552151ECDA00A3DB66 /* PathMacros.h */,
-				65D0CA562151ECDA00A3DB66 /* PrefixHeader.pch */,
 				65D0CA572151ECDA00A3DB66 /* DimensMacros.h */,
 			);
 			path = Macros;
