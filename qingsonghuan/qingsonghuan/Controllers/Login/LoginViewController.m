@@ -128,7 +128,7 @@
 #pragma mark -- event
 //登录
 - (void)loginBtnEvent:(UIButton *)sender {
-    
+    [[UserModel sharedInstance] reloadWithDic:nil];
 }
 //注册
 - (void)registerBtnEvent:(UIButton *)sender {

@@ -32,9 +32,19 @@
 #define NAV_TABBAR_HEIGHT       (NAV_BOTTOW_HEIGHT + 49)
 /** 可视图区域 */
 #define NAV_CONTENT_HEIGHT      (MAIN_SCREEN_HEIGHT - NAV_BAR_HEIGHT - NAV_TABBAR_HEIGHT)
+#define CONTENT_HEIGHT          (MAIN_SCREEN_HEIGHT - NAV_BAR_HEIGHT)
 /** 横向适配比例 */
 #define WIDTH_ADAPTER(x)        ceilf((x) * (MAIN_SCREEN_WIDTH / 375.0))
 /** 纵向适配比例 */
 #define HEIGHT_ADAPTER(y)       ceilf((y) * (MAIN_SCREEN_HEIGHT / 667.0))
+
+
+
+#define kApplication            [UIApplication sharedApplication]
+#define kApplicationDelegate    (AppDelegate *)[UIApplication sharedApplication].delegate
+#define kKeyWindow              [UIApplication sharedApplication].keyWindow
+#define kUserDefaults           [NSUserDefaults standardUserDefaults]
+#define kNotificationCenter     [NSNotificationCenter defaultCenter]
+
 
 #endif /* DimensMacros_h */

@@ -9,6 +9,7 @@
 #import "AppDelegate.h"
 #import "CustomNavigationViewController.h"
 #import "LoginViewController.h"
+#import "FlightListViewController.h"
 //三方键盘
 #import <IQKeyboardManager.h>
 @interface AppDelegate ()
@@ -33,9 +34,15 @@
 
 
 - (void)setRootViewControoler {
-    LoginViewController *loginVC = [[LoginViewController alloc]init];
-    CustomNavigationViewController *nvc = [[CustomNavigationViewController alloc]initWithRootViewController:loginVC];
-    self.window.rootViewController = nvc;
+    if ([UserModel sharedInstance].isLogin) {
+        FlightListViewController *flightLVC = [[FlightListViewController alloc]init];
+        CustomNavigationViewController *nvc = [[CustomNavigationViewController alloc]initWithRootViewController:flightLVC];
+        self.window.rootViewController = nvc;
+    } else {
+        LoginViewController *loginVC = [[LoginViewController alloc]init];
+        CustomNavigationViewController *nvc = [[CustomNavigationViewController alloc]initWithRootViewController:loginVC];
+        self.window.rootViewController = nvc;
+    }
 }
 
 

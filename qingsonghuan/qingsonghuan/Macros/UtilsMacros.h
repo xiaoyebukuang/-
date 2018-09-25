@@ -57,7 +57,9 @@
 #define LOGIN_CARD_PLACEHOLDER          @"输入登记证号"
 #define LOGIN_SEX_PLACEHOLDER           @"选择性别"
 
-
+//用户信息宏定义
+//是否登录
+#define USER_IS_LOGIN                   @"isLogin"
 
 
 

@@ -16,6 +16,7 @@
 /** 公共view */
 #import "XYTextField.h"
 #import "XYLineView.h"
+#import "UserModel.h"
 /** 类别 */
 #import "NSString+Helper.h"
 #import "UIView+Helper.h"
@@ -23,6 +24,8 @@
 #import "UIColor+Helper.h"
 #import "UILabel+Helper.h"
 #import "UIButton+Helper.h"
+/** 请求类 */
+#import "XYNetworking.h"
 /** 三方库 */
 #import "MBProgressHUD+Helper.h"
 #import <Masonry.h>

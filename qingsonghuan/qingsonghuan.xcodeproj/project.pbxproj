@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		62FB6F85E8E2FA0D047B1B93 /* libPods-qingsonghuan.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4307095D2F6D8C5CFEA11FE7 /* libPods-qingsonghuan.a */; };
+		652C0D112158228300BD03FC /* XYNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = 652C0D102158228300BD03FC /* XYNetworking.m */; };
+		652C0D152159CB8800BD03FC /* FlightListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 652C0D142159CB8700BD03FC /* FlightListViewController.m */; };
+		652C0D192159CC3F00BD03FC /* UserModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 652C0D182159CC3F00BD03FC /* UserModel.m */; };
 		65D0CA3F214F9AFD00A3DB66 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 65D0CA3E214F9AFD00A3DB66 /* AppDelegate.m */; };
 		65D0CA42214F9AFD00A3DB66 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 65D0CA41214F9AFD00A3DB66 /* ViewController.m */; };
 		65D0CA45214F9AFD00A3DB66 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 65D0CA43214F9AFD00A3DB66 /* Main.storyboard */; };
@@ -35,6 +38,12 @@
 /* Begin PBXFileReference section */
 		4234196DFA256330D83651D7 /* Pods-qingsonghuan.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-qingsonghuan.debug.xcconfig"; path = "Pods/Target Support Files/Pods-qingsonghuan/Pods-qingsonghuan.debug.xcconfig"; sourceTree = "<group>"; };
 		4307095D2F6D8C5CFEA11FE7 /* libPods-qingsonghuan.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-qingsonghuan.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		652C0D0F2158228300BD03FC /* XYNetworking.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XYNetworking.h; sourceTree = "<group>"; };
+		652C0D102158228300BD03FC /* XYNetworking.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XYNetworking.m; sourceTree = "<group>"; };
+		652C0D132159CB8700BD03FC /* FlightListViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FlightListViewController.h; sourceTree = "<group>"; };
+		652C0D142159CB8700BD03FC /* FlightListViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FlightListViewController.m; sourceTree = "<group>"; };
+		652C0D172159CC3F00BD03FC /* UserModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UserModel.h; sourceTree = "<group>"; };
+		652C0D182159CC3F00BD03FC /* UserModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UserModel.m; sourceTree = "<group>"; };
 		65D0CA3A214F9AFD00A3DB66 /* qingsonghuan.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = qingsonghuan.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		65D0CA3D214F9AFD00A3DB66 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		65D0CA3E214F9AFD00A3DB66 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -96,6 +105,33 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		652C0D0E2158217900BD03FC /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				652C0D0F2158228300BD03FC /* XYNetworking.h */,
+				652C0D102158228300BD03FC /* XYNetworking.m */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
+		652C0D122159CAE000BD03FC /* Flight */ = {
+			isa = PBXGroup;
+			children = (
+				652C0D132159CB8700BD03FC /* FlightListViewController.h */,
+				652C0D142159CB8700BD03FC /* FlightListViewController.m */,
+			);
+			path = Flight;
+			sourceTree = "<group>";
+		};
+		652C0D162159CC2F00BD03FC /* CommonModel */ = {
+			isa = PBXGroup;
+			children = (
+				652C0D172159CC3F00BD03FC /* UserModel.h */,
+				652C0D182159CC3F00BD03FC /* UserModel.m */,
+			);
+			path = CommonModel;
+			sourceTree = "<group>";
+		};
 		65D0CA31214F9AFC00A3DB66 = {
 			isa = PBXGroup;
 			children = (
@@ -117,6 +153,8 @@
 		65D0CA3C214F9AFD00A3DB66 /* qingsonghuan */ = {
 			isa = PBXGroup;
 			children = (
+				652C0D162159CC2F00BD03FC /* CommonModel */,
+				652C0D0E2158217900BD03FC /* Network */,
 				65D0CA702151F06200A3DB66 /* Controllers */,
 				65D0CA692151EDFE00A3DB66 /* BaseViewControllers */,
 				65D0CA582151ECEE00A3DB66 /* Category */,
@@ -212,6 +250,7 @@
 		65D0CA702151F06200A3DB66 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				652C0D122159CAE000BD03FC /* Flight */,
 				65D0CA712151F07100A3DB66 /* Login */,
 			);
 			path = Controllers;
@@ -413,6 +452,7 @@
 				65D0CA662151ECEE00A3DB66 /* NSString+Helper.m in Sources */,
 				65D0CAA22154F34500A3DB66 /* XYPickerViewController.m in Sources */,
 				65D0CA42214F9AFD00A3DB66 /* ViewController.m in Sources */,
+				652C0D152159CB8800BD03FC /* FlightListViewController.m in Sources */,
 				65D0CA95215487CE00A3DB66 /* UILabel+Helper.m in Sources */,
 				65D0CA9C21548AB100A3DB66 /* UIButton+Helper.m in Sources */,
 				65D0CA742151F08200A3DB66 /* LoginViewController.m in Sources */,
@@ -421,7 +461,9 @@
 				65D0CA652151ECEE00A3DB66 /* MBProgressHUD+Helper.m in Sources */,
 				65D0CA82215233AC00A3DB66 /* RegisterViewController.m in Sources */,
 				65D0CA98215489F700A3DB66 /* BaseMultiViewController.m in Sources */,
+				652C0D192159CC3F00BD03FC /* UserModel.m in Sources */,
 				65D0CA4D214F9B0000A3DB66 /* main.m in Sources */,
+				652C0D112158228300BD03FC /* XYNetworking.m in Sources */,
 				65D0CA3F214F9AFD00A3DB66 /* AppDelegate.m in Sources */,
 				65D0CA6F2151EF0B00A3DB66 /* CustomNavigationViewController.m in Sources */,
 				65D0CA8921536D6E00A3DB66 /* UIColor+Helper.m in Sources */,
