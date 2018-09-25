@@ -16,22 +16,25 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    self.title = @"航班列表";
+    [self setNavigationBar];
+    
+    
+}
+- (void)setNavigationBar {
+    UIButton *leftBtn = [UIButton buttonWithImage:@"flight_menu"];
+    leftBtn.frame = CGRectMake(0, 0, 40, 40);
+    [leftBtn addTarget:self action:@selector(leftNavigationBarEvent:) forControlEvents:UIControlEventTouchUpInside];
+    UIBarButtonItem *leftButtonItem = [[UIBarButtonItem alloc]initWithCustomView:leftBtn];
+    UIBarButtonItem *nagetiveSpacer = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemFixedSpace target:nil action:nil];
+    nagetiveSpacer.width = -10;
+    self.navigationItem.leftBarButtonItems = @[nagetiveSpacer, leftButtonItem];
+    
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+#pragma mark -- event
+//个人中心菜单
+- (void)leftNavigationBarEvent:(UIButton *)sender {
+    
 }
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
-
 @end

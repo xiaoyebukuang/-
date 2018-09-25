@@ -11,6 +11,9 @@
 		652C0D112158228300BD03FC /* XYNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = 652C0D102158228300BD03FC /* XYNetworking.m */; };
 		652C0D152159CB8800BD03FC /* FlightListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 652C0D142159CB8700BD03FC /* FlightListViewController.m */; };
 		652C0D192159CC3F00BD03FC /* UserModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 652C0D182159CC3F00BD03FC /* UserModel.m */; };
+		652C0D21215A351D00BD03FC /* RequestPath.m in Sources */ = {isa = PBXBuildFile; fileRef = 652C0D20215A351D00BD03FC /* RequestPath.m */; };
+		652C0D26215A39FD00BD03FC /* RegNeedInfoModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 652C0D25215A39FD00BD03FC /* RegNeedInfoModel.m */; };
+		652C0D29215A871900BD03FC /* SendCodeModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 652C0D28215A871900BD03FC /* SendCodeModel.m */; };
 		65D0CA3F214F9AFD00A3DB66 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 65D0CA3E214F9AFD00A3DB66 /* AppDelegate.m */; };
 		65D0CA42214F9AFD00A3DB66 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 65D0CA41214F9AFD00A3DB66 /* ViewController.m */; };
 		65D0CA45214F9AFD00A3DB66 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 65D0CA43214F9AFD00A3DB66 /* Main.storyboard */; };
@@ -44,6 +47,13 @@
 		652C0D142159CB8700BD03FC /* FlightListViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FlightListViewController.m; sourceTree = "<group>"; };
 		652C0D172159CC3F00BD03FC /* UserModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UserModel.h; sourceTree = "<group>"; };
 		652C0D182159CC3F00BD03FC /* UserModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UserModel.m; sourceTree = "<group>"; };
+		652C0D1F215A351D00BD03FC /* RequestPath.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RequestPath.h; sourceTree = "<group>"; };
+		652C0D20215A351D00BD03FC /* RequestPath.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RequestPath.m; sourceTree = "<group>"; };
+		652C0D22215A364400BD03FC /* RequestMacros.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RequestMacros.h; sourceTree = "<group>"; };
+		652C0D24215A39FD00BD03FC /* RegNeedInfoModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RegNeedInfoModel.h; sourceTree = "<group>"; };
+		652C0D25215A39FD00BD03FC /* RegNeedInfoModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RegNeedInfoModel.m; sourceTree = "<group>"; };
+		652C0D27215A871900BD03FC /* SendCodeModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SendCodeModel.h; sourceTree = "<group>"; };
+		652C0D28215A871900BD03FC /* SendCodeModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SendCodeModel.m; sourceTree = "<group>"; };
 		65D0CA3A214F9AFD00A3DB66 /* qingsonghuan.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = qingsonghuan.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		65D0CA3D214F9AFD00A3DB66 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		65D0CA3E214F9AFD00A3DB66 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -110,6 +120,8 @@
 			children = (
 				652C0D0F2158228300BD03FC /* XYNetworking.h */,
 				652C0D102158228300BD03FC /* XYNetworking.m */,
+				652C0D1F215A351D00BD03FC /* RequestPath.h */,
+				652C0D20215A351D00BD03FC /* RequestPath.m */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -130,6 +142,17 @@
 				652C0D182159CC3F00BD03FC /* UserModel.m */,
 			);
 			path = CommonModel;
+			sourceTree = "<group>";
+		};
+		652C0D23215A399700BD03FC /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				652C0D24215A39FD00BD03FC /* RegNeedInfoModel.h */,
+				652C0D25215A39FD00BD03FC /* RegNeedInfoModel.m */,
+				652C0D27215A871900BD03FC /* SendCodeModel.h */,
+				652C0D28215A871900BD03FC /* SendCodeModel.m */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 		65D0CA31214F9AFC00A3DB66 = {
@@ -178,6 +201,7 @@
 			children = (
 				65D0CA562151ECDA00A3DB66 /* PrefixHeader.pch */,
 				65D0CA542151ECDA00A3DB66 /* UtilsMacros.h */,
+				652C0D22215A364400BD03FC /* RequestMacros.h */,
 				65D0CA552151ECDA00A3DB66 /* PathMacros.h */,
 				65D0CA572151ECDA00A3DB66 /* DimensMacros.h */,
 			);
@@ -259,6 +283,7 @@
 		65D0CA712151F07100A3DB66 /* Login */ = {
 			isa = PBXGroup;
 			children = (
+				652C0D23215A399700BD03FC /* Model */,
 				65D0CA722151F08200A3DB66 /* LoginViewController.h */,
 				65D0CA732151F08200A3DB66 /* LoginViewController.m */,
 				65D0CA80215233AC00A3DB66 /* RegisterViewController.h */,
@@ -449,6 +474,7 @@
 			files = (
 				65D0CA672151ECEE00A3DB66 /* NSDate+Helper.m in Sources */,
 				65D0CA6C2151EEE000A3DB66 /* BaseViewController.m in Sources */,
+				652C0D21215A351D00BD03FC /* RequestPath.m in Sources */,
 				65D0CA662151ECEE00A3DB66 /* NSString+Helper.m in Sources */,
 				65D0CAA22154F34500A3DB66 /* XYPickerViewController.m in Sources */,
 				65D0CA42214F9AFD00A3DB66 /* ViewController.m in Sources */,
@@ -466,6 +492,8 @@
 				652C0D112158228300BD03FC /* XYNetworking.m in Sources */,
 				65D0CA3F214F9AFD00A3DB66 /* AppDelegate.m in Sources */,
 				65D0CA6F2151EF0B00A3DB66 /* CustomNavigationViewController.m in Sources */,
+				652C0D29215A871900BD03FC /* SendCodeModel.m in Sources */,
+				652C0D26215A39FD00BD03FC /* RegNeedInfoModel.m in Sources */,
 				65D0CA8921536D6E00A3DB66 /* UIColor+Helper.m in Sources */,
 				65D0CA682151ECEE00A3DB66 /* UIView+Helper.m in Sources */,
 				65D0CA852153439F00A3DB66 /* XYLineView.m in Sources */,

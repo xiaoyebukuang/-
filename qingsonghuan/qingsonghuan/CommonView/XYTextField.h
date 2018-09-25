@@ -11,7 +11,8 @@ typedef NS_ENUM(NSInteger, UITextFieldType) {
     UITextFieldNormal,          //常规输入
     UITextFieldTel,             //电话，限制数字，11位
     UITextFieldPassword,        //密码，限制数字，字母，10位
-    UITextFieldCode             //验证码，限制数字，6位
+    UITextFieldCode,            //验证码，限制数字，6位
+    UITextFieldCard             //登机证号，限制字符+数字 2个字符+5个数字
 };
 
 typedef void(^SelectBlock)(void);
@@ -75,6 +76,11 @@ typedef void(^SelectBlock)(void);
 - (instancetype)initWithCodeType:(UITextFieldType)filedType logoImageV:(NSString *)logoStr placeHolder:(NSString *)placeHolder;
 
 
+
+/**
+ 开始定时器
+ */
+- (void)startTimer;
 
 
 @end

@@ -8,6 +8,9 @@
 
 #import "RegisterViewController.h"
 #import "XYPickerViewController.h"
+
+#import "RegNeedInfoModel.h"
+#import "SendCodeModel.h"
 static CGFloat const LOGIN_SPACE_SIZE = 0.0;
 
 /**
@@ -69,6 +72,22 @@ static CGFloat const LOGIN_SPACE_SIZE = 0.0;
  注册
  */
 @property (nonatomic, strong) UIButton *registerBtn;
+
+
+//数据源
+//航空公司
+@property (nonatomic, strong) AirlineModel *airlineModel;
+//分子公司
+@property (nonatomic, strong) SubsidiaryModel *subsidiaryModel;
+//职位等级
+@property (nonatomic, strong) DutiesModel *dutiesModel;
+//签证类型
+@property (nonatomic, strong) VisaModel *visaModel;
+//性别
+@property (nonatomic, strong) SexModel *sexModel;
+//验证码Model
+@property (nonatomic, strong) SendCodeModel *sendCodeModel;
+
 
 @end
 
@@ -149,32 +168,156 @@ static CGFloat const LOGIN_SPACE_SIZE = 0.0;
         make.height.mas_offset(50);
         make.top.equalTo(self.codeView.mas_bottom).offset(10);
     }];
-    
+    if (![RegNeedInfoModel checkRegData]) {
+        [self requestData];
+    } else {
+        [self reloadView];
+    }
+}
+- (void)requestData {
+    [MBProgressHUD showToView:self.view];
+    [RequestPath user_regNeedInfoSuccess:^(id obj, NSInteger code, NSString *mes) {
+        if ([obj isKindOfClass:[NSDictionary class]]) {
+            [[RegNeedInfoModel sharedInstance]reloadWithDic:obj];
+        }
+        [self reloadView];
+        [MBProgressHUD hideHUDForView:self.view];
+    } failure:^(ErrorType errorType, NSString *mes) {
+        [MBProgressHUD showError:mes ToView:self.view];
+    }];
+}
+- (void)reloadView {
+    RegNeedInfoModel *regModle = [RegNeedInfoModel sharedInstance];
     __weak __typeof(self)weakSelf = self;
     self.companyView.selectBlock = ^{
-        [weakSelf.view endEditing:YES];
-        NSLog(@"请选择航空公司名称");
+        __strong typeof(weakSelf) strongSelf = weakSelf;
+        [strongSelf.view endEditing:YES];
         XYPickerViewController *pickerVC = [[XYPickerViewController alloc]init];
-        [pickerVC reloadViewWithArr:@[@"北京",@"上海",@"南京",@"杭州"] selectModel:@"杭州" pickerBlock:^(id model) {
-            NSLog(@"%@",model);
-            weakSelf.companyView.text = model;
+        [pickerVC reloadViewWithArr:regModle.airlineModelArr pickerBlock:^(id model) {
+            strongSelf.airlineModel = (AirlineModel *)model;
+            strongSelf.subsidiaryModel = nil;
+            strongSelf.areaView.text = nil;
+            strongSelf.companyView.text = strongSelf.airlineModel.company_name;
         }];
-        [weakSelf presentViewController:pickerVC animated:YES completion:nil];
+        [strongSelf presentViewController:pickerVC animated:YES completion:nil];
     };
     self.areaView.selectBlock = ^{
-        [weakSelf.view endEditing:YES];
-        NSLog(@"请选择所属地区");
+        __strong typeof(weakSelf) strongSelf = weakSelf;
+        [strongSelf.view endEditing:YES];
+        if (strongSelf.airlineModel == nil) {
+            [MBProgressHUD showError:@"请选择航空公司"];
+            return;
+        }
         XYPickerViewController *pickerVC = [[XYPickerViewController alloc]init];
-        [pickerVC reloadViewWithArr:@[@"北京",@"上海",@"南京",@"杭州"] selectModel:@"杭州" pickerBlock:^(id model) {
-            NSLog(@"%@",model);
-            weakSelf.areaView.text = model;
+        [pickerVC reloadViewWithArr:strongSelf.airlineModel.subsidiaryArr pickerBlock:^(id model) {
+            strongSelf.subsidiaryModel = (SubsidiaryModel *)model;
+            strongSelf.areaView.text = strongSelf.subsidiaryModel.city;
         }];
-        [weakSelf presentViewController:pickerVC animated:YES completion:nil];
+        [strongSelf presentViewController:pickerVC animated:YES completion:nil];
+    };
+    
+    self.postView.selectBlock = ^{
+        __strong typeof(weakSelf) strongSelf = weakSelf;
+        [strongSelf.view endEditing:YES];
+        XYPickerViewController *pickerVC = [[XYPickerViewController alloc]init];
+        [pickerVC reloadViewWithArr:regModle.dutiesModelArr pickerBlock:^(id model) {
+            strongSelf.dutiesModel = (DutiesModel *)model;
+            strongSelf.postView.text = strongSelf.dutiesModel.job_title;
+        }];
+        [strongSelf presentViewController:pickerVC animated:YES completion:nil];
+    };
+    
+    self.visaView.selectBlock = ^{
+        __strong typeof(weakSelf) strongSelf = weakSelf;
+        [strongSelf.view endEditing:YES];
+        XYPickerViewController *pickerVC = [[XYPickerViewController alloc]init];
+        [pickerVC reloadViewWithArr:regModle.visaModelArr pickerBlock:^(id model) {
+            strongSelf.visaModel = (VisaModel *)model;
+            strongSelf.visaView.text = strongSelf.visaModel.visa_name;
+        }];
+        [strongSelf presentViewController:pickerVC animated:YES completion:nil];
+    };
+    
+    self.sexView.selectBlock = ^{
+        __strong typeof(weakSelf) strongSelf = weakSelf;
+        [strongSelf.view endEditing:YES];
+        XYPickerViewController *pickerVC = [[XYPickerViewController alloc]init];
+        [pickerVC reloadViewWithArr:regModle.sexModelArr pickerBlock:^(id model) {
+            strongSelf.sexModel = (SexModel *)model;
+            strongSelf.sexView.text = strongSelf.sexModel.sex_name;
+        }];
+        [strongSelf presentViewController:pickerVC animated:YES completion:nil];
+    };
+    
+    self.codeView.selectBlock = ^{
+        __strong typeof(weakSelf) strongSelf = weakSelf;
+        [strongSelf.view endEditing:YES];
+        if ([NSString validatePhoneNumber:strongSelf.telView.text]) {
+            [MBProgressHUD showToView:strongSelf.view];
+            [RequestPath user_sendCodeParam:@{@"phone":strongSelf.telView.text} success:^(id obj, NSInteger code, NSString *mes) {
+                [MBProgressHUD hideHUDForView:strongSelf.view];
+                if ([obj isKindOfClass:[NSDictionary class]]) {
+                    [strongSelf.codeView startTimer];
+                    strongSelf.sendCodeModel = [[SendCodeModel alloc]initWithDic:(NSDictionary *)obj];
+                }
+            } failure:^(ErrorType errorType, NSString *mes) {
+                [MBProgressHUD showError:mes ToView:strongSelf.view];
+            }];
+        } else {
+            [MBProgressHUD showError:@"请填写完整的手机号" ToView:strongSelf.view];
+        }
     };
 }
+
 #pragma mark -- event
+//注册
 - (void)registerBtnEvent:(UIButton *)sender {
-    
+    NSString *des;
+    if (![NSString validatePhoneNumber:self.telView.text]) {
+        des = @"请填写完整的手机号";
+    } else if (self.airlineModel == nil){
+        des = @"请选择航空公司";
+    } else if (self.subsidiaryModel == nil) {
+        des = @"请选择所属分子公司";
+    } else if (self.dutiesModel == nil) {
+        des = @"请选择职务等级";
+    } else if (self.visaModel == nil) {
+        des = @"请选择签证类型";
+    } else if ([NSString isEmpty:self.cardView.text]) {
+        des = @"请输入登记证号";
+    } else if (self.sexModel == nil) {
+        des = @"请选择性别";
+    } else if ([NSString isEmpty: self.pwView.text]) {
+        des = @"请输入密码";
+    } else if ([NSString isEmpty: self.againPwView.text]) {
+        des = @"请再次输入密码";
+    } else if (![self.pwView.text isEqualToString:self.againPwView.text]) {
+        des = @"密码和确认密码输入不一致";
+    } else if ([NSString isEmpty: self.codeView.text]) {
+        des = @"请输入验证码";
+    }
+    if (des) {
+        [MBProgressHUD showError:des ToView:self.view];
+        return;
+    }
+    [MBProgressHUD showToView:self.view];
+    NSDictionary *param = @{@"phone":self.telView.text,
+                            @"airline_id":@(self.airlineModel.airlineId),
+                            @"subsidiary_id":@(self.subsidiaryModel.subsidiaryId),
+                            @"duties_id":@(self.dutiesModel.dutiesId),
+                            @"visa_id":@(self.visaModel.visaId),
+                            @"work_number":self.cardView.text,
+                            @"sex":@(self.sexModel.sexId),
+                            @"password":self.pwView.text,
+                            @"password_confirm":self.againPwView.text,
+                            @"code":@"1234",
+                            @"iden":self.sendCodeModel.iden
+                            };
+    [RequestPath user_registerParam:param success:^(id obj, NSInteger code, NSString *mes) {
+        [MBProgressHUD showSuccess:@"注册成功" ToView:self.view];
+    } failure:^(ErrorType errorType, NSString *mes) {
+       [MBProgressHUD showError:mes ToView:self.view];
+    }];
 }
 
 
@@ -213,7 +356,7 @@ static CGFloat const LOGIN_SPACE_SIZE = 0.0;
 
 - (XYTextFieldView *)cardView {
     if (!_cardView) {
-        _cardView = [[XYTextFieldView alloc]initWithLeftType:UITextFieldTel logoImageV:@"login_card" placeHolder:LOGIN_CARD_PLACEHOLDER];
+        _cardView = [[XYTextFieldView alloc]initWithLeftType:UITextFieldCard logoImageV:@"login_card" placeHolder:LOGIN_CARD_PLACEHOLDER];
     }
     return _cardView;
 }

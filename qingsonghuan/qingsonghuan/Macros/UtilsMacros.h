@@ -54,8 +54,11 @@
 #define LOGIN_AREA_PLACEHOLDER          @"所属分子公司"
 #define LOGIN_POST_PLACEHOLDER          @"选择职务等级"
 #define LOGIN_VISA_PLACEHOLDER          @"选择签证类型"
-#define LOGIN_CARD_PLACEHOLDER          @"输入登记证号"
+#define LOGIN_CARD_PLACEHOLDER          @"输入登机证号"
 #define LOGIN_SEX_PLACEHOLDER           @"选择性别"
+
+
+#define API_REUQEST_FAILED              @"请求失败"
 
 //用户信息宏定义
 //是否登录

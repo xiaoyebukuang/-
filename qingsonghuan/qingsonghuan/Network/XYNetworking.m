@@ -10,7 +10,7 @@
 #import "AFNetworking.h"
 
 static XYNetworking *_networking = nil;
-static NSTimeInterval const timeInterval = 60.0;
+static NSTimeInterval const timeInterval = 20.0;
 
 
 @interface XYNetworking()
@@ -50,7 +50,7 @@ static NSTimeInterval const timeInterval = 60.0;
 + (void)postWithUrlString:(NSString *)urlString
                   success:(void (^)(id, NSInteger, NSString *))success
                   failure:(void (^)(ErrorType, NSString *))failure {
-    [self postWithUrlString:urlString parameters:nil success:success failure:false];
+    [self postWithUrlString:urlString parameters:nil success:success failure:failure];
 }
 
 /**
@@ -65,7 +65,7 @@ static NSTimeInterval const timeInterval = 60.0;
                parameters:(id)parameters
                   success:(void (^)(id, NSInteger, NSString *))success
                   failure:(void (^)(ErrorType, NSString *))failure {
-    [self postWithUrlString:urlString parameters:parameters cancel:YES success:success failure:false];
+    [self postWithUrlString:urlString parameters:parameters cancel:YES success:success failure:failure];
 }
 
 
@@ -92,6 +92,22 @@ static NSTimeInterval const timeInterval = 60.0;
     } downloadProgress:^(NSProgress * _Nonnull downloadProgress) {
         
     } completionHandler:^(NSURLResponse * _Nonnull response, id  _Nullable responseObject, NSError * _Nullable error) {
+        if ([responseObject isKindOfClass:[NSDictionary class]]) {
+            NSLog(@"%@",responseObject[@"status"]);
+            if ([responseObject[@"status"] isKindOfClass:[NSDictionary class]]) {
+                NSDictionary *status = responseObject[@"status"];
+                if ([NSString safe_integer:status[@"code"]] == 1) {
+                    //请求成功
+                    success(responseObject[@"data"],[NSString safe_integer:status[@"code"]],status[@"mes"]);
+                } else {
+                    failure(ErrorTypeRequestFailed, status[@"mes"]);
+                }
+            } else {
+                failure(ErrorTypeRequestFailed, API_REUQEST_FAILED);
+            }
+        } else {
+            failure(ErrorTypeRequestFailed, API_REUQEST_FAILED);
+        }
         
     }];
     [dataTask resume];

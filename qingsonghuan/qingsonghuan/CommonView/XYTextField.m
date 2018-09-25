@@ -167,7 +167,11 @@ typedef NS_ENUM(NSInteger, UITextFieldViewType) {
 }
 //定时器
 - (void)timeBtnEvent:(UIButton *)sender {
-//请求完成后开始倒计时
+    if (self.selectBlock) {
+        self.selectBlock();
+    }
+}
+- (void)startTimer {
     if (!_timer) {
         self.timeCount = 10;
         //定时器开始执行的延时时间
@@ -191,7 +195,6 @@ typedef NS_ENUM(NSInteger, UITextFieldViewType) {
         dispatch_resume(_timer);
     }
 }
-
 - (void)setTimeCount:(NSInteger)timeCount {
     if (timeCount == 0) {
         dispatch_source_cancel(self.timer);

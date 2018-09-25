@@ -15,12 +15,10 @@ typedef void(^PickerBlock)(id);
 
 /**
  刷新选择器
-
  @param list 选择列表
- @param model 选中的model
  @param pickerBlock 回调
  */
 
-- (void)reloadViewWithArr:(NSArray *)list selectModel:(id)model pickerBlock:(PickerBlock)pickerBlock;
+- (void)reloadViewWithArr:(NSArray *)list pickerBlock:(PickerBlock)pickerBlock;
 
 @end

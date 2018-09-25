@@ -7,7 +7,7 @@
 //
 
 #import "XYPickerViewController.h"
-
+#import "RegNeedInfoModel.h"
 @interface XYPickerViewController ()<UIPickerViewDelegate, UIPickerViewDataSource>
 
 
@@ -91,17 +91,11 @@
     }];
 }
 
-- (void)reloadViewWithArr:(NSArray *)list selectModel:(id)model pickerBlock:(PickerBlock)pickerBlock {
-    self.list = list;
-    self.pickerBlock = pickerBlock;
-    //TODO:循环获取index
-    if ([model isKindOfClass:[NSString class]]) {
-        for (int i = 0; i < list.count; i ++) {
-            if ([model isEqualToString:list[i]]) {
-                self.selectIndex = i;
-                break;
-            }
-        }
+- (void)reloadViewWithArr:(NSArray *)list pickerBlock:(PickerBlock)pickerBlock {
+    if (list.count > 0) {
+        self.selectIndex = 0;
+        self.list = list;
+        self.pickerBlock = pickerBlock;
     }
 }
 
@@ -140,10 +134,21 @@
     //TODO:获取model中的显示属性
     id model = self.list[row];
     NSString *title = @"";
-    if ([model isKindOfClass:[NSString class]]) {
-        title = model;
+    if ([model isKindOfClass:[AirlineModel class]]) {
+        title = ((AirlineModel *)model).company_name;
     }
-    
+    if ([model isKindOfClass:[SubsidiaryModel class]]) {
+        title = ((SubsidiaryModel *)model).city;
+    }
+    if ([model isKindOfClass:[DutiesModel class]]) {
+        title = ((DutiesModel *)model).job_title;
+    }
+    if ([model isKindOfClass:[VisaModel class]]) {
+        title = ((VisaModel *)model).visa_name;
+    }
+    if ([model isKindOfClass:[SexModel class]]) {
+        title = ((SexModel *)model).sex_name;
+    }
     UILabel *titleLabel = [[UILabel alloc]initWithText:title font:SYSTEM_FONT_15 textColor:[UIColor color_333333]];
     titleLabel.textAlignment = NSTextAlignmentCenter;
     return titleLabel;
