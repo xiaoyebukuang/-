@@ -8,7 +8,7 @@
 
 #import <MBProgressHUD/MBProgressHUD.h>
 
-@interface MBProgressHUD (Helper)
+@interface MBProgressHUD (Helper)<MBProgressHUDDelegate>
 /**
  菊花提示，不自动消失
  */
@@ -58,6 +58,17 @@
  @param view    要添加的view
  */
 + (void)showSuccess:(NSString *)success ToView:(UIView *)view;
+
+
+/**
+ 自动消失成功提示，带默认图
+
+ @param success 成功提示语
+ @param view 要添加的view
+ @param completeBlcok 隐藏回调
+ */
++ (void)showSuccess:(NSString *)success ToView:(UIView *)view completeBlcok:(MBProgressHUDCompletionBlock)completeBlcok;
+
 
 /**
  快速从window中隐藏ProgressView

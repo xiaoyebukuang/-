@@ -25,7 +25,7 @@ typedef NS_ENUM(NSInteger, ProgressHUDType) {
     [self showMessage:@"加载中..." ToView:view];
 }
 + (void)showMessage:(NSString *)message ToView:(UIView *)view {
-    [self showMessage:message ToView:view HUDType:ProgressHUDTypeLoading];
+    [self showMessage:message ToView:view HUDType:ProgressHUDTypeLoading completeBlcok:nil];
 }
 #pragma mark -- 显示错误信息
 + (void)showError:(NSString *)error{
@@ -33,18 +33,21 @@ typedef NS_ENUM(NSInteger, ProgressHUDType) {
 }
 + (void)showError:(NSString *)error ToView:(UIView *)view{
     [self hideHUDForView:view];
-    [self showMessage:error ToView:view HUDType:ProgressHUDTypeError];
+    [self showMessage:error ToView:view HUDType:ProgressHUDTypeError completeBlcok:nil];
 }
 #pragma mark -- 显示正确信息
 + (void)showSuccess:(NSString *)success {
     [self showSuccess:success ToView:nil];
 }
 + (void)showSuccess:(NSString *)success ToView:(UIView *)view{
+    [self showSuccess:success ToView:view completeBlcok:nil];
+}
++ (void)showSuccess:(NSString *)success ToView:(UIView *)view completeBlcok:(MBProgressHUDCompletionBlock)completeBlcok {
     [self hideHUDForView:view];
-    [self showMessage:success ToView:view HUDType:ProgressHUDTypeSuccess];
+    [self showMessage:success ToView:view HUDType:ProgressHUDTypeSuccess completeBlcok:completeBlcok];
 }
 #pragma mark -- 构造
-+ (void)showMessage:(NSString *)message ToView:(UIView *)view HUDType:(ProgressHUDType)HUDType{
++ (void)showMessage:(NSString *)message ToView:(UIView *)view HUDType:(ProgressHUDType)HUDType completeBlcok:(MBProgressHUDCompletionBlock)completeBlcok{
     if (view == nil) {
         view = (UIView *)[UIApplication sharedApplication].delegate.window;
     }
@@ -62,6 +65,9 @@ typedef NS_ENUM(NSInteger, ProgressHUDType) {
             hud.mode = MBProgressHUDModeCustomView;
             [hud hideAnimated:YES afterDelay:1];
             break;
+    }
+    if (completeBlcok) {
+        hud.completionBlock = completeBlcok;
     }
     hud.label.text = message;
     hud.label.font = [UIFont systemFontOfSize:15];

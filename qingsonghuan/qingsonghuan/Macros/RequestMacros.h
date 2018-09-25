@@ -17,4 +17,7 @@
 #define API_USER_SENDCODE              [NSString stringWithFormat:@"%@/user/sendCode",BASE_URL]
 //3.注册
 #define API_USER_REGISTER              [NSString stringWithFormat:@"%@/user/register",BASE_URL]
+//4.找回密码
+#define API_USER_RETRIEVE              [NSString stringWithFormat:@"%@/user/retrieve",BASE_URL]
+
 #endif /* RequestMacros_h */

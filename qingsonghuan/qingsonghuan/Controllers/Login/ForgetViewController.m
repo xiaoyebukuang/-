@@ -7,7 +7,7 @@
 //
 
 #import "ForgetViewController.h"
-
+#import "SendCodeModel.h"
 /**
  忘记密码——找回密码
  */
@@ -33,6 +33,9 @@
  重置密码
  */
 @property (nonatomic, strong) UIButton *resetBtn;
+
+//验证码Model
+@property (nonatomic, strong) SendCodeModel *sendCodeModel;
 
 @end
 
@@ -76,9 +79,58 @@
         make.height.mas_offset(50);
         make.top.equalTo(self.codeTFieldView.mas_bottom).offset(60);
     }];
+    __weak __typeof(self)weakSelf = self;
+    self.codeTFieldView.selectBlock = ^{
+        __strong typeof(weakSelf) strongSelf = weakSelf;
+        [strongSelf.view endEditing:YES];
+        if ([NSString validatePhoneNumber:strongSelf.telTFieldView.text]) {
+            [MBProgressHUD showToView:strongSelf.view];
+            [RequestPath user_sendCodeParam:@{@"phone":strongSelf.telTFieldView.text} success:^(id obj, NSInteger code, NSString *mes) {
+                [MBProgressHUD hideHUDForView:strongSelf.view];
+                if ([obj isKindOfClass:[NSDictionary class]]) {
+                    [strongSelf.codeTFieldView startTimer];
+                    strongSelf.sendCodeModel = [[SendCodeModel alloc]initWithDic:(NSDictionary *)obj];
+                }
+            } failure:^(ErrorType errorType, NSString *mes) {
+                [MBProgressHUD showError:mes ToView:strongSelf.view];
+            }];
+        } else {
+            [MBProgressHUD showError:@"请填写完整的手机号" ToView:strongSelf.view];
+        }
+    };
 }
 #pragma mark -- event
 - (void)resetBtnEvent:(UIButton *)sender {
+    NSString *des;
+    if (![NSString validatePhoneNumber:self.telTFieldView.text]) {
+        des = @"请填写完整的手机号";
+    } else if ([NSString isEmpty: self.pwTFieldView.text]) {
+        des = @"请输入密码";
+    } else if ([NSString isEmpty: self.againPwTFieldView.text]) {
+        des = @"请再次输入密码";
+    } else if (![self.pwTFieldView.text isEqualToString:self.againPwTFieldView.text]) {
+        des = @"密码和确认密码输入不一致";
+    } else if ([NSString isEmpty: self.codeTFieldView.text]) {
+        des = @"请输入验证码";
+    }
+    if (des) {
+        [MBProgressHUD showError:des ToView:self.view];
+        return;
+    }
+    NSDictionary *parma = @{@"phone":self.telTFieldView.text,
+                            @"password":self.pwTFieldView.text,
+                            @"password_confirm":self.againPwTFieldView.text,
+                            @"code":self.codeTFieldView.text,
+                            @"iden":[NSString safe_string:self.sendCodeModel.iden]
+                            };
+    [MBProgressHUD showToView:self.view];
+    [RequestPath user_retrieveParam:parma success:^(id obj, NSInteger code, NSString *mes) {
+        [MBProgressHUD showSuccess:@"重置密码成功" ToView:self.view completeBlcok:^{
+            [self.navigationController popViewControllerAnimated:YES];
+        }];
+    } failure:^(ErrorType errorType, NSString *mes) {
+        [MBProgressHUD showError:mes ToView:self.view];
+    }];
     
 }
 

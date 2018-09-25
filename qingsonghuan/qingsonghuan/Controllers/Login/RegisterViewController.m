@@ -311,10 +311,12 @@ static CGFloat const LOGIN_SPACE_SIZE = 0.0;
                             @"password":self.pwView.text,
                             @"password_confirm":self.againPwView.text,
                             @"code":@"1234",
-                            @"iden":self.sendCodeModel.iden
+                            @"iden":[NSString safe_string:self.sendCodeModel.iden]
                             };
     [RequestPath user_registerParam:param success:^(id obj, NSInteger code, NSString *mes) {
-        [MBProgressHUD showSuccess:@"注册成功" ToView:self.view];
+        [MBProgressHUD showSuccess:@"注册成功" ToView:self.view completeBlcok:^{
+            [self.navigationController popViewControllerAnimated:YES];
+        }];
     } failure:^(ErrorType errorType, NSString *mes) {
        [MBProgressHUD showError:mes ToView:self.view];
     }];

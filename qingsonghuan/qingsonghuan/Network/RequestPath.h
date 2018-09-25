@@ -29,6 +29,10 @@
 + (void)user_registerParam:(NSDictionary *)param
                    success:(void (^)(id obj, NSInteger code, NSString *mes))success
                    failure:(void (^)(ErrorType errorType, NSString *mes))failure;
-
-
+/**
+ 找回密码
+ */
++ (void)user_retrieveParam:(NSDictionary *)param
+                   success:(void (^)(id obj, NSInteger code, NSString *mes))success
+                   failure:(void (^)(ErrorType errorType, NSString *mes))failure;
 @end

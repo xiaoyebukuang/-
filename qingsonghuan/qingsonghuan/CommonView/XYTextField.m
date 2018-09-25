@@ -317,6 +317,13 @@ typedef NS_ENUM(NSInteger, UITextFieldViewType) {
             self.borderStyle = UITextBorderStyleNone;
         }
             break;
+        case UITextFieldCard:
+        {
+            self.numberCount = 7;
+            self.keyboardType = UIKeyboardTypeASCIICapable;
+            self.borderStyle = UITextBorderStyleNone;
+        }
+            break;
         default:
             break;
     }
@@ -349,6 +356,7 @@ typedef NS_ENUM(NSInteger, UITextFieldViewType) {
         }
             break;
         case UITextFieldPassword:
+        case UITextFieldCard:
         {
             NSUInteger length = [string lengthOfBytesUsingEncoding:NSUTF8StringEncoding];
             for (int loopIndex = 0; loopIndex < length; loopIndex ++) {
