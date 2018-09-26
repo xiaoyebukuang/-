@@ -63,7 +63,10 @@
 //用户信息宏定义
 //是否登录
 #define USER_IS_LOGIN                   @"isLogin"
-
+//用户id
+#define USER_USERID                     @"userId"
+//签名
+#define USER_SIGN                       @"sign"
 
 
 

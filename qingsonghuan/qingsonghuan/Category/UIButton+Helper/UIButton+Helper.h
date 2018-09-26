@@ -46,6 +46,18 @@
  */
 + (UIButton *)buttonWithImage:(NSString *)image;
 
+/**
+ 创建button（图片+标题）
+
+ @param image 图片
+ @param title 标题
+ @param selectTitle 选中标题
+ @return button
+ */
++ (UIButton *)buttonWithImage:(NSString *)image
+                        title:(NSString *)title
+                  selectTitel:(NSString *)selectTitle;
+
 
 /**
  创建button（定时器）

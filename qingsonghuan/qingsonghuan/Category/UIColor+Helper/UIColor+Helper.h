@@ -23,4 +23,11 @@
 + (UIColor *)color_333333;
 
 + (UIColor *)color_000000:(CGFloat)a;
+
++ (UIColor *)color_2ECB87;
+
++ (UIColor *)color_666666;
+
++ (UIColor *)color_F7F8F9;
+
 @end

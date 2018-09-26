@@ -36,6 +36,7 @@
 		65D0CA9C21548AB100A3DB66 /* UIButton+Helper.m in Sources */ = {isa = PBXBuildFile; fileRef = 65D0CA9B21548AB100A3DB66 /* UIButton+Helper.m */; };
 		65D0CA9F2154B80D00A3DB66 /* ForgetViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 65D0CA9E2154B80D00A3DB66 /* ForgetViewController.m */; };
 		65D0CAA22154F34500A3DB66 /* XYPickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 65D0CAA12154F34500A3DB66 /* XYPickerViewController.m */; };
+		65F870F1215B7F3600DD1F59 /* FlightListTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 65F870F0215B7F3600DD1F59 /* FlightListTableViewCell.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -100,6 +101,8 @@
 		65D0CA9E2154B80D00A3DB66 /* ForgetViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ForgetViewController.m; sourceTree = "<group>"; };
 		65D0CAA02154F34500A3DB66 /* XYPickerViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XYPickerViewController.h; sourceTree = "<group>"; };
 		65D0CAA12154F34500A3DB66 /* XYPickerViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XYPickerViewController.m; sourceTree = "<group>"; };
+		65F870EF215B7F3600DD1F59 /* FlightListTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FlightListTableViewCell.h; sourceTree = "<group>"; };
+		65F870F0215B7F3600DD1F59 /* FlightListTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FlightListTableViewCell.m; sourceTree = "<group>"; };
 		BF01A99C77AD457283247280 /* Pods-qingsonghuan.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-qingsonghuan.release.xcconfig"; path = "Pods/Target Support Files/Pods-qingsonghuan/Pods-qingsonghuan.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -129,6 +132,7 @@
 		652C0D122159CAE000BD03FC /* Flight */ = {
 			isa = PBXGroup;
 			children = (
+				65F870EE215B7F2800DD1F59 /* View */,
 				652C0D132159CB8700BD03FC /* FlightListViewController.h */,
 				652C0D142159CB8700BD03FC /* FlightListViewController.m */,
 			);
@@ -334,6 +338,15 @@
 			path = "UIButton+Helper";
 			sourceTree = "<group>";
 		};
+		65F870EE215B7F2800DD1F59 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				65F870EF215B7F3600DD1F59 /* FlightListTableViewCell.h */,
+				65F870F0215B7F3600DD1F59 /* FlightListTableViewCell.m */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		978D342F849E3CA3DEF5C5BF /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -479,6 +492,7 @@
 				65D0CAA22154F34500A3DB66 /* XYPickerViewController.m in Sources */,
 				65D0CA42214F9AFD00A3DB66 /* ViewController.m in Sources */,
 				652C0D152159CB8800BD03FC /* FlightListViewController.m in Sources */,
+				65F870F1215B7F3600DD1F59 /* FlightListTableViewCell.m in Sources */,
 				65D0CA95215487CE00A3DB66 /* UILabel+Helper.m in Sources */,
 				65D0CA9C21548AB100A3DB66 /* UIButton+Helper.m in Sources */,
 				65D0CA742151F08200A3DB66 /* LoginViewController.m in Sources */,

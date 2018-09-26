@@ -61,4 +61,23 @@
                    failure:(void (^)(ErrorType errorType, NSString *mes))failure {
     [XYNetworking postWithUrlString:API_USER_RETRIEVE parameters:param success:success failure:failure];
 }
+//登录
++ (void)user_loginView:(UIView *)view
+                 param:(NSDictionary *)param
+               success:(void (^)(NSDictionary *obj, NSInteger code, NSString *mes))success
+               failure:(void (^)(ErrorType errorType, NSString *mes))failure {
+    [MBProgressHUD showToView:view];
+    [XYNetworking postWithUrlString:API_USER_LOGIN parameters:param success:^(id obj, NSInteger code, NSString *mes) {
+        if ([obj isKindOfClass:[NSDictionary class]]) {
+            [MBProgressHUD hideHUDForView:view];
+            success((NSDictionary *)obj, code, mes);
+        } else {
+            [MBProgressHUD showError:mes ToView:view];
+            failure(ErrorTypeReqestNone, mes);
+        }
+    } failure:^(ErrorType errorType, NSString *mes) {
+        [MBProgressHUD showError:mes ToView:view];
+        failure(errorType, mes);
+    }];
+}
 @end

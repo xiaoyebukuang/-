@@ -27,4 +27,10 @@
 
 /** 是否登录 */
 @property (nonatomic, assign) BOOL isLogin;
+/** 用户id */
+@property (nonatomic, copy) NSString *userId;
+/** 签名 */
+@property (nonatomic, copy) NSString *sign;
+
+
 @end

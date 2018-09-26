@@ -121,14 +121,25 @@
         make.bottom.equalTo(self.view).offset(-30);
         make.centerX.equalTo(self.view);
     }];
-    
-    
-    
 }
 #pragma mark -- event
 //登录
 - (void)loginBtnEvent:(UIButton *)sender {
-    [[UserModel sharedInstance] reloadWithDic:nil];
+    NSString *des;
+    if (![NSString validatePhoneNumber:self.telTFieldView.text]) {
+        des = @"请填写完整的手机号";
+    } else if ([NSString isEmpty: self.pwTFieldView.text]) {
+        des = @"请输入密码";
+    }
+    if (des) {
+        [MBProgressHUD showError:des ToView:self.view];
+        return;
+    }
+    [RequestPath user_loginView:self.view param:@{@"phone":self.telTFieldView.text,@"password":self.pwTFieldView.text} success:^(NSDictionary *obj, NSInteger code, NSString *mes) {
+       [[UserModel sharedInstance] reloadWithDic:obj];
+    } failure:^(ErrorType errorType, NSString *mes) {
+        
+    }];
 }
 //注册
 - (void)registerBtnEvent:(UIButton *)sender {

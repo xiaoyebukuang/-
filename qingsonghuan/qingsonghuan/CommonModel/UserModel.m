@@ -29,9 +29,30 @@
     BOOL login = [[NSUserDefaults standardUserDefaults]boolForKey:USER_IS_LOGIN];
     return login;
 }
+/** 用户ID */
+- (void)setUserId:(NSString *)userId {
+    [[NSUserDefaults standardUserDefaults]setObject:userId forKey:USER_USERID];
+    [[NSUserDefaults standardUserDefaults]synchronize];
+}
+- (NSString *)userId{
+    NSString* userId = [[NSUserDefaults standardUserDefaults]stringForKey:USER_USERID];
+    return [NSString safe_string:userId];
+}
+/** 签名 */
+- (void)setSign:(NSString *)sign {
+    [[NSUserDefaults standardUserDefaults]setObject:sign forKey:USER_SIGN];
+    [[NSUserDefaults standardUserDefaults]synchronize];
+}
+- (NSString *)sign{
+    NSString* sign = [[NSUserDefaults standardUserDefaults]stringForKey:USER_SIGN];
+    return [NSString safe_string:sign];
+}
+
 
 - (void)reloadWithDic:(NSDictionary *)dic {
     self.isLogin = YES;
+    self.userId =   [NSString safe_string:dic[@"userId"]];
+    self.sign =     [NSString safe_string:dic[@"sign"]];
     [kApplicationDelegate setRootViewControoler];
 }
 @end

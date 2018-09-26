@@ -19,5 +19,7 @@
 #define API_USER_REGISTER              [NSString stringWithFormat:@"%@/user/register",BASE_URL]
 //4.找回密码
 #define API_USER_RETRIEVE              [NSString stringWithFormat:@"%@/user/retrieve",BASE_URL]
+//5.登录
+#define API_USER_LOGIN                 [NSString stringWithFormat:@"%@/user/login",BASE_URL]
 
 #endif /* RequestMacros_h */

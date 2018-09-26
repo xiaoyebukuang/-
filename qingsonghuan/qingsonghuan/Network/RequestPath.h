@@ -37,4 +37,13 @@
 + (void)user_retrieveParam:(NSDictionary *)param
                    success:(void (^)(id obj, NSInteger code, NSString *mes))success
                    failure:(void (^)(ErrorType errorType, NSString *mes))failure;
+
+/**
+ 登录
+ */
++ (void)user_loginView:(UIView *)view
+                 param:(NSDictionary *)param
+               success:(void (^)(NSDictionary *obj, NSInteger code, NSString *mes))success
+               failure:(void (^)(ErrorType errorType, NSString *mes))failure;
+
 @end
