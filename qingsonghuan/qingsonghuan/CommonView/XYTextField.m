@@ -330,7 +330,7 @@ typedef NS_ENUM(NSInteger, UITextFieldViewType) {
 }
 
 - (void)changeFieldValue:(UITextField *)field {
-    if (self.filedType == UITextFieldTel || self.filedType == UITextFieldPassword) {
+    if (self.filedType == UITextFieldTel || self.filedType == UITextFieldPassword || self.filedType == UITextFieldCard) {
         if (field.text.length > self.numberCount) {
             field.text = [field.text substringToIndex:self.numberCount];
         }

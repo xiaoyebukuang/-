@@ -82,21 +82,12 @@
     __weak __typeof(self)weakSelf = self;
     self.codeTFieldView.selectBlock = ^{
         __strong typeof(weakSelf) strongSelf = weakSelf;
-        [strongSelf.view endEditing:YES];
-        if ([NSString validatePhoneNumber:strongSelf.telTFieldView.text]) {
-            [MBProgressHUD showToView:strongSelf.view];
-            [RequestPath user_sendCodeParam:@{@"phone":strongSelf.telTFieldView.text} success:^(id obj, NSInteger code, NSString *mes) {
-                [MBProgressHUD hideHUDForView:strongSelf.view];
-                if ([obj isKindOfClass:[NSDictionary class]]) {
-                    [strongSelf.codeTFieldView startTimer];
-                    strongSelf.sendCodeModel = [[SendCodeModel alloc]initWithDic:(NSDictionary *)obj];
-                }
-            } failure:^(ErrorType errorType, NSString *mes) {
-                [MBProgressHUD showError:mes ToView:strongSelf.view];
-            }];
-        } else {
-            [MBProgressHUD showError:@"请填写完整的手机号" ToView:strongSelf.view];
-        }
+        [RequestPath user_sendCodeView:strongSelf.view phone:strongSelf.telTFieldView.text success:^(NSDictionary *obj, NSInteger code, NSString *mes) {
+            [strongSelf.codeTFieldView startTimer];
+            strongSelf.sendCodeModel = [[SendCodeModel alloc]initWithDic:(NSDictionary *)obj];
+        } failure:^(ErrorType errorType, NSString *mes) {
+            
+        }];
     };
 }
 #pragma mark -- event
@@ -117,6 +108,7 @@
         [MBProgressHUD showError:des ToView:self.view];
         return;
     }
+    [self.view endEditing:YES];
     NSDictionary *parma = @{@"phone":self.telTFieldView.text,
                             @"password":self.pwTFieldView.text,
                             @"password_confirm":self.againPwTFieldView.text,
@@ -131,7 +123,6 @@
     } failure:^(ErrorType errorType, NSString *mes) {
         [MBProgressHUD showError:mes ToView:self.view];
     }];
-    
 }
 
 #pragma mark -- setup

@@ -175,20 +175,18 @@ static CGFloat const LOGIN_SPACE_SIZE = 0.0;
     }
 }
 - (void)requestData {
-    [MBProgressHUD showToView:self.view];
-    [RequestPath user_regNeedInfoSuccess:^(id obj, NSInteger code, NSString *mes) {
-        if ([obj isKindOfClass:[NSDictionary class]]) {
-            [[RegNeedInfoModel sharedInstance]reloadWithDic:obj];
-        }
+    [RequestPath user_regNeedInfoView:self.view success:^(NSDictionary *obj, NSInteger code, NSString *mes) {
+        [[RegNeedInfoModel sharedInstance]reloadWithDic:obj];
         [self reloadView];
-        [MBProgressHUD hideHUDForView:self.view];
     } failure:^(ErrorType errorType, NSString *mes) {
-        [MBProgressHUD showError:mes ToView:self.view];
+        //失败显示失败页面
+        NSLog(@"失败");
     }];
 }
 - (void)reloadView {
     RegNeedInfoModel *regModle = [RegNeedInfoModel sharedInstance];
     __weak __typeof(self)weakSelf = self;
+    //航空公司
     self.companyView.selectBlock = ^{
         __strong typeof(weakSelf) strongSelf = weakSelf;
         [strongSelf.view endEditing:YES];
@@ -201,6 +199,7 @@ static CGFloat const LOGIN_SPACE_SIZE = 0.0;
         }];
         [strongSelf presentViewController:pickerVC animated:YES completion:nil];
     };
+    //所属子公司
     self.areaView.selectBlock = ^{
         __strong typeof(weakSelf) strongSelf = weakSelf;
         [strongSelf.view endEditing:YES];
@@ -215,7 +214,7 @@ static CGFloat const LOGIN_SPACE_SIZE = 0.0;
         }];
         [strongSelf presentViewController:pickerVC animated:YES completion:nil];
     };
-    
+    //职位等级
     self.postView.selectBlock = ^{
         __strong typeof(weakSelf) strongSelf = weakSelf;
         [strongSelf.view endEditing:YES];
@@ -226,7 +225,7 @@ static CGFloat const LOGIN_SPACE_SIZE = 0.0;
         }];
         [strongSelf presentViewController:pickerVC animated:YES completion:nil];
     };
-    
+    //签证信息
     self.visaView.selectBlock = ^{
         __strong typeof(weakSelf) strongSelf = weakSelf;
         [strongSelf.view endEditing:YES];
@@ -237,7 +236,7 @@ static CGFloat const LOGIN_SPACE_SIZE = 0.0;
         }];
         [strongSelf presentViewController:pickerVC animated:YES completion:nil];
     };
-    
+    //性别
     self.sexView.selectBlock = ^{
         __strong typeof(weakSelf) strongSelf = weakSelf;
         [strongSelf.view endEditing:YES];
@@ -251,21 +250,12 @@ static CGFloat const LOGIN_SPACE_SIZE = 0.0;
     
     self.codeView.selectBlock = ^{
         __strong typeof(weakSelf) strongSelf = weakSelf;
-        [strongSelf.view endEditing:YES];
-        if ([NSString validatePhoneNumber:strongSelf.telView.text]) {
-            [MBProgressHUD showToView:strongSelf.view];
-            [RequestPath user_sendCodeParam:@{@"phone":strongSelf.telView.text} success:^(id obj, NSInteger code, NSString *mes) {
-                [MBProgressHUD hideHUDForView:strongSelf.view];
-                if ([obj isKindOfClass:[NSDictionary class]]) {
-                    [strongSelf.codeView startTimer];
-                    strongSelf.sendCodeModel = [[SendCodeModel alloc]initWithDic:(NSDictionary *)obj];
-                }
-            } failure:^(ErrorType errorType, NSString *mes) {
-                [MBProgressHUD showError:mes ToView:strongSelf.view];
-            }];
-        } else {
-            [MBProgressHUD showError:@"请填写完整的手机号" ToView:strongSelf.view];
-        }
+        [RequestPath user_sendCodeView:strongSelf.view phone:strongSelf.telView.text success:^(NSDictionary *obj, NSInteger code, NSString *mes) {
+            [strongSelf.codeView startTimer];
+            strongSelf.sendCodeModel = [[SendCodeModel alloc]initWithDic:(NSDictionary *)obj];
+        } failure:^(ErrorType errorType, NSString *mes) {
+            
+        }];
     };
 }
 
@@ -310,7 +300,7 @@ static CGFloat const LOGIN_SPACE_SIZE = 0.0;
                             @"sex":@(self.sexModel.sexId),
                             @"password":self.pwView.text,
                             @"password_confirm":self.againPwView.text,
-                            @"code":@"1234",
+                            @"code":self.codeView.text,
                             @"iden":[NSString safe_string:self.sendCodeModel.iden]
                             };
     [RequestPath user_registerParam:param success:^(id obj, NSInteger code, NSString *mes) {

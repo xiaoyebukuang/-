@@ -24,8 +24,8 @@ typedef NS_ENUM(NSInteger, ErrorType) {
  @param failure 失败
  */
 + (void)postWithUrlString:(NSString *)urlString
-                  success:(void (^)(id, NSInteger, NSString *))success
-                  failure:(void (^)(ErrorType, NSString *))failure;
+                  success:(void (^)(id obj, NSInteger code, NSString *mes))success
+                  failure:(void (^)(ErrorType errorType, NSString *mes))failure ;
 
 /**
  post请求(url+参数)
@@ -37,8 +37,8 @@ typedef NS_ENUM(NSInteger, ErrorType) {
  */
 + (void)postWithUrlString:(NSString *)urlString
                parameters:(id)parameters
-                  success:(void (^)(id, NSInteger, NSString *))success
-                  failure:(void (^)(ErrorType, NSString *))failure;
+                  success:(void (^)(id obj, NSInteger code, NSString *mes))success
+                  failure:(void (^)(ErrorType errorType, NSString *mes))failure ;
 
 
 /**
@@ -53,8 +53,8 @@ typedef NS_ENUM(NSInteger, ErrorType) {
 + (void)postWithUrlString:(NSString *)urlString
                parameters:(id)parameters
                    cancel:(BOOL)cancle
-                  success:(void (^)(id, NSInteger, NSString *))success
-                  failure:(void (^)(ErrorType, NSString *))failure;
+                  success:(void (^)(id obj, NSInteger code, NSString *mes))success
+                  failure:(void (^)(ErrorType errorType, NSString *mes))failure ;
 
 
 /**

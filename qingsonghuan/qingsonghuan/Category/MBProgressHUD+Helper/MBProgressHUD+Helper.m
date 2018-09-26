@@ -59,10 +59,12 @@ typedef NS_ENUM(NSInteger, ProgressHUDType) {
             break;
         case ProgressHUDTypeError:
             hud.mode = MBProgressHUDModeCustomView;
+            hud.customView = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"request_error"]];
             [hud hideAnimated:YES afterDelay:1];
             break;
         case ProgressHUDTypeSuccess:
             hud.mode = MBProgressHUDModeCustomView;
+            hud.customView = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"request_success"]];
             [hud hideAnimated:YES afterDelay:1];
             break;
     }
