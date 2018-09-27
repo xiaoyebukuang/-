@@ -50,4 +50,12 @@ typedef NS_ENUM(NSInteger, FormatType) {
  */
 + (NSDate *)getDate:(NSString *)dateStr formatType:(FormatType)type;
 
+/**
+ 获取时间戳
+ 
+ @param data 时间毫秒
+ @return 返回时间戳
+ */
++ (NSTimeInterval)getDateStample:(NSDate *)data;
+
 @end

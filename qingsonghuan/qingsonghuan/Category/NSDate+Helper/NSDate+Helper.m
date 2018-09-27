@@ -75,5 +75,8 @@
     [dateFormatter setDateFormat:[NSDate getFormatType:type]];
     return [dateFormatter dateFromString:dateStr];
 }
++ (NSTimeInterval)getDateStample:(NSDate *)data {
+    return [data timeIntervalSince1970]*1000;
+}
 
 @end

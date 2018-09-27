@@ -52,11 +52,31 @@
  @param image 图片
  @param title 标题
  @param selectTitle 选中标题
+ @param font 字体大小
  @return button
  */
 + (UIButton *)buttonWithImage:(NSString *)image
                         title:(NSString *)title
-                  selectTitel:(NSString *)selectTitle;
+                  selectTitel:(NSString *)selectTitle
+                         font:(UIFont *)font;
+
+/**
+ 创建button（选中背景+选中标题颜色）
+
+ @param normalImage 正常背景
+ @param selectImage 选中背景
+ @param title 标题
+ @param font 标题大小
+ @param normalColor 正常颜色
+ @param selectColor 选中颜色
+ @return button
+ */
++ (UIButton *)buttonWithNormalBGImage:(NSString *)normalImage
+                        selectBGImage:(NSString *)selectImage
+                                title:(NSString *)title
+                                 font:(UIFont *)font
+                          normalColor:(UIColor *)normalColor
+                          selectColor:(UIColor *)selectColor;
 
 
 /**

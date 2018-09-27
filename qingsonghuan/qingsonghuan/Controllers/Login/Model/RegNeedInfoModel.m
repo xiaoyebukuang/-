@@ -24,44 +24,76 @@
 }
 
 - (void)reloadWithDic:(NSDictionary *)dic {
-    self.airlineModelArr = [[NSMutableArray alloc]init];
-    if ([dic[@"airline"] isKindOfClass:[NSArray class]]) {
-        for (id subDic in dic[@"airline"]) {
-            if ([subDic isKindOfClass:[NSDictionary class]]) {
-                AirlineModel *airlineModel = [[AirlineModel alloc]initWithDic:subDic];
-                [self.airlineModelArr addObject:airlineModel];
+    if (!self.airlineModelArr) {
+        self.airlineModelArr = [[NSMutableArray alloc]init];
+        if ([dic[@"airline"] isKindOfClass:[NSArray class]]) {
+            for (id subDic in dic[@"airline"]) {
+                if ([subDic isKindOfClass:[NSDictionary class]]) {
+                    AirlineModel *airlineModel = [[AirlineModel alloc]initWithDic:subDic];
+                    [self.airlineModelArr addObject:airlineModel];
+                }
             }
         }
     }
-    self.dutiesModelArr = [[NSMutableArray alloc]init];
-    if ([dic[@"duties"] isKindOfClass:[NSArray class]]) {
-        for (id subDic in dic[@"duties"]) {
-            if ([subDic isKindOfClass:[NSDictionary class]]) {
-                DutiesModel *dutiesModel = [[DutiesModel alloc]initWithDic:subDic];
-                [self.dutiesModelArr addObject:dutiesModel];
+    
+    if (!self.dutiesModelArr) {
+        self.dutiesModelArr = [[NSMutableArray alloc]init];
+        if ([dic[@"duties"] isKindOfClass:[NSArray class]]) {
+            for (id subDic in dic[@"duties"]) {
+                if ([subDic isKindOfClass:[NSDictionary class]]) {
+                    DutiesModel *dutiesModel = [[DutiesModel alloc]initWithDic:subDic];
+                    [self.dutiesModelArr addObject:dutiesModel];
+                }
             }
         }
     }
-    self.visaModelArr = [[NSMutableArray alloc]init];
-    if ([dic[@"visa"] isKindOfClass:[NSArray class]]) {
-        for (id subDic in dic[@"visa"]) {
-            if ([subDic isKindOfClass:[NSDictionary class]]) {
-                VisaModel *visaModel = [[VisaModel alloc]initWithDic:subDic];
-                [self.visaModelArr addObject:visaModel];
+    
+    if (!self.visaModelArr) {
+        self.visaModelArr = [[NSMutableArray alloc]init];
+        if ([dic[@"visa"] isKindOfClass:[NSArray class]]) {
+            for (id subDic in dic[@"visa"]) {
+                if ([subDic isKindOfClass:[NSDictionary class]]) {
+                    VisaModel *visaModel = [[VisaModel alloc]initWithDic:subDic];
+                    [self.visaModelArr addObject:visaModel];
+                }
             }
         }
     }
-    NSArray *sexArr = @[@{@"sex_name": @"男",@"id":@(1)},
-                        @{@"sex_name": @"女",@"id":@(2)}];
-    self.sexModelArr = [[NSMutableArray alloc]init];
-    for (NSDictionary *subDic in sexArr) {
-        SexModel *sexModel = [[SexModel alloc]initWithDic:subDic];
-        [self.sexModelArr addObject:sexModel];
+    
+    if (!self.sexModelArr) {
+        NSArray *sexArr = @[@{@"sex_name": @"男",@"id":@(1)},
+                            @{@"sex_name": @"女",@"id":@(2)}];
+        self.sexModelArr = [[NSMutableArray alloc]init];
+        for (NSDictionary *subDic in sexArr) {
+            SexModel *sexModel = [[SexModel alloc]initWithDic:subDic];
+            [self.sexModelArr addObject:sexModel];
+        }
+    }
+    if (!self.wordLogoArr) {
+        self.wordLogoArr = [[NSMutableArray alloc]init];
+        if ([dic[@"wordLogo"] isKindOfClass:[NSArray class]]) {
+            for (id subDic in dic[@"wordLogo"]) {
+                if ([subDic isKindOfClass:[NSDictionary class]]) {
+                    WordLogoModel *wordLogoModel = [[WordLogoModel alloc]initWithDic:subDic];
+                    [self.wordLogoArr addObject:wordLogoModel];
+                }
+            }
+        }
+    }
+    
+    if (!self.signModelArr) {
+        NSArray *sexArr = @[@{@"sign_name": @"上午",@"id":@(1)},
+                            @{@"sign_name": @"下午",@"id":@(2)}];
+        self.signModelArr = [[NSMutableArray alloc]init];
+        for (NSDictionary *subDic in sexArr) {
+            SignModel *signModel = [[SignModel alloc]initWithDic:subDic];
+            [self.signModelArr addObject:signModel];
+        }
     }
 }
 + (BOOL)checkRegData {
     RegNeedInfoModel *model = [RegNeedInfoModel sharedInstance];
-    return (model.airlineModelArr.count > 0)&(model.dutiesModelArr.count > 0)&(model.visaModelArr.count > 0)&(model.sexModelArr.count > 0);
+    return (model.airlineModelArr.count > 0)&(model.dutiesModelArr.count > 0)&(model.visaModelArr.count > 0)&(model.sexModelArr.count > 0)&(model.wordLogoArr.count > 0)&(model.signModelArr.count > 0);
 }
 @end
 
@@ -128,4 +160,28 @@
     return self;
 }
 @end
+
+@implementation WordLogoModel
+- (instancetype)initWithDic:(NSDictionary *)dic {
+    self = [super init];
+    if (self) {
+        self.wordLogoID =   [NSString safe_integer:dic[@"id"]];
+        self.mark =         [NSString safe_string:dic[@"mark"]];
+    }
+    return self;
+}
+@end
+
+@implementation SignModel
+- (instancetype)initWithDic:(NSDictionary *)dic {
+    self = [super init];
+    if (self) {
+        self.signId =       [NSString safe_integer:dic[@"id"]];
+        self.sign_name =    [NSString safe_string:dic[@"sign_name"]];
+    }
+    return self;
+}
+@end
+
+
 

@@ -26,6 +26,10 @@
     UIColor *color = UIColorFromRGB(0x99D3F8);
     return color;
 }
++ (UIColor *)color_99D3F8_3 {
+    UIColor *color = COLOR_RGB_ALPHA(0x99D3F8,0.3);
+    return color;
+}
 + (UIColor *)color_C7C7C7 {
     UIColor *color = UIColorFromRGB(0xC7C7C7);
     return color;
@@ -49,6 +53,10 @@
 }
 + (UIColor *)color_F7F8F9 {
     UIColor *color = UIColorFromRGB(0xF7F8F9);
+    return color;
+}
++ (UIColor *)color_D5E8F6 {
+    UIColor *color = UIColorFromRGB(0xD5E8F6);
     return color;
 }
 @end

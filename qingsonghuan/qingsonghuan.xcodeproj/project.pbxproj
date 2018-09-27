@@ -37,6 +37,10 @@
 		65D0CA9F2154B80D00A3DB66 /* ForgetViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 65D0CA9E2154B80D00A3DB66 /* ForgetViewController.m */; };
 		65D0CAA22154F34500A3DB66 /* XYPickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 65D0CAA12154F34500A3DB66 /* XYPickerViewController.m */; };
 		65F870F1215B7F3600DD1F59 /* FlightListTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 65F870F0215B7F3600DD1F59 /* FlightListTableViewCell.m */; };
+		65F870F7215B90DF00DD1F59 /* FlightFilterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 65F870F6215B90DF00DD1F59 /* FlightFilterViewController.m */; };
+		65F870FD215BB8E500DD1F59 /* CommonTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 65F870FC215BB8E500DD1F59 /* CommonTableViewCell.m */; };
+		65F87100215BF3B400DD1F59 /* XYTextFieldView.m in Sources */ = {isa = PBXBuildFile; fileRef = 65F870FF215BF3B400DD1F59 /* XYTextFieldView.m */; };
+		65F87104215C874800DD1F59 /* FlightFilterModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 65F87103215C874800DD1F59 /* FlightFilterModel.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -103,6 +107,14 @@
 		65D0CAA12154F34500A3DB66 /* XYPickerViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XYPickerViewController.m; sourceTree = "<group>"; };
 		65F870EF215B7F3600DD1F59 /* FlightListTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FlightListTableViewCell.h; sourceTree = "<group>"; };
 		65F870F0215B7F3600DD1F59 /* FlightListTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FlightListTableViewCell.m; sourceTree = "<group>"; };
+		65F870F5215B90DF00DD1F59 /* FlightFilterViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FlightFilterViewController.h; sourceTree = "<group>"; };
+		65F870F6215B90DF00DD1F59 /* FlightFilterViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FlightFilterViewController.m; sourceTree = "<group>"; };
+		65F870FB215BB8E500DD1F59 /* CommonTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CommonTableViewCell.h; sourceTree = "<group>"; };
+		65F870FC215BB8E500DD1F59 /* CommonTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CommonTableViewCell.m; sourceTree = "<group>"; };
+		65F870FE215BF3B400DD1F59 /* XYTextFieldView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XYTextFieldView.h; sourceTree = "<group>"; };
+		65F870FF215BF3B400DD1F59 /* XYTextFieldView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XYTextFieldView.m; sourceTree = "<group>"; };
+		65F87102215C874800DD1F59 /* FlightFilterModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FlightFilterModel.h; sourceTree = "<group>"; };
+		65F87103215C874800DD1F59 /* FlightFilterModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FlightFilterModel.m; sourceTree = "<group>"; };
 		BF01A99C77AD457283247280 /* Pods-qingsonghuan.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-qingsonghuan.release.xcconfig"; path = "Pods/Target Support Files/Pods-qingsonghuan/Pods-qingsonghuan.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -132,9 +144,12 @@
 		652C0D122159CAE000BD03FC /* Flight */ = {
 			isa = PBXGroup;
 			children = (
+				65F87101215C840900DD1F59 /* Model */,
 				65F870EE215B7F2800DD1F59 /* View */,
 				652C0D132159CB8700BD03FC /* FlightListViewController.h */,
 				652C0D142159CB8700BD03FC /* FlightListViewController.m */,
+				65F870F5215B90DF00DD1F59 /* FlightFilterViewController.h */,
+				65F870F6215B90DF00DD1F59 /* FlightFilterViewController.m */,
 			);
 			path = Flight;
 			sourceTree = "<group>";
@@ -303,6 +318,8 @@
 		65D0CA7921521ECD00A3DB66 /* CommonView */ = {
 			isa = PBXGroup;
 			children = (
+				65F870FE215BF3B400DD1F59 /* XYTextFieldView.h */,
+				65F870FF215BF3B400DD1F59 /* XYTextFieldView.m */,
 				65D0CA7D21521F7600A3DB66 /* XYTextField.h */,
 				65D0CA7E21521F7600A3DB66 /* XYTextField.m */,
 				65D0CA832153439F00A3DB66 /* XYLineView.h */,
@@ -343,8 +360,19 @@
 			children = (
 				65F870EF215B7F3600DD1F59 /* FlightListTableViewCell.h */,
 				65F870F0215B7F3600DD1F59 /* FlightListTableViewCell.m */,
+				65F870FB215BB8E500DD1F59 /* CommonTableViewCell.h */,
+				65F870FC215BB8E500DD1F59 /* CommonTableViewCell.m */,
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		65F87101215C840900DD1F59 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				65F87102215C874800DD1F59 /* FlightFilterModel.h */,
+				65F87103215C874800DD1F59 /* FlightFilterModel.m */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 		978D342F849E3CA3DEF5C5BF /* Frameworks */ = {
@@ -488,6 +516,8 @@
 				65D0CA672151ECEE00A3DB66 /* NSDate+Helper.m in Sources */,
 				65D0CA6C2151EEE000A3DB66 /* BaseViewController.m in Sources */,
 				652C0D21215A351D00BD03FC /* RequestPath.m in Sources */,
+				65F87104215C874800DD1F59 /* FlightFilterModel.m in Sources */,
+				65F87100215BF3B400DD1F59 /* XYTextFieldView.m in Sources */,
 				65D0CA662151ECEE00A3DB66 /* NSString+Helper.m in Sources */,
 				65D0CAA22154F34500A3DB66 /* XYPickerViewController.m in Sources */,
 				65D0CA42214F9AFD00A3DB66 /* ViewController.m in Sources */,
@@ -498,9 +528,11 @@
 				65D0CA742151F08200A3DB66 /* LoginViewController.m in Sources */,
 				65D0CA9F2154B80D00A3DB66 /* ForgetViewController.m in Sources */,
 				65D0CA7F21521F7600A3DB66 /* XYTextField.m in Sources */,
+				65F870F7215B90DF00DD1F59 /* FlightFilterViewController.m in Sources */,
 				65D0CA652151ECEE00A3DB66 /* MBProgressHUD+Helper.m in Sources */,
 				65D0CA82215233AC00A3DB66 /* RegisterViewController.m in Sources */,
 				65D0CA98215489F700A3DB66 /* BaseMultiViewController.m in Sources */,
+				65F870FD215BB8E500DD1F59 /* CommonTableViewCell.m in Sources */,
 				652C0D192159CC3F00BD03FC /* UserModel.m in Sources */,
 				65D0CA4D214F9B0000A3DB66 /* main.m in Sources */,
 				652C0D112158228300BD03FC /* XYNetworking.m in Sources */,

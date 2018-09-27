@@ -8,7 +8,9 @@
 
 #import "FlightListViewController.h"
 #import "FlightListTableViewCell.h"
-
+#import "FlightFilterViewController.h"
+#import "RegNeedInfoModel.h"
+#import "FlightFilterModel.h"
 static NSString * const FlightListTableViewCellID = @"FlightListTableViewCellID";
 
 @interface FlightListViewController ()<UITableViewDelegate, UITableViewDataSource>
@@ -24,6 +26,15 @@ static NSString * const FlightListTableViewCellID = @"FlightListTableViewCellID"
 @property (nonatomic, strong) UIView *footerView;
 //上传
 @property (nonatomic, strong) UIButton *submitBtn;
+
+
+//筛选页面
+@property (nonatomic, strong) FlightFilterViewController *filterVC;
+
+//数据源
+@property (nonatomic, strong) FlightFilterModel *filterModel;
+
+@property (nonatomic, strong) UIButton *filterBtn;
 @end
 
 @implementation FlightListViewController
@@ -62,10 +73,7 @@ static NSString * const FlightListTableViewCellID = @"FlightListTableViewCellID"
     leftNagetiveSpacer.width = -10;
     self.navigationItem.leftBarButtonItems = @[leftNagetiveSpacer, leftButtonItem];
     
-    UIButton *rightBtn = [UIButton buttonWithImage:@"flight_search" title:@"筛选" selectTitel:@"取消"];
-    rightBtn.frame = CGRectMake(0, 0, 40, 40);
-    [rightBtn addTarget:self action:@selector(rightBtnNavigationBarEvent:) forControlEvents:UIControlEventTouchUpInside];
-    UIBarButtonItem *rightButtonItem = [[UIBarButtonItem alloc]initWithCustomView:rightBtn];
+    UIBarButtonItem *rightButtonItem = [[UIBarButtonItem alloc]initWithCustomView:self.filterBtn];
     UIBarButtonItem *rightNagetiveSpacer = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemFixedSpace target:nil action:nil];
     rightNagetiveSpacer.width = -10;
     self.navigationItem.rightBarButtonItems = @[rightButtonItem, rightNagetiveSpacer];
@@ -78,8 +86,39 @@ static NSString * const FlightListTableViewCellID = @"FlightListTableViewCellID"
 }
 //筛选
 - (void)rightBtnNavigationBarEvent:(UIButton *)sender {
+    if (sender.selected) {
+        [self dismissFilterVC];
+    } else {
+        if (![RegNeedInfoModel checkRegData]) {
+            [RequestPath user_regNeedInfoView:nil success:^(NSDictionary *obj, NSInteger code, NSString *mes) {
+                [self presentFilterVC];
+            } failure:^(ErrorType errorType, NSString *mes) {
+            }];
+        } else {
+            [self presentFilterVC];
+        }
+    }
     sender.selected = !sender.selected;
-    NSLog(@"筛选");
+}
+- (void)presentFilterVC {
+    if (!self.filterVC) {
+        __weak __typeof(self)weakSelf = self;
+        self.filterVC = [[FlightFilterViewController alloc]initWithFilterModel:self.filterModel flilterSelectBlock:^(FlightFilterModel *filterModel) {
+            weakSelf.filterModel = filterModel;
+            [weakSelf rightBtnNavigationBarEvent:self.filterBtn];
+        }];
+    }
+    [self addChildViewController:self.filterVC];
+    [self.view addSubview:self.filterVC.view];
+    [self.filterVC show];
+}
+- (void)dismissFilterVC {
+    __weak __typeof(self)weakSelf = self;
+    [self.filterVC dismiss:^{
+        [weakSelf.filterVC removeFromParentViewController];
+        [weakSelf.filterVC.view removeFromSuperview];
+        weakSelf.filterVC = nil;
+    }];
 }
 //站内信
 - (void)mailBtnEvent:(UIButton *)sender {
@@ -213,6 +252,16 @@ static NSString * const FlightListTableViewCellID = @"FlightListTableViewCellID"
         [_flightTableView registerClass:[FlightListTableViewCell class] forCellReuseIdentifier:FlightListTableViewCellID];
     }
     return _flightTableView;
+}
+
+//筛选按钮
+- (UIButton *)filterBtn {
+    if (!_filterBtn) {
+        _filterBtn = [UIButton buttonWithImage:@"flight_search" title:@"筛选" selectTitel:@"取消" font:SYSTEM_FONT_17];
+        _filterBtn.frame = CGRectMake(0, 0, 40, 40);
+        [_filterBtn addTarget:self action:@selector(rightBtnNavigationBarEvent:) forControlEvents:UIControlEventTouchUpInside];
+    }
+    return _filterBtn;
 }
 
 @end

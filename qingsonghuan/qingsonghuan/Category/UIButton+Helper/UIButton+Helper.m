@@ -34,12 +34,35 @@
 }
 + (UIButton *)buttonWithImage:(NSString *)image
                         title:(NSString *)title
-                  selectTitel:(NSString *)selectTitle{
+                  selectTitel:(NSString *)selectTitle
+                         font:(UIFont *)font{
     UIButton *btn = [UIButton buttonWithType:UIButtonTypeCustom];
     [btn setImage:[UIImage imageNamed:image] forState:UIControlStateNormal];
     [btn setImage:[UIImage imageNamed:image] forState:UIControlStateSelected];
     [btn setTitle:title forState:UIControlStateNormal];
     [btn setTitle:selectTitle forState:UIControlStateSelected];
+    btn.titleLabel.font = font;
+    return btn;
+}
++ (UIButton *)buttonWithNormalBGImage:(NSString *)normalImage
+                        selectBGImage:(NSString *)selectImage
+                                title:(NSString *)title
+                                 font:(UIFont *)font
+                          normalColor:(UIColor *)normalColor
+                          selectColor:(UIColor *)selectColor {
+    UIButton *btn = [UIButton buttonWithType:UIButtonTypeCustom];
+    
+    UIImage *nImage = [UIImage imageNamed:normalImage];
+    nImage = [nImage stretchableImageWithLeftCapWidth:nImage.size.width/2 topCapHeight:nImage.size.height/2];
+    [btn setBackgroundImage:nImage forState:UIControlStateNormal];
+    
+    UIImage *sImage = [UIImage imageNamed:selectImage];
+    sImage = [sImage stretchableImageWithLeftCapWidth:nImage.size.width/2 topCapHeight:nImage.size.height/2];
+    [btn setBackgroundImage:sImage forState:UIControlStateSelected];
+    [btn setTitle:title forState:UIControlStateNormal];
+    [btn setTitleColor:normalColor forState:UIControlStateNormal];
+    [btn setTitleColor:selectColor forState:UIControlStateSelected];
+    btn.titleLabel.font = font;
     return btn;
 }
 + (UIButton *)buttonWithTitle:(NSString *)title

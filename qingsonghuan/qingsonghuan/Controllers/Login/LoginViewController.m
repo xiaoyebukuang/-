@@ -9,6 +9,7 @@
 #import "LoginViewController.h"
 #import "RegisterViewController.h"
 #import "ForgetViewController.h"
+#import "XYTextFieldView.h"
 /**
  登录
  */

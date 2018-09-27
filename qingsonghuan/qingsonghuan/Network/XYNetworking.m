@@ -87,13 +87,13 @@ static NSTimeInterval const timeInterval = 20.0;
     XYNetworking *network = [self shareInstance];
     NSError *error;
     NSMutableURLRequest *request = [network.manager.requestSerializer requestWithMethod:@"POST" URLString:urlString parameters:parameters error:&error];
+    request = [self setHeaderField:request];
     NSURLSessionDataTask *dataTask = [network.manager dataTaskWithRequest:request uploadProgress:^(NSProgress * _Nonnull uploadProgress) {
         
     } downloadProgress:^(NSProgress * _Nonnull downloadProgress) {
         
     } completionHandler:^(NSURLResponse * _Nonnull response, id  _Nullable responseObject, NSError * _Nullable error) {
         if ([responseObject isKindOfClass:[NSDictionary class]]) {
-            NSLog(@"%@",responseObject[@"status"]);
             if ([responseObject[@"status"] isKindOfClass:[NSDictionary class]]) {
                 NSDictionary *status = responseObject[@"status"];
                 if ([NSString safe_integer:status[@"code"]] == 1) {
@@ -115,6 +115,15 @@ static NSTimeInterval const timeInterval = 20.0;
         [network.tasks addObject:dataTask];
     }
 }
+
++ (NSMutableURLRequest *)setHeaderField:(NSMutableURLRequest *)request {
+    UserModel *model = [UserModel sharedInstance];
+    [request setValue:model.userId forHTTPHeaderField:@"USERID"];
+    [request setValue:model.sign forHTTPHeaderField:@"SIGN"];
+    [request setValue:[NSString stringWithFormat:@"%f",[NSDate getDateStample:[NSDate date]]] forHTTPHeaderField:@"TIME"];
+    return request;
+}
+
 + (void)cancelAllTask {
     XYNetworking *network = [self shareInstance];
     for (NSURLSessionDataTask *task in network.tasks) {

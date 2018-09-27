@@ -8,11 +8,10 @@
 
 #import "RegisterViewController.h"
 #import "XYPickerViewController.h"
-
 #import "RegNeedInfoModel.h"
 #import "SendCodeModel.h"
+#import "XYTextFieldView.h"
 static CGFloat const LOGIN_SPACE_SIZE = 0.0;
-
 /**
  注册
  */
@@ -176,7 +175,6 @@ static CGFloat const LOGIN_SPACE_SIZE = 0.0;
 }
 - (void)requestData {
     [RequestPath user_regNeedInfoView:self.view success:^(NSDictionary *obj, NSInteger code, NSString *mes) {
-        [[RegNeedInfoModel sharedInstance]reloadWithDic:obj];
         [self reloadView];
     } failure:^(ErrorType errorType, NSString *mes) {
         //失败显示失败页面

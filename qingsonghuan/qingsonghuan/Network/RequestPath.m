@@ -7,7 +7,7 @@
 //
 
 #import "RequestPath.h"
-
+#import "RegNeedInfoModel.h"
 @implementation RequestPath
 //注册页信息 ( 航空公司,子公司,职务,签证 )
 + (void)user_regNeedInfoView:(UIView *)view
@@ -17,6 +17,7 @@
     [XYNetworking postWithUrlString:API_USER_REGNEEDINFO success:^(id obj, NSInteger code, NSString *mes) {
         [MBProgressHUD hideHUDForView:view];
         if ([obj isKindOfClass:[NSDictionary class]]) {
+            [[RegNeedInfoModel sharedInstance]reloadWithDic:obj];
             success((NSDictionary *)obj, code, mes);
         } else {
             failure(ErrorTypeReqestNone, mes);
@@ -77,6 +78,23 @@
         }
     } failure:^(ErrorType errorType, NSString *mes) {
         [MBProgressHUD showError:mes ToView:view];
+        failure(errorType, mes);
+    }];
+}
+//添加航班信息页面 所需下拉框（签证，字母，，职务等级）
++ (void)flight_dropdownView:(UIView *)view
+                    success:(void (^)(NSDictionary *obj, NSInteger code, NSString *mes))success
+                    failure:(void (^)(ErrorType errorType, NSString *mes))failure {
+    [MBProgressHUD showToView:view];
+    [XYNetworking postWithUrlString:API_FLIGHT_DROPDOWN success:^(id obj, NSInteger code, NSString *mes) {
+        [MBProgressHUD hideHUDForView:view];
+        if ([obj isKindOfClass:[NSDictionary class]]) {
+            success((NSDictionary *)obj, code, mes);
+        } else {
+            failure(ErrorTypeReqestNone, mes);
+        }
+    } failure:^(ErrorType errorType, NSString *mes) {
+        [MBProgressHUD hideHUDForView:view];
         failure(errorType, mes);
     }];
 }

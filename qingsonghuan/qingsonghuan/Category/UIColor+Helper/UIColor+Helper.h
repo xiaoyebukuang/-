@@ -18,6 +18,8 @@
 
 + (UIColor *)color_99D3F8;
 
++ (UIColor *)color_99D3F8_3;
+
 + (UIColor *)color_C7C7C7;
 
 + (UIColor *)color_333333;
@@ -29,5 +31,9 @@
 + (UIColor *)color_666666;
 
 + (UIColor *)color_F7F8F9;
+
++ (UIColor *)color_D5E8F6;
+
+
 
 @end

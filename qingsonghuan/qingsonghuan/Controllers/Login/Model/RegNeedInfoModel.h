@@ -25,10 +25,13 @@
 @property (nonatomic, strong) NSMutableArray *visaModelArr;
 //性别数组
 @property (nonatomic, strong) NSMutableArray *sexModelArr;
-
+//字母标识数组
+@property (nonatomic, strong) NSMutableArray *wordLogoArr;
+//签到时段
+@property (nonatomic, strong) NSMutableArray *signModelArr;
 
 /**
- 检验是否有数据
+ 检验是否有数据（航空公司，职务等级。签证类型，性别数组）
  YES：有数据
  NO：无数据
  */
@@ -109,4 +112,31 @@
 
 @end
 
+/**
+ 字符标识
+ */
+@interface WordLogoModel : NSObject
+
+//标识id
+@property (nonatomic, assign) NSInteger wordLogoID;
+//标识名称
+@property (nonatomic, copy) NSString *mark;
+
+- (instancetype)initWithDic:(NSDictionary *)dic;
+
+@end
+
+/**
+ 签到时段Model
+ */
+@interface SignModel : NSObject
+
+//签到id
+@property (nonatomic, assign) NSInteger signId;
+//签到时段名称
+@property (nonatomic, copy) NSString *sign_name;
+
+- (instancetype)initWithDic:(NSDictionary *)dic;
+
+@end
 

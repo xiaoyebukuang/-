@@ -8,6 +8,7 @@
 
 #import "ForgetViewController.h"
 #import "SendCodeModel.h"
+#import "XYTextFieldView.h"
 /**
  忘记密码——找回密码
  */

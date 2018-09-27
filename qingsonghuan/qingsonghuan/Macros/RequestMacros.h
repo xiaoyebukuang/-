@@ -21,5 +21,13 @@
 #define API_USER_RETRIEVE              [NSString stringWithFormat:@"%@/user/retrieve",BASE_URL]
 //5.登录
 #define API_USER_LOGIN                 [NSString stringWithFormat:@"%@/user/login",BASE_URL]
+//6.添加航班信息页面 所需下拉框（签证，字母，，职务等级）
+#define API_FLIGHT_DROPDOWN            [NSString stringWithFormat:@"%@/flight/dropDown",BASE_URL]
+
+
+
+
+
+
 
 #endif /* RequestMacros_h */

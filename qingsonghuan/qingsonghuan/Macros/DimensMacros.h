@@ -27,7 +27,7 @@
 /** 状态栏高度 */
 #define NAV_STA_HEIGHT          (NAV_TOP_HEIGHT + 20)
 /** 导航栏高度 */
-#define NAV_BAR_HEIGHT          (NAV_TOP_HEIGHT + 44)
+#define NAV_BAR_HEIGHT          (NAV_TOP_HEIGHT + 64)
 /** TABBAR高度 */
 #define NAV_TABBAR_HEIGHT       (NAV_BOTTOW_HEIGHT + 49)
 /** 可视图区域 */
