@@ -65,6 +65,22 @@
     btn.titleLabel.font = font;
     return btn;
 }
++ (UIButton *)buttonWithBGImage:(NSString *)bgImage
+                          image:(NSString *)image
+                          title:(NSString *)title
+                           font:(UIFont *)font
+                      textColor:(UIColor *)textColor {
+    UIButton *btn = [UIButton buttonWithType:UIButtonTypeCustom];
+    UIImage *nImage = [UIImage imageNamed:bgImage];
+    nImage = [nImage stretchableImageWithLeftCapWidth:nImage.size.width/2 topCapHeight:nImage.size.height/2];
+    [btn setBackgroundImage:nImage forState:UIControlStateNormal];
+    [btn setImage:[UIImage imageNamed:image] forState:UIControlStateNormal];
+    [btn setTitle:title forState:UIControlStateNormal];
+    [btn setTitleColor:textColor forState:UIControlStateNormal];
+    [btn setImageEdgeInsets:UIEdgeInsetsMake(0, -20, 0, 0)];
+    btn.titleLabel.font = font;
+    return btn;
+}
 + (UIButton *)buttonWithTitle:(NSString *)title
                          font:(UIFont *)font
                   normalColor:(UIColor *)normalColor

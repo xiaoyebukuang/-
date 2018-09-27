@@ -80,6 +80,22 @@
 
 
 /**
+ 创建button（背景+图标+标题）
+
+ @param bgImage 背景图片
+ @param image 图标
+ @param title 标题
+ @param font 标题大小
+ @param textColor 标题颜色
+ @return button
+ */
++ (UIButton *)buttonWithBGImage:(NSString *)bgImage
+                          image:(NSString *)image
+                          title:(NSString *)title
+                           font:(UIFont *)font
+                      textColor:(UIColor *)textColor;
+
+/**
  创建button（定时器）
 
  @param title 定时器标题

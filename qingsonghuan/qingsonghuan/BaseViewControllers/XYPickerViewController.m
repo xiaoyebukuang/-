@@ -7,6 +7,7 @@
 //
 
 #import "XYPickerViewController.h"
+#import "XYPickerHeaderView.h"
 #import "RegNeedInfoModel.h"
 @interface XYPickerViewController ()<UIPickerViewDelegate, UIPickerViewDataSource>
 
@@ -14,7 +15,7 @@
 /**
  标题view
  */
-@property (nonatomic, strong) UIView *titleView;
+@property (nonatomic, strong) XYPickerHeaderView *titleView;
 
 /**
  空白区域取消
@@ -51,7 +52,7 @@
 
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
-    self.view.backgroundColor = [UIColor color_000000:0.3];
+    self.view.backgroundColor = [UIColor color_99D3F8_3];
 }
 - (void)viewWillDisappear:(BOOL)animated {
     [super viewWillDisappear:animated];
@@ -67,10 +68,10 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self setupView];
+    [self reloadData];
 }
 - (void)setupView {
     self.view.backgroundColor = [UIColor clearColor];
-    
     [self.view addSubview:self.control];
     [self.control mas_makeConstraints:^(MASConstraintMaker *make) {
         make.edges.equalTo(self.view);
@@ -98,23 +99,21 @@
         self.pickerBlock = pickerBlock;
     }
 }
-
 #pragma mark -- event
-//确定按钮事件
-- (void)sureBtnEvent:(UIButton *)sender {
-    if (self.pickerBlock) {
-        self.pickerBlock(self.list[self.selectIndex]);
-    }
-    [self dismissViewControllerAnimated:YES completion:nil];
+- (void)reloadData {
+    __weak __typeof(self)weakSelf = self;
+    [self.titleView setSureBlock:^{
+        if (weakSelf.pickerBlock) {
+            weakSelf.pickerBlock(weakSelf.list[weakSelf.selectIndex]);
+        }
+        [weakSelf dismissViewControllerAnimated:YES completion:nil];
+    } cancleBlock:^{
+        if (weakSelf.pickerBlock) {
+            weakSelf.pickerBlock(nil);
+        }
+        [weakSelf dismissViewControllerAnimated:YES completion:nil];
+    }];
 }
-//取消按钮事件
-- (void)cancelBtnEvent:(UIButton *)sender {
-    if (self.pickerBlock) {
-        self.pickerBlock(nil);
-    }
-    [self dismissViewControllerAnimated:YES completion:nil];
-}
-
 - (void)controlEvent:(UIControl *)sender {
     if (self.pickerBlock) {
         self.pickerBlock(nil);
@@ -149,6 +148,9 @@
     if ([model isKindOfClass:[SexModel class]]) {
         title = ((SexModel *)model).sex_name;
     }
+    if ([model isKindOfClass:[WordLogoModel class]]) {
+        title = ((WordLogoModel *)model).mark;
+    }
     UILabel *titleLabel = [[UILabel alloc]initWithText:title font:SYSTEM_FONT_15 textColor:[UIColor color_333333]];
     titleLabel.textAlignment = NSTextAlignmentCenter;
     return titleLabel;
@@ -162,34 +164,9 @@
 
 
 #pragma mark -- setup
-- (UIView *)titleView {
+- (XYPickerHeaderView *)titleView {
     if (!_titleView) {
-        UIView *view = [[UIView alloc]init];
-        view.backgroundColor = [UIColor color_99D3F8];
-        //确定按钮
-        UIButton *sureBtn = [UIButton buttonWithTitle:@"确定" font:SYSTEM_FONT_15 titleColor:[UIColor color_FFFFFF]];
-        [sureBtn addTarget:self action:@selector(sureBtnEvent:) forControlEvents:UIControlEventTouchUpInside];
-        [view addSubview:sureBtn];
-        [sureBtn mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.centerY.equalTo(view);
-            make.right.equalTo(view).offset(-15);
-        }];
-        //取消按钮
-        UIButton *cancelBtn = [UIButton buttonWithTitle:@"取消" font:SYSTEM_FONT_15 titleColor:[UIColor color_FFFFFF]];
-        [cancelBtn addTarget:self action:@selector(cancelBtnEvent:) forControlEvents:UIControlEventTouchUpInside];
-        [view addSubview:cancelBtn];
-        [cancelBtn mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.centerY.equalTo(view);
-            make.left.equalTo(view).offset(15);
-        }];
-        XYLineView *line = [[XYLineView alloc]init];
-        [view addSubview:line];
-        [line mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.left.right.equalTo(view);
-            make.height.mas_equalTo(0.5);
-            make.bottom.equalTo(view);
-        }];
-        _titleView = view;
+        _titleView = [[XYPickerHeaderView alloc]init];
     }
     return _titleView;
 }

@@ -8,7 +8,6 @@
 
 #import "BaseViewController.h"
 #import "FlightFilterModel.h"
-typedef void(^DismissBlock)(void);
 
 typedef void(^FlilterSelectBlock)(FlightFilterModel *filterModel);
 
@@ -18,6 +17,6 @@ typedef void(^FlilterSelectBlock)(FlightFilterModel *filterModel);
 
 - (void)show;
 
-- (void)dismiss:(DismissBlock)block;
+- (void)dismiss;
 
 @end

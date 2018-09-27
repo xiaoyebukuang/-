@@ -16,6 +16,8 @@ typedef void(^CommonClickBlock)(id obj);
 
 
 @interface CommonTableViewCell01 : CommonTableViewCell
+//输入框
+@property (nonatomic, strong) XYTextField *textField;
 
 /**
  刷新视图
@@ -40,8 +42,6 @@ typedef void(^CommonClickBlock)(id obj);
 
 
 @interface CommonTableViewCell02 : CommonTableViewCell
-
-
 /**
  刷新视图
 
@@ -55,7 +55,10 @@ typedef void(^CommonClickBlock)(id obj);
           commonClickBlock:(CommonClickBlock)clickBlcok;
 @end
 
-
 @interface CommonTableViewCell03 : CommonTableViewCell
+
+@end
+
+@interface CommonTableViewCell04 : CommonTableViewCell
 
 @end

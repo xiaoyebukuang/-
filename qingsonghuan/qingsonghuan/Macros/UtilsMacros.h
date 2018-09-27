@@ -57,8 +57,13 @@
 #define LOGIN_CARD_PLACEHOLDER          @"输入登机证号"
 #define LOGIN_SEX_PLACEHOLDER           @"选择性别"
 
-
 #define API_REUQEST_FAILED              @"请求失败"
+
+#define FLIGHT_SIGN_DATE                @"请选择签到日期"
+#define FLIGHT_SIGN_TIME                @"请选择签到时间"
+#define FLIGHT_AIR_NUMBER               @"请输入航班号"
+#define FLIGHT_WORD_SIGN                @"请选择字母标识"
+
 
 //用户信息宏定义
 //是否登录

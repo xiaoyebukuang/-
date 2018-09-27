@@ -22,11 +22,12 @@
 - (void)setupView {
     [self addSubview:self.title];
     [self.title mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.equalTo(self).offset(15);
+        make.left.equalTo(self).offset(CELL_LEFT_APACE);
         make.top.equalTo(self).offset(10);
         make.height.mas_offset(30);
         make.width.mas_equalTo(70);
     }];
+    self.title.text = @"测试:";
 }
 - (void)setIndex:(NSInteger)index {
     if (index%2 == 0) {
@@ -45,8 +46,7 @@
 @end
 
 @interface CommonTableViewCell01()<XYTextFieldDelegate>
-//输入框
-@property (nonatomic, strong) XYTextField *textField;
+
 //回调
 @property (nonatomic, copy) CommonClickBlock clickBlcok;
 //点击框
@@ -59,10 +59,9 @@
     [self addSubview:self.textField];
     [self.textField mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(self.title.mas_right);
-        make.right.equalTo(self).offset(-15);
+        make.right.equalTo(self).offset(-CELL_LEFT_APACE);
         make.centerY.equalTo(self);
         make.centerY.equalTo(self.title);
-        make.height.mas_offset(40);
     }];
     [self addSubview:self.control];
     [self.control mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -131,7 +130,7 @@ static NSInteger const COMMON_BTN_TAG = 329;
     [self addSubview:self.btnView];
     [self.btnView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(self.title.mas_right);
-        make.right.equalTo(self).offset(-15);
+        make.right.equalTo(self).offset(-CELL_LEFT_APACE);
         make.top.bottom.equalTo(self);
     }];
 }
@@ -227,8 +226,6 @@ static NSInteger const COMMON_BTN_TAG = 329;
 @end
 
 @implementation CommonTableViewCell03
-
-- (void)setupView {
-    [super setupView];
-}
+@end
+@implementation CommonTableViewCell04
 @end

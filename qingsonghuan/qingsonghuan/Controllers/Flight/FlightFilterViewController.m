@@ -9,26 +9,25 @@
 #import "FlightFilterViewController.h"
 #import "CommonTableViewCell.h"
 #import "RegNeedInfoModel.h"
-
+#import "XYPickerDateViewController.h"
 
 static NSString * const CommonTableViewCell01ID = @"CommonTableViewCell01ID";
 static NSString * const CommonTableViewCell02ID = @"CommonTableViewCell02ID";
-static NSString * const CommonTableViewCell03ID = @"CommonTableViewCell03ID";
 /**
  筛选页面
  */
 @interface FlightFilterViewController ()<UITableViewDelegate, UITableViewDataSource>
 
 @property (nonatomic, strong) UITableView *flightFilterTableV;
-
+//重置&确定view
 @property (nonatomic, strong) UIView *footerView;
 //重置
 @property (nonatomic, strong) UIButton *resetBtn;
 //确定
 @property (nonatomic, strong) UIButton *sureBtn;
-
+//筛选model
 @property (nonatomic, strong) FlightFilterModel *filterModel;
-
+//确定，重置回调
 @property (nonatomic, copy) FlilterSelectBlock flilterSelectBlock;
 
 @end
@@ -74,11 +73,12 @@ static NSString * const CommonTableViewCell03ID = @"CommonTableViewCell03ID";
     }];
 }
 //消失
-- (void)dismiss:(DismissBlock)block {
+- (void)dismiss{
     [UIView animateWithDuration:0.3 animations:^{
         self.flightFilterTableV.height = 0;
     } completion:^(BOOL finished) {
-        block();
+        [self removeFromParentViewController];
+        [self.view removeFromSuperview];
     }];
 }
 
@@ -87,18 +87,26 @@ static NSString * const CommonTableViewCell03ID = @"CommonTableViewCell03ID";
     return 6;
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-    
     NSArray *titleArr = @[@"签到日期:",@"航班号:",@"签到时段:",@"签证信息:",@"字母标识:",@"职务等级:"];
     CommonTableViewCell *cell;
     __weak __typeof(self)weakSelf = self;
     if (indexPath.row == 0) {
         cell = (CommonTableViewCell01 *)[tableView dequeueReusableCellWithIdentifier: CommonTableViewCell01ID];
-        [(CommonTableViewCell01 *)cell reloadViewWithText:titleArr[indexPath.row] placeHolder:@"请选择签到日期" content:nil enabled:NO textFieldType:UITextFieldNormal commonClickBlock:^(id obj) {
-            NSLog(@"请选择签到日期");
+        [(CommonTableViewCell01 *)cell reloadViewWithText:titleArr[indexPath.row] placeHolder:FLIGHT_SIGN_DATE content:self.filterModel.date enabled:NO textFieldType:UITextFieldNormal commonClickBlock:^(id obj) {
+            [weakSelf.view endEditing:YES];
+            XYPickerDateViewController *dateVC = [[XYPickerDateViewController alloc]init];
+            dateVC.pickerMode = UIDatePickerModeDate;
+            [dateVC reloadViewWithPickerDateBlock:^(NSString *date, BOOL edit) {
+                if (edit) {
+                    weakSelf.filterModel.date = date;
+                    ((CommonTableViewCell01 *)cell).textField.text = date;
+                }
+            }];
+            [weakSelf presentViewController:dateVC animated:YES completion:nil];
         }];
     } else if (indexPath.row == 1) {
         cell = (CommonTableViewCell01 *)[tableView dequeueReusableCellWithIdentifier: CommonTableViewCell01ID];
-        [(CommonTableViewCell01 *)cell reloadViewWithText:titleArr[indexPath.row] placeHolder:@"请输入航班号" content:self.filterModel.airLine enabled:YES textFieldType:UITextFieldFlight commonClickBlock:^(id obj) {
+        [(CommonTableViewCell01 *)cell reloadViewWithText:titleArr[indexPath.row] placeHolder:FLIGHT_AIR_NUMBER content:self.filterModel.airLine enabled:YES textFieldType:UITextFieldFlight commonClickBlock:^(id obj) {
             weakSelf.filterModel.airLine = (NSString *)obj;
         }];
     } else {
@@ -126,6 +134,7 @@ static NSString * const CommonTableViewCell03ID = @"CommonTableViewCell03ID";
         }
         cell = (CommonTableViewCell02 *)[tableView dequeueReusableCellWithIdentifier: CommonTableViewCell02ID];
         [(CommonTableViewCell02 *)cell reloadViewWithText:titleArr[indexPath.row]  content:obj selectModel:model  commonClickBlock:^(id obj) {
+            [weakSelf.view endEditing:YES];
             if ([obj isKindOfClass:[SignModel class]]) {
                 weakSelf.filterModel.signModel = obj;
             } else if ([obj isKindOfClass:[VisaModel class]]) {
@@ -151,12 +160,12 @@ static NSString * const CommonTableViewCell03ID = @"CommonTableViewCell03ID";
         _flightFilterTableV.showsVerticalScrollIndicator = NO;
         _flightFilterTableV.showsHorizontalScrollIndicator = NO;
         _flightFilterTableV.bounces = NO;
+        _flightFilterTableV.estimatedRowHeight = 44;
         _flightFilterTableV.backgroundColor = [UIColor clearColor];
         _flightFilterTableV.tableFooterView = self.footerView;
         _flightFilterTableV.separatorStyle = UITableViewCellSeparatorStyleNone;
         [_flightFilterTableV registerClass:[CommonTableViewCell01 class] forCellReuseIdentifier:CommonTableViewCell01ID];
         [_flightFilterTableV registerClass:[CommonTableViewCell02 class] forCellReuseIdentifier:CommonTableViewCell02ID];
-        [_flightFilterTableV registerClass:[CommonTableViewCell03 class] forCellReuseIdentifier:CommonTableViewCell03ID];
     }
     return _flightFilterTableV;
 }

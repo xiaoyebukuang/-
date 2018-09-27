@@ -27,7 +27,7 @@
     return color;
 }
 + (UIColor *)color_99D3F8_3 {
-    UIColor *color = COLOR_RGB_ALPHA(0x99D3F8,0.3);
+    UIColor *color = COLOR_RGB_ALPHA(0x000000,0.3);
     return color;
 }
 + (UIColor *)color_C7C7C7 {
