@@ -13,10 +13,6 @@
  标题view
  */
 @property (nonatomic, strong) XYPickerHeaderView *titleView;
-/**
- 空白区域取消
- */
-//@property (nonatomic, strong) UIControl *control;
 
 //日期选择器
 @property (nonatomic, strong) UIDatePicker *datePicker;

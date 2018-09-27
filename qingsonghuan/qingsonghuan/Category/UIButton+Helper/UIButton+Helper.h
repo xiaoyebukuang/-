@@ -39,7 +39,7 @@
 
 
 /**
- 创建button（图片）
+ 创建button（图标）
 
  @param image 图片
  @return button
@@ -99,7 +99,7 @@
  创建button（定时器）
 
  @param title 定时器标题
- @param font 字体带下
+ @param font 字体大小
  @param normalColor 正常颜色
  @param disabledColor 禁用颜色
  @param normalBackgroundImage 正常背景图片

@@ -177,8 +177,10 @@ static CGFloat const LOGIN_SPACE_SIZE = 0.0;
     [RequestPath user_regNeedInfoView:self.view success:^(NSDictionary *obj, NSInteger code, NSString *mes) {
         [self reloadView];
     } failure:^(ErrorType errorType, NSString *mes) {
-        //失败显示失败页面
-        NSLog(@"失败");
+        WeakSelf;
+        [self showErrorView:^{
+            [weakSelf requestData];
+        }];
     }];
 }
 - (void)reloadView {

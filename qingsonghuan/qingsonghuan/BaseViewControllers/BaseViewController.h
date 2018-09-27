@@ -6,8 +6,10 @@
 //  Copyright © 2018年 XYBK. All rights reserved.
 //
 
-#import "ViewController.h"
+#import "UIView+Helper.h"
 
-@interface BaseViewController : ViewController
+@interface BaseViewController : UIViewController
+
+- (void)showErrorView:(void (^)(void))refreshBlock;
 
 @end

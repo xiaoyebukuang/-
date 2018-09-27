@@ -225,7 +225,29 @@ static NSInteger const COMMON_BTN_TAG = 329;
 }
 @end
 
+@interface CommonTableViewCell03()
+
+@property (nonatomic, strong) XYTextField *textField;
+
+@end
+
 @implementation CommonTableViewCell03
+- (void)setupView {
+    [super setupView];
+    [self addSubview:self.textField];
+    [self.textField mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.equalTo(self.title.mas_right);
+        make.right.equalTo(self).offset(-CELL_LEFT_APACE);
+        make.top.bottom.equalTo(self);
+    }];
+}
+#pragma mark -- setup
+- (XYTextField *)textField {
+    if (!_textField) {
+        _textField = [[XYTextField alloc]initWithType:UITextFieldFlight placeHolder:@"请输入航班号"];
+    }
+    return _textField;
+}
 @end
 @implementation CommonTableViewCell04
 @end
