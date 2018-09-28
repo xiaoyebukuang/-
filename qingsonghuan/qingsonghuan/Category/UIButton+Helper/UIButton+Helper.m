@@ -35,12 +35,14 @@
 + (UIButton *)buttonWithImage:(NSString *)image
                         title:(NSString *)title
                   selectTitel:(NSString *)selectTitle
+                   titleColor:(UIColor *)titleColor
                          font:(UIFont *)font{
     UIButton *btn = [UIButton buttonWithType:UIButtonTypeCustom];
     [btn setImage:[UIImage imageNamed:image] forState:UIControlStateNormal];
     [btn setImage:[UIImage imageNamed:image] forState:UIControlStateSelected];
     [btn setTitle:title forState:UIControlStateNormal];
     [btn setTitle:selectTitle forState:UIControlStateSelected];
+    [btn setTintColor:titleColor];
     btn.titleLabel.font = font;
     return btn;
 }

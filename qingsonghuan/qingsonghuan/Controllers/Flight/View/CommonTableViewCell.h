@@ -55,7 +55,10 @@ typedef void(^CommonClickBlock)(id obj);
           commonClickBlock:(CommonClickBlock)clickBlcok;
 @end
 
+
 @interface CommonTableViewCell03 : CommonTableViewCell
+
+
 
 @end
 

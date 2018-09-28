@@ -89,7 +89,7 @@ static NSString * const CommonTableViewCell02ID = @"CommonTableViewCell02ID";
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     NSArray *titleArr = @[@"签到日期:",@"航班号:",@"签到时段:",@"签证信息:",@"字母标识:",@"职务等级:"];
     CommonTableViewCell *cell;
-    __weak __typeof(self)weakSelf = self;
+    WeakSelf;
     if (indexPath.row == 0) {
         cell = (CommonTableViewCell01 *)[tableView dequeueReusableCellWithIdentifier: CommonTableViewCell01ID];
         [(CommonTableViewCell01 *)cell reloadViewWithText:titleArr[indexPath.row] placeHolder:FLIGHT_SIGN_DATE content:self.filterModel.sign_date enabled:NO textFieldType:UITextFieldNormal commonClickBlock:^(id obj) {

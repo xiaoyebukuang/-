@@ -50,7 +50,7 @@ static NSString * const CommonTableViewCell04ID = @"CommonTableViewCell04ID";
     return 8;
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-    NSArray *titleArr = @[@"签到日期:",@"签到时间:",@"航班号:",@"航段信息:",@"签证信息:",@"字母标识:",@"职务等级:",@"留言信息"];
+    NSArray *titleArr = @[@"签到日期:",@"签到时间:",@"航班号:",@"航段信息:",@"签证信息:",@"字母标识:",@"职务等级:",@"留言信息:"];
     CommonTableViewCell *cell;
     __weak __typeof(self)weakSelf = self;
     if (indexPath.row == 0||indexPath.row == 1||indexPath.row == 4||indexPath.row == 5||indexPath.row == 6) {

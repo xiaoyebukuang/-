@@ -27,7 +27,7 @@
         make.height.mas_offset(30);
         make.width.mas_equalTo(70);
     }];
-    self.title.text = @"测试:";
+    self.title.text = @"航班号:";
 }
 - (void)setIndex:(NSInteger)index {
     if (index%2 == 0) {
@@ -61,6 +61,7 @@
         make.left.equalTo(self.title.mas_right);
         make.right.equalTo(self).offset(-CELL_LEFT_APACE);
         make.centerY.equalTo(self);
+        make.height.mas_offset(30);
         make.centerY.equalTo(self.title);
     }];
     [self addSubview:self.control];
@@ -228,6 +229,8 @@ static NSInteger const COMMON_BTN_TAG = 329;
 @interface CommonTableViewCell03()
 
 @property (nonatomic, strong) XYTextField *textField;
+//出差天数
+@property (nonatomic, strong) UIButton *workDayBtn;
 
 @end
 
@@ -235,19 +238,40 @@ static NSInteger const COMMON_BTN_TAG = 329;
 - (void)setupView {
     [super setupView];
     [self addSubview:self.textField];
+    self.textField.backgroundColor = [UIColor redColor];
     [self.textField mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(self.title.mas_right);
         make.right.equalTo(self).offset(-CELL_LEFT_APACE);
-        make.top.bottom.equalTo(self);
+        make.centerY.equalTo(self);
+        make.height.mas_offset(30);
+    }];
+    [self addSubview:self.workDayBtn];
+    [self.workDayBtn mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.right.equalTo(self).offset(-CELL_LEFT_APACE);
+        make.top.equalTo(self.title);
+        make.centerY.equalTo (self);
     }];
 }
 #pragma mark -- setup
 - (XYTextField *)textField {
     if (!_textField) {
-        _textField = [[XYTextField alloc]initWithType:UITextFieldFlight placeHolder:@"请输入航班号"];
+        _textField = [[XYTextField alloc]initWithType:UITextFieldFlight placeHolder:FLIGHT_AIR_NUMBER];
     }
     return _textField;
 }
+- (UIButton *)workDayBtn {
+    if (!_workDayBtn) {
+        _workDayBtn = [UIButton buttonWithTitle:@"出差天数" font:SYSTEM_FONT_15 titleColor:[UIColor color_999999] backgroundImage:@"filter_submit_day"];
+    }
+    return _workDayBtn;
+}
 @end
+
+
+
+
+
+
+
 @implementation CommonTableViewCell04
 @end

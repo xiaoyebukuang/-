@@ -33,8 +33,6 @@ static NSString * const FlightListTableViewCellID = @"FlightListTableViewCellID"
 @property (nonatomic, strong) UIView *footerView;
 
 @property (nonatomic, strong) UITableView *flightTableView;
-//上传
-@property (nonatomic, strong) UIButton *submitBtn;
 //筛选按钮
 @property (nonatomic, strong) UIButton *filterBtn;
 //筛选页面
@@ -53,6 +51,7 @@ static NSString * const FlightListTableViewCellID = @"FlightListTableViewCellID"
     self.title = @"航班列表";
     [self setNavigationBar];
     [self setupView];
+    [self setupData];
 }
 - (void)setNavigationBar {
     UIButton *leftBtn = [UIButton buttonWithImage:@"flight_menu"];
@@ -86,6 +85,9 @@ static NSString * const FlightListTableViewCellID = @"FlightListTableViewCellID"
         make.top.equalTo(self.headerView.mas_bottom);
         make.bottom.equalTo(self.footerView.mas_top);
     }];
+}
+#pragma mark -- request
+- (void)setupData {
     WeakSelf;
     [MJRefreshControl addRefreshControlWithScrollView:self.flightTableView headerBlock:^{
         [weakSelf getListFlight:YES];
@@ -111,8 +113,6 @@ static NSString * const FlightListTableViewCellID = @"FlightListTableViewCellID"
         [MJRefreshControl endRefresh:self.flightTableView];
     }];
 }
-
-
 #pragma mark -- event
 //个人中心菜单
 - (void)leftNavigationBarEvent:(UIButton *)sender {
@@ -167,6 +167,7 @@ static NSString * const FlightListTableViewCellID = @"FlightListTableViewCellID"
     FlightListDetailViewController *detailVC = [[FlightListDetailViewController alloc]init];
     [self.navigationController pushViewController:detailVC animated:YES];
 }
+
 #pragma mark -- setup
 - (FlightHeaderView *)headerView {
     if (!_headerView) {
@@ -178,21 +179,16 @@ static NSString * const FlightListTableViewCellID = @"FlightListTableViewCellID"
     if (!_footerView) {
         UIView *view = [[UIView alloc]init];
         view.backgroundColor = [UIColor color_99D3F8];
-        [view addSubview:self.submitBtn];
-        [self.submitBtn mas_makeConstraints:^(MASConstraintMaker *make) {
+        UIButton *submitBtn = [UIButton buttonWithTitle:@"我要上传" font:SYSTEM_BOLD_FONT(17) titleColor:[UIColor color_84BBDE] backgroundImage:@"flight_submit"];
+        [submitBtn addTarget:self action:@selector(submitBtnEvent:) forControlEvents:UIControlEventTouchUpInside];
+        [view addSubview:submitBtn];
+        [submitBtn mas_makeConstraints:^(MASConstraintMaker *make) {
             make.centerY.equalTo(view);
             make.right.equalTo(view).offset(-20);
         }];
         _footerView = view;
     }
     return _footerView;
-}
-- (UIButton *)submitBtn {
-    if (!_submitBtn) {
-        _submitBtn = [UIButton buttonWithTitle:@"+我要上传" font:SYSTEM_FONT_15 titleColor:[UIColor color_FFFFFF] backgroundImage:@"flight_submit"];
-        [_submitBtn addTarget:self action:@selector(submitBtnEvent:) forControlEvents:UIControlEventTouchUpInside];
-    }
-    return _submitBtn;
 }
 - (UITableView *)flightTableView{
     if (!_flightTableView) {
@@ -210,7 +206,7 @@ static NSString * const FlightListTableViewCellID = @"FlightListTableViewCellID"
 //筛选按钮
 - (UIButton *)filterBtn {
     if (!_filterBtn) {
-        _filterBtn = [UIButton buttonWithImage:@"flight_search" title:@"筛选" selectTitel:@"取消" font:SYSTEM_FONT_17];
+        _filterBtn = [UIButton buttonWithImage:@"flight_search" title:@"筛选" selectTitel:@"取消" titleColor:[UIColor color_FFFFFF] font:SYSTEM_FONT_17];
         _filterBtn.frame = CGRectMake(0, 0, 60, 40);
         [_filterBtn addTarget:self action:@selector(rightBtnNavigationBarEvent:) forControlEvents:UIControlEventTouchUpInside];
     }

@@ -36,4 +36,6 @@
 
 + (UIColor *)color_84BBDE;
 
++ (UIColor *)color_999999;
+
 @end

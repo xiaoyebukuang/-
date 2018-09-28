@@ -49,6 +49,7 @@ static CGFloat const LOGIN_WIDTH_SIZE = 50.0;
         make.left.equalTo(self.logoImageV.mas_right);
         make.right.equalTo(self).offset(-CELL_LEFT_APACE);
         make.centerY.equalTo(self);
+        make.height.mas_offset(30);
     }];
     
     [self addSubview:self.control];
