@@ -31,6 +31,7 @@ static NSString * const RegisterTableViewCell04ID = @"RegisterTableViewCell04ID"
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.title = @"注册";
     self.registerModel = [[RegisterModel alloc]init];
     [self setupView];
 }

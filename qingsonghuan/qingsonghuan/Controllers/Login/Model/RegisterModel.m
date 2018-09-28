@@ -50,4 +50,13 @@
     }
     return des;
 }
+- (NSString *)checkLogin {
+    NSString *des;
+    if (![NSString validatePhoneNumber:self.phone]) {
+        des = @"请填写完整的手机号";
+    } else if ([NSString isEmpty: self.password]) {
+        des = @"请输入密码";
+    }
+    return des;
+}
 @end

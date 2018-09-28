@@ -46,7 +46,6 @@
 		65F870F1215B7F3600DD1F59 /* FlightListTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 65F870F0215B7F3600DD1F59 /* FlightListTableViewCell.m */; };
 		65F870F7215B90DF00DD1F59 /* FlightFilterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 65F870F6215B90DF00DD1F59 /* FlightFilterViewController.m */; };
 		65F870FD215BB8E500DD1F59 /* CommonTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 65F870FC215BB8E500DD1F59 /* CommonTableViewCell.m */; };
-		65F87100215BF3B400DD1F59 /* XYTextFieldView.m in Sources */ = {isa = PBXBuildFile; fileRef = 65F870FF215BF3B400DD1F59 /* XYTextFieldView.m */; };
 		65F87104215C874800DD1F59 /* FlightFilterModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 65F87103215C874800DD1F59 /* FlightFilterModel.m */; };
 		65F87110215CC5FB00DD1F59 /* FlightListDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 65F8710F215CC5FB00DD1F59 /* FlightListDetailViewController.m */; };
 		65F87113215CC6E600DD1F59 /* FlightListDetailTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 65F87112215CC6E600DD1F59 /* FlightListDetailTableViewCell.m */; };
@@ -135,8 +134,6 @@
 		65F870F6215B90DF00DD1F59 /* FlightFilterViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FlightFilterViewController.m; sourceTree = "<group>"; };
 		65F870FB215BB8E500DD1F59 /* CommonTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CommonTableViewCell.h; sourceTree = "<group>"; };
 		65F870FC215BB8E500DD1F59 /* CommonTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CommonTableViewCell.m; sourceTree = "<group>"; };
-		65F870FE215BF3B400DD1F59 /* XYTextFieldView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XYTextFieldView.h; sourceTree = "<group>"; };
-		65F870FF215BF3B400DD1F59 /* XYTextFieldView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XYTextFieldView.m; sourceTree = "<group>"; };
 		65F87102215C874800DD1F59 /* FlightFilterModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FlightFilterModel.h; sourceTree = "<group>"; };
 		65F87103215C874800DD1F59 /* FlightFilterModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FlightFilterModel.m; sourceTree = "<group>"; };
 		65F8710E215CC5FB00DD1F59 /* FlightListDetailViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FlightListDetailViewController.h; sourceTree = "<group>"; };
@@ -392,8 +389,6 @@
 		65D0CA7921521ECD00A3DB66 /* CommonView */ = {
 			isa = PBXGroup;
 			children = (
-				65F870FE215BF3B400DD1F59 /* XYTextFieldView.h */,
-				65F870FF215BF3B400DD1F59 /* XYTextFieldView.m */,
 				65D0CA7D21521F7600A3DB66 /* XYTextField.h */,
 				65D0CA7E21521F7600A3DB66 /* XYTextField.m */,
 				65D0CA832153439F00A3DB66 /* XYLineView.h */,
@@ -599,7 +594,6 @@
 				65D0CA6C2151EEE000A3DB66 /* BaseViewController.m in Sources */,
 				652C0D21215A351D00BD03FC /* RequestPath.m in Sources */,
 				65F87104215C874800DD1F59 /* FlightFilterModel.m in Sources */,
-				65F87100215BF3B400DD1F59 /* XYTextFieldView.m in Sources */,
 				652FCBF0215D35BA009F41E8 /* XYErrorView.m in Sources */,
 				65D0CA662151ECEE00A3DB66 /* NSString+Helper.m in Sources */,
 				652FCBF5215D3C99009F41E8 /* MJRefreshControl.m in Sources */,

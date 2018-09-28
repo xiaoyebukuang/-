@@ -36,5 +36,6 @@
 
 - (NSString *)checkReg;
 - (NSString *)checkFroget;
+- (NSString *)checkLogin;
 
 @end
