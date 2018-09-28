@@ -21,6 +21,8 @@
 		652FCBFF215D3D63009F41E8 /* XYPickerHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 652FCBFE215D3D63009F41E8 /* XYPickerHeaderView.m */; };
 		652FCC02215DC3E6009F41E8 /* FlightHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 652FCC01215DC3E6009F41E8 /* FlightHeaderView.m */; };
 		652FCC05215DD201009F41E8 /* FlightListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 652FCC04215DD201009F41E8 /* FlightListModel.m */; };
+		652FCC09215DF5B3009F41E8 /* RegisterTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 652FCC08215DF5B3009F41E8 /* RegisterTableViewCell.m */; };
+		652FCC0F215E089B009F41E8 /* RegisterModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 652FCC0E215E089B009F41E8 /* RegisterModel.m */; };
 		65D0CA3F214F9AFD00A3DB66 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 65D0CA3E214F9AFD00A3DB66 /* AppDelegate.m */; };
 		65D0CA45214F9AFD00A3DB66 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 65D0CA43214F9AFD00A3DB66 /* Main.storyboard */; };
 		65D0CA47214F9B0000A3DB66 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 65D0CA46214F9B0000A3DB66 /* Assets.xcassets */; };
@@ -81,6 +83,10 @@
 		652FCC01215DC3E6009F41E8 /* FlightHeaderView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FlightHeaderView.m; sourceTree = "<group>"; };
 		652FCC03215DD201009F41E8 /* FlightListModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FlightListModel.h; sourceTree = "<group>"; };
 		652FCC04215DD201009F41E8 /* FlightListModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FlightListModel.m; sourceTree = "<group>"; };
+		652FCC07215DF5B3009F41E8 /* RegisterTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RegisterTableViewCell.h; sourceTree = "<group>"; };
+		652FCC08215DF5B3009F41E8 /* RegisterTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RegisterTableViewCell.m; sourceTree = "<group>"; };
+		652FCC0D215E089B009F41E8 /* RegisterModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RegisterModel.h; sourceTree = "<group>"; };
+		652FCC0E215E089B009F41E8 /* RegisterModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RegisterModel.m; sourceTree = "<group>"; };
 		65D0CA3A214F9AFD00A3DB66 /* qingsonghuan.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = qingsonghuan.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		65D0CA3D214F9AFD00A3DB66 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		65D0CA3E214F9AFD00A3DB66 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -198,6 +204,8 @@
 				652C0D25215A39FD00BD03FC /* RegNeedInfoModel.m */,
 				652C0D27215A871900BD03FC /* SendCodeModel.h */,
 				652C0D28215A871900BD03FC /* SendCodeModel.m */,
+				652FCC0D215E089B009F41E8 /* RegisterModel.h */,
+				652FCC0E215E089B009F41E8 /* RegisterModel.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -231,6 +239,15 @@
 				652FCBFA215D3D3E009F41E8 /* XYPickerViewController.m */,
 			);
 			path = PickerTool;
+			sourceTree = "<group>";
+		};
+		652FCC06215DF59F009F41E8 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				652FCC07215DF5B3009F41E8 /* RegisterTableViewCell.h */,
+				652FCC08215DF5B3009F41E8 /* RegisterTableViewCell.m */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 		65D0CA31214F9AFC00A3DB66 = {
@@ -360,6 +377,7 @@
 		65D0CA712151F07100A3DB66 /* Login */ = {
 			isa = PBXGroup;
 			children = (
+				652FCC06215DF59F009F41E8 /* View */,
 				652C0D23215A399700BD03FC /* Model */,
 				65D0CA722151F08200A3DB66 /* LoginViewController.h */,
 				65D0CA732151F08200A3DB66 /* LoginViewController.m */,
@@ -603,11 +621,13 @@
 				65D0CA98215489F700A3DB66 /* BaseMultiViewController.m in Sources */,
 				65F870FD215BB8E500DD1F59 /* CommonTableViewCell.m in Sources */,
 				652FCBFF215D3D63009F41E8 /* XYPickerHeaderView.m in Sources */,
+				652FCC0F215E089B009F41E8 /* RegisterModel.m in Sources */,
 				652C0D192159CC3F00BD03FC /* UserModel.m in Sources */,
 				65D0CA4D214F9B0000A3DB66 /* main.m in Sources */,
 				652C0D112158228300BD03FC /* XYNetworking.m in Sources */,
 				65D0CA3F214F9AFD00A3DB66 /* AppDelegate.m in Sources */,
 				65D0CA6F2151EF0B00A3DB66 /* CustomNavigationViewController.m in Sources */,
+				652FCC09215DF5B3009F41E8 /* RegisterTableViewCell.m in Sources */,
 				65F87110215CC5FB00DD1F59 /* FlightListDetailViewController.m in Sources */,
 				652C0D29215A871900BD03FC /* SendCodeModel.m in Sources */,
 				652C0D26215A39FD00BD03FC /* RegNeedInfoModel.m in Sources */,

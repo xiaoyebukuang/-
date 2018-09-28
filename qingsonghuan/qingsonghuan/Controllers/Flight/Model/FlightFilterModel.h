@@ -11,7 +11,7 @@
 @interface FlightFilterModel : NSObject
 
 //签到日期
-@property (nonatomic, copy) NSString *date;
+@property (nonatomic, copy) NSString *sign_date;
 //航班号
 @property (nonatomic, copy) NSString *airLine;
 //签到时段

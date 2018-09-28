@@ -7,36 +7,23 @@
 //
 
 #import "ForgetViewController.h"
-#import "SendCodeModel.h"
-#import "XYTextFieldView.h"
+#import "RegisterTableViewCell.h"
+#import "RegisterModel.h"
+
+static NSString * const RegisterTableViewCell01ID = @"RegisterTableViewCell01ID";
+static NSString * const RegisterTableViewCell03ID = @"RegisterTableViewCell03ID";
+static NSString * const RegisterTableViewCell04ID = @"RegisterTableViewCell04ID";
+
 /**
  忘记密码——找回密码
  */
-@interface ForgetViewController ()
-/**
- 电话号码
- */
-@property (nonatomic, strong) XYTextFieldView *telTFieldView;
-/**
- 密码
- */
-@property (nonatomic, strong) XYTextFieldView *pwTFieldView;
-/**
- 确认密码
- */
-@property (nonatomic, strong) XYTextFieldView *againPwTFieldView;
-/**
- 验证码
- */
-@property (nonatomic, strong) XYTextFieldView *codeTFieldView;
+@interface ForgetViewController ()<UITableViewDelegate, UITableViewDataSource>
 
-/**
- 重置密码
- */
-@property (nonatomic, strong) UIButton *resetBtn;
+@property (nonatomic, strong) UITableView *forgetTableV;
 
-//验证码Model
-@property (nonatomic, strong) SendCodeModel *sendCodeModel;
+@property (nonatomic, strong) UIView *forgetFooterView;
+
+@property (nonatomic, strong) RegisterModel *registerModel;
 
 @end
 
@@ -45,76 +32,28 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.title = @"找回密码";
+    self.registerModel = [[RegisterModel alloc]init];
     [self setupView];
 }
 - (void)setupView {
-    [self.view addSubview:self.telTFieldView];
-    [self.telTFieldView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.equalTo(self.view).offset(20);
-        make.right.equalTo(self.view).offset(-20);
-        make.height.mas_equalTo(50);
-        make.top.equalTo(self.view).offset(30);
+    [self.view addSubview:self.forgetTableV];
+    [self.forgetTableV mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.edges.equalTo(self.view);
     }];
-    [self.view addSubview:self.pwTFieldView];
-    [self.pwTFieldView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.right.height.mas_equalTo(self.telTFieldView);
-        make.top.equalTo(self.telTFieldView.mas_bottom);
-    }];
-    
-    [self.view addSubview:self.againPwTFieldView];
-    [self.againPwTFieldView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.right.height.mas_equalTo(self.telTFieldView);
-        make.top.equalTo(self.pwTFieldView.mas_bottom);
-    }];
-    
-    [self.view addSubview:self.codeTFieldView];
-    [self.codeTFieldView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.right.height.mas_equalTo(self.telTFieldView);
-        make.top.equalTo(self.againPwTFieldView.mas_bottom);
-    }];
-    
-    [self.view addSubview:self.resetBtn];
-    [self.resetBtn mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.equalTo(self.view).offset(50);
-        make.right.equalTo(self.view).offset(-50);
-        make.height.mas_offset(50);
-        make.top.equalTo(self.codeTFieldView.mas_bottom).offset(60);
-    }];
-    __weak __typeof(self)weakSelf = self;
-    self.codeTFieldView.selectBlock = ^{
-        __strong typeof(weakSelf) strongSelf = weakSelf;
-        [RequestPath user_sendCodeView:strongSelf.view phone:strongSelf.telTFieldView.text success:^(NSDictionary *obj, NSInteger code, NSString *mes) {
-            [strongSelf.codeTFieldView startTimer];
-            strongSelf.sendCodeModel = [[SendCodeModel alloc]initWithDic:(NSDictionary *)obj];
-        } failure:^(ErrorType errorType, NSString *mes) {
-            
-        }];
-    };
 }
 #pragma mark -- event
 - (void)resetBtnEvent:(UIButton *)sender {
-    NSString *des;
-    if (![NSString validatePhoneNumber:self.telTFieldView.text]) {
-        des = @"请填写完整的手机号";
-    } else if ([NSString isEmpty: self.pwTFieldView.text]) {
-        des = @"请输入密码";
-    } else if ([NSString isEmpty: self.againPwTFieldView.text]) {
-        des = @"请再次输入密码";
-    } else if (![self.pwTFieldView.text isEqualToString:self.againPwTFieldView.text]) {
-        des = @"密码和确认密码输入不一致";
-    } else if ([NSString isEmpty: self.codeTFieldView.text]) {
-        des = @"请输入验证码";
-    }
+    NSString *des = [self.registerModel checkFroget];
     if (des) {
         [MBProgressHUD showError:des ToView:self.view];
         return;
     }
     [self.view endEditing:YES];
-    NSDictionary *parma = @{@"phone":self.telTFieldView.text,
-                            @"password":self.pwTFieldView.text,
-                            @"password_confirm":self.againPwTFieldView.text,
-                            @"code":self.codeTFieldView.text,
-                            @"iden":[NSString safe_string:self.sendCodeModel.iden]
+    NSDictionary *parma = @{@"phone":self.registerModel.phone,
+                            @"password":self.registerModel.password,
+                            @"password_confirm":self.registerModel.password_confirm,
+                            @"code":self.registerModel.code,
+                            @"iden":[NSString safe_string:self.registerModel.sendCodeModel.iden]
                             };
     [MBProgressHUD showToView:self.view];
     [RequestPath user_retrieveParam:parma success:^(id obj, NSInteger code, NSString *mes) {
@@ -125,41 +64,87 @@
         [MBProgressHUD showError:mes ToView:self.view];
     }];
 }
-
+#pragma mark -- UITableViewDelegate, UITableViewDataSource
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
+    return 4;
+}
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
+    RegisterTableViewCell *cell;
+    NSArray *placeholderArr = @[LOGIN_TEL_PLACEHOLDER,LOGIN_PSW_PLACEHOLDER,LOGIN_AGAIN_PSW_PLACEHOLDER,LOGIN_CODE_PLACEHOLDER];
+    NSArray *logoArr = @[@"login_tel",@"login_psw",@"login_psw",@"login_code"];
+    NSArray *tieldTypeArr = @[@(UITextFieldTel),@(UITextFieldPassword),@(UITextFieldPassword),@(UITextFieldCode)];
+    NSArray *contentArr = @[[NSString safe_string:self.registerModel.phone],
+                            [NSString safe_string:self.registerModel.password],
+                            [NSString safe_string:self.registerModel.password_confirm],
+                            [NSString safe_string:self.registerModel.code]
+                            ];
+    NSString *cellID;
+    if (indexPath.row == 0) {
+        cellID = RegisterTableViewCell01ID;
+    } else if (indexPath.row == 1 || indexPath.row == 2) {
+        cellID = RegisterTableViewCell03ID;
+    } else {
+        cellID = RegisterTableViewCell04ID;
+    }
+    cell = [tableView dequeueReusableCellWithIdentifier: cellID];
+    WeakSelf;
+    [cell reloadData:contentArr[indexPath.row] logo:logoArr[indexPath.row] placeholder:placeholderArr[indexPath.row] textFieldType:[NSString safe_integer:tieldTypeArr[indexPath.row]] registerTVBlock:^(NSString *obj) {
+        if (indexPath.row == 0) {
+            weakSelf.registerModel.phone = obj;
+        } else if (indexPath.row == 1) {
+            weakSelf.registerModel.password = obj;
+        } else if (indexPath.row == 2) {
+            weakSelf.registerModel.password_confirm = obj;
+        } else if (indexPath.row == 3) {
+            weakSelf.registerModel.code = obj;
+        }
+    }];
+    if (indexPath.row == 3) {
+        __weak RegisterTableViewCell04 *weakCell = (RegisterTableViewCell04 *)cell;
+        weakCell.registerTimeBlock = ^{
+            [RequestPath user_sendCodeView:weakSelf.view phone:weakSelf.registerModel.phone success:^(NSDictionary *obj, NSInteger code, NSString *mes) {
+                [weakCell startTimer];
+                weakSelf.registerModel.sendCodeModel = [[SendCodeModel alloc]initWithDic:obj];
+            } failure:^(ErrorType errorType, NSString *mes) {
+                
+            }];
+        };
+    }
+    return cell;
+}
 #pragma mark -- setup
-- (XYTextFieldView *)telTFieldView {
-    if (!_telTFieldView) {
-        _telTFieldView = [[XYTextFieldView alloc]initWithLeftType:UITextFieldTel logoImageV:@"login_tel" placeHolder:LOGIN_TEL_PLACEHOLDER];
+- (UITableView *)forgetTableV {
+    if (!_forgetTableV) {
+        _forgetTableV = [[UITableView alloc] init];
+        _forgetTableV.delegate = self;
+        _forgetTableV.dataSource = self;
+        _forgetTableV.showsVerticalScrollIndicator = NO;
+        _forgetTableV.showsHorizontalScrollIndicator = NO;
+        _forgetTableV.bounces = NO;
+        _forgetTableV.rowHeight = 50;
+        _forgetTableV.tableFooterView = self.forgetFooterView;
+        _forgetTableV.backgroundColor = [UIColor clearColor];
+        _forgetTableV.separatorStyle = UITableViewCellSeparatorStyleNone;
+        [_forgetTableV registerClass:[RegisterTableViewCell01 class] forCellReuseIdentifier:RegisterTableViewCell01ID];
+        [_forgetTableV registerClass:[RegisterTableViewCell03 class] forCellReuseIdentifier:RegisterTableViewCell03ID];
+        [_forgetTableV registerClass:[RegisterTableViewCell04 class] forCellReuseIdentifier:RegisterTableViewCell04ID];
     }
-    return _telTFieldView;
+    return _forgetTableV;
 }
-
-- (XYTextFieldView *)pwTFieldView {
-    if (!_pwTFieldView) {
-        _pwTFieldView = [[XYTextFieldView alloc]initWithLeftRightType:UITextFieldPassword logoImageV:@"login_psw" arrowImageVNormal:@"login_eye_open" arrowImageVSelect:@"login_eye_close" placeHolder:LOGIN_PSW_PLACEHOLDER];
+- (UIView *)forgetFooterView {
+    if (!_forgetFooterView) {
+        UIView *view = [[UIView alloc]initWithFrame:CGRectMake(0, 0, MAIN_SCREEN_WIDTH, 110)];
+        view.backgroundColor = [UIColor color_FFFFFF];
+        UIButton *resetBtn = [UIButton buttonWithTitle:@"确认重置" font:SYSTEM_FONT_17 titleColor:[UIColor color_FFFFFF] backgroundImage:@"login_btn_bg"];
+        [resetBtn addTarget:self action:@selector(resetBtnEvent:) forControlEvents:UIControlEventTouchUpInside];
+        [view addSubview:resetBtn];
+        [resetBtn mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.centerY.equalTo(view);
+            make.centerX.equalTo(view);
+        }];
+        _forgetFooterView = view;
     }
-    return _pwTFieldView;
-}
-
-- (XYTextFieldView *)againPwTFieldView {
-    if (!_againPwTFieldView) {
-        _againPwTFieldView = [[XYTextFieldView alloc]initWithLeftRightType:UITextFieldPassword logoImageV:@"login_psw" arrowImageVNormal:@"login_eye_open" arrowImageVSelect:@"login_eye_close" placeHolder:LOGIN_AGAIN_PSW_PLACEHOLDER];
-    }
-    return _againPwTFieldView;
-}
-- (XYTextFieldView *)codeTFieldView {
-    if (!_codeTFieldView) {
-        _codeTFieldView = [[XYTextFieldView alloc]initWithCodeType:UITextFieldCode logoImageV:@"login_code" placeHolder:LOGIN_CODE_PLACEHOLDER];
-    }
-    return _codeTFieldView;
-}
-
-- (UIButton *)resetBtn {
-    if (!_resetBtn) {
-        _resetBtn = [UIButton buttonWithTitle:@"确认重置" font:SYSTEM_FONT_17 titleColor:[UIColor color_FFFFFF] backgroundImage:@"login_btn_bg"];
-        [_resetBtn addTarget:self action:@selector(resetBtnEvent:) forControlEvents:UIControlEventTouchUpInside];
-    }
-    return _resetBtn;
+    return _forgetFooterView;
 }
 
 @end

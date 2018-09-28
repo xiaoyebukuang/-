@@ -92,13 +92,13 @@ static NSString * const CommonTableViewCell02ID = @"CommonTableViewCell02ID";
     __weak __typeof(self)weakSelf = self;
     if (indexPath.row == 0) {
         cell = (CommonTableViewCell01 *)[tableView dequeueReusableCellWithIdentifier: CommonTableViewCell01ID];
-        [(CommonTableViewCell01 *)cell reloadViewWithText:titleArr[indexPath.row] placeHolder:FLIGHT_SIGN_DATE content:self.filterModel.date enabled:NO textFieldType:UITextFieldNormal commonClickBlock:^(id obj) {
+        [(CommonTableViewCell01 *)cell reloadViewWithText:titleArr[indexPath.row] placeHolder:FLIGHT_SIGN_DATE content:self.filterModel.sign_date enabled:NO textFieldType:UITextFieldNormal commonClickBlock:^(id obj) {
             [weakSelf.view endEditing:YES];
             XYPickerDateViewController *dateVC = [[XYPickerDateViewController alloc]init];
             dateVC.pickerMode = UIDatePickerModeDate;
             [dateVC reloadViewWithPickerDateBlock:^(NSString *date, BOOL edit) {
                 if (edit) {
-                    weakSelf.filterModel.date = date;
+                    weakSelf.filterModel.sign_date = date;
                     ((CommonTableViewCell01 *)cell).textField.text = date;
                 }
             }];

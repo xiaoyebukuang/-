@@ -13,7 +13,7 @@
 - (instancetype)initWithModel:(FlightFilterModel *)filterModel {
     self = [super init];
     if (self) {
-        self.date = filterModel.date;
+        self.sign_date = filterModel.sign_date;
         self.airLine = filterModel.airLine;
         self.signModel = filterModel.signModel;
         self.visaModel = filterModel.visaModel;
