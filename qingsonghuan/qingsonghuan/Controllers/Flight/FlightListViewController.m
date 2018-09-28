@@ -8,37 +8,42 @@
 
 #import "FlightListViewController.h"
 #import "FlightListTableViewCell.h"
+//筛选
 #import "FlightFilterViewController.h"
+//航班详情
 #import "FlightListDetailViewController.h"
+//上传航班
 #import "FlightSubmitViewController.h"
+//头部view
+#import "FlightHeaderView.h"
 
+#import "MJRefreshControl.h"
 #import "RegNeedInfoModel.h"
 #import "FlightFilterModel.h"
+
+
 static NSString * const FlightListTableViewCellID = @"FlightListTableViewCellID";
 /**
  航班列表
  */
 @interface FlightListViewController ()<UITableViewDelegate, UITableViewDataSource>
 //头部view
-@property (nonatomic, strong) UIView *headerView;
-//红点提示
-@property (nonatomic, strong) UIImageView *tips;
-//站内信
-@property (nonatomic, strong) UIButton *mailBtn;
-
-@property (nonatomic, strong) UITableView *flightTableView;
+@property (nonatomic, strong) FlightHeaderView *headerView;
 //尾部view
 @property (nonatomic, strong) UIView *footerView;
+
+@property (nonatomic, strong) UITableView *flightTableView;
 //上传
 @property (nonatomic, strong) UIButton *submitBtn;
-
+//筛选按钮
+@property (nonatomic, strong) UIButton *filterBtn;
 //筛选页面
 @property (nonatomic, strong) FlightFilterViewController *filterVC;
 
 //数据源
 @property (nonatomic, strong) FlightFilterModel *filterModel;
 
-@property (nonatomic, strong) UIButton *filterBtn;
+@property (nonatomic, assign) BOOL isRequest;
 @end
 
 @implementation FlightListViewController
@@ -48,6 +53,20 @@ static NSString * const FlightListTableViewCellID = @"FlightListTableViewCellID"
     self.title = @"航班列表";
     [self setNavigationBar];
     [self setupView];
+}
+- (void)setNavigationBar {
+    UIButton *leftBtn = [UIButton buttonWithImage:@"flight_menu"];
+    leftBtn.frame = CGRectMake(0, 0, 40, 40);
+    [leftBtn addTarget:self action:@selector(leftNavigationBarEvent:) forControlEvents:UIControlEventTouchUpInside];
+    UIBarButtonItem *leftButtonItem = [[UIBarButtonItem alloc]initWithCustomView:leftBtn];
+    UIBarButtonItem *leftNagetiveSpacer = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemFixedSpace target:nil action:nil];
+    leftNagetiveSpacer.width = -10;
+    self.navigationItem.leftBarButtonItems = @[leftNagetiveSpacer, leftButtonItem];
+    
+    UIBarButtonItem *rightButtonItem = [[UIBarButtonItem alloc]initWithCustomView:self.filterBtn];
+    UIBarButtonItem *rightNagetiveSpacer = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemFixedSpace target:nil action:nil];
+    rightNagetiveSpacer.width = -10;
+    self.navigationItem.rightBarButtonItems = @[rightButtonItem, rightNagetiveSpacer];
 }
 - (void)setupView {
     [self.view addSubview:self.headerView];
@@ -67,21 +86,32 @@ static NSString * const FlightListTableViewCellID = @"FlightListTableViewCellID"
         make.top.equalTo(self.headerView.mas_bottom);
         make.bottom.equalTo(self.footerView.mas_top);
     }];
+    WeakSelf;
+    [MJRefreshControl addRefreshControlWithScrollView:self.flightTableView headerBlock:^{
+        [weakSelf getListFlight:YES];
+    } footerBlock:^{
+        [weakSelf getListFlight:NO];
+    }];
+    self.headerView.flightHeaderBlock = ^{
+        //站内信
+        NSLog(@"站内信");
+    };
 }
-- (void)setNavigationBar {
-    UIButton *leftBtn = [UIButton buttonWithImage:@"flight_menu"];
-    leftBtn.frame = CGRectMake(0, 0, 40, 40);
-    [leftBtn addTarget:self action:@selector(leftNavigationBarEvent:) forControlEvents:UIControlEventTouchUpInside];
-    UIBarButtonItem *leftButtonItem = [[UIBarButtonItem alloc]initWithCustomView:leftBtn];
-    UIBarButtonItem *leftNagetiveSpacer = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemFixedSpace target:nil action:nil];
-    leftNagetiveSpacer.width = -10;
-    self.navigationItem.leftBarButtonItems = @[leftNagetiveSpacer, leftButtonItem];
-    
-    UIBarButtonItem *rightButtonItem = [[UIBarButtonItem alloc]initWithCustomView:self.filterBtn];
-    UIBarButtonItem *rightNagetiveSpacer = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemFixedSpace target:nil action:nil];
-    rightNagetiveSpacer.width = -10;
-    self.navigationItem.rightBarButtonItems = @[rightButtonItem, rightNagetiveSpacer];
+- (void)getListFlight:(BOOL)refresh {
+    if (self.isRequest) {
+        return;
+    }
+    self.isRequest = YES;
+    NSDictionary *param;
+    [RequestPath flight_getListFlightParam:param success:^(NSDictionary *obj, NSInteger code, NSString *mes) {
+        self.isRequest = NO;
+        [MJRefreshControl endRefresh:self.flightTableView];
+    } failure:^(ErrorType errorType, NSString *mes) {
+        self.isRequest = NO;
+        [MJRefreshControl endRefresh:self.flightTableView];
+    }];
 }
+
 
 #pragma mark -- event
 //个人中心菜单
@@ -117,17 +147,12 @@ static NSString * const FlightListTableViewCellID = @"FlightListTableViewCellID"
     [self.view addSubview:self.filterVC.view];
     [self.filterVC show];
 }
-//站内信
-- (void)mailBtnEvent:(UIButton *)sender {
-    NSLog(@"站内信");
-}
 //我要上传
 - (void)submitBtnEvent:(UIButton *)sender {
     FlightSubmitViewController *submitVC = [[FlightSubmitViewController alloc]init];
     [self.navigationController pushViewController:submitVC animated:YES];
 }
 #pragma mark -- UITableViewDelegate, UITableViewDataSource
-
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     return 10;
 }
@@ -143,84 +168,11 @@ static NSString * const FlightListTableViewCellID = @"FlightListTableViewCellID"
     [self.navigationController pushViewController:detailVC animated:YES];
 }
 #pragma mark -- setup
-- (UIView *)headerView {
+- (FlightHeaderView *)headerView {
     if (!_headerView) {
-        UIView *head = [[UIView alloc]init];
-        head.backgroundColor = [UIColor color_FFFFFF];
-        UIImageView *logo = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"flight_logo"]];
-        [head addSubview:logo];
-        [logo mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.top.equalTo(head).offset(30);
-            make.left.equalTo(head).offset(30);
-        }];
-        
-        UIImageView *detail = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"flight_logo_des"]];
-        [head addSubview:detail];
-        [detail mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.top.equalTo(logo.mas_bottom).offset(15);
-            make.centerX.equalTo(logo);
-        }];
-        
-        UIView *titleView = [[UIView alloc]init];
-        [head addSubview:titleView];
-        [titleView mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.bottom.left.width.equalTo(head);
-            make.height.mas_equalTo(35);
-        }];
-        
-        [head addSubview:self.mailBtn];
-        [self.mailBtn mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.right.equalTo(head).offset(-30);
-            make.centerY.equalTo(logo);
-        }];
-        
-        [self.mailBtn addSubview:self.tips];
-        [self.tips mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.centerX.equalTo(self.mailBtn).multipliedBy(2.0);
-            make.centerY.equalTo(self.mailBtn).multipliedBy(0.01);
-        }];
-        
-        UILabel *mailTitle = [[UILabel alloc]initWithText:@"站内信" font:SYSTEM_FONT_15 textColor:[UIColor color_2ECB87]];
-        [head addSubview:mailTitle];
-        [mailTitle mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.centerX.equalTo(self.mailBtn);
-            make.centerY.equalTo(detail);
-        }];
-        NSArray *titles = @[@"签到日期",@"签到时间",@"航班号",@"职位等级",@"字母标识",@"站内信"];
-        CGFloat width = MAIN_SCREEN_WIDTH/titles.count;
-        for (int i = 0; i < titles.count; i ++) {
-            UILabel *title = [[UILabel alloc]initWithText:titles[i] font:SYSTEM_FONT_13 textColor:[UIColor color_666666]];
-            title.textAlignment = NSTextAlignmentCenter;
-            [title sizeToFit];
-            [titleView addSubview:title];
-            [title mas_makeConstraints:^(MASConstraintMaker *make) {
-                make.centerY.equalTo(titleView);
-                make.left.equalTo(titleView).offset(i*width);
-                make.width.mas_equalTo(width);
-            }];
-        }
-        
-        UIImageView *line = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"flight_line"]];
-        [head addSubview:line];
-        [line mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.left.right.bottom.equalTo(head);
-        }];
-        _headerView = head;
+        _headerView = [[FlightHeaderView alloc]init];
     }
     return _headerView;
-}
-- (UIButton *)mailBtn {
-    if (!_mailBtn) {
-        _mailBtn = [UIButton buttonWithImage:@"flight_mail"];
-        [_mailBtn addTarget:self action:@selector(mailBtnEvent:) forControlEvents:UIControlEventTouchUpInside];
-    }
-    return _mailBtn;
-}
-- (UIImageView *)tips {
-    if (!_tips) {
-        _tips = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"flight_tips"]];
-    }
-    return _tips;
 }
 - (UIView *)footerView {
     if (!_footerView) {
@@ -255,7 +207,6 @@ static NSString * const FlightListTableViewCellID = @"FlightListTableViewCellID"
     }
     return _flightTableView;
 }
-
 //筛选按钮
 - (UIButton *)filterBtn {
     if (!_filterBtn) {

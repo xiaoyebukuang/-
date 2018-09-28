@@ -34,6 +34,10 @@
 + (NSInteger)safe_integer:(id)obj {
     return [NSString safe_string:obj].integerValue;
 }
+/** 返回bool型 */
++ (BOOL)safe_bool:(id)obj {
+    return [NSString safe_string:obj].boolValue;
+}
 /** 验证手机号码及固定电话 */
 + (BOOL)validatePhoneNumber:(NSString *)mobileNum {
     /**

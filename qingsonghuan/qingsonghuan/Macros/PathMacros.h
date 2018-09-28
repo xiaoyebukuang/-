@@ -21,7 +21,6 @@
 #define WeakSelf                    __weak typeof(self) weakSelf = self;
 //变量weak
 #define WeakObj(o)                  __weak typeof(o) o##Weak = o;
-#define WeakObj(o)                   autoreleasepool{} __weak typeof(o) o##Weak = o;
 
 
 

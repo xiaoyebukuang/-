@@ -45,12 +45,14 @@
                  param:(NSDictionary *)param
                success:(void (^)(NSDictionary *obj, NSInteger code, NSString *mes))success
                failure:(void (^)(ErrorType errorType, NSString *mes))failure;
+
+
 /**
- 添加航班信息页面 所需下拉框（签证，字母，，职务等级）
+ 获取航段列表
  */
-+ (void)flight_dropdownView:(UIView *)view
-                    success:(void (^)(NSDictionary *obj, NSInteger code, NSString *mes))success
-                    failure:(void (^)(ErrorType errorType, NSString *mes))failure;
++ (void)flight_getListFlightParam:(NSDictionary *)param
+                          success:(void (^)(NSDictionary *obj, NSInteger code, NSString *mes))success
+                          failure:(void (^)(ErrorType errorType, NSString *mes))failure;
 
 
 

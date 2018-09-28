@@ -20,6 +20,8 @@
 + (float)safe_float:(id)obj;
 /** 返回intefer型 */
 + (NSInteger)safe_integer:(id)obj;
+/** 返回bool型 */
++ (BOOL)safe_bool:(id)obj;
 /** 验证手机号码及固定电话 */
 + (BOOL)validatePhoneNumber:(NSString *)mobileNum;
 /** 判断字符串是否为空 */
