@@ -106,8 +106,8 @@ static NSString * const CommonTableViewCell02ID = @"CommonTableViewCell02ID";
         }];
     } else if (indexPath.row == 1) {
         cell = (CommonTableViewCell01 *)[tableView dequeueReusableCellWithIdentifier: CommonTableViewCell01ID];
-        [(CommonTableViewCell01 *)cell reloadViewWithText:titleArr[indexPath.row] placeHolder:FLIGHT_AIR_NUMBER content:self.filterModel.airLine enabled:YES textFieldType:UITextFieldFlight commonClickBlock:^(id obj) {
-            weakSelf.filterModel.airLine = (NSString *)obj;
+        [(CommonTableViewCell01 *)cell reloadViewWithText:titleArr[indexPath.row] placeHolder:FLIGHT_AIR_NUMBER content:self.filterModel.airline_number enabled:YES textFieldType:UITextFieldFlight commonClickBlock:^(id obj) {
+            weakSelf.filterModel.airline_number = (NSString *)obj;
         }];
     } else {
         id obj;

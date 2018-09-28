@@ -20,6 +20,7 @@
 #import "MJRefreshControl.h"
 #import "RegNeedInfoModel.h"
 #import "FlightFilterModel.h"
+#import "FlightListModel.h"
 
 
 static NSString * const FlightListTableViewCellID = @"FlightListTableViewCellID";
@@ -38,8 +39,10 @@ static NSString * const FlightListTableViewCellID = @"FlightListTableViewCellID"
 //筛选页面
 @property (nonatomic, strong) FlightFilterViewController *filterVC;
 
-//数据源
-@property (nonatomic, strong) FlightFilterModel *filterModel;
+//筛选数据
+@property (nonatomic, strong) FlightFilterModel *flightFilterModel;
+//源数据
+@property (nonatomic, strong) FlightListModel *flightListModel;
 
 @property (nonatomic, assign) BOOL isRequest;
 @end
@@ -49,6 +52,7 @@ static NSString * const FlightListTableViewCellID = @"FlightListTableViewCellID"
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.title = @"航班列表";
+    self.flightListModel = [[FlightListModel alloc]init];
     [self setNavigationBar];
     [self setupView];
     [self setupData];
@@ -94,6 +98,7 @@ static NSString * const FlightListTableViewCellID = @"FlightListTableViewCellID"
     } footerBlock:^{
         [weakSelf getListFlight:NO];
     }];
+    [MJRefreshControl beginRefresh:self.flightTableView];
     self.headerView.flightHeaderBlock = ^{
         //站内信
         NSLog(@"站内信");
@@ -104,12 +109,27 @@ static NSString * const FlightListTableViewCellID = @"FlightListTableViewCellID"
         return;
     }
     self.isRequest = YES;
-    NSDictionary *param;
+    NSDictionary *param = @{
+                            @"page": refresh ? @(1):@(self.flightListModel.page + 1),
+                            @"limit":@(20),
+                            @"sign_date":[NSString safe_string:self.flightFilterModel.sign_date],
+                            @"sign_time":@(self.flightFilterModel.signModel.sign_id),
+                            @"visa_id":@(self.flightFilterModel.visaModel.visa_id),
+                            @"word_logo_id":@(self.flightFilterModel.wordLogoModel.word_logo_id),
+                            @"duty_id":@(self.flightFilterModel.dutyModel.duty_id),
+                            @"airline_number":[NSString safe_string:self.flightFilterModel.airline_number]
+                            };
     [RequestPath flight_getListFlightParam:param success:^(NSDictionary *obj, NSInteger code, NSString *mes) {
         self.isRequest = NO;
+        [self.flightListModel reloadDataDic:obj refresh:refresh];
         [MJRefreshControl endRefresh:self.flightTableView];
+        [self.flightTableView reloadData];
+        if (!self.flightListModel.isContinue) {
+            [MJRefreshControl endRefreshNoData:self.flightTableView];
+        }
     } failure:^(ErrorType errorType, NSString *mes) {
         self.isRequest = NO;
+        [MBProgressHUD showError:mes ToView:self.view];
         [MJRefreshControl endRefresh:self.flightTableView];
     }];
 }
@@ -139,9 +159,10 @@ static NSString * const FlightListTableViewCellID = @"FlightListTableViewCellID"
         self.filterVC = nil;
     }
     __weak __typeof(self)weakSelf = self;
-    self.filterVC = [[FlightFilterViewController alloc]initWithFilterModel:self.filterModel flilterSelectBlock:^(FlightFilterModel *filterModel) {
-        weakSelf.filterModel = filterModel;
+    self.filterVC = [[FlightFilterViewController alloc]initWithFilterModel:self.flightFilterModel flilterSelectBlock:^(FlightFilterModel *filterModel) {
+        weakSelf.flightFilterModel = filterModel;
         [weakSelf rightBtnNavigationBarEvent:self.filterBtn];
+        [MJRefreshControl beginRefresh:weakSelf.flightTableView];
     }];
     [self addChildViewController:self.filterVC];
     [self.view addSubview:self.filterVC.view];
@@ -154,17 +175,19 @@ static NSString * const FlightListTableViewCellID = @"FlightListTableViewCellID"
 }
 #pragma mark -- UITableViewDelegate, UITableViewDataSource
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    return 10;
+    return self.flightListModel.listArr.count;
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     FlightListTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier: FlightListTableViewCellID];
-    [cell reloadViewWithModel:@"" index:indexPath.row flightMailBlcok:^{
+    FlightModel *model = self.flightListModel.listArr[indexPath.row];
+    [cell reloadViewWithModel:model index:indexPath.row flightMailBlcok:^{
         NSLog(@"点击信封");
     }];
     return cell;
 }
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     FlightListDetailViewController *detailVC = [[FlightListDetailViewController alloc]init];
+    detailVC.flightModel = self.flightListModel.listArr[indexPath.row];
     [self.navigationController pushViewController:detailVC animated:YES];
 }
 

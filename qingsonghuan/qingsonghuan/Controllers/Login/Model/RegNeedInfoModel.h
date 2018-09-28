@@ -7,25 +7,33 @@
 //
 
 #import <Foundation/Foundation.h>
+@class AirlineModel;
+@class DutyModel;
+@class VisaModel;
+@class SexModel;
+@class WordLogoModel;
+@class SignModel;
+@class DaysModel;
+
 /**
  注册信息Model
  */
 @interface RegNeedInfoModel : NSObject
 
 //航空公司数组
-@property (nonatomic, strong) NSMutableArray *airlineModelArr;
+@property (nonatomic, strong) NSMutableArray <AirlineModel*> *airlineModelArr;
 //职务等级数组
-@property (nonatomic, strong) NSMutableArray *dutyModelArr;
+@property (nonatomic, strong) NSMutableArray <DutyModel *> *dutyModelArr;
 //签证类型数组
-@property (nonatomic, strong) NSMutableArray *visaModelArr;
+@property (nonatomic, strong) NSMutableArray <VisaModel *> *visaModelArr;
 //性别数组
-@property (nonatomic, strong) NSMutableArray *sexModelArr;
+@property (nonatomic, strong) NSMutableArray <SexModel *> *sexModelArr;
 //字母标识数组
-@property (nonatomic, strong) NSMutableArray *wordLogoArr;
+@property (nonatomic, strong) NSMutableArray <WordLogoModel *> *wordLogoArr;
 //签到时段
-@property (nonatomic, strong) NSMutableArray *signModelArr;
+@property (nonatomic, strong) NSMutableArray <SignModel *> *signModelArr;
 //出差天数
-@property (nonatomic, strong) NSMutableArray *daysModelArr;
+@property (nonatomic, strong) NSMutableArray <DaysModel *> *daysModelArr;
 
 /**
  检验是否有数据（航空公司，职务等级。签证类型，性别数组）

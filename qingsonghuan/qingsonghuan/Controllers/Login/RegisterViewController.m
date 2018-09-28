@@ -55,7 +55,7 @@ static NSString * const RegisterTableViewCell04ID = @"RegisterTableViewCell04ID"
     NSDictionary *param = @{@"phone":self.registerModel.phone,
                             @"airline_id":@(self.registerModel.airlineModel.airline_id),
                             @"subsidiary_id":@(self.registerModel.subsidiaryModel.subsidiary_Id),
-                            @"duties_id":@(self.registerModel.dutyModel.duty_id),
+                            @"duty_id":@(self.registerModel.dutyModel.duty_id),
                             @"visa_id":@(self.registerModel.visaModel.visa_id),
                             @"work_number":self.registerModel.work_number,
                             @"sex":@(self.registerModel.sexModel.sex_id),

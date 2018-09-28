@@ -9,5 +9,5 @@
 #import <UIKit/UIKit.h>
 
 @interface FlightListDetailTableViewCell : UITableViewCell
-- (void)reloadViewWithIndex:(NSInteger)index;
+- (void)reloadViewWithIndex:(NSInteger)index title:(NSString *)title content:(NSString *)content;
 @end

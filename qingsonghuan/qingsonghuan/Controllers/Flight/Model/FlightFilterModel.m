@@ -14,7 +14,7 @@
     self = [super init];
     if (self) {
         self.sign_date = filterModel.sign_date;
-        self.airLine = filterModel.airLine;
+        self.airline_number = filterModel.airline_number;
         self.signModel = filterModel.signModel;
         self.visaModel = filterModel.visaModel;
         self.wordLogoModel = filterModel.wordLogoModel;

@@ -13,7 +13,7 @@
 //签到日期
 @property (nonatomic, copy) NSString *sign_date;
 //航班号
-@property (nonatomic, copy) NSString *airLine;
+@property (nonatomic, copy) NSString *airline_number;
 //签到时段
 @property (nonatomic, strong) SignModel *signModel;
 //签证类型

@@ -7,7 +7,9 @@
 //
 
 #import "BaseMultiViewController.h"
-
+#import "FlightListModel.h"
 @interface FlightListDetailViewController : BaseMultiViewController
+
+@property (nonatomic, strong) FlightModel *flightModel;
 
 @end

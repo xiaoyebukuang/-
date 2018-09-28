@@ -19,6 +19,8 @@ static NSString * const FlightListDetailTableViewCellID = @"FlightListDetailTabl
 
 @property (nonatomic, strong) UIView *footerView;
 
+@property (nonatomic, strong) NSArray *contentArr;
+
 @end
 
 @implementation FlightListDetailViewController
@@ -40,15 +42,24 @@ static NSString * const FlightListDetailTableViewCellID = @"FlightListDetailTabl
         make.bottom.equalTo(self.footerView.mas_top);
     }];
 }
+- (void)setFlightModel:(FlightModel *)flightModel {
+    _flightModel = flightModel;
+    NSMutableString *city = [[NSMutableString alloc]init];
+    for (NSString *temp in flightModel.leg_info) {
+        [city appendString:[NSString stringWithFormat:@"+%@",temp]];
+    }
+    self.contentArr = @[flightModel.date,flightModel.sign_time,flightModel.airline_number,city,flightModel.visaModel.visa_name,flightModel.wordLogoModel.word_logo_name,flightModel.dutyModel.duty_name,flightModel.message];
+}
 
 #pragma mark -- UITableViewDelegate, UITableViewDataSource
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    return 10;
+    return self.contentArr.count;
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
+    NSArray *titleArr = @[@"签到日期:",@"签到时间:",@"航班号:",@"航段信息:",@"签证信息:",@"字母标识:",@"职务等级:",@"留言信息:"];
     FlightListDetailTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier: FlightListDetailTableViewCellID];
-    [cell reloadViewWithIndex:indexPath.row];
+    [cell reloadViewWithIndex:indexPath.row title:titleArr[indexPath.row] content:self.contentArr[indexPath.row]];
     return cell;
 }
 #pragma mark -- setup

@@ -7,11 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import "FlightListModel.h"
 typedef void(^FlightMailBlcok)(void);
 
 @interface FlightListTableViewCell : UITableViewCell
 
-- (void)reloadViewWithModel:(NSString *)model index:(NSInteger)index flightMailBlcok:(FlightMailBlcok)flightMailBlcok;
+- (void)reloadViewWithModel:(FlightModel *)model index:(NSInteger)index flightMailBlcok:(FlightMailBlcok)flightMailBlcok;
 
 @end

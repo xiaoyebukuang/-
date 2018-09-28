@@ -69,18 +69,18 @@
         make.left.equalTo(self.word.mas_right);
     }];
 }
-- (void)reloadViewWithModel:(NSString *)model index:(NSInteger)index flightMailBlcok:(FlightMailBlcok)flightMailBlcok{
+- (void)reloadViewWithModel:(FlightModel *)model index:(NSInteger)index flightMailBlcok:(FlightMailBlcok)flightMailBlcok{
     self.mialBlock = flightMailBlcok;
     if (index%2 == 0) {
         self.backgroundColor = [UIColor color_FFFFFF];
     } else {
         self.backgroundColor = [UIColor color_F7F8F9];
     }
-    self.date.text = @"09.11";
-    self.time.text = @"12:00";
-    self.airLine.text = @"1234";
-    self.duties.text = @"乘务长";
-    self.word.text = @"Y";
+    self.date.text = model.date;
+    self.time.text = model.sign_time;
+    self.airLine.text = model.airline_number;
+    self.duties.text = model.dutyModel.duty_name;
+    self.word.text = model.wordLogoModel.word_logo_name;
 }
 - (void)mailBtnEvent:(UIButton *)sender {
     if (self.mialBlock) {

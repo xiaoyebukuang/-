@@ -40,16 +40,15 @@
         make.top.equalTo(self.titleL);
         make.bottom.equalTo(self).offset(-10);
     }];
-    
-    self.titleL.text = @"签到日期:";
-    self.desL.text = @"你好，这是我要换乘的航班信息，有同需求的请同我联系。你好，这是我要换乘的航班信息，有同需求的请同我联系。你好，这是我要换乘的航班信息，有同需求的请同我联系。你好，这是我要换乘的航班信息，有同需求的请同我联系。你好，这是我要换乘的航班信息，有同需求的请同我联系。";
 }
-- (void)reloadViewWithIndex:(NSInteger)index {
+- (void)reloadViewWithIndex:(NSInteger)index title:(NSString *)title content:(NSString *)content {
     if (index%2 == 0) {
         self.backgroundColor = [UIColor color_FFFFFF];
     } else {
         self.backgroundColor = [UIColor color_D5E8F6];
     }
+    self.titleL.text = title;
+    self.desL.text = [NSString isEmpty:content] ? @" " : content;
 }
 #pragma mark -- setup
 - (UILabel *)titleL {
