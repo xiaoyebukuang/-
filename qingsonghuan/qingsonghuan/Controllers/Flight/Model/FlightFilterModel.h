@@ -21,7 +21,7 @@
 //字母标识
 @property (nonatomic, strong) WordLogoModel *wordLogoModel;
 //职务等级
-@property (nonatomic, strong) DutiesModel *dutiesModel;
+@property (nonatomic, strong) DutyModel *dutyModel;
 
 - (instancetype)initWithModel:(FlightFilterModel *)filterModel;
 

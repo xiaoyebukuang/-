@@ -18,7 +18,7 @@
         self.signModel = filterModel.signModel;
         self.visaModel = filterModel.visaModel;
         self.wordLogoModel = filterModel.wordLogoModel;
-        self.dutiesModel = filterModel.dutiesModel;
+        self.dutyModel = filterModel.dutyModel;
     }
     return self;
 }

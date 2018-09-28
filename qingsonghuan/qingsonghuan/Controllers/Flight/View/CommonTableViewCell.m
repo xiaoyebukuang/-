@@ -159,25 +159,25 @@ static NSInteger const COMMON_BTN_TAG = 329;
         if ([temp isKindOfClass:[SignModel class]]) {
             str = ((SignModel *)temp).sign_name;
             SignModel *tempModel = (SignModel *)model;
-            if (tempModel.signId == ((SignModel *)temp).signId) {
+            if (tempModel.sign_id == ((SignModel *)temp).sign_id) {
                 select = YES;
             }
         } else if ([temp isKindOfClass:[VisaModel class]]) {
             str = ((VisaModel *)temp).visa_name;
             VisaModel *tempModel = (VisaModel *)model;
-            if (tempModel.visaId == ((VisaModel *)temp).visaId) {
+            if (tempModel.visa_id == ((VisaModel *)temp).visa_id) {
                 select = YES;
             }
         } else if ([temp isKindOfClass:[WordLogoModel class]]) {
-            str = ((WordLogoModel *)temp).mark;
+            str = ((WordLogoModel *)temp).word_logo_name;
             WordLogoModel *tempModel = (WordLogoModel *)model;
-            if (tempModel.wordLogoID == ((WordLogoModel *)temp).wordLogoID) {
+            if (tempModel.word_logo_id == ((WordLogoModel *)temp).word_logo_id) {
                 select = YES;
             }
-        } else if ([temp isKindOfClass:[DutiesModel class]]) {
-            str = ((DutiesModel *)temp).job_title;
-            DutiesModel *tempModel = (DutiesModel *)model;
-            if (tempModel.dutiesId == ((DutiesModel *)temp).dutiesId) {
+        } else if ([temp isKindOfClass:[DutyModel class]]) {
+            str = ((DutyModel *)temp).duty_name;
+            DutyModel *tempModel = (DutyModel *)model;
+            if (tempModel.duty_id == ((DutyModel *)temp).duty_id) {
                 select = YES;
             }
         }

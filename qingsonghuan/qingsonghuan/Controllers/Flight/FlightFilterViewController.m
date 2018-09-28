@@ -126,8 +126,8 @@ static NSString * const CommonTableViewCell02ID = @"CommonTableViewCell02ID";
                 model = self.filterModel.wordLogoModel;
                 break;
             case 5:
-                obj = [RegNeedInfoModel sharedInstance].dutiesModelArr;
-                model = self.filterModel.dutiesModel;
+                obj = [RegNeedInfoModel sharedInstance].dutyModelArr;
+                model = self.filterModel.dutyModel;
                 break;
             default:
                 break;
@@ -141,8 +141,8 @@ static NSString * const CommonTableViewCell02ID = @"CommonTableViewCell02ID";
                 weakSelf.filterModel.visaModel = obj;
             } else if ([obj isKindOfClass:[WordLogoModel class]]) {
                 weakSelf.filterModel.wordLogoModel = obj;
-            } else if ([obj isKindOfClass:[DutiesModel class]]) {
-                weakSelf.filterModel.dutiesModel = obj;
+            } else if ([obj isKindOfClass:[DutyModel class]]) {
+                weakSelf.filterModel.dutyModel = obj;
             }
         }];
     }

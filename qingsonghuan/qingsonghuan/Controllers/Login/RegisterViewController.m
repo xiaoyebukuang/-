@@ -53,12 +53,12 @@ static NSString * const RegisterTableViewCell04ID = @"RegisterTableViewCell04ID"
     }
     [MBProgressHUD showToView:self.view];
     NSDictionary *param = @{@"phone":self.registerModel.phone,
-                            @"airline_id":@(self.registerModel.airlineModel.airlineId),
-                            @"subsidiary_id":@(self.registerModel.subsidiaryModel.subsidiaryId),
-                            @"duties_id":@(self.registerModel.dutiesModel.dutiesId),
-                            @"visa_id":@(self.registerModel.visaModel.visaId),
+                            @"airline_id":@(self.registerModel.airlineModel.airline_id),
+                            @"subsidiary_id":@(self.registerModel.subsidiaryModel.subsidiary_Id),
+                            @"duties_id":@(self.registerModel.dutyModel.duty_id),
+                            @"visa_id":@(self.registerModel.visaModel.visa_id),
                             @"work_number":self.registerModel.work_number,
-                            @"sex":@(self.registerModel.sexModel.sexId),
+                            @"sex":@(self.registerModel.sexModel.sex_id),
                             @"password":self.registerModel.password,
                             @"password_confirm":self.registerModel.password_confirm,
                             @"code":self.registerModel.code,
@@ -92,9 +92,9 @@ static NSString * const RegisterTableViewCell04ID = @"RegisterTableViewCell04ID"
     NSArray *logoArr = @[@"login_tel",@"login_company",@"login_area",@"login_post",@"login_visa",@"login_card",@"login_sex",@"login_psw",@"login_psw",@"login_code"];
     NSArray *tieldTypeArr = @[@(UITextFieldTel),@(UITextFieldNormal),@(UITextFieldNormal),@(UITextFieldNormal),@(UITextFieldNormal),@(UITextFieldCard),@(UITextFieldNormal),@(UITextFieldPassword),@(UITextFieldPassword),@(UITextFieldCode)];
     NSArray *contentArr = @[[NSString safe_string:self.registerModel.phone],
-                            [NSString safe_string:self.registerModel.airlineModel.company_name],
-                            [NSString safe_string:self.registerModel.subsidiaryModel.city],
-                            [NSString safe_string:self.registerModel.dutiesModel.job_title],
+                            [NSString safe_string:self.registerModel.airlineModel.airline_name],
+                            [NSString safe_string:self.registerModel.subsidiaryModel.subsidiary_name],
+                            [NSString safe_string:self.registerModel.dutyModel.duty_name],
                             [NSString safe_string:self.registerModel.visaModel.visa_name],
                             [NSString safe_string:self.registerModel.work_number],
                             [NSString safe_string:self.registerModel.sexModel.sex_name],
@@ -123,7 +123,7 @@ static NSString * const RegisterTableViewCell04ID = @"RegisterTableViewCell04ID"
             XYPickerViewController *pickerVC = [[XYPickerViewController alloc]init];
             [pickerVC reloadViewWithArr:regModle.airlineModelArr pickerBlock:^(id model) {
                 weakSelf.registerModel.airlineModel = (AirlineModel *)model;
-                cell.content = weakSelf.registerModel.airlineModel.company_name;
+                cell.content = weakSelf.registerModel.airlineModel.airline_name;
                 weakSelf.registerModel.subsidiaryModel = nil;
                 [tableView reloadData];
             }];
@@ -137,15 +137,15 @@ static NSString * const RegisterTableViewCell04ID = @"RegisterTableViewCell04ID"
             XYPickerViewController *pickerVC = [[XYPickerViewController alloc]init];
             [pickerVC reloadViewWithArr:weakSelf.registerModel.airlineModel.subsidiaryArr pickerBlock:^(id model) {
                 weakSelf.registerModel.subsidiaryModel = (SubsidiaryModel *)model;
-                cell.content = weakSelf.registerModel.subsidiaryModel.city;
+                cell.content = weakSelf.registerModel.subsidiaryModel.subsidiary_name;
             }];
             [weakSelf presentViewController:pickerVC animated:YES completion:nil];
         } else if (indexPath.row == 3) {
             [weakSelf.view endEditing:YES];
             XYPickerViewController *pickerVC = [[XYPickerViewController alloc]init];
-            [pickerVC reloadViewWithArr:regModle.dutiesModelArr pickerBlock:^(id model) {
-                weakSelf.registerModel.dutiesModel = (DutiesModel *)model;
-                cell.content = weakSelf.registerModel.dutiesModel.job_title;
+            [pickerVC reloadViewWithArr:regModle.dutyModelArr pickerBlock:^(id model) {
+                weakSelf.registerModel.dutyModel = (DutyModel *)model;
+                cell.content = weakSelf.registerModel.dutyModel.duty_name;
             }];
             [weakSelf presentViewController:pickerVC animated:YES completion:nil];
         } else if (indexPath.row == 4) {

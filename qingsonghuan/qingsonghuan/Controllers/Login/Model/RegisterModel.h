@@ -17,7 +17,7 @@
 //航空子公司
 @property (nonatomic, strong) SubsidiaryModel *subsidiaryModel;
 //职务等级
-@property (nonatomic, strong) DutiesModel *dutiesModel;
+@property (nonatomic, strong) DutyModel *dutyModel;
 //签证类型
 @property (nonatomic, strong) VisaModel *visaModel;
 //登机证号

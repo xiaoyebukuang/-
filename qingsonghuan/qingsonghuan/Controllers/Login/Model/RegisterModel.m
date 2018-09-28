@@ -16,7 +16,7 @@
         des = @"请选择航空公司";
     } else if (self.subsidiaryModel == nil) {
         des = @"请选择所属分子公司";
-    } else if (self.dutiesModel == nil) {
+    } else if (self.dutyModel == nil) {
         des = @"请选择职务等级";
     } else if (self.visaModel == nil) {
         des = @"请选择签证类型";

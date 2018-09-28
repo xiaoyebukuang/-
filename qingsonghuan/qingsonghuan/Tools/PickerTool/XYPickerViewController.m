@@ -134,13 +134,13 @@
     id model = self.list[row];
     NSString *title = @"";
     if ([model isKindOfClass:[AirlineModel class]]) {
-        title = ((AirlineModel *)model).company_name;
+        title = ((AirlineModel *)model).airline_name;
     }
     if ([model isKindOfClass:[SubsidiaryModel class]]) {
-        title = ((SubsidiaryModel *)model).city;
+        title = ((SubsidiaryModel *)model).subsidiary_name;
     }
-    if ([model isKindOfClass:[DutiesModel class]]) {
-        title = ((DutiesModel *)model).job_title;
+    if ([model isKindOfClass:[DutyModel class]]) {
+        title = ((DutyModel *)model).duty_name;
     }
     if ([model isKindOfClass:[VisaModel class]]) {
         title = ((VisaModel *)model).visa_name;
@@ -149,7 +149,7 @@
         title = ((SexModel *)model).sex_name;
     }
     if ([model isKindOfClass:[WordLogoModel class]]) {
-        title = ((WordLogoModel *)model).mark;
+        title = ((WordLogoModel *)model).word_logo_name;
     }
     UILabel *titleLabel = [[UILabel alloc]initWithText:title font:SYSTEM_FONT_15 textColor:[UIColor color_333333]];
     titleLabel.textAlignment = NSTextAlignmentCenter;

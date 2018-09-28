@@ -7,11 +7,6 @@
 //
 
 #import <Foundation/Foundation.h>
-@class AirlineModel;
-@class DutiesModel;
-@class VisaModel;
-@class SexModel;
-
 /**
  注册信息Model
  */
@@ -20,7 +15,7 @@
 //航空公司数组
 @property (nonatomic, strong) NSMutableArray *airlineModelArr;
 //职务等级数组
-@property (nonatomic, strong) NSMutableArray *dutiesModelArr;
+@property (nonatomic, strong) NSMutableArray *dutyModelArr;
 //签证类型数组
 @property (nonatomic, strong) NSMutableArray *visaModelArr;
 //性别数组
@@ -29,6 +24,8 @@
 @property (nonatomic, strong) NSMutableArray *wordLogoArr;
 //签到时段
 @property (nonatomic, strong) NSMutableArray *signModelArr;
+//出差天数
+@property (nonatomic, strong) NSMutableArray *daysModelArr;
 
 /**
  检验是否有数据（航空公司，职务等级。签证类型，性别数组）
@@ -51,9 +48,9 @@
 @interface AirlineModel : NSObject
 
 //id
-@property (nonatomic, assign) NSInteger airlineId;
+@property (nonatomic, assign) NSInteger airline_id;
 //公司名称
-@property (nonatomic, copy) NSString *company_name;
+@property (nonatomic, copy) NSString *airline_name;
 //子公司数组
 @property (nonatomic, strong)NSMutableArray *subsidiaryArr;
 
@@ -66,9 +63,9 @@
  */
 @interface SubsidiaryModel : NSObject
 //id
-@property (nonatomic, assign) NSInteger subsidiaryId;
+@property (nonatomic, assign) NSInteger subsidiary_Id;
 //子公司城市名称
-@property (nonatomic, copy) NSString *city;
+@property (nonatomic, copy) NSString *subsidiary_name;
 
 - (instancetype)initWithDic:(NSDictionary *)dic;
 
@@ -77,11 +74,11 @@
 /**
  职务等级
  */
-@interface DutiesModel : NSObject
+@interface DutyModel : NSObject
 //id
-@property (nonatomic, assign) NSInteger dutiesId;
+@property (nonatomic, assign) NSInteger duty_id;
 //职务名称
-@property (nonatomic, copy) NSString *job_title;
+@property (nonatomic, copy) NSString *duty_name;
 
 - (instancetype)initWithDic:(NSDictionary *)dic;
 @end
@@ -91,7 +88,7 @@
  */
 @interface VisaModel : NSObject
 //id
-@property (nonatomic, assign) NSInteger visaId;
+@property (nonatomic, assign) NSInteger visa_id;
 //签证类型名称
 @property (nonatomic, copy) NSString *visa_name;
 
@@ -104,7 +101,7 @@
 @interface SexModel : NSObject
 
 //id
-@property (nonatomic, assign) NSInteger sexId;
+@property (nonatomic, assign) NSInteger sex_id;
 //性别名称
 @property (nonatomic, copy) NSString *sex_name;
 
@@ -118,9 +115,9 @@
 @interface WordLogoModel : NSObject
 
 //标识id
-@property (nonatomic, assign) NSInteger wordLogoID;
+@property (nonatomic, assign) NSInteger word_logo_id;
 //标识名称
-@property (nonatomic, copy) NSString *mark;
+@property (nonatomic, copy) NSString *word_logo_name;
 
 - (instancetype)initWithDic:(NSDictionary *)dic;
 
@@ -132,11 +129,25 @@
 @interface SignModel : NSObject
 
 //签到id
-@property (nonatomic, assign) NSInteger signId;
+@property (nonatomic, assign) NSInteger sign_id;
 //签到时段名称
 @property (nonatomic, copy) NSString *sign_name;
 
 - (instancetype)initWithDic:(NSDictionary *)dic;
 
 @end
+
+/**
+ 出差天数
+ */
+@interface DaysModel : NSObject
+//出差天数id
+@property (nonatomic, assign) NSInteger days_id;
+//出差天数名称
+@property (nonatomic, copy) NSString *days_name;
+
+- (instancetype)initWithDic:(NSDictionary *)dic;
+
+@end
+
 

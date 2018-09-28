@@ -77,7 +77,7 @@ static NSString * const CommonTableViewCell04ID = @"CommonTableViewCell04ID";
                 break;
             case 6:
                 placeHolder = LOGIN_POST_PLACEHOLDER;
-                arr = regModle.dutiesModelArr;
+                arr = regModle.dutyModelArr;
                 break;
             default:
                 break;
