@@ -59,4 +59,8 @@
     UIColor *color = UIColorFromRGB(0xD5E8F6);
     return color;
 }
++ (UIColor *)color_84BBDE {
+    UIColor *color = UIColorFromRGB(0x84BBDE);
+    return color;
+}
 @end

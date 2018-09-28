@@ -88,7 +88,6 @@ static NSString * const RegisterTableViewCell04ID = @"RegisterTableViewCell04ID"
     return 10;
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-    RegisterTableViewCell *cell;
     NSArray *placeholderArr = @[LOGIN_TEL_PLACEHOLDER, LOGIN_COMPANY_PLACEHOLDER, LOGIN_AREA_PLACEHOLDER, LOGIN_POST_PLACEHOLDER, LOGIN_VISA_PLACEHOLDER, LOGIN_CARD_PLACEHOLDER, LOGIN_SEX_PLACEHOLDER, LOGIN_PSW_PLACEHOLDER,LOGIN_AGAIN_PSW_PLACEHOLDER,LOGIN_CODE_PLACEHOLDER];
     NSArray *logoArr = @[@"login_tel",@"login_company",@"login_area",@"login_post",@"login_visa",@"login_card",@"login_sex",@"login_psw",@"login_psw",@"login_code"];
     NSArray *tieldTypeArr = @[@(UITextFieldTel),@(UITextFieldNormal),@(UITextFieldNormal),@(UITextFieldNormal),@(UITextFieldNormal),@(UITextFieldCard),@(UITextFieldNormal),@(UITextFieldPassword),@(UITextFieldPassword),@(UITextFieldCode)];
@@ -113,7 +112,7 @@ static NSString * const RegisterTableViewCell04ID = @"RegisterTableViewCell04ID"
     } else {
         cellID = RegisterTableViewCell04ID;
     }
-    cell = [tableView dequeueReusableCellWithIdentifier: cellID];
+    RegisterTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier: cellID];
     WeakSelf;
     [cell reloadData:contentArr[indexPath.row] logo:logoArr[indexPath.row] placeholder:placeholderArr[indexPath.row] textFieldType:[NSString safe_integer:tieldTypeArr[indexPath.row]] registerTVBlock:^(NSString *obj) {
         RegNeedInfoModel *regModle = [RegNeedInfoModel sharedInstance];

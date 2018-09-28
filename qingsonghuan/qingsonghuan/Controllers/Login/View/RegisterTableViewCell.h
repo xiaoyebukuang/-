@@ -8,13 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-typedef NS_ENUM(NSInteger, RegisterTableViewCellType) {
-    RegisterTableViewCellTypeLeft,            //左侧图标+填充
-    RegisterTableViewCellTypeLeftRight,       //左侧图标+右侧图标（不可点击）+选择
-    RegisterTableViewCellTypeSelect,          //左侧图标+右侧图标（可点击）+填充
-    RegisterTableViewCellTypeCode             //左侧图标+右侧验证码+填充
-};
-
 typedef void(^RegisterTVBlock)(NSString *obj);
 
 @interface RegisterTableViewCell : UITableViewCell
