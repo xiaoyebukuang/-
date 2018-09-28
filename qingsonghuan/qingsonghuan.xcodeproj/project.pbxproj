@@ -23,6 +23,7 @@
 		652FCC05215DD201009F41E8 /* FlightListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 652FCC04215DD201009F41E8 /* FlightListModel.m */; };
 		652FCC09215DF5B3009F41E8 /* RegisterTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 652FCC08215DF5B3009F41E8 /* RegisterTableViewCell.m */; };
 		652FCC0F215E089B009F41E8 /* RegisterModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 652FCC0E215E089B009F41E8 /* RegisterModel.m */; };
+		652FCC12215E9402009F41E8 /* FlightAddLineModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 652FCC11215E9402009F41E8 /* FlightAddLineModel.m */; };
 		65D0CA3F214F9AFD00A3DB66 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 65D0CA3E214F9AFD00A3DB66 /* AppDelegate.m */; };
 		65D0CA45214F9AFD00A3DB66 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 65D0CA43214F9AFD00A3DB66 /* Main.storyboard */; };
 		65D0CA47214F9B0000A3DB66 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 65D0CA46214F9B0000A3DB66 /* Assets.xcassets */; };
@@ -86,6 +87,8 @@
 		652FCC08215DF5B3009F41E8 /* RegisterTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RegisterTableViewCell.m; sourceTree = "<group>"; };
 		652FCC0D215E089B009F41E8 /* RegisterModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RegisterModel.h; sourceTree = "<group>"; };
 		652FCC0E215E089B009F41E8 /* RegisterModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RegisterModel.m; sourceTree = "<group>"; };
+		652FCC10215E9402009F41E8 /* FlightAddLineModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FlightAddLineModel.h; sourceTree = "<group>"; };
+		652FCC11215E9402009F41E8 /* FlightAddLineModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FlightAddLineModel.m; sourceTree = "<group>"; };
 		65D0CA3A214F9AFD00A3DB66 /* qingsonghuan.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = qingsonghuan.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		65D0CA3D214F9AFD00A3DB66 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		65D0CA3E214F9AFD00A3DB66 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -448,6 +451,8 @@
 				65F87103215C874800DD1F59 /* FlightFilterModel.m */,
 				652FCC03215DD201009F41E8 /* FlightListModel.h */,
 				652FCC04215DD201009F41E8 /* FlightListModel.m */,
+				652FCC10215E9402009F41E8 /* FlightAddLineModel.h */,
+				652FCC11215E9402009F41E8 /* FlightAddLineModel.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -629,6 +634,7 @@
 				65D0CA682151ECEE00A3DB66 /* UIView+Helper.m in Sources */,
 				65F87113215CC6E600DD1F59 /* FlightListDetailTableViewCell.m in Sources */,
 				65D0CA852153439F00A3DB66 /* XYLineView.m in Sources */,
+				652FCC12215E9402009F41E8 /* FlightAddLineModel.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

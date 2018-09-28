@@ -47,8 +47,6 @@
 
 @interface CommonTableViewCell01()<XYTextFieldDelegate>
 
-//回调
-@property (nonatomic, copy) CommonClickBlock clickBlcok;
 //点击框
 @property (nonatomic, strong) UIControl *control;
 @end
@@ -120,7 +118,6 @@ static NSInteger const COMMON_BTN_TAG = 329;
 
 @interface CommonTableViewCell02()
 @property (nonatomic, strong) UIView *btnView;
-@property (nonatomic, copy) CommonClickBlock clickBlcok;
 @property (nonatomic, strong) NSArray *objArr;
 @end
 
@@ -226,19 +223,19 @@ static NSInteger const COMMON_BTN_TAG = 329;
 }
 @end
 
-@interface CommonTableViewCell03()
+@interface CommonTableViewCell03()<XYTextFieldDelegate>
 
-@property (nonatomic, strong) XYTextField *textField;
 //出差天数
 @property (nonatomic, strong) UIButton *workDayBtn;
-
+//出差天数回调
+@property (nonatomic, copy) DaysClickBlock daysClickBlock;
 @end
 
 @implementation CommonTableViewCell03
 - (void)setupView {
     [super setupView];
     [self addSubview:self.textField];
-    self.textField.backgroundColor = [UIColor redColor];
+    self.textField.xyDelegate = self;
     [self.textField mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(self.title.mas_right);
         make.right.equalTo(self).offset(-CELL_LEFT_APACE);
@@ -252,6 +249,35 @@ static NSInteger const COMMON_BTN_TAG = 329;
         make.centerY.equalTo (self);
     }];
 }
+- (void)reloadViewContent:(NSString *)content
+                     days:(NSString *)days
+           daysClickBlock:(DaysClickBlock)daysClickBlock
+         commonClickBlock:(CommonClickBlock)commonClickBlock {
+    self.daysClickBlock = daysClickBlock;
+    self.clickBlcok = commonClickBlock;
+    self.title.text = @"航班号";
+    self.textField.text = content;
+    if (days) {
+        [self.workDayBtn setTitle:days forState:UIControlStateNormal];
+        [self.workDayBtn setTitleColor:[UIColor color_333333] forState:UIControlStateNormal];
+    }
+}
+- (void)setDays:(NSString *)days {
+    [self.workDayBtn setTitle:days forState:UIControlStateNormal];
+    [self.workDayBtn setTitleColor:[UIColor color_333333] forState:UIControlStateNormal];
+}
+#pragma mark -- event
+- (void)workDayBtnEvent:(UIButton *)sender {
+    if (self.daysClickBlock) {
+        self.daysClickBlock();
+    }
+}
+#pragma mark -- XYTextFieldDelegate
+- (void)textChange:(NSString *)text {
+    if (self.clickBlcok) {
+        self.clickBlcok(text);
+    }
+}
 #pragma mark -- setup
 - (XYTextField *)textField {
     if (!_textField) {
@@ -262,16 +288,60 @@ static NSInteger const COMMON_BTN_TAG = 329;
 - (UIButton *)workDayBtn {
     if (!_workDayBtn) {
         _workDayBtn = [UIButton buttonWithTitle:@"出差天数" font:SYSTEM_FONT_15 titleColor:[UIColor color_999999] backgroundImage:@"filter_submit_day"];
+        [_workDayBtn addTarget:self action:@selector(workDayBtnEvent:) forControlEvents:UIControlEventTouchUpInside];
     }
     return _workDayBtn;
 }
 @end
 
+@interface CommonTableViewCell04()
 
+@property (nonatomic, strong) UIButton *addCity;
 
+@property (nonatomic, strong) UIView *bgView;
 
-
-
+@end
 
 @implementation CommonTableViewCell04
+- (void)setupView {
+    [super setupView];
+    [self addSubview:self.addCity];
+    [self.addCity mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.right.equalTo(self).offset(-CELL_LEFT_APACE);
+        make.top.equalTo(self.title);
+        make.height.mas_offset(30);
+    }];
+}
+- (void)reloadViewContent:(NSArray *)contentArr
+         commonClickBlock:(CommonClickBlock)commonClickBlock {
+//    for (UIButton in <#collection#>) {
+//        <#statements#>
+//    }
+    if (contentArr.count == 0) {
+        
+    }
+}
+#pragma mark -- event
+- (void)addCityEvent:(UIButton *)sender {
+    
+}
+
+#pragma mark -- setup
+- (UIButton *)addCity {
+    if (!_addCity) {
+        _addCity = [UIButton buttonWithImage:@"filte_add_city"];
+        [_addCity addTarget:self action:@selector(addCityEvent:) forControlEvents:UIControlEventTouchUpInside];
+    }
+    return _addCity;
+}
+- (UIView *)bgView {
+    if (!_bgView) {
+        _bgView = [[UIView alloc]init];
+        _bgView.backgroundColor = [UIColor redColor];
+    }
+    return _bgView;
+}
+@end
+
+@implementation CommonTableViewCell05
 @end

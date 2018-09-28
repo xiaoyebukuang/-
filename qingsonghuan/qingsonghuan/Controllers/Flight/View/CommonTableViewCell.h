@@ -11,6 +11,9 @@
 typedef void(^CommonClickBlock)(id obj);
 
 @interface CommonTableViewCell : UITableViewCell
+//回调
+@property (nonatomic, copy) CommonClickBlock clickBlcok;
+//index
 @property (nonatomic, assign) NSInteger index;
 @end
 
@@ -55,13 +58,43 @@ typedef void(^CommonClickBlock)(id obj);
           commonClickBlock:(CommonClickBlock)clickBlcok;
 @end
 
+typedef void(^DaysClickBlock)(void);
 
 @interface CommonTableViewCell03 : CommonTableViewCell
 
+@property (nonatomic, strong) XYTextField *textField;
 
+@property (nonatomic, copy) NSString *days;
+
+/**
+ 刷新
+ 
+ @param content 内容填充
+ @param days 出差天数
+ @param daysClickBlock 点击出差天数回调
+ @param commonClickBlock 输入框回调
+ */
+- (void)reloadViewContent:(NSString *)content
+                     days:(NSString *)days
+           daysClickBlock:(DaysClickBlock)daysClickBlock
+         commonClickBlock:(CommonClickBlock)commonClickBlock;
 
 @end
 
 @interface CommonTableViewCell04 : CommonTableViewCell
+
+
+/**
+ 刷新
+
+ @param contentArr 城市数组
+ @param commonClickBlock 回调
+ */
+- (void)reloadViewContent:(NSArray *)contentArr
+         commonClickBlock:(CommonClickBlock)commonClickBlock;
+
+@end
+
+@interface CommonTableViewCell05 : CommonTableViewCell
 
 @end

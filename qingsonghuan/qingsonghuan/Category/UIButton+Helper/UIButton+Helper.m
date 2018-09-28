@@ -42,7 +42,8 @@
     [btn setImage:[UIImage imageNamed:image] forState:UIControlStateSelected];
     [btn setTitle:title forState:UIControlStateNormal];
     [btn setTitle:selectTitle forState:UIControlStateSelected];
-    [btn setTintColor:titleColor];
+    [btn setTitleColor:titleColor forState:UIControlStateNormal];
+    [btn setTitleColor:titleColor forState:UIControlStateSelected];
     btn.titleLabel.font = font;
     return btn;
 }

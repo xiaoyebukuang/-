@@ -142,23 +142,26 @@ static NSString * const FlightListTableViewCellID = @"FlightListTableViewCellID"
 - (void)rightBtnNavigationBarEvent:(UIButton *)sender {
     if (sender.selected) {
         [self.filterVC dismiss];
+        sender.selected = !sender.selected;
     } else {
         if (![RegNeedInfoModel checkRegData]) {
             [RequestPath user_regNeedInfoView:nil success:^(NSDictionary *obj, NSInteger code, NSString *mes) {
                 [self presentFilterVC];
+                sender.selected = !sender.selected;
             } failure:^(ErrorType errorType, NSString *mes) {
+                [MBProgressHUD showError:mes ToView:self.view];
             }];
         } else {
             [self presentFilterVC];
+            sender.selected = !sender.selected;
         }
     }
-    sender.selected = !sender.selected;
 }
 - (void)presentFilterVC {
     if (self.filterVC) {
         self.filterVC = nil;
     }
-    __weak __typeof(self)weakSelf = self;
+    WeakSelf;
     self.filterVC = [[FlightFilterViewController alloc]initWithFilterModel:self.flightFilterModel flilterSelectBlock:^(FlightFilterModel *filterModel) {
         weakSelf.flightFilterModel = filterModel;
         [weakSelf rightBtnNavigationBarEvent:self.filterBtn];

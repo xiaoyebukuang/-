@@ -101,7 +101,7 @@
 }
 #pragma mark -- event
 - (void)reloadData {
-    __weak __typeof(self)weakSelf = self;
+    WeakSelf;
     [self.titleView setSureBlock:^{
         if (weakSelf.pickerBlock) {
             weakSelf.pickerBlock(weakSelf.list[weakSelf.selectIndex]);
@@ -150,6 +150,9 @@
     }
     if ([model isKindOfClass:[WordLogoModel class]]) {
         title = ((WordLogoModel *)model).word_logo_name;
+    }
+    if ([model isKindOfClass:[DaysModel class]]) {
+        title = ((DaysModel *)model).days_name;
     }
     UILabel *titleLabel = [[UILabel alloc]initWithText:title font:SYSTEM_FONT_15 textColor:[UIColor color_333333]];
     titleLabel.textAlignment = NSTextAlignmentCenter;

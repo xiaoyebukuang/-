@@ -72,14 +72,14 @@
 }
 #pragma mark -- event
 - (void)reloadData {
-    __weak __typeof(self)weakSelf = self;
+    WeakSelf;
     [self.titleView setSureBlock:^{
         if (weakSelf.pickerDateBlock) {
             NSString *dateStr;
-            if (self.pickerMode == UIDatePickerModeDate) {
+            if (weakSelf.pickerMode == UIDatePickerModeDate) {
                 dateStr = [NSDate getDateString:weakSelf.datePicker.date formatType:FormatyyyyMd];
             }
-            if (self.pickerMode == UIDatePickerModeTime) {
+            if (weakSelf.pickerMode == UIDatePickerModeTime) {
                 dateStr = [NSDate getDateString:weakSelf.datePicker.date formatType:FormatHm];
             }
             weakSelf.pickerDateBlock(dateStr, YES);
