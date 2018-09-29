@@ -60,7 +60,12 @@
                      param:(NSDictionary *)param
                    success:(void (^)(NSDictionary *obj, NSInteger code, NSString *mes))success
                    failure:(void (^)(ErrorType errorType, NSString *mes))failure;
-
+/**
+ 8.用户站内信列表
+ */
++ (void)letter_mesListParam:(NSDictionary *)param
+                    success:(void (^)(NSDictionary *obj, NSInteger code, NSString *mes))success
+                    failure:(void (^)(ErrorType errorType, NSString *mes))failure;
 
 
 

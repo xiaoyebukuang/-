@@ -7,6 +7,7 @@
 //
 
 #import "FlightListViewController.h"
+#import "MailListViewController.h"
 #import "FlightListTableViewCell.h"
 //筛选
 #import "FlightFilterViewController.h"
@@ -99,8 +100,8 @@ static NSString * const FlightListTableViewCellID = @"FlightListTableViewCellID"
     }];
     [MJRefreshControl beginRefresh:self.flightTableView];
     self.headerView.flightHeaderBlock = ^{
-        //站内信
-        NSLog(@"站内信");
+        MailListViewController *mailListVC = [[MailListViewController alloc]init];
+        [weakSelf.navigationController pushViewController:mailListVC animated:YES];
     };
 }
 - (void)getListFlight:(BOOL)refresh {
@@ -128,7 +129,6 @@ static NSString * const FlightListTableViewCellID = @"FlightListTableViewCellID"
         }
     } failure:^(ErrorType errorType, NSString *mes) {
         self.isRequest = NO;
-        [MBProgressHUD showError:mes ToView:self.view];
         [MJRefreshControl endRefresh:self.flightTableView];
     }];
 }

@@ -49,6 +49,9 @@
 @property (nonatomic, strong) VisaModel *visaModel;
 //职务等级
 @property (nonatomic, strong) DutyModel *dutyModel;
+//电话
+@property (nonatomic, copy) NSString *phone;
+
 
 - (instancetype)initWithDic:(NSDictionary *)dic;
 

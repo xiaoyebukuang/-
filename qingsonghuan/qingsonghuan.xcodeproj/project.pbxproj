@@ -25,6 +25,9 @@
 		652FCC12215E9402009F41E8 /* FlightAddLineModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 652FCC11215E9402009F41E8 /* FlightAddLineModel.m */; };
 		652FCC15215F159A009F41E8 /* RegNeedInfoModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 652FCC13215F159A009F41E8 /* RegNeedInfoModel.m */; };
 		652FCC19215F1608009F41E8 /* XYAlertViewTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 652FCC18215F1608009F41E8 /* XYAlertViewTool.m */; };
+		652FCC1D215F5A75009F41E8 /* MailListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 652FCC1C215F5A75009F41E8 /* MailListViewController.m */; };
+		652FCC21215F5AFB009F41E8 /* MailListTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 652FCC20215F5AFB009F41E8 /* MailListTableViewCell.m */; };
+		652FCC25215F5E39009F41E8 /* MailListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 652FCC24215F5E39009F41E8 /* MailListModel.m */; };
 		65D0CA3F214F9AFD00A3DB66 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 65D0CA3E214F9AFD00A3DB66 /* AppDelegate.m */; };
 		65D0CA45214F9AFD00A3DB66 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 65D0CA43214F9AFD00A3DB66 /* Main.storyboard */; };
 		65D0CA47214F9B0000A3DB66 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 65D0CA46214F9B0000A3DB66 /* Assets.xcassets */; };
@@ -92,6 +95,12 @@
 		652FCC14215F159A009F41E8 /* RegNeedInfoModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegNeedInfoModel.h; sourceTree = "<group>"; };
 		652FCC17215F1608009F41E8 /* XYAlertViewTool.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XYAlertViewTool.h; sourceTree = "<group>"; };
 		652FCC18215F1608009F41E8 /* XYAlertViewTool.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XYAlertViewTool.m; sourceTree = "<group>"; };
+		652FCC1B215F5A75009F41E8 /* MailListViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MailListViewController.h; sourceTree = "<group>"; };
+		652FCC1C215F5A75009F41E8 /* MailListViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MailListViewController.m; sourceTree = "<group>"; };
+		652FCC1F215F5AFB009F41E8 /* MailListTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MailListTableViewCell.h; sourceTree = "<group>"; };
+		652FCC20215F5AFB009F41E8 /* MailListTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MailListTableViewCell.m; sourceTree = "<group>"; };
+		652FCC23215F5E39009F41E8 /* MailListModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MailListModel.h; sourceTree = "<group>"; };
+		652FCC24215F5E39009F41E8 /* MailListModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MailListModel.m; sourceTree = "<group>"; };
 		65D0CA3A214F9AFD00A3DB66 /* qingsonghuan.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = qingsonghuan.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		65D0CA3D214F9AFD00A3DB66 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		65D0CA3E214F9AFD00A3DB66 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -263,6 +272,35 @@
 			path = AlertViewTool;
 			sourceTree = "<group>";
 		};
+		652FCC1A215F5A0D009F41E8 /* Mail */ = {
+			isa = PBXGroup;
+			children = (
+				652FCC22215F5E1E009F41E8 /* Model */,
+				652FCC1E215F5AEF009F41E8 /* View */,
+				652FCC1B215F5A75009F41E8 /* MailListViewController.h */,
+				652FCC1C215F5A75009F41E8 /* MailListViewController.m */,
+			);
+			path = Mail;
+			sourceTree = "<group>";
+		};
+		652FCC1E215F5AEF009F41E8 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				652FCC1F215F5AFB009F41E8 /* MailListTableViewCell.h */,
+				652FCC20215F5AFB009F41E8 /* MailListTableViewCell.m */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		652FCC22215F5E1E009F41E8 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				652FCC23215F5E39009F41E8 /* MailListModel.h */,
+				652FCC24215F5E39009F41E8 /* MailListModel.m */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		65D0CA31214F9AFC00A3DB66 = {
 			isa = PBXGroup;
 			children = (
@@ -381,6 +419,7 @@
 		65D0CA702151F06200A3DB66 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				652FCC1A215F5A0D009F41E8 /* Mail */,
 				652C0D122159CAE000BD03FC /* Flight */,
 				65D0CA712151F07100A3DB66 /* Login */,
 			);
@@ -614,6 +653,7 @@
 				65F87104215C874800DD1F59 /* FlightFilterModel.m in Sources */,
 				652FCBF0215D35BA009F41E8 /* XYErrorView.m in Sources */,
 				65D0CA662151ECEE00A3DB66 /* NSString+Helper.m in Sources */,
+				652FCC25215F5E39009F41E8 /* MailListModel.m in Sources */,
 				652FCBF5215D3C99009F41E8 /* MJRefreshControl.m in Sources */,
 				652C0D152159CB8800BD03FC /* FlightListViewController.m in Sources */,
 				65F870F1215B7F3600DD1F59 /* FlightListTableViewCell.m in Sources */,
@@ -633,6 +673,7 @@
 				65D0CA98215489F700A3DB66 /* BaseMultiViewController.m in Sources */,
 				65F870FD215BB8E500DD1F59 /* CommonTableViewCell.m in Sources */,
 				652FCBFF215D3D63009F41E8 /* XYPickerHeaderView.m in Sources */,
+				652FCC21215F5AFB009F41E8 /* MailListTableViewCell.m in Sources */,
 				652FCC0F215E089B009F41E8 /* RegisterModel.m in Sources */,
 				652C0D192159CC3F00BD03FC /* UserModel.m in Sources */,
 				65D0CA4D214F9B0000A3DB66 /* main.m in Sources */,
@@ -645,6 +686,7 @@
 				652C0D29215A871900BD03FC /* SendCodeModel.m in Sources */,
 				652FCC19215F1608009F41E8 /* XYAlertViewTool.m in Sources */,
 				65D0CA8921536D6E00A3DB66 /* UIColor+Helper.m in Sources */,
+				652FCC1D215F5A75009F41E8 /* MailListViewController.m in Sources */,
 				65D0CA682151ECEE00A3DB66 /* UIView+Helper.m in Sources */,
 				65F87113215CC6E600DD1F59 /* FlightListDetailTableViewCell.m in Sources */,
 				65D0CA852153439F00A3DB66 /* XYLineView.m in Sources */,

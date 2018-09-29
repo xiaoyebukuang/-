@@ -92,6 +92,7 @@
             failure(ErrorTypeReqestNone, mes);
         }
     } failure:^(ErrorType errorType, NSString *mes) {
+        [MBProgressHUD showError:mes];
         failure(errorType, mes);
     }];
 }
@@ -111,6 +112,21 @@
         }
     } failure:^(ErrorType errorType, NSString *mes) {
         [MBProgressHUD showError:mes ToView:view];
+        failure(errorType, mes);
+    }];
+}
+ //8.用户站内信列表
++ (void)letter_mesListParam:(NSDictionary *)param
+                    success:(void (^)(NSDictionary *obj, NSInteger code, NSString *mes))success
+                    failure:(void (^)(ErrorType errorType, NSString *mes))failure {
+    [XYNetworking postWithUrlString:API_LETTER_MESLIST parameters:param success:^(id obj, NSInteger code, NSString *mes) {
+        if ([obj isKindOfClass:[NSDictionary class]]) {
+            success((NSDictionary *)obj, code, mes);
+        } else {
+            failure(ErrorTypeReqestNone, mes);
+        }
+    } failure:^(ErrorType errorType, NSString *mes) {
+        [MBProgressHUD showError:mes];
         failure(errorType, mes);
     }];
 }

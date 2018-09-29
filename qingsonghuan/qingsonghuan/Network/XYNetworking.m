@@ -95,6 +95,8 @@ static NSTimeInterval const timeInterval = 20.0;
     } completionHandler:^(NSURLResponse * _Nonnull response, id  _Nullable responseObject, NSError * _Nullable error) {
         NSLog(@"-----------------------------------");
         NSLog(@"responseObject = %@",responseObject);
+        NSLog(@"parameters = %@",parameters);
+        NSLog(@"urlString = %@",urlString);
         if ([responseObject isKindOfClass:[NSDictionary class]]) {
             if ([responseObject[@"status"] isKindOfClass:[NSDictionary class]]) {
                 NSDictionary *status = responseObject[@"status"];

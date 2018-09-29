@@ -53,9 +53,10 @@
         self.wordLogoModel  = [[WordLogoModel alloc]initWithDic:dic[@"word_logo"]];
         self.message        = [NSString safe_string:dic[@"message"]];
         self.daysModel      = [[DaysModel alloc]initWithDic:dic[@"days"]];
-        self.user_id        = [NSString safe_string:dic[@"v"]];
+        self.user_id        = [NSString safe_string:dic[@"user_id"]];
         self.visaModel      = [[VisaModel alloc]initWithDic:dic[@"visa"]];
         self.dutyModel      = [[DutyModel alloc]initWithDic:dic[@"duty"]];
+        self.user_id        = [NSString safe_string:dic[@"phone"]];   
     }
     return self;
 }
