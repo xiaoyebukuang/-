@@ -48,6 +48,7 @@
 		65D0CA98215489F700A3DB66 /* BaseMultiViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 65D0CA97215489F700A3DB66 /* BaseMultiViewController.m */; };
 		65D0CA9C21548AB100A3DB66 /* UIButton+Helper.m in Sources */ = {isa = PBXBuildFile; fileRef = 65D0CA9B21548AB100A3DB66 /* UIButton+Helper.m */; };
 		65D0CA9F2154B80D00A3DB66 /* ForgetViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 65D0CA9E2154B80D00A3DB66 /* ForgetViewController.m */; };
+		65D6BEBF215FDE12002ABFDF /* MailReadViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 65D6BEBE215FDE12002ABFDF /* MailReadViewController.m */; };
 		65F870F1215B7F3600DD1F59 /* FlightListTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 65F870F0215B7F3600DD1F59 /* FlightListTableViewCell.m */; };
 		65F870F7215B90DF00DD1F59 /* FlightFilterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 65F870F6215B90DF00DD1F59 /* FlightFilterViewController.m */; };
 		65F870FD215BB8E500DD1F59 /* CommonTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 65F870FC215BB8E500DD1F59 /* CommonTableViewCell.m */; };
@@ -143,6 +144,8 @@
 		65D0CA9B21548AB100A3DB66 /* UIButton+Helper.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIButton+Helper.m"; sourceTree = "<group>"; };
 		65D0CA9D2154B80C00A3DB66 /* ForgetViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ForgetViewController.h; sourceTree = "<group>"; };
 		65D0CA9E2154B80D00A3DB66 /* ForgetViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ForgetViewController.m; sourceTree = "<group>"; };
+		65D6BEBD215FDE12002ABFDF /* MailReadViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MailReadViewController.h; sourceTree = "<group>"; };
+		65D6BEBE215FDE12002ABFDF /* MailReadViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MailReadViewController.m; sourceTree = "<group>"; };
 		65F870EF215B7F3600DD1F59 /* FlightListTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FlightListTableViewCell.h; sourceTree = "<group>"; };
 		65F870F0215B7F3600DD1F59 /* FlightListTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FlightListTableViewCell.m; sourceTree = "<group>"; };
 		65F870F5215B90DF00DD1F59 /* FlightFilterViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FlightFilterViewController.h; sourceTree = "<group>"; };
@@ -279,6 +282,8 @@
 				652FCC1E215F5AEF009F41E8 /* View */,
 				652FCC1B215F5A75009F41E8 /* MailListViewController.h */,
 				652FCC1C215F5A75009F41E8 /* MailListViewController.m */,
+				65D6BEBD215FDE12002ABFDF /* MailReadViewController.h */,
+				65D6BEBE215FDE12002ABFDF /* MailReadViewController.m */,
 			);
 			path = Mail;
 			sourceTree = "<group>";
@@ -660,6 +665,7 @@
 				652FCBFB215D3D3E009F41E8 /* XYPickerDateViewController.m in Sources */,
 				65D0CA95215487CE00A3DB66 /* UILabel+Helper.m in Sources */,
 				65D0CA9C21548AB100A3DB66 /* UIButton+Helper.m in Sources */,
+				65D6BEBF215FDE12002ABFDF /* MailReadViewController.m in Sources */,
 				65D0CA742151F08200A3DB66 /* LoginViewController.m in Sources */,
 				652FCBFC215D3D3E009F41E8 /* XYPickerViewController.m in Sources */,
 				652FCC05215DD201009F41E8 /* FlightListModel.m in Sources */,

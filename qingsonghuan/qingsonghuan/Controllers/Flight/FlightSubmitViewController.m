@@ -145,30 +145,30 @@ static NSString * const CommonTableViewCell05ID = @"CommonTableViewCell05ID";
             if (indexPath.row == 0||indexPath.row == 1) {
                 XYPickerDateViewController *dateVC = [[XYPickerDateViewController alloc]init];
                 dateVC.pickerMode = pickerMode;
-                [dateVC reloadViewWithPickerDateBlock:^(NSString *date, BOOL edit) {
-                    if (edit) {
-                        if (indexPath.row == 0) {
-                            weakSelf.flightAddLineModel.date = date;
-                            weakSelf.flightAddLineModel.sign_date = [NSDate getDateStample:date formatType:FormatyyyyMd];
-                        } else {
-                            weakSelf.flightAddLineModel.sign_time = date;
-                        }
-                        ((CommonTableViewCell01 *)cell).textField.text = date;
+                [dateVC reloadViewWithPickerDateBlock:^(NSString *date) {
+                    if (indexPath.row == 0) {
+                        weakSelf.flightAddLineModel.date = date;
+                        weakSelf.flightAddLineModel.sign_date = [NSDate getDateStample:date formatType:FormatyyyyMd];
+                    } else {
+                        weakSelf.flightAddLineModel.sign_time = date;
                     }
+                    ((CommonTableViewCell01 *)cell).textField.text = date;
                 }];
                 [weakSelf presentViewController:dateVC animated:YES completion:nil];
             } else {
                 XYPickerViewController *pickerVC = [[XYPickerViewController alloc]init];
                 [pickerVC reloadViewWithArr:arr pickerBlock:^(id model) {
-                    if (indexPath.row == 4) {
-                        weakSelf.flightAddLineModel.visaModel = (VisaModel *)model;
-                        ((CommonTableViewCell01 *)cell).textField.text = ((VisaModel *)model).visa_name;
-                    } else if (indexPath.row == 5) {
-                        weakSelf.flightAddLineModel.wordLogoModel = (WordLogoModel *)model;
-                        ((CommonTableViewCell01 *)cell).textField.text = ((WordLogoModel *)model).word_logo_name;
-                    } else {
-                        weakSelf.flightAddLineModel.dutyModel = (DutyModel *)model;
-                        ((CommonTableViewCell01 *)cell).textField.text = ((DutyModel *)model).duty_name;
+                    if (model) {
+                        if (indexPath.row == 4) {
+                            weakSelf.flightAddLineModel.visaModel = (VisaModel *)model;
+                            ((CommonTableViewCell01 *)cell).textField.text = ((VisaModel *)model).visa_name;
+                        } else if (indexPath.row == 5) {
+                            weakSelf.flightAddLineModel.wordLogoModel = (WordLogoModel *)model;
+                            ((CommonTableViewCell01 *)cell).textField.text = ((WordLogoModel *)model).word_logo_name;
+                        } else {
+                            weakSelf.flightAddLineModel.dutyModel = (DutyModel *)model;
+                            ((CommonTableViewCell01 *)cell).textField.text = ((DutyModel *)model).duty_name;
+                        }
                     }
                 }];
                 [weakSelf presentViewController:pickerVC animated:YES completion:nil];
@@ -179,8 +179,10 @@ static NSString * const CommonTableViewCell05ID = @"CommonTableViewCell05ID";
         [((CommonTableViewCell03 *)cell) reloadViewTitle:titleArr[indexPath.row] content:self.flightAddLineModel.airline_number days:self.flightAddLineModel.daysModel.days_name daysClickBlock:^{
             XYPickerViewController *pickerVC = [[XYPickerViewController alloc]init];
             [pickerVC reloadViewWithArr:regModle.daysModelArr pickerBlock:^(id model) {
+                if (model) {
                     weakSelf.flightAddLineModel.daysModel = (DaysModel *)model;
                     ((CommonTableViewCell03 *)cell).days = ((DaysModel *)model).days_name;
+                }
             }];
             [weakSelf presentViewController:pickerVC animated:YES completion:nil];
         } commonClickBlock:^(id obj) {

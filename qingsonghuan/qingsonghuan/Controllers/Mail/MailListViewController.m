@@ -10,6 +10,7 @@
 #import "MailListTableViewCell.h"
 #import "MailListModel.h"
 #import "MJRefreshControl.h"
+#import "MailReadViewController.h"
 
 static NSString * const MailListTableViewCellID = @"MailListTableViewCellID";
 
@@ -111,19 +112,26 @@ static NSString * const MailListTableViewCellID = @"MailListTableViewCellID";
         }
     }
     NSLog(@"delete = %@",letter_id);
-    [self.mailListModel.listArr removeObjectsInArray:self.deleteArr];
-    [self.mailListTableV deleteRowsAtIndexPaths:self.indexPathArr withRowAnimation:UITableViewRowAnimationFade];
-    [self.deleteArr removeAllObjects];
-    [self.indexPathArr removeAllObjects];
-    
-    
-    
-//    [RequestPath letter_mesdelView:self.view param:@{@"letter_id":letter_id} success:^(NSDictionary *obj, NSInteger code, NSString *mes) {
-//        [self.mailListModel.listArr removeObjectsInArray:deleteArr];
-////        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-//    } failure:^(ErrorType errorType, NSString *mes) {
-//
-//    }];
+    [RequestPath letter_mesdelView:self.view param:@{@"letter_id":letter_id} success:^(NSDictionary *obj, NSInteger code, NSString *mes) {
+        [self.mailListModel.listArr removeObjectsInArray:self.deleteArr];
+        [self.mailListTableV deleteRowsAtIndexPaths:self.indexPathArr withRowAnimation:UITableViewRowAnimationFade];
+        [self.deleteArr removeAllObjects];
+        [self.indexPathArr removeAllObjects];
+        
+        NSLog(@"self.deleteArr.count = %ld",self.deleteArr.count);
+        NSLog(@"self.indexPathArr.count = %ld",self.indexPathArr.count);
+        NSLog(@"self.mailListModel.listArr.count = %ld",self.mailListModel.listArr.count);
+        
+    } failure:^(ErrorType errorType, NSString *mes) {
+        if (remove) {
+            [self.deleteArr removeAllObjects];
+            [self.indexPathArr removeAllObjects];
+        }
+        
+        NSLog(@"self.deleteArr.count = %ld",self.deleteArr.count);
+        NSLog(@"self.indexPathArr.count = %ld",self.indexPathArr.count);
+        NSLog(@"self.mailListModel.listArr.count = %ld",self.mailListModel.listArr.count);
+    }];
 }
 #pragma mark -- event
 //编辑
@@ -185,9 +193,11 @@ static NSString * const MailListTableViewCellID = @"MailListTableViewCellID";
     if (tableView.editing) {
         [self.deleteArr addObject:self.mailListModel.listArr[indexPath.row]];
         [self.indexPathArr addObject:indexPath];
+    } else {
+        MailReadViewController *mailReadVC = [[MailReadViewController alloc]init];
+        [self.navigationController pushViewController:mailReadVC animated:YES];
+        [tableView deselectRowAtIndexPath:indexPath animated:YES];
     }
-    NSLog(@"self.deleteArr.count = %ld",self.deleteArr.count);
-    NSLog(@"self.indexPathArr.count = %ld",self.indexPathArr.count);
 }
 - (void)tableView:(UITableView *)tableView didDeselectRowAtIndexPath:(NSIndexPath *)indexPath {
     //取消选中
@@ -195,8 +205,6 @@ static NSString * const MailListTableViewCellID = @"MailListTableViewCellID";
         [self.deleteArr removeObject:self.mailListModel.listArr[indexPath.row]];
         [self.indexPathArr removeObject:indexPath];
     }
-    NSLog(@"self.deleteArr.count = %ld",self.deleteArr.count);
-    NSLog(@"self.indexPathArr.count = %ld",self.indexPathArr.count);
 }
 // 进入编辑模式，按下出现的编辑按钮后,进行删除操作
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {

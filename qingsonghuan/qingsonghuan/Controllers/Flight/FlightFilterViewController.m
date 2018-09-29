@@ -95,11 +95,9 @@ static NSString * const CommonTableViewCell02ID = @"CommonTableViewCell02ID";
             [weakSelf.view endEditing:YES];
             XYPickerDateViewController *dateVC = [[XYPickerDateViewController alloc]init];
             dateVC.pickerMode = UIDatePickerModeDate;
-            [dateVC reloadViewWithPickerDateBlock:^(NSString *date, BOOL edit) {
-                if (edit) {
-                    weakSelf.filterModel.sign_date = date;
-                    ((CommonTableViewCell01 *)cell).textField.text = date;
-                }
+            [dateVC reloadViewWithPickerDateBlock:^(NSString *date) {
+                weakSelf.filterModel.sign_date = date;
+                ((CommonTableViewCell01 *)cell).textField.text = date;
             }];
             [weakSelf presentViewController:dateVC animated:YES completion:nil];
         }];

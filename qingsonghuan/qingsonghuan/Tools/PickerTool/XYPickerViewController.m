@@ -107,16 +107,10 @@
         }
         [weakSelf dismissViewControllerAnimated:YES completion:nil];
     } cancleBlock:^{
-        if (weakSelf.pickerBlock) {
-            weakSelf.pickerBlock(nil);
-        }
         [weakSelf dismissViewControllerAnimated:YES completion:nil];
     }];
 }
 - (void)controlEvent:(UIControl *)sender {
-    if (self.pickerBlock) {
-        self.pickerBlock(nil);
-    }
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 #pragma mark -- UIPickerViewDataSource

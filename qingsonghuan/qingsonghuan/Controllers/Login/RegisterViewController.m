@@ -122,10 +122,12 @@ static NSString * const RegisterTableViewCell04ID = @"RegisterTableViewCell04ID"
             [weakSelf.view endEditing:YES];
             XYPickerViewController *pickerVC = [[XYPickerViewController alloc]init];
             [pickerVC reloadViewWithArr:regModle.airlineModelArr pickerBlock:^(id model) {
-                weakSelf.registerModel.airlineModel = (AirlineModel *)model;
-                cell.content = weakSelf.registerModel.airlineModel.airline_name;
-                weakSelf.registerModel.subsidiaryModel = nil;
-                [tableView reloadData];
+                if (model) {
+                    weakSelf.registerModel.airlineModel = (AirlineModel *)model;
+                    cell.content = weakSelf.registerModel.airlineModel.airline_name;
+                    weakSelf.registerModel.subsidiaryModel = nil;
+                    [tableView reloadData];
+                }
             }];
             [weakSelf presentViewController:pickerVC animated:YES completion:nil];
         } else if (indexPath.row == 2) {
@@ -136,24 +138,30 @@ static NSString * const RegisterTableViewCell04ID = @"RegisterTableViewCell04ID"
             }
             XYPickerViewController *pickerVC = [[XYPickerViewController alloc]init];
             [pickerVC reloadViewWithArr:weakSelf.registerModel.airlineModel.subsidiaryArr pickerBlock:^(id model) {
-                weakSelf.registerModel.subsidiaryModel = (SubsidiaryModel *)model;
-                cell.content = weakSelf.registerModel.subsidiaryModel.subsidiary_name;
+                if (model) {
+                    weakSelf.registerModel.subsidiaryModel = (SubsidiaryModel *)model;
+                    cell.content = weakSelf.registerModel.subsidiaryModel.subsidiary_name;
+                }
             }];
             [weakSelf presentViewController:pickerVC animated:YES completion:nil];
         } else if (indexPath.row == 3) {
             [weakSelf.view endEditing:YES];
             XYPickerViewController *pickerVC = [[XYPickerViewController alloc]init];
             [pickerVC reloadViewWithArr:regModle.dutyModelArr pickerBlock:^(id model) {
-                weakSelf.registerModel.dutyModel = (DutyModel *)model;
-                cell.content = weakSelf.registerModel.dutyModel.duty_name;
+                if (model) {
+                    weakSelf.registerModel.dutyModel = (DutyModel *)model;
+                    cell.content = weakSelf.registerModel.dutyModel.duty_name;
+                }
             }];
             [weakSelf presentViewController:pickerVC animated:YES completion:nil];
         } else if (indexPath.row == 4) {
             [weakSelf.view endEditing:YES];
             XYPickerViewController *pickerVC = [[XYPickerViewController alloc]init];
             [pickerVC reloadViewWithArr:regModle.visaModelArr pickerBlock:^(id model) {
-                weakSelf.registerModel.visaModel = (VisaModel *)model;
-                cell.content = weakSelf.registerModel.visaModel.visa_name;
+                if (model) {
+                    weakSelf.registerModel.visaModel = (VisaModel *)model;
+                    cell.content = weakSelf.registerModel.visaModel.visa_name;
+                }
             }];
             [weakSelf presentViewController:pickerVC animated:YES completion:nil];
         } else if (indexPath.row == 5) {
@@ -162,8 +170,10 @@ static NSString * const RegisterTableViewCell04ID = @"RegisterTableViewCell04ID"
             [weakSelf.view endEditing:YES];
             XYPickerViewController *pickerVC = [[XYPickerViewController alloc]init];
             [pickerVC reloadViewWithArr:regModle.sexModelArr pickerBlock:^(id model) {
-                weakSelf.registerModel.sexModel = (SexModel *)model;
-                cell.content = weakSelf.registerModel.sexModel.sex_name;
+                if (model) {
+                    weakSelf.registerModel.sexModel = (SexModel *)model;
+                    cell.content = weakSelf.registerModel.sexModel.sex_name;
+                }
             }];
             [weakSelf presentViewController:pickerVC animated:YES completion:nil];
         } else if (indexPath.row == 7) {

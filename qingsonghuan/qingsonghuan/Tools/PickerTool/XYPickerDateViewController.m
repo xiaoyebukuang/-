@@ -82,20 +82,14 @@
             if (weakSelf.pickerMode == UIDatePickerModeTime) {
                 dateStr = [NSDate getDateString:weakSelf.datePicker.date formatType:FormatHm];
             }
-            weakSelf.pickerDateBlock(dateStr, YES);
+            weakSelf.pickerDateBlock(dateStr);
         }
         [weakSelf dismissViewControllerAnimated:YES completion:nil];
     } cancleBlock:^{
-        if (weakSelf.pickerDateBlock) {
-            weakSelf.pickerDateBlock(nil, NO);
-        }
         [weakSelf dismissViewControllerAnimated:YES completion:nil];
     }];
 }
 - (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
-    if (self.pickerDateBlock) {
-        self.pickerDateBlock(nil, NO);
-    }
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 #pragma mark -- setup
