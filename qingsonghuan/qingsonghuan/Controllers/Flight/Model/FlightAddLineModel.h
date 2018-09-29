@@ -7,7 +7,6 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "RegNeedInfoModel.h"
 @interface FlightAddLineModel : NSObject
 //签到日期
 @property (nonatomic, copy) NSString *date;

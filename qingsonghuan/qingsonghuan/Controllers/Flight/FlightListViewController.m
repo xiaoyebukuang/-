@@ -18,7 +18,6 @@
 #import "FlightHeaderView.h"
 
 #import "MJRefreshControl.h"
-#import "RegNeedInfoModel.h"
 #import "FlightFilterModel.h"
 #import "FlightListModel.h"
 
@@ -138,6 +137,7 @@ static NSString * const FlightListTableViewCellID = @"FlightListTableViewCellID"
 - (void)leftNavigationBarEvent:(UIButton *)sender {
     NSLog(@"个人中心");
 }
+
 //筛选
 - (void)rightBtnNavigationBarEvent:(UIButton *)sender {
     if (sender.selected) {

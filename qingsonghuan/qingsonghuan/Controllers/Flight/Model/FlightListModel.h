@@ -7,7 +7,6 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "RegNeedInfoModel.h"
 @class FlightModel;
 @interface FlightListModel : NSObject
 //当前页

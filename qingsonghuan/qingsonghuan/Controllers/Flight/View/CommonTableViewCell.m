@@ -7,7 +7,6 @@
 //
 
 #import "CommonTableViewCell.h"
-#import "RegNeedInfoModel.h"
 @interface CommonTableViewCell()
 @property (nonatomic, strong) UILabel *title;
 @end
@@ -323,7 +322,9 @@ static NSInteger const COMMON_BTN_TAG = 329;
 }
 #pragma mark -- event
 - (void)addCityEvent:(UIButton *)sender {
-    
+    [XYAlertViewTool showFieldView:^(NSString *content) {
+ 
+    }];
 }
 
 #pragma mark -- setup

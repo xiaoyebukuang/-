@@ -7,7 +7,6 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "RegNeedInfoModel.h"
 @interface FlightFilterModel : NSObject
 
 //签到日期

@@ -10,7 +10,6 @@
 #import "CommonTableViewCell.h"
 #import "XYPickerDateViewController.h"
 #import "XYPickerViewController.h"
-#import "RegNeedInfoModel.h"
 #import "FlightAddLineModel.h"
 static NSString * const CommonTableViewCell01ID = @"CommonTableViewCell01ID";
 static NSString * const CommonTableViewCell03ID = @"CommonTableViewCell03ID";

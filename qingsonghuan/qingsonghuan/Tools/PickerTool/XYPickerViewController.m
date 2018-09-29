@@ -8,7 +8,6 @@
 
 #import "XYPickerViewController.h"
 #import "XYPickerHeaderView.h"
-#import "RegNeedInfoModel.h"
 @interface XYPickerViewController ()<UIPickerViewDelegate, UIPickerViewDataSource>
 
 

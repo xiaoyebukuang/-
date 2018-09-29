@@ -7,7 +7,6 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "RegNeedInfoModel.h"
 #import "SendCodeModel.h"
 @interface RegisterModel : NSObject
 //电话

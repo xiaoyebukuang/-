@@ -8,7 +8,6 @@
 
 #import "FlightFilterViewController.h"
 #import "CommonTableViewCell.h"
-#import "RegNeedInfoModel.h"
 #import "XYPickerDateViewController.h"
 
 static NSString * const CommonTableViewCell01ID = @"CommonTableViewCell01ID";
