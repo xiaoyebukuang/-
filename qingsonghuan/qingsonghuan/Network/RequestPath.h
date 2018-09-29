@@ -67,6 +67,13 @@
                     success:(void (^)(NSDictionary *obj, NSInteger code, NSString *mes))success
                     failure:(void (^)(ErrorType errorType, NSString *mes))failure;
 
+/**
+ 9.站内信删除
+ */
++ (void)letter_mesdelView:(UIView *)view
+                    param:(NSDictionary *)param
+                  success:(void (^)(NSDictionary *obj, NSInteger code, NSString *mes))success
+                  failure:(void (^)(ErrorType errorType, NSString *mes))failure;
 
 
 

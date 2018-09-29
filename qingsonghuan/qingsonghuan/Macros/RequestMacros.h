@@ -26,9 +26,9 @@
 //7.添加航班信息
 #define API_FLIGHT_ADDLINE             [NSString stringWithFormat:@"%@/flight/addLine",BASE_URL]
 //8.用户站内信列表
-#define API_LETTER_MESLIST            [NSString stringWithFormat:@"%@/letter/mesList",BASE_URL]
-
-
+#define API_LETTER_MESLIST             [NSString stringWithFormat:@"%@/letter/mesList",BASE_URL]
+//9.站内信删除
+#define API_LETTER_MESDEL              [NSString stringWithFormat:@"%@/letter/mesDel",BASE_URL]
 
 
 

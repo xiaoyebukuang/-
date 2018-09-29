@@ -22,6 +22,20 @@
                            font:(UIFont *)font
                      titleColor:(UIColor *)titleColor;
 
+/**
+ 创建button（选中标题）
+ 
+ @param title 标题
+ @param selectTitle  选中标题
+ @param font  标题大小
+ @param titleColor 标题颜色
+ @return button
+ */
++ (UIButton *)buttonWithTitle:(NSString *)title
+                  selectTitle:(NSString *)selectTitle
+                         font:(UIFont *)font
+                   titleColor:(UIColor *)titleColor;
+
 
 /**
  创建button（标题+背景图片）

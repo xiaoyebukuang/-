@@ -45,10 +45,22 @@ static NSString * const FlightListDetailTableViewCellID = @"FlightListDetailTabl
 - (void)setFlightModel:(FlightModel *)flightModel {
     _flightModel = flightModel;
     NSMutableString *city = [[NSMutableString alloc]init];
-    for (NSString *temp in flightModel.leg_info) {
-        [city appendString:[NSString stringWithFormat:@"+%@",temp]];
+    for (int i = 0; i < flightModel.leg_info.count; i ++) {
+        NSString *temp = flightModel.leg_info[i];
+        if (i == 0) {
+            [city appendString:[NSString stringWithFormat:@"%@",temp]];
+        } else {
+            [city appendString:[NSString stringWithFormat:@"+%@",temp]];
+        }
     }
-    self.contentArr = @[flightModel.date,flightModel.sign_time,flightModel.airline_number,city,flightModel.visaModel.visa_name,flightModel.wordLogoModel.word_logo_name,flightModel.dutyModel.duty_name,flightModel.message];
+    
+    NSString *day = @"";
+    if (flightModel.daysModel.days_id != 1) {
+        day = [NSString stringWithFormat:@"(%@)",flightModel.daysModel.days_name];
+    }
+    NSString *daysStr = [NSString stringWithFormat:@"%@%@",flightModel.airline_number,day];
+    
+    self.contentArr = @[flightModel.date,flightModel.sign_time,daysStr,city,flightModel.visaModel.visa_name,flightModel.wordLogoModel.word_logo_name,flightModel.dutyModel.duty_name,flightModel.message];
 }
 
 #pragma mark -- UITableViewDelegate, UITableViewDataSource

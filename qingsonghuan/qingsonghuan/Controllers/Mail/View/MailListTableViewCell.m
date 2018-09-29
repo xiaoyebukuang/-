@@ -29,46 +29,45 @@
 
 -(instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier {
     if (self = [super initWithStyle:style reuseIdentifier:reuseIdentifier]) {
-        self.selectionStyle = UITableViewCellSelectionStyleNone;
         self.backgroundColor = [UIColor color_FFFFFF];
         [self setupView];
     }
     return self;
 }
 - (void)setupView {
-    [self addSubview:self.mailLogo];
+    [self.contentView addSubview:self.mailLogo];
     [self.mailLogo mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.centerY.equalTo(self);
-        make.left.equalTo(self).offset(CELL_LEFT_APACE);
+        make.centerY.equalTo(self.contentView);
+        make.left.equalTo(self.contentView).offset(CELL_LEFT_APACE);
     }];
     
-    [self addSubview:self.arrawLogo];
+    [self.contentView addSubview:self.arrawLogo];
     [self.arrawLogo mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.centerY.equalTo(self);
-        make.right.equalTo(self).offset(-CELL_LEFT_APACE);
+        make.centerY.equalTo(self.contentView);
+        make.right.equalTo(self.contentView).offset(-CELL_LEFT_APACE);
     }];
     
-    [self addSubview:self.workNumber];
+    [self.contentView addSubview:self.workNumber];
     [self.workNumber mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.centerY.equalTo(self).multipliedBy(0.5);
+        make.top.equalTo(self.contentView).offset(10);
         make.left.equalTo(self.mailLogo.mas_right).offset(20);
     }];
     
-    [self addSubview:self.timeLabel];
+    [self.contentView addSubview:self.timeLabel];
     [self.timeLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.centerY.equalTo(self.workNumber);
         make.right.equalTo(self.arrawLogo.mas_left).offset(-10);
     }];
-    
-    [self addSubview:self.messageLabel];
+
+    [self.contentView addSubview:self.messageLabel];
     [self.messageLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.centerY.equalTo(self).multipliedBy(1.5);
+        make.bottom.equalTo(self.contentView).offset(-10);
         make.left.equalTo(self.workNumber);
-        make.right.equalTo(self.timeLabel);
+        make.width.mas_offset(MAIN_SCREEN_WIDTH - 140);
     }];
-    [self addSubview:self.lineV];
+    [self.contentView addSubview:self.lineV];
     [self.lineV mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.right.bottom.equalTo(self);
+        make.left.right.bottom.equalTo(self.contentView);
         make.height.mas_equalTo(0.5);
     }];
 }
@@ -76,8 +75,8 @@
     NSString *mailImageStr = mailModel.is_read ? @"mail_read" : @"mail_unread";
     self.mailLogo.image = [UIImage imageNamed:mailImageStr];
     self.workNumber.text = mailModel.work_number;
-//    self.timeLabel.text = mailModel.date;
-//    self.messageLabel.text = mailModel.content;
+    self.timeLabel.text = mailModel.date;
+    self.messageLabel.text = mailModel.content;
     
 }
 #pragma mark -- serup
@@ -95,19 +94,19 @@
 }
 - (UILabel *)workNumber {
     if (!_workNumber) {
-        _workNumber = [[UILabel alloc]initWithText:@"09123" font:SYSTEM_FONT_17 textColor:[UIColor color_333333]];
+        _workNumber = [[UILabel alloc]initWithText:@"" font:SYSTEM_FONT_17 textColor:[UIColor color_333333]];
     }
     return _workNumber;
 }
 - (UILabel *)timeLabel {
     if (!_timeLabel) {
-        _timeLabel = [[UILabel alloc]initWithText:@"12-21" font:SYSTEM_FONT_13 textColor:[UIColor color_333333]];
+        _timeLabel = [[UILabel alloc]initWithText:@"" font:SYSTEM_FONT_13 textColor:[UIColor color_333333]];
     }
     return _timeLabel;
 }
 - (UILabel *)messageLabel {
     if (!_messageLabel) {
-        _messageLabel = [[UILabel alloc]initWithText:@"你知道欧昂方is能给你大四的蒂萨费乃是独食难肥inin打撒带你飞is奶" font:SYSTEM_FONT_13 textColor:[UIColor color_333333]];
+        _messageLabel = [[UILabel alloc]initWithText:@"" font:SYSTEM_FONT_13 textColor:[UIColor color_666666]];
     }
     return _messageLabel;
 }

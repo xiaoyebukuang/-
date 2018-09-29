@@ -130,4 +130,24 @@
         failure(errorType, mes);
     }];
 }
+
+ //9.站内信删除
++ (void)letter_mesdelView:(UIView *)view
+                    param:(NSDictionary *)param
+                  success:(void (^)(NSDictionary *obj, NSInteger code, NSString *mes))success
+                  failure:(void (^)(ErrorType errorType, NSString *mes))failure {
+    [MBProgressHUD showToView:view];
+    [XYNetworking postWithUrlString:API_LETTER_MESDEL parameters:param success:^(id obj, NSInteger code, NSString *mes) {
+        if ([obj isKindOfClass:[NSDictionary class]]) {
+            [MBProgressHUD hideHUDForView:view];
+            success((NSDictionary *)obj, code, mes);
+        } else {
+            [MBProgressHUD showError:mes ToView:view];
+            failure(ErrorTypeReqestNone, mes);
+        }
+    } failure:^(ErrorType errorType, NSString *mes) {
+        [MBProgressHUD showError:mes ToView:view];
+        failure(errorType, mes);
+    }];
+}
 @end

@@ -78,7 +78,11 @@
     }
     self.date.text = model.date;
     self.time.text = model.sign_time;
-    self.airLine.text = model.airline_number;
+    NSString *days = @"";
+    if (model.daysModel.days_id != 1) {
+        days = [NSString stringWithFormat:@"(%@)",model.daysModel.days_name];
+    }
+    self.airLine.text = [NSString stringWithFormat:@"%@%@",model.airline_number,days];
     self.duties.text = model.dutyModel.duty_name;
     self.word.text = model.wordLogoModel.word_logo_name;
 }

@@ -9,9 +9,19 @@
 #import "UIButton+Helper.h"
 
 @implementation UIButton (Helper)
-
 + (UIButton *)buttonWithTitle:(NSString *)title font:(UIFont *)font titleColor:(UIColor *)titleColor {
     return [self buttonWithTitle:title font:font titleColor:titleColor backgroundImage:nil];
+}
++ (UIButton *)buttonWithTitle:(NSString *)title
+                  selectTitle:(NSString *)selectTitle
+                         font:(UIFont *)font
+                   titleColor:(UIColor *)titleColor {
+    UIButton *btn = [UIButton buttonWithType:UIButtonTypeCustom];
+    [btn setTitle:title forState:UIControlStateNormal];
+    [btn setTitle:selectTitle forState:UIControlStateSelected];
+    btn.titleLabel.font = font;
+    [btn setTitleColor:titleColor forState:UIControlStateNormal];
+    return btn;
 }
 
 + (UIButton *)buttonWithTitle:(NSString *)title
