@@ -78,6 +78,9 @@
 + (NSTimeInterval)getDateStample:(NSDate *)data {
     return [data timeIntervalSince1970]*1000;
 }
++ (NSTimeInterval)getDateStample:(NSString *)dateStr formatType:(FormatType)type {
+    return [self getDateStample:[self getDate:dateStr formatType:type]];
+}
 + (NSString *)getDateStringWithDateStaple:(NSTimeInterval)time formatType:(FormatType)type {
     NSDate *date = [NSDate dateWithTimeIntervalSinceNow:time];
     return [self getDateString:date formatType:type];

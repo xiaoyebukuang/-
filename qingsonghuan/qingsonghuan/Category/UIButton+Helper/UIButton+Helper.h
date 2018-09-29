@@ -46,6 +46,14 @@
  */
 + (UIButton *)buttonWithImage:(NSString *)image;
 
+
+/**
+ 创建button（背景）
+
+ @param image 背景
+ @return button
+ */
++ (UIButton *)buttonWithBGImage:(NSString *)image;
 /**
  创建button（图片+标题）
 
@@ -80,7 +88,19 @@
                           normalColor:(UIColor *)normalColor
                           selectColor:(UIColor *)selectColor;
 
+/**
+ 创建button（背景+标题）
 
+ @param bgImage 背景
+ @param title 标题
+ @param font 标题大小
+ @param textColor 标题颜色
+ @return button
+ */
++ (UIButton *)buttonWithBGImage:(NSString *)bgImage
+                          title:(NSString *)title
+                           font:(UIFont *)font
+                      textColor:(UIColor *)textColor;
 /**
  创建button（背景+图标+标题）
 

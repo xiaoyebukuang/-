@@ -43,9 +43,9 @@
 }
 - (void)reloadViewWithIndex:(NSInteger)index title:(NSString *)title content:(NSString *)content {
     if (index%2 == 0) {
-        self.backgroundColor = [UIColor color_FFFFFF];
-    } else {
         self.backgroundColor = [UIColor color_D5E8F6];
+    } else {
+        self.backgroundColor = [UIColor color_FFFFFF];
     }
     self.titleL.text = title;
     self.desL.text = [NSString isEmpty:content] ? @" " : content;

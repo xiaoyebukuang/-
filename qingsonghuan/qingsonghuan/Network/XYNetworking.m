@@ -93,6 +93,8 @@ static NSTimeInterval const timeInterval = 20.0;
     } downloadProgress:^(NSProgress * _Nonnull downloadProgress) {
         
     } completionHandler:^(NSURLResponse * _Nonnull response, id  _Nullable responseObject, NSError * _Nullable error) {
+        NSLog(@"-----------------------------------");
+        NSLog(@"responseObject = %@",responseObject);
         if ([responseObject isKindOfClass:[NSDictionary class]]) {
             if ([responseObject[@"status"] isKindOfClass:[NSDictionary class]]) {
                 NSDictionary *status = responseObject[@"status"];
@@ -108,7 +110,6 @@ static NSTimeInterval const timeInterval = 20.0;
         } else {
             failure(ErrorTypeRequestFailed, API_REUQEST_FAILED);
         }
-        
     }];
     [dataTask resume];
     if (cancle) {

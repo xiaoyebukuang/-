@@ -79,7 +79,7 @@ static NSString * const FlightListTableViewCellID = @"FlightListTableViewCellID"
     [self.view addSubview:self.footerView];
     [self.footerView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.width.bottom.equalTo(self.view);
-        make.height.mas_equalTo(50);
+        make.height.mas_equalTo(50 + NAV_BOTTOW_HEIGHT);
     }];
     
     [self.view addSubview:self.flightTableView];
@@ -209,7 +209,7 @@ static NSString * const FlightListTableViewCellID = @"FlightListTableViewCellID"
         [submitBtn addTarget:self action:@selector(submitBtnEvent:) forControlEvents:UIControlEventTouchUpInside];
         [view addSubview:submitBtn];
         [submitBtn mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.centerY.equalTo(view);
+            make.top.equalTo(view).offset(10);
             make.right.equalTo(view).offset(-20);
         }];
         _footerView = view;

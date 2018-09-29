@@ -53,11 +53,19 @@ typedef NS_ENUM(NSInteger, FormatType) {
 /**
  获取时间戳
  
- @param data 时间毫秒
+ @param date 时间毫秒
  @return 返回时间戳
  */
-+ (NSTimeInterval)getDateStample:(NSDate *)data;
++ (NSTimeInterval)getDateStample:(NSDate *)date;
 
+/**
+ 获取时间戳
+ 
+ @param dateStr 时间字符串
+ @param type 时间类型
+ @return 返回时间戳
+ */
++ (NSTimeInterval)getDateStample:(NSString *)dateStr formatType:(FormatType)type;
 
 /**
  获取时间戳的字符串

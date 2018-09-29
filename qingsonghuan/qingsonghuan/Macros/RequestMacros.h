@@ -22,7 +22,10 @@
 //5.登录
 #define API_USER_LOGIN                 [NSString stringWithFormat:@"%@/user/login",BASE_URL]
 //6.获取航段列表
-#define API_FLIGHT_GETLISTFLIGHT      [NSString stringWithFormat:@"%@/flight/getListFlight",BASE_URL]
+#define API_FLIGHT_GETLISTFLIGHT       [NSString stringWithFormat:@"%@/flight/getListFlight",BASE_URL]
+//7.添加航班信息
+#define API_FLIGHT_ADDLINE             [NSString stringWithFormat:@"%@/flight/addLine",BASE_URL]
+
 
 
 

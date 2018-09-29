@@ -17,7 +17,7 @@
 //航班号
 @property (nonatomic, copy) NSString *airline_number;
 //航段信息
-@property (nonatomic, copy) NSString *leg_info;
+@property (nonatomic, strong) NSArray *leg_info;
 //签证信息
 @property (nonatomic, strong) VisaModel *visaModel;
 //字母标识
@@ -28,5 +28,7 @@
 @property (nonatomic, copy) NSString *message;
 //出差天数
 @property (nonatomic, strong) DaysModel *daysModel;
+
+- (NSString *)checkAddLine;
 
 @end

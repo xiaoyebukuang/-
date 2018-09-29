@@ -32,6 +32,11 @@
     [btn setImage:[UIImage imageNamed:image] forState:UIControlStateNormal];
     return btn;
 }
++ (UIButton *)buttonWithBGImage:(NSString *)image {
+    UIButton *btn = [UIButton buttonWithType:UIButtonTypeCustom];
+    [btn setBackgroundImage:[UIImage imageNamed:image] forState:UIControlStateNormal];
+    return btn;
+}
 + (UIButton *)buttonWithImage:(NSString *)image
                         title:(NSString *)title
                   selectTitel:(NSString *)selectTitle
@@ -65,6 +70,20 @@
     [btn setTitle:title forState:UIControlStateNormal];
     [btn setTitleColor:normalColor forState:UIControlStateNormal];
     [btn setTitleColor:selectColor forState:UIControlStateSelected];
+    btn.titleLabel.font = font;
+    return btn;
+}
++ (UIButton *)buttonWithBGImage:(NSString *)bgImage
+                          title:(NSString *)title
+                           font:(UIFont *)font
+                      textColor:(UIColor *)textColor {
+    UIButton *btn = [UIButton buttonWithType:UIButtonTypeCustom];
+    
+    UIImage *image = [UIImage imageNamed:bgImage];
+    image = [image stretchableImageWithLeftCapWidth:image.size.width/2 topCapHeight:image.size.height/2];
+    [btn setBackgroundImage:image forState:UIControlStateNormal];
+    [btn setTitle:title forState:UIControlStateNormal];
+    [btn setTitleColor:textColor forState:UIControlStateNormal];
     btn.titleLabel.font = font;
     return btn;
 }

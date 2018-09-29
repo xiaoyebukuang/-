@@ -30,8 +30,8 @@
         if (placeHolder) {
             self.placeholder = placeHolder;
         }
-        self.filedType = filedType;
         [self setupView];
+        self.filedType = filedType;
     }
     return self;
 }
@@ -66,6 +66,13 @@
         {
             self.numberCount = 4;
             self.keyboardType = UIKeyboardTypeNumberPad;
+        }
+            break;
+        case UITextFieldCity:
+        {
+            self.numberCount = 5;
+            self.keyboardType = UIKeyboardTypeDefault;
+            self.borderStyle = UITextBorderStyleRoundedRect;
         }
             break;
         default:
@@ -124,6 +131,14 @@
                 if (character > 90 && character < 97) return NO;
                 if (character > 122) return NO;
             }
+            NSUInteger proposeLength = textField.text.length - range.length + string.length;
+            if (proposeLength > self.numberCount) {
+                return NO;
+            }
+        }
+            break;
+        case UITextFieldCity:
+        {
             NSUInteger proposeLength = textField.text.length - range.length + string.length;
             if (proposeLength > self.numberCount) {
                 return NO;

@@ -24,6 +24,8 @@ static NSString * const CommonTableViewCell05ID = @"CommonTableViewCell05ID";
 
 @property (nonatomic, strong) FlightAddLineModel *flightAddLineModel;
 
+@property (nonatomic, strong) UIView *footerView;
+
 
 @end
 
@@ -54,6 +56,44 @@ static NSString * const CommonTableViewCell05ID = @"CommonTableViewCell05ID";
                 [weakSelf reuqestData];
             }];
         }];
+    }
+}
+#pragma mark -- event
+- (void)sureBtnEvent:(UIButton *)sender {
+    NSString *des = [self.flightAddLineModel checkAddLine];
+    if (des) {
+        [MBProgressHUD showError:des ToView:self.view];
+        return;
+    }
+    NSDictionary *param = @{
+                            @"sign_date":@(self.flightAddLineModel.sign_date),
+                            @"sign_time":self.flightAddLineModel.sign_time,
+                            @"airline_number":self.flightAddLineModel.airline_number,
+                            @"leg_info":[self dataToJson:self.flightAddLineModel.leg_info],
+                            @"visa_id":@(self.flightAddLineModel.visaModel.visa_id),
+                            @"word_logo_id":@(self.flightAddLineModel.wordLogoModel.word_logo_id),
+                            @"duty_id":@(self.flightAddLineModel.dutyModel.duty_id),
+                            @"message":[NSString safe_string:self.flightAddLineModel.message],
+                            @"days_id":@(self.flightAddLineModel.daysModel.days_id),
+                            @"user_id":[UserModel sharedInstance].userId
+                            };
+    [RequestPath flight_addlineView:self.view param:param success:^(NSDictionary *obj, NSInteger code, NSString *mes) {
+        [MBProgressHUD showSuccess:@"上传成功" ToView:self.view completeBlcok:^{
+            [self.navigationController popViewControllerAnimated:YES];
+        }];
+    } failure:^(ErrorType errorType, NSString *mes) {
+        
+    }];
+}
+///data转json
+- (NSString *)dataToJson:(id)theData {
+    NSError *error = nil;
+    NSData *jsonData = [NSJSONSerialization dataWithJSONObject:theData options:0 error:&error];
+    NSString *jsonString = [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
+    if ([jsonString length] > 0 && error == nil){
+        return jsonString;
+    }else{
+        return @"";
     }
 }
 #pragma mark -- UITableViewDelegate, UITableViewDataSource
@@ -100,13 +140,19 @@ static NSString * const CommonTableViewCell05ID = @"CommonTableViewCell05ID";
                 break;
         }
         cell = [tableView dequeueReusableCellWithIdentifier: CommonTableViewCell01ID];
-        [(CommonTableViewCell01 *)cell reloadViewWithText:titleArr[indexPath.row] placeHolder:placeHolder content:nil enabled:NO textFieldType:UITextFieldNormal commonClickBlock:^(id obj) {
+        [(CommonTableViewCell01 *)cell reloadViewWithText:titleArr[indexPath.row] placeHolder:placeHolder content:content enabled:NO textFieldType:UITextFieldNormal commonClickBlock:^(id obj) {
             [weakSelf.view endEditing:YES];
             if (indexPath.row == 0||indexPath.row == 1) {
                 XYPickerDateViewController *dateVC = [[XYPickerDateViewController alloc]init];
                 dateVC.pickerMode = pickerMode;
                 [dateVC reloadViewWithPickerDateBlock:^(NSString *date, BOOL edit) {
                     if (edit) {
+                        if (indexPath.row == 0) {
+                            weakSelf.flightAddLineModel.date = date;
+                            weakSelf.flightAddLineModel.sign_date = [NSDate getDateStample:date formatType:FormatyyyyMd];
+                        } else {
+                            weakSelf.flightAddLineModel.sign_time = date;
+                        }
                         ((CommonTableViewCell01 *)cell).textField.text = date;
                     }
                 }];
@@ -130,7 +176,7 @@ static NSString * const CommonTableViewCell05ID = @"CommonTableViewCell05ID";
         }];
     } else if (indexPath.row == 2) {
         cell = [tableView dequeueReusableCellWithIdentifier: CommonTableViewCell03ID];
-        [((CommonTableViewCell03 *)cell) reloadViewContent:self.flightAddLineModel.airline_number days:self.flightAddLineModel.daysModel.days_name daysClickBlock:^{
+        [((CommonTableViewCell03 *)cell) reloadViewTitle:titleArr[indexPath.row] content:self.flightAddLineModel.airline_number days:self.flightAddLineModel.daysModel.days_name daysClickBlock:^{
             XYPickerViewController *pickerVC = [[XYPickerViewController alloc]init];
             [pickerVC reloadViewWithArr:regModle.daysModelArr pickerBlock:^(id model) {
                     weakSelf.flightAddLineModel.daysModel = (DaysModel *)model;
@@ -142,8 +188,15 @@ static NSString * const CommonTableViewCell05ID = @"CommonTableViewCell05ID";
         }];
     } else if (indexPath.row == 3) {
         cell = [tableView dequeueReusableCellWithIdentifier: CommonTableViewCell04ID];
+        [((CommonTableViewCell04 *)cell) reloadViewTitle:titleArr[indexPath.row] content:self.flightAddLineModel.leg_info commonClickBlock:^(id obj) {
+            weakSelf.flightAddLineModel.leg_info = (NSArray *)obj;
+            [tableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationNone];
+        }];
     } else {
         cell = [tableView dequeueReusableCellWithIdentifier: CommonTableViewCell05ID];
+        [((CommonTableViewCell05 *)cell) reloadViewTitle:titleArr[indexPath.row] content:self.flightAddLineModel.message commonClickBlock:^(id obj) {
+            weakSelf.flightAddLineModel.message = (NSString *)obj;
+        }];
     }
     cell.index = indexPath.row;
     return cell;
@@ -158,6 +211,7 @@ static NSString * const CommonTableViewCell05ID = @"CommonTableViewCell05ID";
         _submitTV.showsHorizontalScrollIndicator = NO;
         _submitTV.estimatedRowHeight = 44;
         _submitTV.backgroundColor = [UIColor clearColor];
+        _submitTV.tableFooterView = self.footerView;
         _submitTV.separatorStyle = UITableViewCellSeparatorStyleNone;
         [_submitTV registerClass:[CommonTableViewCell01 class] forCellReuseIdentifier:CommonTableViewCell01ID];
         [_submitTV registerClass:[CommonTableViewCell03 class] forCellReuseIdentifier:CommonTableViewCell03ID];
@@ -167,4 +221,20 @@ static NSString * const CommonTableViewCell05ID = @"CommonTableViewCell05ID";
     }
     return _submitTV;
 }
+- (UIView *)footerView {
+    if (!_footerView) {
+        UIView *view = [[UIView alloc]initWithFrame:CGRectMake(0, 0, MAIN_SCREEN_WIDTH, 60)];
+        view.backgroundColor = [UIColor color_FFFFFF];
+        UIButton *sureBtn = [UIButton buttonWithTitle:@"确定上传" font:SYSTEM_FONT_17 titleColor:[UIColor color_FFFFFF] backgroundImage:@"login_btn_bg"];
+        [sureBtn addTarget:self action:@selector(sureBtnEvent:) forControlEvents:UIControlEventTouchUpInside];
+        [view addSubview:sureBtn];
+        [sureBtn mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.centerY.equalTo(view);
+            make.centerX.equalTo(view);
+        }];
+        _footerView = view;
+    }
+    return _footerView;
+}
+
 @end

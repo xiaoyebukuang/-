@@ -7,9 +7,14 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <UIKit/UIKit.h>
 
-@interface XYAlertViewTool : NSObject
 
-+ (void)showFieldView:(void(^)(NSString *content))alertBlock;
+typedef void(^AlertBlock)(NSString *obj, BOOL sure);
+
+@interface XYAlertViewTool : UIView
+
++ (void)showFieldView:(AlertBlock)alertBlock;
+
 
 @end

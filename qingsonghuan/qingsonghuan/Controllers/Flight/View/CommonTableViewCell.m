@@ -26,13 +26,12 @@
         make.height.mas_offset(30);
         make.width.mas_equalTo(70);
     }];
-    self.title.text = @"航班号:";
 }
 - (void)setIndex:(NSInteger)index {
     if (index%2 == 0) {
-        self.backgroundColor = [UIColor color_FFFFFF];
-    } else {
         self.backgroundColor = [UIColor color_D5E8F6];
+    } else {
+        self.backgroundColor = [UIColor color_FFFFFF];
     }
 }
 #pragma mark -- setup
@@ -116,6 +115,7 @@
 static NSInteger const COMMON_BTN_TAG = 329;
 
 @interface CommonTableViewCell02()
+
 @property (nonatomic, strong) UIView *btnView;
 @property (nonatomic, strong) NSArray *objArr;
 @end
@@ -248,15 +248,16 @@ static NSInteger const COMMON_BTN_TAG = 329;
         make.centerY.equalTo (self);
     }];
 }
-- (void)reloadViewContent:(NSString *)content
-                     days:(NSString *)days
-           daysClickBlock:(DaysClickBlock)daysClickBlock
-         commonClickBlock:(CommonClickBlock)commonClickBlock {
+- (void)reloadViewTitle:(NSString *)text
+                content:(NSString *)content
+                   days:(NSString *)days
+         daysClickBlock:(DaysClickBlock)daysClickBlock
+       commonClickBlock:(CommonClickBlock)commonClickBlock {
     self.daysClickBlock = daysClickBlock;
     self.clickBlcok = commonClickBlock;
-    self.title.text = @"航班号";
+    self.title.text = text;
     self.textField.text = content;
-    if (days) {
+    if (![NSString safe_string:days]) {
         [self.workDayBtn setTitle:days forState:UIControlStateNormal];
         [self.workDayBtn setTitleColor:[UIColor color_333333] forState:UIControlStateNormal];
     }
@@ -293,40 +294,126 @@ static NSInteger const COMMON_BTN_TAG = 329;
 }
 @end
 
+
+static NSInteger const CITY_BTN_TAG = 213;
+
 @interface CommonTableViewCell04()
 
 @property (nonatomic, strong) UIButton *addCity;
 
 @property (nonatomic, strong) UIView *bgView;
 
+@property (nonatomic, strong) NSMutableArray *contentArr;
+
 @end
 
 @implementation CommonTableViewCell04
 - (void)setupView {
     [super setupView];
+    self.contentArr = [[NSMutableArray alloc]init];
     [self addSubview:self.addCity];
     [self.addCity mas_makeConstraints:^(MASConstraintMaker *make) {
         make.right.equalTo(self).offset(-CELL_LEFT_APACE);
         make.top.equalTo(self.title);
         make.height.mas_offset(30);
+        make.width.mas_offset(30);
+    }];
+    [self addSubview:self.bgView];
+    [self.bgView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.equalTo(self.title.mas_right);
+        make.width.mas_equalTo(MAIN_SCREEN_WIDTH - 2*CELL_LEFT_APACE - 100);
+        make.top.equalTo(self.title);
+        make.height.mas_offset(30);
+        make.bottom.equalTo(self).offset(-10);
     }];
 }
-- (void)reloadViewContent:(NSArray *)contentArr
-         commonClickBlock:(CommonClickBlock)commonClickBlock {
-//    for (UIButton in <#collection#>) {
-//        <#statements#>
-//    }
-    if (contentArr.count == 0) {
-        
+- (void)reloadViewTitle:(NSString *)text
+                content:(NSArray *)contentArr
+       commonClickBlock:(CommonClickBlock)commonClickBlock {
+    self.title.text = @"航段信息:";
+    self.clickBlcok = commonClickBlock;
+    [self.contentArr removeAllObjects];
+    [self.contentArr addObjectsFromArray:contentArr];
+    for (UIView *temp in self.bgView.subviews) {
+        [temp removeFromSuperview];
     }
+    if (contentArr.count == 0) {
+        [self.bgView mas_updateConstraints:^(MASConstraintMaker *make) {
+            make.height.mas_offset(30);
+        }];
+    } else {
+        [self setupBtn];
+    }
+    
+}
+- (void)setupBtn {
+    CGFloat width = MAIN_SCREEN_WIDTH - 2*CELL_LEFT_APACE - 100;
+    CGFloat x_sum = 0;
+    CGFloat y_sum = 0;
+    CGFloat x_space = 20;
+    CGFloat y_space = 10;
+    CGFloat btn_height = 30;
+    for (int i = 0; i < self.contentArr.count; i ++) {
+        NSString *text = self.contentArr[i];
+        
+        if (i != 0) {
+            UIImageView *arrowImageV = [[UIImageView alloc]init];
+            arrowImageV.backgroundColor = [UIColor blackColor];
+            [self.bgView addSubview:arrowImageV];
+            
+            if (x_sum + x_space > width) {
+                x_sum = 0;
+                y_sum = y_sum + btn_height + y_space;
+            }
+            arrowImageV.frame = CGRectMake(x_sum, y_sum, x_space, btn_height);
+            x_sum = x_sum + x_space;
+        }
+        UIButton *titleBtn = [UIButton buttonWithBGImage:@"filte_city_bg" title:text font:SYSTEM_FONT_13 textColor:[UIColor color_2ECB87]];
+        titleBtn.tag = CITY_BTN_TAG + i;
+        [titleBtn addTarget:self action:@selector(deleteCityEvent:) forControlEvents:UIControlEventTouchUpInside];
+        [self.bgView addSubview:titleBtn];
+        CGFloat btn_width = 40;
+        if (text.length > 2) {
+            btn_width += (text.length - 2)*15;
+        }
+        if (x_sum + btn_width > width) {
+            x_sum = 0;
+            y_sum = y_sum + btn_height + y_space;
+        }
+        titleBtn.frame = CGRectMake(x_sum, y_sum, btn_width, btn_height);
+        x_sum = x_sum + btn_width;
+        
+        UIButton *deletebtn = [UIButton buttonWithBGImage:@"filter_city_delete"];
+        [titleBtn addSubview:deletebtn];
+        [deletebtn mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.centerX.equalTo(titleBtn).multipliedBy(2.0);
+            make.centerY.equalTo(titleBtn).multipliedBy(0.01);
+            make.width.height.mas_equalTo(15);
+        }];
+    }
+    y_sum = y_sum + btn_height;
+    [self.bgView mas_updateConstraints:^(MASConstraintMaker *make) {
+        make.height.mas_offset(y_sum);
+    }];
 }
 #pragma mark -- event
 - (void)addCityEvent:(UIButton *)sender {
-    [XYAlertViewTool showFieldView:^(NSString *content) {
- 
+    [XYAlertViewTool showFieldView:^(NSString *obj, BOOL sure) {
+        if (sure) {
+            [self.contentArr addObject:obj];
+            if (self.clickBlcok) {
+                self.clickBlcok(self.contentArr);
+            }
+        }
     }];
 }
-
+- (void)deleteCityEvent:(UIButton *)sender {
+    NSUInteger index = sender.tag - CITY_BTN_TAG;
+    [self.contentArr removeObjectAtIndex:index];
+    if (self.clickBlcok) {
+        self.clickBlcok(self.contentArr);
+    }
+}
 #pragma mark -- setup
 - (UIButton *)addCity {
     if (!_addCity) {
@@ -338,11 +425,49 @@ static NSInteger const COMMON_BTN_TAG = 329;
 - (UIView *)bgView {
     if (!_bgView) {
         _bgView = [[UIView alloc]init];
-        _bgView.backgroundColor = [UIColor redColor];
     }
     return _bgView;
 }
 @end
 
+@interface CommonTableViewCell05()<UITextViewDelegate>
+
+@property (nonatomic, strong) UITextView *textView;
+
+@end
+
 @implementation CommonTableViewCell05
+- (void)setupView {
+    [super setupView];
+    self.title.text = @"";
+    [self addSubview:self.textView];
+    self.textView.delegate = self;
+    [self.textView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.right.equalTo(self).offset(-CELL_LEFT_APACE);
+        make.top.equalTo(self.title);
+        make.left.equalTo(self.title.mas_right);
+        make.height.mas_offset(100);
+        make.bottom.equalTo(self).offset(-10);
+    }];
+}
+- (void)reloadViewTitle:(NSString *)text
+                content:(NSString *)content
+       commonClickBlock:(CommonClickBlock)commonClickBlock {
+    self.title.text = text;
+    self.textView.text = content;
+    self.clickBlcok = commonClickBlock;
+}
+#pragma mark -- UITextViewDelegate
+- (void)textViewDidChange:(UITextView *)textView {
+    if (self.clickBlcok) {
+        self.clickBlcok(textView.text);
+    }
+}
+- (UITextView *)textView {
+    if (!_textView) {
+        _textView = [[UITextView alloc]init];
+        _textView.textColor = [UIColor color_333333];
+    }
+    return _textView;
+}
 @end

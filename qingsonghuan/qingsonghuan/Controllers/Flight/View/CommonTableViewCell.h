@@ -74,7 +74,8 @@ typedef void(^DaysClickBlock)(void);
  @param daysClickBlock 点击出差天数回调
  @param commonClickBlock 输入框回调
  */
-- (void)reloadViewContent:(NSString *)content
+- (void)reloadViewTitle:(NSString *)text
+                content:(NSString *)content
                      days:(NSString *)days
            daysClickBlock:(DaysClickBlock)daysClickBlock
          commonClickBlock:(CommonClickBlock)commonClickBlock;
@@ -90,11 +91,22 @@ typedef void(^DaysClickBlock)(void);
  @param contentArr 城市数组
  @param commonClickBlock 回调
  */
-- (void)reloadViewContent:(NSArray *)contentArr
+- (void)reloadViewTitle:(NSString *)text
+                content:(NSArray *)contentArr
          commonClickBlock:(CommonClickBlock)commonClickBlock;
 
 @end
 
 @interface CommonTableViewCell05 : CommonTableViewCell
+
+/**
+ 刷新
+
+ @param content 内容
+ @param commonClickBlock 回调
+ */
+- (void)reloadViewTitle:(NSString *)text
+                content:(NSString *)content
+         commonClickBlock:(CommonClickBlock)commonClickBlock;
 
 @end
