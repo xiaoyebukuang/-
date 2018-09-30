@@ -51,6 +51,8 @@
 @property (nonatomic, strong) DutyModel *dutyModel;
 //电话
 @property (nonatomic, copy) NSString *phone;
+//航班号跟出差天数组合
+@property (nonatomic, copy) NSString *number_days;
 
 
 - (instancetype)initWithDic:(NSDictionary *)dic;

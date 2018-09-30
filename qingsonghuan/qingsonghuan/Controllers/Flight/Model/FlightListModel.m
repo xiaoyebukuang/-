@@ -49,14 +49,21 @@
         self.date           = [NSDate getDateStringWithDateStaple:self.sign_date formatType:FormatMd];
         self.sign_time      = [NSString safe_string:dic[@"sign_time"]];
         self.airline_number = [NSString safe_string:dic[@"airline_number"]];
-        self.leg_info       = dic[@"leg_info"];
+        if ([dic isKindOfClass:[NSArray class]]) {
+            self.leg_info       = dic[@"leg_info"];
+        }
         self.wordLogoModel  = [[WordLogoModel alloc]initWithDic:dic[@"word_logo"]];
         self.message        = [NSString safe_string:dic[@"message"]];
         self.daysModel      = [[DaysModel alloc]initWithDic:dic[@"days"]];
         self.user_id        = [NSString safe_string:dic[@"user_id"]];
         self.visaModel      = [[VisaModel alloc]initWithDic:dic[@"visa"]];
         self.dutyModel      = [[DutyModel alloc]initWithDic:dic[@"duty"]];
-        self.user_id        = [NSString safe_string:dic[@"phone"]];   
+        self.user_id        = [NSString safe_string:dic[@"phone"]];
+        NSString *days = @"";
+        if (self.daysModel.days_id != 1) {
+            days = [NSString stringWithFormat:@"(%@)",self.daysModel.days_name];
+        }
+        self.number_days = [NSString stringWithFormat:@"%@%@",self.airline_number,days];
     }
     return self;
 }

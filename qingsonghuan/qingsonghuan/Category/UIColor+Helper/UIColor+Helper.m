@@ -71,4 +71,8 @@
     UIColor *color = UIColorFromRGB(0x33B1FE);
     return color;
 }
++ (UIColor *)color_f7f8fa {
+    UIColor *color = UIColorFromRGB(0xf7f8fa);
+    return color;
+}
 @end

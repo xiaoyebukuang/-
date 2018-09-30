@@ -194,7 +194,9 @@ static NSString * const MailListTableViewCellID = @"MailListTableViewCellID";
         [self.deleteArr addObject:self.mailListModel.listArr[indexPath.row]];
         [self.indexPathArr addObject:indexPath];
     } else {
+        MailModel *model = self.mailListModel.listArr[indexPath.row];
         MailReadViewController *mailReadVC = [[MailReadViewController alloc]init];
+        mailReadVC.letter_id = model.letter_id;
         [self.navigationController pushViewController:mailReadVC animated:YES];
         [tableView deselectRowAtIndexPath:indexPath animated:YES];
     }

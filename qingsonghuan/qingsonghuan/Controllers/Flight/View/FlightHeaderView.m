@@ -14,7 +14,7 @@
 
 @property (nonatomic, strong) UIImageView *detail;
 
-@property (nonatomic, strong) UIView *titleView;
+@property (nonatomic, strong) XYTitleView *titleView;
 
 @property (nonatomic, strong) UIButton *mailBtn;
 //红点提示
@@ -97,26 +97,14 @@
     }
     return _detail;
 }
-- (UIView *)titleView {
+- (XYTitleView *)titleView {
     if (!_titleView) {
-        UIView *v = [[UIView alloc]init];
-        NSArray *titles = @[@"签到日期",@"签到时间",@"航班号",@"职位等级",@"字母标识",@"站内信"];
-        CGFloat width = MAIN_SCREEN_WIDTH/titles.count;
-        for (int i = 0; i < titles.count; i ++) {
-            UILabel *title = [[UILabel alloc]initWithText:titles[i] font:SYSTEM_FONT_13 textColor:[UIColor color_666666]];
-            title.textAlignment = NSTextAlignmentCenter;
-            [title sizeToFit];
-            [v addSubview:title];
-            [title mas_makeConstraints:^(MASConstraintMaker *make) {
-                make.centerY.equalTo(v);
-                make.left.equalTo(v).offset(i*width);
-                make.width.mas_equalTo(width);
-            }];
-        }
-        _titleView = v;
+        _titleView = [[XYTitleView alloc]init];
+        [_titleView reloadUIWithTitleArr:@[@"签到日期",@"签到时间",@"航班号",@"职位等级",@"字母标识",@"站内信"]];
     }
     return _titleView;
 }
+
 - (UIButton *)mailBtn {
     if (!_mailBtn) {
         _mailBtn = [UIButton buttonWithImage:@"flight_mail"];

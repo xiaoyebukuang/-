@@ -17,6 +17,7 @@
 /** 公共view */
 #import "XYTextField.h"
 #import "XYLineView.h"
+#import "XYTitleView.h"
 /** 公共Model */
 #import "UserModel.h"
 #import "RegNeedInfoModel.h"

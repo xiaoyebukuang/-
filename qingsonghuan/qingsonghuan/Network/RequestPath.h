@@ -75,8 +75,13 @@
                   success:(void (^)(NSDictionary *obj, NSInteger code, NSString *mes))success
                   failure:(void (^)(ErrorType errorType, NSString *mes))failure;
 
-
-
+/**
+ 10.读站内信
+ */
++ (void)letter_messeeView:(UIView *)view
+                    param:(NSDictionary *)param
+                  success:(void (^)(NSDictionary *obj, NSInteger code, NSString *mes))success
+                  failure:(void (^)(ErrorType errorType, NSString *mes))failure;
 
 
 

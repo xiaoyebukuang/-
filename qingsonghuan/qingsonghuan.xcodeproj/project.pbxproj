@@ -49,6 +49,10 @@
 		65D0CA9C21548AB100A3DB66 /* UIButton+Helper.m in Sources */ = {isa = PBXBuildFile; fileRef = 65D0CA9B21548AB100A3DB66 /* UIButton+Helper.m */; };
 		65D0CA9F2154B80D00A3DB66 /* ForgetViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 65D0CA9E2154B80D00A3DB66 /* ForgetViewController.m */; };
 		65D6BEBF215FDE12002ABFDF /* MailReadViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 65D6BEBE215FDE12002ABFDF /* MailReadViewController.m */; };
+		65D6BEC521606F08002ABFDF /* MailReadlHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 65D6BEC421606F08002ABFDF /* MailReadlHeaderView.m */; };
+		65D6BEC821609229002ABFDF /* MailFlightView.m in Sources */ = {isa = PBXBuildFile; fileRef = 65D6BEC721609229002ABFDF /* MailFlightView.m */; };
+		65D6BECB21609460002ABFDF /* XYTitleView.m in Sources */ = {isa = PBXBuildFile; fileRef = 65D6BECA21609460002ABFDF /* XYTitleView.m */; };
+		65D6BECE2160A03F002ABFDF /* MailReadModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 65D6BECD2160A03F002ABFDF /* MailReadModel.m */; };
 		65F870F1215B7F3600DD1F59 /* FlightListTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 65F870F0215B7F3600DD1F59 /* FlightListTableViewCell.m */; };
 		65F870F7215B90DF00DD1F59 /* FlightFilterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 65F870F6215B90DF00DD1F59 /* FlightFilterViewController.m */; };
 		65F870FD215BB8E500DD1F59 /* CommonTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 65F870FC215BB8E500DD1F59 /* CommonTableViewCell.m */; };
@@ -146,6 +150,14 @@
 		65D0CA9E2154B80D00A3DB66 /* ForgetViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ForgetViewController.m; sourceTree = "<group>"; };
 		65D6BEBD215FDE12002ABFDF /* MailReadViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MailReadViewController.h; sourceTree = "<group>"; };
 		65D6BEBE215FDE12002ABFDF /* MailReadViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MailReadViewController.m; sourceTree = "<group>"; };
+		65D6BEC321606F08002ABFDF /* MailReadlHeaderView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MailReadlHeaderView.h; sourceTree = "<group>"; };
+		65D6BEC421606F08002ABFDF /* MailReadlHeaderView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MailReadlHeaderView.m; sourceTree = "<group>"; };
+		65D6BEC621609229002ABFDF /* MailFlightView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MailFlightView.h; sourceTree = "<group>"; };
+		65D6BEC721609229002ABFDF /* MailFlightView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MailFlightView.m; sourceTree = "<group>"; };
+		65D6BEC921609460002ABFDF /* XYTitleView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XYTitleView.h; sourceTree = "<group>"; };
+		65D6BECA21609460002ABFDF /* XYTitleView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XYTitleView.m; sourceTree = "<group>"; };
+		65D6BECC2160A03F002ABFDF /* MailReadModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MailReadModel.h; sourceTree = "<group>"; };
+		65D6BECD2160A03F002ABFDF /* MailReadModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MailReadModel.m; sourceTree = "<group>"; };
 		65F870EF215B7F3600DD1F59 /* FlightListTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FlightListTableViewCell.h; sourceTree = "<group>"; };
 		65F870F0215B7F3600DD1F59 /* FlightListTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FlightListTableViewCell.m; sourceTree = "<group>"; };
 		65F870F5215B90DF00DD1F59 /* FlightFilterViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FlightFilterViewController.h; sourceTree = "<group>"; };
@@ -293,6 +305,10 @@
 			children = (
 				652FCC1F215F5AFB009F41E8 /* MailListTableViewCell.h */,
 				652FCC20215F5AFB009F41E8 /* MailListTableViewCell.m */,
+				65D6BEC321606F08002ABFDF /* MailReadlHeaderView.h */,
+				65D6BEC421606F08002ABFDF /* MailReadlHeaderView.m */,
+				65D6BEC621609229002ABFDF /* MailFlightView.h */,
+				65D6BEC721609229002ABFDF /* MailFlightView.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -302,6 +318,8 @@
 			children = (
 				652FCC23215F5E39009F41E8 /* MailListModel.h */,
 				652FCC24215F5E39009F41E8 /* MailListModel.m */,
+				65D6BECC2160A03F002ABFDF /* MailReadModel.h */,
+				65D6BECD2160A03F002ABFDF /* MailReadModel.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -455,6 +473,8 @@
 				65D0CA842153439F00A3DB66 /* XYLineView.m */,
 				652FCBEE215D35BA009F41E8 /* XYErrorView.h */,
 				652FCBEF215D35BA009F41E8 /* XYErrorView.m */,
+				65D6BEC921609460002ABFDF /* XYTitleView.h */,
+				65D6BECA21609460002ABFDF /* XYTitleView.m */,
 			);
 			path = CommonView;
 			sourceTree = "<group>";
@@ -657,12 +677,14 @@
 				652C0D21215A351D00BD03FC /* RequestPath.m in Sources */,
 				65F87104215C874800DD1F59 /* FlightFilterModel.m in Sources */,
 				652FCBF0215D35BA009F41E8 /* XYErrorView.m in Sources */,
+				65D6BEC521606F08002ABFDF /* MailReadlHeaderView.m in Sources */,
 				65D0CA662151ECEE00A3DB66 /* NSString+Helper.m in Sources */,
 				652FCC25215F5E39009F41E8 /* MailListModel.m in Sources */,
 				652FCBF5215D3C99009F41E8 /* MJRefreshControl.m in Sources */,
 				652C0D152159CB8800BD03FC /* FlightListViewController.m in Sources */,
 				65F870F1215B7F3600DD1F59 /* FlightListTableViewCell.m in Sources */,
 				652FCBFB215D3D3E009F41E8 /* XYPickerDateViewController.m in Sources */,
+				65D6BEC821609229002ABFDF /* MailFlightView.m in Sources */,
 				65D0CA95215487CE00A3DB66 /* UILabel+Helper.m in Sources */,
 				65D0CA9C21548AB100A3DB66 /* UIButton+Helper.m in Sources */,
 				65D6BEBF215FDE12002ABFDF /* MailReadViewController.m in Sources */,
@@ -672,6 +694,7 @@
 				652FCC02215DC3E6009F41E8 /* FlightHeaderView.m in Sources */,
 				65D0CA9F2154B80D00A3DB66 /* ForgetViewController.m in Sources */,
 				65D0CA7F21521F7600A3DB66 /* XYTextField.m in Sources */,
+				65D6BECB21609460002ABFDF /* XYTitleView.m in Sources */,
 				65F87116215CD69200DD1F59 /* FlightSubmitViewController.m in Sources */,
 				65F870F7215B90DF00DD1F59 /* FlightFilterViewController.m in Sources */,
 				65D0CA652151ECEE00A3DB66 /* MBProgressHUD+Helper.m in Sources */,
@@ -683,6 +706,7 @@
 				652FCC0F215E089B009F41E8 /* RegisterModel.m in Sources */,
 				652C0D192159CC3F00BD03FC /* UserModel.m in Sources */,
 				65D0CA4D214F9B0000A3DB66 /* main.m in Sources */,
+				65D6BECE2160A03F002ABFDF /* MailReadModel.m in Sources */,
 				652FCC15215F159A009F41E8 /* RegNeedInfoModel.m in Sources */,
 				652C0D112158228300BD03FC /* XYNetworking.m in Sources */,
 				65D0CA3F214F9AFD00A3DB66 /* AppDelegate.m in Sources */,

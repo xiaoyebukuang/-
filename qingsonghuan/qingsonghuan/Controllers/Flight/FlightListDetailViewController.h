@@ -12,4 +12,6 @@
 
 @property (nonatomic, strong) FlightModel *flightModel;
 
+@property (nonatomic, assign) BOOL readMail;
+
 @end

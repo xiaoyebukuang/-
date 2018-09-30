@@ -78,11 +78,7 @@
     }
     self.date.text = model.date;
     self.time.text = model.sign_time;
-    NSString *days = @"";
-    if (model.daysModel.days_id != 1) {
-        days = [NSString stringWithFormat:@"(%@)",model.daysModel.days_name];
-    }
-    self.airLine.text = [NSString stringWithFormat:@"%@%@",model.airline_number,days];
+    self.airLine.text = model.number_days;
     self.duties.text = model.dutyModel.duty_name;
     self.word.text = model.wordLogoModel.word_logo_name;
 }
@@ -99,6 +95,7 @@
         _date.textColor = [UIColor color_666666];
         _date.textAlignment = NSTextAlignmentCenter;
         _date.font =SYSTEM_FONT_13;
+        _date.adjustsFontSizeToFitWidth = YES;
     }
     return _date;
 }
@@ -108,6 +105,7 @@
         _time.textColor = [UIColor color_666666];
         _time.textAlignment = NSTextAlignmentCenter;
         _time.font =SYSTEM_FONT_13;
+        _time.adjustsFontSizeToFitWidth = YES;
     }
     return _time;
 }
@@ -118,6 +116,7 @@
         _airLine.textColor = [UIColor color_666666];
         _airLine.textAlignment = NSTextAlignmentCenter;
         _airLine.font =SYSTEM_FONT_13;
+        _airLine.adjustsFontSizeToFitWidth = YES;
     }
     return _airLine;
 }
@@ -127,6 +126,7 @@
         _duties.textColor = [UIColor color_666666];
         _duties.textAlignment = NSTextAlignmentCenter;
         _duties.font =SYSTEM_FONT_13;
+        _duties.adjustsFontSizeToFitWidth = YES;
     }
     return _duties;
 }
@@ -136,6 +136,7 @@
         _word.textColor = [UIColor color_666666];
         _word.textAlignment = NSTextAlignmentCenter;
         _word.font =SYSTEM_FONT_13;
+        _word.adjustsFontSizeToFitWidth = YES;
     }
     return _word;
 }

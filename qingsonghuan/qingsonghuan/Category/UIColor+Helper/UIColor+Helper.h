@@ -40,4 +40,8 @@
 
 + (UIColor *)color_33B1FE;
 
++ (UIColor *)color_f7f8fa;
+
+
+
 @end

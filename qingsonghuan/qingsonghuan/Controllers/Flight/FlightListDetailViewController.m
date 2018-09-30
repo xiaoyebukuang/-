@@ -31,16 +31,23 @@ static NSString * const FlightListDetailTableViewCellID = @"FlightListDetailTabl
     [self setupView];
 }
 - (void)setupView {
-    [self.view addSubview:self.footerView];
-    [self.footerView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.width.bottom.equalTo(self.view);
-        make.height.mas_equalTo(60);
-    }];
-    [self.view addSubview:self.flightDetailTV];
-    [self.flightDetailTV mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.width.top.equalTo(self.view);
-        make.bottom.equalTo(self.footerView.mas_top);
-    }];
+    if (self.readMail) {
+        [self.view addSubview:self.flightDetailTV];
+        [self.flightDetailTV mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.edges.equalTo(self.view);
+        }];
+    } else {
+        [self.view addSubview:self.footerView];
+        [self.footerView mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.left.width.bottom.equalTo(self.view);
+            make.height.mas_equalTo(60);
+        }];
+        [self.view addSubview:self.flightDetailTV];
+        [self.flightDetailTV mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.left.width.top.equalTo(self.view);
+            make.bottom.equalTo(self.footerView.mas_top);
+        }];
+    }
 }
 - (void)setFlightModel:(FlightModel *)flightModel {
     _flightModel = flightModel;
@@ -53,14 +60,7 @@ static NSString * const FlightListDetailTableViewCellID = @"FlightListDetailTabl
             [city appendString:[NSString stringWithFormat:@"+%@",temp]];
         }
     }
-    
-    NSString *day = @"";
-    if (flightModel.daysModel.days_id != 1) {
-        day = [NSString stringWithFormat:@"(%@)",flightModel.daysModel.days_name];
-    }
-    NSString *daysStr = [NSString stringWithFormat:@"%@%@",flightModel.airline_number,day];
-    
-    self.contentArr = @[flightModel.date,flightModel.sign_time,daysStr,city,flightModel.visaModel.visa_name,flightModel.wordLogoModel.word_logo_name,flightModel.dutyModel.duty_name,flightModel.message];
+    self.contentArr = @[flightModel.date,flightModel.sign_time,flightModel.number_days,city,flightModel.visaModel.visa_name,flightModel.wordLogoModel.word_logo_name,flightModel.dutyModel.duty_name,flightModel.message];
 }
 
 #pragma mark -- UITableViewDelegate, UITableViewDataSource
