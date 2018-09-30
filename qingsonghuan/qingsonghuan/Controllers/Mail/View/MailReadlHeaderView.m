@@ -63,10 +63,6 @@
         make.left.bottom.width.equalTo(self);
         make.height.mas_equalTo(1);
     }];
-    
-    self.workNumberLabel.text = @"1245";
-    self.dateLabel.text = @"2018-12-31 12:00";
-    self.contentLabel.text = @"毒鸡汤，就是表面看上去像是心灵鸡汤文，其实暗藏着营销和诈骗信息的文字内容。随着社交网络的兴起，过去散发过无数正能量的“鸡汤”，在社交网络乱象中变了味儿，各类“箴言妙语”目不暇接，多种广告信息难辨真假。更令人意想不到的是，这些“鸡汤文”在诱发网友转发的背后，还暗藏着一条收益不菲产业的链条。这些泛滥网络的文章大多由发布者拼凑而成，内容良莠不齐，真假难辨。";
 }
 
 - (void)setReadModel:(MailReadModel *)readModel {

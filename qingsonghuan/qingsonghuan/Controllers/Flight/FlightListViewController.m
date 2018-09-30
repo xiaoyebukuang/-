@@ -49,6 +49,15 @@ static NSString * const FlightListTableViewCellID = @"FlightListTableViewCellID"
 
 @implementation FlightListViewController
 
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    [RequestPath letter_isMessuccess:^(NSDictionary *obj, NSInteger code, NSString *mes) {
+        [self.headerView hiddenTips: ([NSString safe_float:obj[@"mes_num"]] == 0)];
+    } failure:^(ErrorType errorType, NSString *mes) {
+        
+    }];
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.title = @"航班列表";

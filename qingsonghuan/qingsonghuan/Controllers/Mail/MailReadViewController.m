@@ -67,9 +67,11 @@
         make.bottom.equalTo(self.scrollView);
     }];
 }
-
+//读站内信
 - (void)getLetterMesSee {
     [RequestPath letter_messeeView:self.view param:@{@"letter_id": [NSString safe_string:self.letter_id]} success:^(NSDictionary *obj, NSInteger code, NSString *mes) {
+        //发送读站内信通知
+        [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_MAIL_READ object:nil];
         WeakSelf;
         self.mailReadModel = [[MailReadModel alloc]initWithDic:obj];
         self.headerView.readModel = self.mailReadModel;

@@ -26,6 +26,8 @@ static NSString * const MailListTableViewCellID = @"MailListTableViewCellID";
 
 @property (nonatomic, strong) UIView *footerView;
 
+//删除的个数
+@property (nonatomic, assign) NSInteger today_del;
 //数据源
 @property (nonatomic, strong) MailListModel *mailListModel;
 //多选时删除数组
@@ -33,6 +35,8 @@ static NSString * const MailListTableViewCellID = @"MailListTableViewCellID";
 //选中的indexPath
 @property (nonatomic, strong) NSMutableArray<NSIndexPath *> *indexPathArr;
 
+//选中跳转的index
+@property (nonatomic, strong) NSIndexPath *select_indexPath;
 @end
 
 @implementation MailListViewController
@@ -40,12 +44,17 @@ static NSString * const MailListTableViewCellID = @"MailListTableViewCellID";
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.title = @"站内信";
+    self.today_del = 0;
     self.mailListModel = [[MailListModel alloc]init];
     self.deleteArr = [[NSMutableArray alloc]init];
     self.indexPathArr = [[NSMutableArray alloc]init];
     [self setupUI];
     [self setNavigationBar];
     [self setupData];
+     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(hasReadMail) name:NOTIFICATION_MAIL_READ object:nil];
+}
+- (void)dealloc {
+    [[NSNotificationCenter defaultCenter]removeObserver:self];
 }
 - (void)setNavigationBar {
     UIBarButtonItem *rightButtonItem = [[UIBarButtonItem alloc]initWithCustomView:self.editBtn];
@@ -72,6 +81,11 @@ static NSString * const MailListTableViewCellID = @"MailListTableViewCellID";
     [MJRefreshControl beginRefresh:self.mailListTableV];
 }
 #pragma mark -- request
+//已经读取
+- (void)hasReadMail {
+    self.mailListModel.listArr[self.select_indexPath.row].is_read = YES;
+    [self.mailListTableV reloadRowsAtIndexPaths:@[self.select_indexPath] withRowAnimation:UITableViewRowAnimationNone];
+}
 //请求数据
 - (void)getLetterMesList:(BOOL)refresh {
     if (self.isRequest) {
@@ -80,7 +94,8 @@ static NSString * const MailListTableViewCellID = @"MailListTableViewCellID";
     self.isRequest = YES;
     NSDictionary *param = @{
                             @"page": refresh ? @(1):@(self.mailListModel.page + 1),
-                            @"limit":@(20)
+                            @"limit":@(20),
+                            @"today_del":@(self.today_del)
                             };
     [RequestPath letter_mesListParam:param success:^(NSDictionary *obj, NSInteger code, NSString *mes) {
         self.isRequest = NO;
@@ -89,6 +104,9 @@ static NSString * const MailListTableViewCellID = @"MailListTableViewCellID";
         [self.mailListTableV reloadData];
         if (!self.mailListModel.isContinue) {
             [MJRefreshControl endRefreshNoData:self.mailListTableV];
+        }
+        if (refresh) {
+            self.today_del = 0;
         }
         [self.deleteArr removeAllObjects];
         [self.indexPathArr removeAllObjects];
@@ -111,26 +129,18 @@ static NSString * const MailListTableViewCellID = @"MailListTableViewCellID";
             [letter_id appendFormat:@",%@",model.letter_id];
         }
     }
-    NSLog(@"delete = %@",letter_id);
     [RequestPath letter_mesdelView:self.view param:@{@"letter_id":letter_id} success:^(NSDictionary *obj, NSInteger code, NSString *mes) {
         [self.mailListModel.listArr removeObjectsInArray:self.deleteArr];
         [self.mailListTableV deleteRowsAtIndexPaths:self.indexPathArr withRowAnimation:UITableViewRowAnimationFade];
+        self.today_del = self.deleteArr.count + self.today_del;
         [self.deleteArr removeAllObjects];
         [self.indexPathArr removeAllObjects];
-        
-        NSLog(@"self.deleteArr.count = %ld",self.deleteArr.count);
-        NSLog(@"self.indexPathArr.count = %ld",self.indexPathArr.count);
-        NSLog(@"self.mailListModel.listArr.count = %ld",self.mailListModel.listArr.count);
-        
+        [MBProgressHUD showSuccess:@"删除成功" ToView:self.view];
     } failure:^(ErrorType errorType, NSString *mes) {
         if (remove) {
             [self.deleteArr removeAllObjects];
             [self.indexPathArr removeAllObjects];
         }
-        
-        NSLog(@"self.deleteArr.count = %ld",self.deleteArr.count);
-        NSLog(@"self.indexPathArr.count = %ld",self.indexPathArr.count);
-        NSLog(@"self.mailListModel.listArr.count = %ld",self.mailListModel.listArr.count);
     }];
 }
 #pragma mark -- event
@@ -194,6 +204,7 @@ static NSString * const MailListTableViewCellID = @"MailListTableViewCellID";
         [self.deleteArr addObject:self.mailListModel.listArr[indexPath.row]];
         [self.indexPathArr addObject:indexPath];
     } else {
+        self.select_indexPath = indexPath;
         MailModel *model = self.mailListModel.listArr[indexPath.row];
         MailReadViewController *mailReadVC = [[MailReadViewController alloc]init];
         mailReadVC.letter_id = model.letter_id;

@@ -170,4 +170,15 @@
         failure(errorType, mes);
     }];
 }
+ //11.当前用户未读信息数量
++ (void)letter_isMessuccess:(void (^)(NSDictionary *obj, NSInteger code, NSString *mes))success
+                    failure:(void (^)(ErrorType errorType, NSString *mes))failure {
+    [XYNetworking postWithUrlString:API_LETTER_ISMES success:^(id obj, NSInteger code, NSString *mes) {
+        if ([obj isKindOfClass:[NSDictionary class]]) {
+            success((NSDictionary *)obj, code, mes);
+        }
+    } failure:^(ErrorType errorType, NSString *mes) {
+        failure(errorType, mes);
+    }];
+}
 @end

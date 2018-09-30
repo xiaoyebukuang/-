@@ -61,6 +61,7 @@
     }];
     
     [self.mailBtn addSubview:self.tips];
+    self.tips.hidden = YES;
     [self.tips mas_makeConstraints:^(MASConstraintMaker *make) {
         make.centerX.equalTo(self.mailBtn).multipliedBy(2.0);
         make.centerY.equalTo(self.mailBtn).multipliedBy(0.01);
@@ -76,6 +77,9 @@
     [self.lineImageV mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.right.bottom.equalTo(self);
     }];
+}
+- (void)hiddenTips:(BOOL)hidden {
+    self.tips.hidden = hidden;
 }
 #pragma mark -- event
 //站内信

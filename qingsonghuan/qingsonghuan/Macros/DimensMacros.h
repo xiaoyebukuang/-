@@ -48,5 +48,8 @@
 #define kUserDefaults           [NSUserDefaults standardUserDefaults]
 #define kNotificationCenter     [NSNotificationCenter defaultCenter]
 
+//通知
+//读站内信
+#define NOTIFICATION_MAIL_READ          @"NOTIFICATION_MAIL_READ"
 
 #endif /* DimensMacros_h */

@@ -82,8 +82,11 @@
                     param:(NSDictionary *)param
                   success:(void (^)(NSDictionary *obj, NSInteger code, NSString *mes))success
                   failure:(void (^)(ErrorType errorType, NSString *mes))failure;
-
-
+/**
+ 11.当前用户未读信息数量
+ */
++ (void)letter_isMessuccess:(void (^)(NSDictionary *obj, NSInteger code, NSString *mes))success
+                    failure:(void (^)(ErrorType errorType, NSString *mes))failure;
 
 
 

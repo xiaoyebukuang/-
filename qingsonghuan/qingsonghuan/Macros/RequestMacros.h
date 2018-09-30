@@ -31,6 +31,9 @@
 #define API_LETTER_MESDEL              [NSString stringWithFormat:@"%@/letter/mesDel",BASE_URL]
 //10.读站内信
 #define API_LETTER_MESSEE              [NSString stringWithFormat:@"%@/letter/mesSee",BASE_URL]
+//11.当前用户未读信息数量
+#define API_LETTER_ISMES               [NSString stringWithFormat:@"%@/letter/isMes",BASE_URL]
+
 
 
 
