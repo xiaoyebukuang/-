@@ -55,13 +55,12 @@ static NSString * const RegisterTableViewCell04ID = @"RegisterTableViewCell04ID"
                             @"code":self.registerModel.code,
                             @"iden":[NSString safe_string:self.registerModel.sendCodeModel.iden]
                             };
-    [MBProgressHUD showToView:self.view];
-    [RequestPath user_retrieveParam:parma success:^(id obj, NSInteger code, NSString *mes) {
+    [RequestPath user_retrieveView:self.view Param:parma success:^(id obj, NSInteger code, NSString *mes) {
         [MBProgressHUD showSuccess:@"重置密码成功" ToView:self.view completeBlcok:^{
             [self.navigationController popViewControllerAnimated:YES];
         }];
     } failure:^(ErrorType errorType, NSString *mes) {
-        [MBProgressHUD showError:mes ToView:self.view];
+        
     }];
 }
 #pragma mark -- UITableViewDelegate, UITableViewDataSource

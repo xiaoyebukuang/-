@@ -1,12 +1,12 @@
 //
-//  RegisterViewController.m
+//  RegisterEditViewController.m
 //  qingsonghuan
 //
-//  Created by 陈晓 on 2018/9/19.
+//  Created by 陈晓 on 2018/10/2.
 //  Copyright © 2018年 XYBK. All rights reserved.
 //
 
-#import "RegisterViewController.h"
+#import "RegisterEditViewController.h"
 #import "XYPickerViewController.h"
 #import "RegisterTableViewCell.h"
 #import "RegisterModel.h"
@@ -18,7 +18,8 @@ static NSString * const RegisterTableViewCell04ID = @"RegisterTableViewCell04ID"
 /**
  注册
  */
-@interface RegisterViewController ()<UITableViewDelegate, UITableViewDataSource>
+
+@interface RegisterEditViewController ()<UITableViewDelegate, UITableViewDataSource>
 
 @property (nonatomic, strong) UITableView *registerTableV;
 
@@ -27,12 +28,11 @@ static NSString * const RegisterTableViewCell04ID = @"RegisterTableViewCell04ID"
 @property (nonatomic, strong) RegisterModel *registerModel;
 @end
 
-@implementation RegisterViewController
+@implementation RegisterEditViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.title = @"注册";
-    self.registerModel = [[RegisterModel alloc]init];
+    self.title = @"信息修改";
     [self setupView];
 }
 - (void)setupView {
@@ -45,8 +45,18 @@ static NSString * const RegisterTableViewCell04ID = @"RegisterTableViewCell04ID"
 #pragma mark -- event
 //请求数据
 - (void)requestData {
-    [RequestPath user_regNeedInfoView:self.view success:^(NSDictionary *obj, NSInteger code, NSString *mes) {
-        
+    [RequestPath user_getUserInfoView:self.view success:^(NSDictionary *obj, NSInteger code, NSString *mes) {
+        NSLog(@"%@",obj);
+        //成功后处理数据
+        self.registerModel = [[RegisterModel alloc]initWithDic:obj];
+        [RequestPath user_regNeedInfoView:self.view success:^(NSDictionary *obj, NSInteger code, NSString *mes) {
+            [self.registerTableV reloadData];
+        } failure:^(ErrorType errorType, NSString *mes) {
+            WeakSelf;
+            [self showErrorView:^{
+                [weakSelf requestData];
+            }];
+        }];
     } failure:^(ErrorType errorType, NSString *mes) {
         WeakSelf;
         [self showErrorView:^{
@@ -72,8 +82,8 @@ static NSString * const RegisterTableViewCell04ID = @"RegisterTableViewCell04ID"
                             @"code":self.registerModel.code,
                             @"iden":[NSString safe_string:self.registerModel.sendCodeModel.iden]
                             };
-    [RequestPath user_registerView:self.view Param:param success:^(id obj, NSInteger code, NSString *mes) {
-        [MBProgressHUD showSuccess:@"注册成功" ToView:self.view completeBlcok:^{
+    [RequestPath user_editUserInfoView:self.view param:param success:^(NSDictionary *obj, NSInteger code, NSString *mes) {
+        [MBProgressHUD showSuccess:@"修改成功" ToView:self.view completeBlcok:^{
             [self.navigationController popViewControllerAnimated:YES];
         }];
     } failure:^(ErrorType errorType, NSString *mes) {
@@ -220,7 +230,7 @@ static NSString * const RegisterTableViewCell04ID = @"RegisterTableViewCell04ID"
         UIView *view = [[UIView alloc]initWithFrame:CGRectMake(0, 0, MAIN_SCREEN_WIDTH, 110)];
         view.backgroundColor = [UIColor color_FFFFFF];
         
-        UIButton *registerBtn = [UIButton buttonWithTitle:@"注 册" font:SYSTEM_FONT_17 titleColor:[UIColor color_FFFFFF] backgroundImage:@"login_btn_bg"];
+        UIButton *registerBtn = [UIButton buttonWithTitle:@"确认修改" font:SYSTEM_FONT_17 titleColor:[UIColor color_FFFFFF] backgroundImage:@"login_btn_bg"];
         [registerBtn addTarget:self action:@selector(registerBtnEvent:) forControlEvents:UIControlEventTouchUpInside];
         [view addSubview:registerBtn];
         [registerBtn mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -231,6 +241,5 @@ static NSString * const RegisterTableViewCell04ID = @"RegisterTableViewCell04ID"
     }
     return _registerFooterView;
 }
-
 
 @end

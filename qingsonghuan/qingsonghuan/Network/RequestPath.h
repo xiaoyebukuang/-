@@ -19,7 +19,7 @@
                      failure:(void (^)(ErrorType errorType, NSString *mes))failure;
 
 /**
- 2.验证码接口
+ 2.发送手机验证码
  */
 + (void)user_sendCodeView:(UIView *)view
                     phone:(NSString *)phone
@@ -28,15 +28,17 @@
 /**
  3.注册
  */
-+ (void)user_registerParam:(NSDictionary *)param
-                   success:(void (^)(id obj, NSInteger code, NSString *mes))success
-                   failure:(void (^)(ErrorType errorType, NSString *mes))failure;
++ (void)user_registerView:(UIView *)view
+                    Param:(NSDictionary *)param
+                  success:(void (^)(id obj, NSInteger code, NSString *mes))success
+                  failure:(void (^)(ErrorType errorType, NSString *mes))failure;
 /**
  4.找回密码
  */
-+ (void)user_retrieveParam:(NSDictionary *)param
-                   success:(void (^)(id obj, NSInteger code, NSString *mes))success
-                   failure:(void (^)(ErrorType errorType, NSString *mes))failure;
++ (void)user_retrieveView:(UIView *)view
+                    Param:(NSDictionary *)param
+                  success:(void (^)(id obj, NSInteger code, NSString *mes))success
+                  failure:(void (^)(ErrorType errorType, NSString *mes))failure;
 
 /**
  5.登录
@@ -96,5 +98,28 @@
                         param:(NSDictionary *)param
                       success:(void (^)(NSDictionary *obj, NSInteger code, NSString *mes))success
                       failure:(void (^)(ErrorType errorType, NSString *mes))failure;
+
+/**
+ 13.删除一条航班信息
+ */
++ (void)flight_delFlightView:(UIView *)view
+                        param:(NSDictionary *)param
+                      success:(void (^)(NSDictionary *obj, NSInteger code, NSString *mes))success
+                      failure:(void (^)(ErrorType errorType, NSString *mes))failure;
+/**
+ 14.获取当前用户个人信息
+ */
++ (void)user_getUserInfoView:(UIView *)view
+                     success:(void (^)(NSDictionary *obj, NSInteger code, NSString *mes))success
+                     failure:(void (^)(ErrorType errorType, NSString *mes))failure;
+/**
+ 15.个人信息修改
+ */
++ (void)user_editUserInfoView:(UIView *)view
+                        param:(NSDictionary *)param
+                      success:(void (^)(NSDictionary *obj, NSInteger code, NSString *mes))success
+                      failure:(void (^)(ErrorType errorType, NSString *mes))failure;
+
+
 
 @end

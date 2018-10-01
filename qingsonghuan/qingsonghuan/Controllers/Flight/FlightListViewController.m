@@ -156,17 +156,12 @@ static NSString * const FlightListTableViewCellID = @"FlightListTableViewCellID"
         [self.filterVC dismiss];
         sender.selected = !sender.selected;
     } else {
-        if (![RegNeedInfoModel checkRegData]) {
-            [RequestPath user_regNeedInfoView:nil success:^(NSDictionary *obj, NSInteger code, NSString *mes) {
-                [self presentFilterVC];
-                sender.selected = !sender.selected;
-            } failure:^(ErrorType errorType, NSString *mes) {
-                [MBProgressHUD showError:mes ToView:self.view];
-            }];
-        } else {
+        [RequestPath user_regNeedInfoView:nil success:^(NSDictionary *obj, NSInteger code, NSString *mes) {
             [self presentFilterVC];
             sender.selected = !sender.selected;
-        }
+        } failure:^(ErrorType errorType, NSString *mes) {
+            [MBProgressHUD showError:mes ToView:self.view];
+        }];
     }
 }
 - (void)presentFilterVC {

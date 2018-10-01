@@ -71,7 +71,7 @@
  */
 @interface SubsidiaryModel : NSObject
 //id
-@property (nonatomic, copy) NSString *subsidiary_Id;
+@property (nonatomic, copy) NSString *subsidiary_id;
 //子公司城市名称
 @property (nonatomic, copy) NSString *subsidiary_name;
 

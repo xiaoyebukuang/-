@@ -25,9 +25,18 @@ static NSString * const MainReecordTableViewCellID = @"MainReecordTableViewCellI
 //是否正在请求
 @property (nonatomic, assign) BOOL isRequest;
 
+@property (nonatomic, strong) NSIndexPath *indexPath;
+
 @end
 
 @implementation MainReecordViewController
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    if (self.flightListModel.listArr.count > 0) {
+        NSLog(@"%@",self.flightListModel.listArr[0].sign_date_str);
+    }
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -35,6 +44,18 @@ static NSString * const MainReecordTableViewCellID = @"MainReecordTableViewCellI
     self.flightListModel = [[FlightListModel alloc]init];
     [self setupView];
     [self setupData];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(flightEdit:) name:NOTIFICATION_FLIGHT_EDIT object:nil];
+}
+//修改成功通知
+- (void)flightEdit:(NSNotification *)notification {
+    FlightModel *editModel = (FlightModel *)notification.object;
+    if (self.indexPath) {
+        [self.flightListModel.listArr replaceObjectAtIndex:self.indexPath.row withObject:editModel];
+        [self.reecordTableView reloadRowsAtIndexPaths:@[self.indexPath] withRowAnimation:UITableViewRowAnimationNone];
+    }
+}
+- (void)dealloc {
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 - (void)setupView {
     [self.view addSubview:self.reecordTableView];
@@ -51,6 +72,7 @@ static NSString * const MainReecordTableViewCellID = @"MainReecordTableViewCellI
     }];
     [MJRefreshControl beginRefresh:self.reecordTableView];
 }
+//请求数据
 - (void)getListFlight:(BOOL)refresh {
     if (self.isRequest) {
         return;
@@ -74,6 +96,17 @@ static NSString * const MainReecordTableViewCellID = @"MainReecordTableViewCellI
         [MJRefreshControl endRefresh:self.reecordTableView];
     }];
 }
+//删除航班
+- (void)delFlight:(NSIndexPath *)indexPath {
+    NSDictionary *param = @{@"flight_id":self.flightListModel.listArr[indexPath.row].flight_id};
+    [RequestPath flight_delFlightView:self.view param:param success:^(NSDictionary *obj, NSInteger code, NSString *mes) {
+        [MBProgressHUD showSuccess:@"删除成功" ToView:self.view];
+        [self.flightListModel.listArr removeObjectAtIndex:indexPath.row];
+        [self.reecordTableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
+    } failure:^(ErrorType errorType, NSString *mes) {
+        
+    }];
+}
 #pragma mark -- event
 - (void)signOutBtnEvent:(UIButton *)sender {
     [[UserModel sharedInstance] signOut];
@@ -91,12 +124,13 @@ static NSString * const MainReecordTableViewCellID = @"MainReecordTableViewCellI
     WeakSelf;
     FlightModel *model = self.flightListModel.listArr[indexPath.row];
     [cell reloadUIWithMolde:model mainReecordEditBlock:^{
+        weakSelf.indexPath = indexPath;
         FlightSubmitViewController *VC = [[FlightSubmitViewController alloc]init];
         VC.flightAddLineModel = model;
         VC.isEdit = YES;
         [weakSelf.navigationController pushViewController:VC animated:YES];
     } mainReecordDeleteBlock:^{
-        
+        [weakSelf delFlight:indexPath];
     }];
     return cell;
 }

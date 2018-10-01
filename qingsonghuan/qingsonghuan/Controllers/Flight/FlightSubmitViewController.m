@@ -32,6 +32,10 @@ static NSString * const CommonTableViewCell05ID = @"CommonTableViewCell05ID";
 
 @implementation FlightSubmitViewController
 
+- (void)setFlightAddLineModel:(FlightModel *)flightAddLineModel {
+    _flightAddLineModel = [[FlightModel alloc]initWithModel:flightAddLineModel];
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.title = @"上传航班";
@@ -49,18 +53,16 @@ static NSString * const CommonTableViewCell05ID = @"CommonTableViewCell05ID";
     }];
 }
 - (void)reuqestData {
-    if (![RegNeedInfoModel checkRegData]) {
-        [RequestPath user_regNeedInfoView:nil success:^(NSDictionary *obj, NSInteger code, NSString *mes) {
-            //成功
-            [self.submitTV reloadData];
-        } failure:^(ErrorType errorType, NSString *mes) {
-            //失败
-            WeakSelf;
-            [self showErrorView:^{
-                [weakSelf reuqestData];
-            }];
+    [RequestPath user_regNeedInfoView:nil success:^(NSDictionary *obj, NSInteger code, NSString *mes) {
+        //成功
+        [self.submitTV reloadData];
+    } failure:^(ErrorType errorType, NSString *mes) {
+        //失败
+        WeakSelf;
+        [self showErrorView:^{
+            [weakSelf reuqestData];
         }];
-    }
+    }];
 }
 #pragma mark -- event
 - (void)sureBtnEvent:(UIButton *)sender {
@@ -87,6 +89,8 @@ static NSString * const CommonTableViewCell05ID = @"CommonTableViewCell05ID";
         NSMutableDictionary *editParam = [[NSMutableDictionary alloc]initWithDictionary:param];
         [editParam setValue:[NSString safe_string:self.flightAddLineModel.flight_id] forKey:@"flight_id"];
         [RequestPath flight_editFlightView:self.view param:param success:^(NSDictionary *obj, NSInteger code, NSString *mes) {
+            //修改航班成功发送通知
+            [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_FLIGHT_EDIT object:self.flightAddLineModel];
             [MBProgressHUD showSuccess:@"修改成功" ToView:self.view completeBlcok:^{
                 [self.navigationController popViewControllerAnimated:YES];
             }];

@@ -133,7 +133,7 @@
 - (instancetype)initWithDic:(NSDictionary *)dic {
     self = [super init];
     if (self) {
-        self.subsidiary_Id =           [NSString safe_string:dic[@"subsidiary_Id"]];
+        self.subsidiary_id =           [NSString safe_string:dic[@"subsidiary_id"]];
         self.subsidiary_name =         [NSString safe_string:dic[@"subsidiary_name"]];
     }
     return self;

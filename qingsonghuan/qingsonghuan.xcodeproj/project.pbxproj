@@ -56,6 +56,7 @@
 		65D6BECE2160A03F002ABFDF /* MailReadModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 65D6BECD2160A03F002ABFDF /* MailReadModel.m */; };
 		65D6BED22160C154002ABFDF /* MineViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 65D6BED12160C154002ABFDF /* MineViewController.m */; };
 		65D6BED62160C6B0002ABFDF /* MineTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 65D6BED52160C6B0002ABFDF /* MineTableViewCell.m */; };
+		65F28A4821628B8E00C229B1 /* RegisterEditViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 65F28A4721628B8E00C229B1 /* RegisterEditViewController.m */; };
 		65F870F1215B7F3600DD1F59 /* FlightListTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 65F870F0215B7F3600DD1F59 /* FlightListTableViewCell.m */; };
 		65F870F7215B90DF00DD1F59 /* FlightFilterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 65F870F6215B90DF00DD1F59 /* FlightFilterViewController.m */; };
 		65F870FD215BB8E500DD1F59 /* CommonTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 65F870FC215BB8E500DD1F59 /* CommonTableViewCell.m */; };
@@ -167,6 +168,8 @@
 		65D6BED12160C154002ABFDF /* MineViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MineViewController.m; sourceTree = "<group>"; };
 		65D6BED42160C6B0002ABFDF /* MineTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MineTableViewCell.h; sourceTree = "<group>"; };
 		65D6BED52160C6B0002ABFDF /* MineTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MineTableViewCell.m; sourceTree = "<group>"; };
+		65F28A4621628B8E00C229B1 /* RegisterEditViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RegisterEditViewController.h; sourceTree = "<group>"; };
+		65F28A4721628B8E00C229B1 /* RegisterEditViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RegisterEditViewController.m; sourceTree = "<group>"; };
 		65F870EF215B7F3600DD1F59 /* FlightListTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FlightListTableViewCell.h; sourceTree = "<group>"; };
 		65F870F0215B7F3600DD1F59 /* FlightListTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FlightListTableViewCell.m; sourceTree = "<group>"; };
 		65F870F5215B90DF00DD1F59 /* FlightFilterViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FlightFilterViewController.h; sourceTree = "<group>"; };
@@ -524,6 +527,8 @@
 				65D6BED12160C154002ABFDF /* MineViewController.m */,
 				6526D15F21614A020074D358 /* MainReecordViewController.h */,
 				6526D16021614A020074D358 /* MainReecordViewController.m */,
+				65F28A4621628B8E00C229B1 /* RegisterEditViewController.h */,
+				65F28A4721628B8E00C229B1 /* RegisterEditViewController.m */,
 			);
 			path = Mine;
 			sourceTree = "<group>";
@@ -755,6 +760,7 @@
 				65F87113215CC6E600DD1F59 /* FlightListDetailTableViewCell.m in Sources */,
 				6526D16421614B8C0074D358 /* MainReecordTableViewCell.m in Sources */,
 				65D0CA852153439F00A3DB66 /* XYLineView.m in Sources */,
+				65F28A4821628B8E00C229B1 /* RegisterEditViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

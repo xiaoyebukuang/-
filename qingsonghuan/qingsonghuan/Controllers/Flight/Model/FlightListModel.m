@@ -41,6 +41,46 @@
 
 @implementation FlightModel
 
+
+- (instancetype)initWithModel:(FlightModel *)model {
+    self = [super init];
+    if (self) {
+        self.flight_id      = model.flight_id;
+        self.sign_date      = model.sign_date;
+        self.sign_date_str  = model.sign_date_str;
+        self.sign_time      = model.sign_time;
+        self.airline_number = model.airline_number;
+        self.leg_info       = [NSArray arrayWithArray:model.leg_info];
+        
+        WordLogoModel *wordLogoModel = [[WordLogoModel alloc]init];
+        wordLogoModel.word_logo_id = model.wordLogoModel.word_logo_id;
+        wordLogoModel.word_logo_name = model.wordLogoModel.word_logo_name;
+        self.wordLogoModel = wordLogoModel;
+        
+        self.message        = model.message;
+        DaysModel *daysModel = [[DaysModel alloc]init];
+        daysModel.days_id = model.daysModel.days_id;
+        daysModel.days_name = model.daysModel.days_name;
+        self.daysModel      = daysModel;
+        
+        self.user_id        = model.user_id;
+        
+        VisaModel *visaModel = [[VisaModel alloc]init];
+        visaModel.visa_id   = model.visaModel.visa_id;
+        visaModel.visa_name = model.visaModel.visa_name;
+        self.visaModel      = visaModel;
+        
+        DutyModel *dutyModel = [[DutyModel alloc]init];
+        dutyModel.duty_id = model.dutyModel.duty_id;
+        dutyModel.duty_name = model.dutyModel.duty_name;
+        self.dutyModel      = dutyModel;
+        self.phone          = model.phone;
+    }
+    return self;
+    
+}
+
+
 - (instancetype)initWithDic:(NSDictionary *)dic {
     self = [super init];
     if (self) {
@@ -74,7 +114,7 @@
     if (![NSString isEmpty:self.airline_number]) {
         NSString *days = @"";
         if (![_daysModel.days_id isEqualToString:@"1"]) {
-            days = [NSString stringWithFormat:@"(%@)",self.daysModel.days_name];
+            days = [NSString stringWithFormat:@"(%@)",_daysModel.days_name];
         }
         self.number_days = [NSString stringWithFormat:@"%@%@",self.airline_number,days];
     }

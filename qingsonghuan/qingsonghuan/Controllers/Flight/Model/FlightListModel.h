@@ -60,4 +60,6 @@
 
 - (instancetype)initWithDic:(NSDictionary *)dic;
 
+- (instancetype)initWithModel:(FlightModel *)model;
+
 @end

@@ -51,5 +51,7 @@
 //通知
 //读站内信
 #define NOTIFICATION_MAIL_READ          @"NOTIFICATION_MAIL_READ"
+//修改航班成功
+#define NOTIFICATION_FLIGHT_EDIT        @"NOTIFICATION_FLIGHT_EDIT"
 
 #endif /* DimensMacros_h */

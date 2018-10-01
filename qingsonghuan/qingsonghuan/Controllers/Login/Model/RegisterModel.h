@@ -33,6 +33,8 @@
 @property (nonatomic, strong) SendCodeModel *sendCodeModel;
 
 
+- (instancetype)initWithDic:(NSDictionary *)dic;
+
 - (NSString *)checkReg;
 - (NSString *)checkFroget;
 - (NSString *)checkLogin;

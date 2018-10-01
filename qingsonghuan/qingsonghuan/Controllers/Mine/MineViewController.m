@@ -9,6 +9,7 @@
 #import "MineViewController.h"
 #import "MineTableViewCell.h"
 #import "MainReecordViewController.h"
+#import "RegisterEditViewController.h"
 static NSString * const MineTableViewCellID = @"MineTableViewCellID";
 
 @interface MineViewController ()<UITableViewDelegate, UITableViewDataSource>
@@ -70,6 +71,11 @@ static NSString * const MineTableViewCellID = @"MineTableViewCellID";
         MainReecordViewController *reecordVC = [[MainReecordViewController alloc]init];
         [self.navigationController pushViewController:reecordVC animated:YES];
     }
+    if (indexPath.row == 1) {
+        RegisterEditViewController *registerVC = [[RegisterEditViewController alloc]init];
+        [self.navigationController pushViewController:registerVC animated:YES];
+    }
+
 }
 #pragma mark -- setup
 - (UIView *)headerView {

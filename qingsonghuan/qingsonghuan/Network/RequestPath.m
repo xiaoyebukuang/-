@@ -8,22 +8,30 @@
 
 #import "RequestPath.h"
 #import "RegNeedInfoModel.h"
+
+
 @implementation RequestPath
 //1.注册页信息 ( 航空公司,子公司,职务,签证 )
 + (void)user_regNeedInfoView:(UIView *)view
                      success:(void (^)(NSDictionary *obj, NSInteger code, NSString *mes))success
                      failure:(void (^)(ErrorType errorType, NSString *mes))failure {
+    if ([RegNeedInfoModel checkRegData]) {
+        //本身有数据，不再请求
+        success(@{},1,@"请求成功");
+        return;
+    }
     [MBProgressHUD showToView:view];
     [XYNetworking postWithUrlString:API_USER_REGNEEDINFO success:^(id obj, NSInteger code, NSString *mes) {
-        [MBProgressHUD hideHUDForView:view];
         if ([obj isKindOfClass:[NSDictionary class]]) {
+            [MBProgressHUD hideHUDForView:view];
             [[RegNeedInfoModel sharedInstance]reloadWithDic:obj];
             success((NSDictionary *)obj, code, mes);
         } else {
+            [MBProgressHUD showError:API_REUQEST_FAILED ToView:view];
             failure(ErrorTypeReqestNone, mes);
         }
     } failure:^(ErrorType errorType, NSString *mes) {
-        [MBProgressHUD hideHUDForView:view];
+        [MBProgressHUD showError:mes ToView:view];
         failure(errorType, mes);
     }];
 }
@@ -40,10 +48,12 @@
                 [MBProgressHUD showSuccess:@"手机验证码发送成功" ToView:view];
                 success((NSDictionary *)obj, code, mes);
             } else {
-                [MBProgressHUD hideHUDForView:view];
+                [MBProgressHUD showError:API_REUQEST_FAILED ToView:view];
+                failure(ErrorTypeReqestNone, mes);
             }
         } failure:^(ErrorType errorType, NSString *mes) {
             [MBProgressHUD showError:mes ToView:view];
+            failure(errorType,mes);
         }];
     } else {
         [MBProgressHUD showError:@"请填写完整的手机号" ToView:view];
@@ -51,16 +61,37 @@
 }
 
 //3.注册
-+ (void)user_registerParam:(NSDictionary *)param
-                   success:(void (^)(id obj, NSInteger code, NSString *mes))success
-                   failure:(void (^)(ErrorType errorType, NSString *mes))failure {
-    [XYNetworking postWithUrlString:API_USER_REGISTER parameters:param success:success failure:failure];
++ (void)user_registerView:(UIView *)view
+                    Param:(NSDictionary *)param
+                  success:(void (^)(id obj, NSInteger code, NSString *mes))success
+                  failure:(void (^)(ErrorType errorType, NSString *mes))failure {
+    [MBProgressHUD showToView:view];
+    [XYNetworking  postWithUrlString:API_USER_REGISTER parameters:param success:^(id obj, NSInteger code, NSString *mes) {
+        if ([obj isKindOfClass:[NSDictionary class]]) {
+            [MBProgressHUD hideHUDForView:view];
+            [[RegNeedInfoModel sharedInstance]reloadWithDic:obj];
+            success((NSDictionary *)obj, code, mes);
+        } else {
+            [MBProgressHUD showError:mes ToView:view];
+            failure(ErrorTypeReqestNone, mes);
+        }
+    } failure:^(ErrorType errorType, NSString *mes) {
+        [MBProgressHUD showError:mes ToView:view];
+        failure(errorType, mes);
+    }];
 }
 //4.找回密码
-+ (void)user_retrieveParam:(NSDictionary *)param
-                   success:(void (^)(id obj, NSInteger code, NSString *mes))success
-                   failure:(void (^)(ErrorType errorType, NSString *mes))failure {
-    [XYNetworking postWithUrlString:API_USER_RETRIEVE parameters:param success:success failure:failure];
++ (void)user_retrieveView:(UIView *)view
+                    Param:(NSDictionary *)param
+                  success:(void (^)(id obj, NSInteger code, NSString *mes))success
+                  failure:(void (^)(ErrorType errorType, NSString *mes))failure {
+    [MBProgressHUD showToView:view];
+    [XYNetworking postWithUrlString:API_USER_RETRIEVE parameters:param success:^(id obj, NSInteger code, NSString *mes) {
+        [MBProgressHUD hideHUDForView:view];
+        success(obj,code,mes);
+    } failure:^(ErrorType errorType, NSString *mes) {
+        failure(ErrorTypeReqestNone, mes);
+    }];
 }
 //5.登录
 + (void)user_loginView:(UIView *)view
@@ -81,7 +112,7 @@
         failure(errorType, mes);
     }];
 }
- //6.获取航段列表
+//6.获取航段列表
 + (void)flight_getListFlightParam:(NSDictionary *)param
                           success:(void (^)(NSDictionary *obj, NSInteger code, NSString *mes))success
                           failure:(void (^)(ErrorType errorType, NSString *mes))failure {
@@ -90,13 +121,14 @@
             success((NSDictionary *)obj, code, mes);
         } else {
             failure(ErrorTypeReqestNone, mes);
+            [MBProgressHUD showError:API_REUQEST_FAILED];
         }
     } failure:^(ErrorType errorType, NSString *mes) {
         [MBProgressHUD showError:mes];
         failure(errorType, mes);
     }];
 }
- //7.添加航班信息
+//7.添加航班信息
 + (void)flight_addlineView:(UIView *)view
                      param:(NSDictionary *)param
                    success:(void (^)(NSDictionary *obj, NSInteger code, NSString *mes))success
@@ -115,7 +147,7 @@
         failure(errorType, mes);
     }];
 }
- //8.用户站内信列表
+//8.用户站内信列表
 + (void)letter_mesListParam:(NSDictionary *)param
                     success:(void (^)(NSDictionary *obj, NSInteger code, NSString *mes))success
                     failure:(void (^)(ErrorType errorType, NSString *mes))failure {
@@ -123,6 +155,7 @@
         if ([obj isKindOfClass:[NSDictionary class]]) {
             success((NSDictionary *)obj, code, mes);
         } else {
+            [MBProgressHUD showError:mes];
             failure(ErrorTypeReqestNone, mes);
         }
     } failure:^(ErrorType errorType, NSString *mes) {
@@ -131,7 +164,7 @@
     }];
 }
 
- //9.站内信删除
+//9.站内信删除
 + (void)letter_mesdelView:(UIView *)view
                     param:(NSDictionary *)param
                   success:(void (^)(NSDictionary *obj, NSInteger code, NSString *mes))success
@@ -151,7 +184,7 @@
     }];
 }
 
- //10.读站内信
+//10.读站内信
 + (void)letter_messeeView:(UIView *)view
                     param:(NSDictionary *)param
                   success:(void (^)(NSDictionary *obj, NSInteger code, NSString *mes))success
@@ -170,7 +203,7 @@
         failure(errorType, mes);
     }];
 }
- //11.当前用户未读信息数量
+//11.当前用户未读信息数量
 + (void)letter_isMessuccess:(void (^)(NSDictionary *obj, NSInteger code, NSString *mes))success
                     failure:(void (^)(ErrorType errorType, NSString *mes))failure {
     [XYNetworking postWithUrlString:API_LETTER_ISMES success:^(id obj, NSInteger code, NSString *mes) {
@@ -186,14 +219,75 @@
                         param:(NSDictionary *)param
                       success:(void (^)(NSDictionary *obj, NSInteger code, NSString *mes))success
                       failure:(void (^)(ErrorType errorType, NSString *mes))failure {
+    [MBProgressHUD showToView:view];
     [XYNetworking postWithUrlString:API_FLIGHT_EDITFLIGHT parameters:param success:^(id obj, NSInteger code, NSString *mes) {
         if ([obj isKindOfClass:[NSDictionary class]]) {
+            [MBProgressHUD hideHUDForView:view];
             success((NSDictionary *)obj, code, mes);
         } else {
+            [MBProgressHUD showError:mes ToView:view];
             failure(ErrorTypeReqestNone, mes);
         }
     } failure:^(ErrorType errorType, NSString *mes) {
-        [MBProgressHUD showError:mes];
+        [MBProgressHUD showError:mes ToView:view];
+        failure(errorType, mes);
+    }];
+}
+
+//13.删除一条航班信息
++ (void)flight_delFlightView:(UIView *)view
+                       param:(NSDictionary *)param
+                     success:(void (^)(NSDictionary *obj, NSInteger code, NSString *mes))success
+                     failure:(void (^)(ErrorType errorType, NSString *mes))failure {
+    [MBProgressHUD showToView:view];
+    [XYNetworking postWithUrlString:API_FLIGHT_DELFLIGHT parameters:param success:^(id obj, NSInteger code, NSString *mes) {
+        if ([obj isKindOfClass:[NSDictionary class]]) {
+            [MBProgressHUD hideHUDForView:view];
+            success((NSDictionary *)obj, code, mes);
+        } else {
+            failure(ErrorTypeReqestNone, mes);
+            [MBProgressHUD showError:mes ToView:view];
+        }
+    } failure:^(ErrorType errorType, NSString *mes) {
+        [MBProgressHUD showError:mes ToView:view];
+        failure(errorType, mes);
+    }];
+}
+
+//14.获取当前用户个人信息
++ (void)user_getUserInfoView:(UIView *)view
+                     success:(void (^)(NSDictionary *obj, NSInteger code, NSString *mes))success
+                     failure:(void (^)(ErrorType errorType, NSString *mes))failure {
+    [MBProgressHUD showToView:view];
+    [XYNetworking postWithUrlString:API_USER_GETUSERINF success:^(id obj, NSInteger code, NSString *mes) {
+        if ([obj isKindOfClass:[NSDictionary class]]) {
+            [MBProgressHUD hideHUDForView:view];
+            success((NSDictionary *)obj, code, mes);
+        } else {
+            failure(ErrorTypeReqestNone, mes);
+            [MBProgressHUD showError:mes ToView:view];
+        }
+    } failure:^(ErrorType errorType, NSString *mes) {
+        [MBProgressHUD showError:mes ToView:view];
+        failure(errorType, mes);
+    }];
+}
+//15.个人信息修改
++ (void)user_editUserInfoView:(UIView *)view
+                        param:(NSDictionary *)param
+                      success:(void (^)(NSDictionary *obj, NSInteger code, NSString *mes))success
+                      failure:(void (^)(ErrorType errorType, NSString *mes))failure {
+    [MBProgressHUD showToView:view];
+    [XYNetworking postWithUrlString:API_USER_EDITUSERINFO success:^(id obj, NSInteger code, NSString *mes) {
+        if ([obj isKindOfClass:[NSDictionary class]]) {
+            [MBProgressHUD hideHUDForView:view];
+            success((NSDictionary *)obj, code, mes);
+        } else {
+            failure(ErrorTypeReqestNone, mes);
+            [MBProgressHUD showError:mes ToView:view];
+        }
+    } failure:^(ErrorType errorType, NSString *mes) {
+        [MBProgressHUD showError:mes ToView:view];
         failure(errorType, mes);
     }];
 }
