@@ -155,25 +155,25 @@ static NSInteger const COMMON_BTN_TAG = 329;
         if ([temp isKindOfClass:[SignModel class]]) {
             str = ((SignModel *)temp).sign_name;
             SignModel *tempModel = (SignModel *)model;
-            if (tempModel.sign_id == ((SignModel *)temp).sign_id) {
+            if ([tempModel.sign_id isEqualToString:((SignModel *)temp).sign_id]) {
                 select = YES;
             }
         } else if ([temp isKindOfClass:[VisaModel class]]) {
             str = ((VisaModel *)temp).visa_name;
             VisaModel *tempModel = (VisaModel *)model;
-            if (tempModel.visa_id == ((VisaModel *)temp).visa_id) {
+            if ([tempModel.visa_id isEqualToString:((VisaModel *)temp).visa_id]) {
                 select = YES;
             }
         } else if ([temp isKindOfClass:[WordLogoModel class]]) {
             str = ((WordLogoModel *)temp).word_logo_name;
             WordLogoModel *tempModel = (WordLogoModel *)model;
-            if (tempModel.word_logo_id == ((WordLogoModel *)temp).word_logo_id) {
+            if ([tempModel.word_logo_id isEqualToString:((WordLogoModel *)temp).word_logo_id]) {
                 select = YES;
             }
         } else if ([temp isKindOfClass:[DutyModel class]]) {
             str = ((DutyModel *)temp).duty_name;
             DutyModel *tempModel = (DutyModel *)model;
-            if (tempModel.duty_id == ((DutyModel *)temp).duty_id) {
+            if ([tempModel.duty_id isEqualToString:((DutyModel *)temp).duty_id]) {
                 select = YES;
             }
         }
@@ -357,8 +357,8 @@ static NSInteger const CITY_BTN_TAG = 213;
         NSString *text = self.contentArr[i];
         
         if (i != 0) {
-            UIImageView *arrowImageV = [[UIImageView alloc]init];
-            arrowImageV.backgroundColor = [UIColor blackColor];
+            UIImageView *arrowImageV = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"filter_city_arrow"]];
+            arrowImageV.contentMode = UIViewContentModeCenter;
             [self.bgView addSubview:arrowImageV];
             
             if (x_sum + x_space > width) {

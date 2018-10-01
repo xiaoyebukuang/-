@@ -89,6 +89,12 @@
                     failure:(void (^)(ErrorType errorType, NSString *mes))failure;
 
 
-
+/**
+ 12.修改航班信息
+ */
++ (void)flight_editFlightView:(UIView *)view
+                        param:(NSDictionary *)param
+                      success:(void (^)(NSDictionary *obj, NSInteger code, NSString *mes))success
+                      failure:(void (^)(ErrorType errorType, NSString *mes))failure;
 
 @end

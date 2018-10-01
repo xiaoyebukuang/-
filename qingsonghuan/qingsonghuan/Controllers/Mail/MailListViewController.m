@@ -261,7 +261,6 @@ static NSString * const MailListTableViewCellID = @"MailListTableViewCellID";
     if (!_footerView) {
         UIView *view = [[UIView alloc]initWithFrame:CGRectMake(0, CONTENT_HEIGHT, MAIN_SCREEN_WIDTH, 50 + NAV_BOTTOW_HEIGHT)];
         view.backgroundColor = [UIColor color_FFFFFF];
-        _footerView = view;
         
         UIButton *allSelectBtn = [UIButton buttonWithTitle:@"全部标记" font:SYSTEM_FONT_17 titleColor:[UIColor color_666666]];
         [allSelectBtn addTarget:self action:@selector(allSelectBtnEvent:) forControlEvents:UIControlEventTouchUpInside];
@@ -280,6 +279,15 @@ static NSString * const MailListTableViewCellID = @"MailListTableViewCellID";
             make.right.equalTo(view).offset(-CELL_LEFT_APACE);
             make.top.width.height.equalTo(allSelectBtn);
         }];
+        
+        XYLineView *lineV = [[XYLineView alloc]init];
+        [view addSubview:lineV];
+        [lineV mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.top.left.width.equalTo(view);
+            make.height.mas_equalTo(0.5);
+        }];
+        
+        _footerView = view;
     }
     return _footerView;
 }

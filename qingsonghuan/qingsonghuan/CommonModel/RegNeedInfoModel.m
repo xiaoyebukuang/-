@@ -83,7 +83,8 @@
     
     if (!self.signModelArr) {
         NSArray *sexArr = @[@{@"sign_name": @"上午",@"sign_id":@(1)},
-                            @{@"sign_name": @"下午",@"sign_id":@(2)}];
+                            @{@"sign_name": @"下午",@"sign_id":@(2)},
+                            @{@"sign_name": @"晚上",@"sign_id":@(3)}];
         self.signModelArr = [[NSMutableArray alloc]init];
         for (NSDictionary *subDic in sexArr) {
             SignModel *signModel = [[SignModel alloc]initWithDic:subDic];
@@ -114,7 +115,7 @@
 - (instancetype)initWithDic:(NSDictionary *)dic {
     self = [super init];
     if (self) {
-        self.airline_id =        [NSString safe_integer:dic[@"airline_id"]];
+        self.airline_id =        [NSString safe_string:dic[@"airline_id"]];
         self.airline_name =      [NSString safe_string:dic[@"airline_name"]];
         self.subsidiaryArr =     [[NSMutableArray alloc]init];
         if ([dic[@"subsidiary"] isKindOfClass:[NSArray class]]) {
@@ -132,7 +133,7 @@
 - (instancetype)initWithDic:(NSDictionary *)dic {
     self = [super init];
     if (self) {
-        self.subsidiary_Id =           [NSString safe_integer:dic[@"subsidiary_Id"]];
+        self.subsidiary_Id =           [NSString safe_string:dic[@"subsidiary_Id"]];
         self.subsidiary_name =         [NSString safe_string:dic[@"subsidiary_name"]];
     }
     return self;
@@ -143,7 +144,7 @@
 - (instancetype)initWithDic:(NSDictionary *)dic {
     self = [super init];
     if (self) {
-        self.duty_id =      [NSString safe_integer:dic[@"duty_id"]];
+        self.duty_id =      [NSString safe_string:dic[@"duty_id"]];
         self.duty_name =    [NSString safe_string:dic[@"duty_name"]];
     }
     return self;
@@ -154,7 +155,7 @@
 - (instancetype)initWithDic:(NSDictionary *)dic {
     self = [super init];
     if (self) {
-        self.visa_id =       [NSString safe_integer:dic[@"visa_id"]];
+        self.visa_id =       [NSString safe_string:dic[@"visa_id"]];
         self.visa_name =     [NSString safe_string:dic[@"visa_name"]];
     }
     return self;
@@ -165,7 +166,7 @@
 - (instancetype)initWithDic:(NSDictionary *)dic {
     self = [super init];
     if (self) {
-        self.sex_id =        [NSString safe_integer:dic[@"sex_id"]];
+        self.sex_id =        [NSString safe_string:dic[@"sex_id"]];
         self.sex_name =      [NSString safe_string:dic[@"sex_name"]];
     }
     return self;
@@ -176,7 +177,7 @@
 - (instancetype)initWithDic:(NSDictionary *)dic {
     self = [super init];
     if (self) {
-        self.word_logo_id =          [NSString safe_integer:dic[@"word_logo_id"]];
+        self.word_logo_id =          [NSString safe_string:dic[@"word_logo_id"]];
         self.word_logo_name =        [NSString safe_string:dic[@"word_logo_name"]];
     }
     return self;
@@ -187,7 +188,7 @@
 - (instancetype)initWithDic:(NSDictionary *)dic {
     self = [super init];
     if (self) {
-        self.sign_id =       [NSString safe_integer:dic[@"sign_id"]];
+        self.sign_id =       [NSString safe_string:dic[@"sign_id"]];
         self.sign_name =     [NSString safe_string:dic[@"sign_name"]];
     }
     return self;
@@ -198,7 +199,7 @@
 - (instancetype)initWithDic:(NSDictionary *)dic {
     self = [super init];
     if (self) {
-        self.days_id =       [NSString safe_integer:dic[@"days_id"]];
+        self.days_id =       [NSString safe_string:dic[@"days_id"]];
         self.days_name =     [NSString safe_string:dic[@"days_name"]];
     }
     return self;

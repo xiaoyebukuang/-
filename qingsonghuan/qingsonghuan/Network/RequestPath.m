@@ -181,4 +181,20 @@
         failure(errorType, mes);
     }];
 }
+//12.修改航班信息
++ (void)flight_editFlightView:(UIView *)view
+                        param:(NSDictionary *)param
+                      success:(void (^)(NSDictionary *obj, NSInteger code, NSString *mes))success
+                      failure:(void (^)(ErrorType errorType, NSString *mes))failure {
+    [XYNetworking postWithUrlString:API_FLIGHT_EDITFLIGHT parameters:param success:^(id obj, NSInteger code, NSString *mes) {
+        if ([obj isKindOfClass:[NSDictionary class]]) {
+            success((NSDictionary *)obj, code, mes);
+        } else {
+            failure(ErrorTypeReqestNone, mes);
+        }
+    } failure:^(ErrorType errorType, NSString *mes) {
+        [MBProgressHUD showError:mes];
+        failure(errorType, mes);
+    }];
+}
 @end

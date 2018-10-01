@@ -56,7 +56,7 @@
 @interface AirlineModel : NSObject
 
 //id
-@property (nonatomic, assign) NSInteger airline_id;
+@property (nonatomic, copy) NSString *airline_id;
 //公司名称
 @property (nonatomic, copy) NSString *airline_name;
 //子公司数组
@@ -71,7 +71,7 @@
  */
 @interface SubsidiaryModel : NSObject
 //id
-@property (nonatomic, assign) NSInteger subsidiary_Id;
+@property (nonatomic, copy) NSString *subsidiary_Id;
 //子公司城市名称
 @property (nonatomic, copy) NSString *subsidiary_name;
 
@@ -84,7 +84,7 @@
  */
 @interface DutyModel : NSObject
 //id
-@property (nonatomic, assign) NSInteger duty_id;
+@property (nonatomic, copy) NSString *duty_id;
 //职务名称
 @property (nonatomic, copy) NSString *duty_name;
 
@@ -96,7 +96,7 @@
  */
 @interface VisaModel : NSObject
 //id
-@property (nonatomic, assign) NSInteger visa_id;
+@property (nonatomic, copy) NSString *visa_id;
 //签证类型名称
 @property (nonatomic, copy) NSString *visa_name;
 
@@ -109,7 +109,7 @@
 @interface SexModel : NSObject
 
 //id
-@property (nonatomic, assign) NSInteger sex_id;
+@property (nonatomic, copy) NSString *sex_id;
 //性别名称
 @property (nonatomic, copy) NSString *sex_name;
 
@@ -123,7 +123,7 @@
 @interface WordLogoModel : NSObject
 
 //标识id
-@property (nonatomic, assign) NSInteger word_logo_id;
+@property (nonatomic, copy) NSString *word_logo_id;
 //标识名称
 @property (nonatomic, copy) NSString *word_logo_name;
 
@@ -137,7 +137,7 @@
 @interface SignModel : NSObject
 
 //签到id
-@property (nonatomic, assign) NSInteger sign_id;
+@property (nonatomic, copy) NSString *sign_id;
 //签到时段名称
 @property (nonatomic, copy) NSString *sign_name;
 
@@ -150,7 +150,7 @@
  */
 @interface DaysModel : NSObject
 //出差天数id
-@property (nonatomic, assign) NSInteger days_id;
+@property (nonatomic, copy) NSString *days_id;
 //出差天数名称
 @property (nonatomic, copy) NSString *days_name;
 

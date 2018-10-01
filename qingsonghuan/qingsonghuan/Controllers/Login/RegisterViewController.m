@@ -53,12 +53,12 @@ static NSString * const RegisterTableViewCell04ID = @"RegisterTableViewCell04ID"
     }
     [MBProgressHUD showToView:self.view];
     NSDictionary *param = @{@"phone":self.registerModel.phone,
-                            @"airline_id":@(self.registerModel.airlineModel.airline_id),
-                            @"subsidiary_id":@(self.registerModel.subsidiaryModel.subsidiary_Id),
-                            @"duty_id":@(self.registerModel.dutyModel.duty_id),
-                            @"visa_id":@(self.registerModel.visaModel.visa_id),
+                            @"airline_id":[NSString safe_string:self.registerModel.airlineModel.airline_id],
+                            @"subsidiary_id":[NSString safe_string:self.registerModel.subsidiaryModel.subsidiary_Id],
+                            @"duty_id":[NSString safe_string:self.registerModel.dutyModel.duty_id],
+                            @"visa_id":[NSString safe_string:self.registerModel.visaModel.visa_id],
                             @"work_number":self.registerModel.work_number,
-                            @"sex":@(self.registerModel.sexModel.sex_id),
+                            @"sex":[NSString safe_string:self.registerModel.sexModel.sex_id],
                             @"password":self.registerModel.password,
                             @"password_confirm":self.registerModel.password_confirm,
                             @"code":self.registerModel.code,

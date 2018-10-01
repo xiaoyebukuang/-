@@ -59,30 +59,36 @@
             break;
     }
 }
-
+//将今天转化为指定格式的日期String
 + (NSString *)getTodayDateStringFormatType:(FormatType)type {
     return [self getDateString:[NSDate date] formatType:type];
 }
 
+//将时间转化为指定格式的日期String
 + (NSString *)getDateString:(NSDate *)date formatType:(FormatType)type {
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc]init];
+    [dateFormatter setLocale:[[NSLocale alloc] initWithLocaleIdentifier:@"zh_CN"]];
     [dateFormatter setDateFormat:[NSDate getFormatType:type]];
     return  [dateFormatter stringFromDate:date];
 }
-
+//将字符串转化为指定格式的时间
 + (NSDate *)getDate:(NSString *)dateStr formatType:(FormatType)type {
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc]init];
+    [dateFormatter setLocale:[[NSLocale alloc] initWithLocaleIdentifier:@"zh_CN"]];
     [dateFormatter setDateFormat:[NSDate getFormatType:type]];
     return [dateFormatter dateFromString:dateStr];
 }
+//获取时间戳
 + (NSTimeInterval)getDateStample:(NSDate *)data {
-    return [data timeIntervalSince1970]*1000;
+    return [data timeIntervalSince1970];
 }
+//获取时间戳
 + (NSTimeInterval)getDateStample:(NSString *)dateStr formatType:(FormatType)type {
     return [self getDateStample:[self getDate:dateStr formatType:type]];
 }
+//将时间戳转化为指定的字符串
 + (NSString *)getDateStringWithDateStaple:(NSTimeInterval)time formatType:(FormatType)type {
-    NSDate *date = [NSDate dateWithTimeIntervalSinceNow:time];
+    NSDate *date = [NSDate dateWithTimeIntervalSince1970:time];
     return [self getDateString:date formatType:type];
 }
 

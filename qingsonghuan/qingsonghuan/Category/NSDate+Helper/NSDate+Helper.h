@@ -28,14 +28,14 @@ typedef NS_ENUM(NSInteger, FormatType) {
 
 
 /**
- 获取今天指定格式的日期String
+ 将今天转化为指定格式的日期String
  @param type 格式
  @return 返回时间String
  */
 + (NSString *)getTodayDateStringFormatType:(FormatType)type;
 
 /**
- 获取指定格式的日期String
+ 将时间转化为指定格式的日期String
  @param date 时间
  @param type 时间类型
  @return 时间字符串
@@ -43,7 +43,7 @@ typedef NS_ENUM(NSInteger, FormatType) {
 + (NSString *)getDateString:(NSDate *)date formatType:(FormatType)type;
 
 /**
- 获取指定格式的时间
+ 将字符串转化为指定格式的时间
  @param dateStr 时间字符串
  @param type 时间类型
  @return 返回转换时间
@@ -68,7 +68,7 @@ typedef NS_ENUM(NSInteger, FormatType) {
 + (NSTimeInterval)getDateStample:(NSString *)dateStr formatType:(FormatType)type;
 
 /**
- 获取时间戳的字符串
+ 将时间戳转化为指定的字符串
 
  @param time 时间戳
  @param type 类型

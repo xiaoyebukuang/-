@@ -91,13 +91,13 @@ static NSString * const CommonTableViewCell02ID = @"CommonTableViewCell02ID";
     WeakSelf;
     if (indexPath.row == 0) {
         cell = (CommonTableViewCell01 *)[tableView dequeueReusableCellWithIdentifier: CommonTableViewCell01ID];
-        [(CommonTableViewCell01 *)cell reloadViewWithText:titleArr[indexPath.row] placeHolder:FLIGHT_SIGN_DATE content:self.filterModel.sign_date enabled:NO textFieldType:UITextFieldNormal commonClickBlock:^(id obj) {
+        [(CommonTableViewCell01 *)cell reloadViewWithText:titleArr[indexPath.row] placeHolder:FLIGHT_SIGN_DATE content:self.filterModel.sign_date_str enabled:NO textFieldType:UITextFieldNormal commonClickBlock:^(id obj) {
             [weakSelf.view endEditing:YES];
             XYPickerDateViewController *dateVC = [[XYPickerDateViewController alloc]init];
             dateVC.pickerMode = UIDatePickerModeDate;
-            [dateVC reloadViewWithPickerDateBlock:^(NSString *date) {
+            [dateVC reloadViewWithPickerDateBlock:^(NSDate *date) {
                 weakSelf.filterModel.sign_date = date;
-                ((CommonTableViewCell01 *)cell).textField.text = date;
+                ((CommonTableViewCell01 *)cell).textField.text = weakSelf.filterModel.sign_date_str;
             }];
             [weakSelf presentViewController:dateVC animated:YES completion:nil];
         }];
@@ -132,13 +132,13 @@ static NSString * const CommonTableViewCell02ID = @"CommonTableViewCell02ID";
         cell = (CommonTableViewCell02 *)[tableView dequeueReusableCellWithIdentifier: CommonTableViewCell02ID];
         [(CommonTableViewCell02 *)cell reloadViewWithText:titleArr[indexPath.row]  content:obj selectModel:model  commonClickBlock:^(id obj) {
             [weakSelf.view endEditing:YES];
-            if ([obj isKindOfClass:[SignModel class]]) {
+            if (indexPath.row == 2) {
                 weakSelf.filterModel.signModel = obj;
-            } else if ([obj isKindOfClass:[VisaModel class]]) {
+            } else if (indexPath.row == 3) {
                 weakSelf.filterModel.visaModel = obj;
-            } else if ([obj isKindOfClass:[WordLogoModel class]]) {
+            } else if (indexPath.row == 4) {
                 weakSelf.filterModel.wordLogoModel = obj;
-            } else if ([obj isKindOfClass:[DutyModel class]]) {
+            } else if (indexPath.row == 5) {
                 weakSelf.filterModel.dutyModel = obj;
             }
         }];

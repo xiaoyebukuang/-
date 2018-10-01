@@ -75,14 +75,7 @@
     WeakSelf;
     [self.titleView setSureBlock:^{
         if (weakSelf.pickerDateBlock) {
-            NSString *dateStr;
-            if (weakSelf.pickerMode == UIDatePickerModeDate) {
-                dateStr = [NSDate getDateString:weakSelf.datePicker.date formatType:FormatyyyyMd];
-            }
-            if (weakSelf.pickerMode == UIDatePickerModeTime) {
-                dateStr = [NSDate getDateString:weakSelf.datePicker.date formatType:FormatHm];
-            }
-            weakSelf.pickerDateBlock(dateStr);
+            weakSelf.pickerDateBlock(weakSelf.datePicker.date);
         }
         [weakSelf dismissViewControllerAnimated:YES completion:nil];
     } cancleBlock:^{

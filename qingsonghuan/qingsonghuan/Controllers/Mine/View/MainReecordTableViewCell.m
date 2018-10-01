@@ -29,6 +29,10 @@
 @property (nonatomic, strong) UILabel *duty;
 
 
+@property (nonatomic, copy) MainReecordEditBlock editBlock;
+@property (nonatomic, copy) MainReecordDeleteBlock deleteBlock;
+
+
 @end
 @implementation MainReecordTableViewCell
 
@@ -161,6 +165,7 @@
     }];
     
     UIButton *edit = [UIButton buttonWithTitle:@"编辑" font:SYSTEM_FONT_15 titleColor:[UIColor color_33B1FE]];
+    [edit addTarget:self action:@selector(editBtnEvent:) forControlEvents:UIControlEventTouchUpInside];
     [self.bgView addSubview:edit];
     [edit mas_makeConstraints:^(MASConstraintMaker *make) {
         make.bottom.left.equalTo(self.bgView);
@@ -169,6 +174,7 @@
     }];
     
     UIButton *cancle = [UIButton buttonWithTitle:@"删除" font:SYSTEM_FONT_15 titleColor:[UIColor color_33B1FE]];
+    [cancle addTarget:self action:@selector(deleteBtnEvent:) forControlEvents:UIControlEventTouchUpInside];
     [self.bgView addSubview:cancle];
     [cancle mas_makeConstraints:^(MASConstraintMaker *make) {
         make.bottom.right.equalTo(self.bgView);
@@ -185,7 +191,30 @@
     self.visa.text = @"双签";
     self.duty.text = @"乘务长";
 }
-
+- (void)editBtnEvent:(UIButton *)sender {
+    if (self.editBlock) {
+        self.editBlock();
+    }
+}
+- (void)deleteBtnEvent:(UIButton *)sender {
+    if (self.deleteBlock) {
+        self.deleteBlock();
+    }
+}
+- (void)reloadUIWithMolde:(FlightModel *)model mainReecordEditBlock:(MainReecordEditBlock)editBlock mainReecordDeleteBlock:(MainReecordDeleteBlock)deleteBlock {
+    
+    self.date.text = model.sign_date_str;
+    self.airlineNumber.text = model.number_days;
+    self.wordLogo.text = model.wordLogoModel.word_logo_name;
+    self.legInfo.text = model.leg_info_str;
+    
+    self.time.text = model.sign_time;
+    self.visa.text = model.visaModel.visa_name;
+    self.duty.text = model.dutyModel.duty_name;
+    
+    self.editBlock = editBlock;
+    self.deleteBlock = deleteBlock;
+}
 #pragma mark -- setup
 - (UIView *)bgView {
     if (!_bgView) {

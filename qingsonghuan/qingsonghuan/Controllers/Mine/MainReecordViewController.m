@@ -88,14 +88,17 @@ static NSString * const MainReecordTableViewCellID = @"MainReecordTableViewCellI
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     MainReecordTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier: MainReecordTableViewCellID];
-    return cell;
-}
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    WeakSelf;
     FlightModel *model = self.flightListModel.listArr[indexPath.row];
-    FlightSubmitViewController *VC = [[FlightSubmitViewController alloc]init];
-    VC.flightAddLineModel = model;
-    VC.isEdit = YES;
-    [self.navigationController pushViewController:VC animated:YES];
+    [cell reloadUIWithMolde:model mainReecordEditBlock:^{
+        FlightSubmitViewController *VC = [[FlightSubmitViewController alloc]init];
+        VC.flightAddLineModel = model;
+        VC.isEdit = YES;
+        [weakSelf.navigationController pushViewController:VC animated:YES];
+    } mainReecordDeleteBlock:^{
+        
+    }];
+    return cell;
 }
 #pragma mark -- setup
 - (UITableView *)reecordTableView{

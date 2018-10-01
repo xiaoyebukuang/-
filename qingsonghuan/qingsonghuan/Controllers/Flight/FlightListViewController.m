@@ -123,11 +123,11 @@ static NSString * const FlightListTableViewCellID = @"FlightListTableViewCellID"
     NSDictionary *param = @{
                             @"page": refresh ? @(1):@(self.flightListModel.page + 1),
                             @"limit":@(20),
-                            @"sign_date":[NSString safe_string:self.flightFilterModel.sign_date],
-                            @"sign_time":@(self.flightFilterModel.signModel.sign_id),
-                            @"visa_id":@(self.flightFilterModel.visaModel.visa_id),
-                            @"word_logo_id":@(self.flightFilterModel.wordLogoModel.word_logo_id),
-                            @"duty_id":@(self.flightFilterModel.dutyModel.duty_id),
+                            @"sign_date":@(self.flightFilterModel.sign_date_stample),
+                            @"sign_time":[NSString safe_string:self.flightFilterModel.signModel.sign_id],
+                            @"visa_id":[NSString safe_string:self.flightFilterModel.visaModel.visa_id],
+                            @"word_logo_id":[NSString safe_string:self.flightFilterModel.wordLogoModel.word_logo_id],
+                            @"duty_id":[NSString safe_string:self.flightFilterModel.dutyModel.duty_id],
                             @"airline_number":[NSString safe_string:self.flightFilterModel.airline_number]
                             };
     [RequestPath flight_getListFlightParam:param success:^(NSDictionary *obj, NSInteger code, NSString *mes) {

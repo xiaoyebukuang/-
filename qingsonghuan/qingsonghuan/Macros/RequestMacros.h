@@ -33,6 +33,8 @@
 #define API_LETTER_MESSEE              [NSString stringWithFormat:@"%@/letter/mesSee",BASE_URL]
 //11.当前用户未读信息数量
 #define API_LETTER_ISMES               [NSString stringWithFormat:@"%@/letter/isMes",BASE_URL]
+//12.修改航班信息
+#define API_FLIGHT_EDITFLIGHT          [NSString stringWithFormat:@"%@/flight/editFlight",BASE_URL]
 
 
 

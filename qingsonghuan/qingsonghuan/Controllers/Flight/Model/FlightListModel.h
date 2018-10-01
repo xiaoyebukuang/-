@@ -29,14 +29,16 @@
 @property (nonatomic, copy) NSString *flight_id;
 //签到日期时间戳
 @property (nonatomic, assign) NSInteger sign_date;
-//签到日期
-@property (nonatomic, copy) NSString *date;
+//签到日期（12-31）
+@property (nonatomic, copy) NSString *sign_date_str;
 //签到时间12:00:00
 @property (nonatomic, copy) NSString *sign_time;
 //航班号
 @property (nonatomic, copy) NSString *airline_number;
-//航段信息[郑州，上海，南京]
+//航段信息([郑州，上海，南京]
 @property (nonatomic, strong) NSArray *leg_info;
+//航段信息[郑州+上海+南京]
+@property (nonatomic, copy) NSString *leg_info_str;
 //字母标识
 @property (nonatomic, strong) WordLogoModel *wordLogoModel;
 //留言

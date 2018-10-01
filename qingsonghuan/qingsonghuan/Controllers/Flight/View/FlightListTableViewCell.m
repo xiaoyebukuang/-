@@ -76,7 +76,7 @@
     } else {
         self.backgroundColor = [UIColor color_F7F8F9];
     }
-    self.date.text = model.date;
+    self.date.text = model.sign_date_str;
     self.time.text = model.sign_time;
     self.airLine.text = model.number_days;
     self.duties.text = model.dutyModel.duty_name;

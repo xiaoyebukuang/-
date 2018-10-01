@@ -70,34 +70,38 @@ static NSString * const CommonTableViewCell05ID = @"CommonTableViewCell05ID";
         return;
     }
     NSDictionary *param = @{
+                            @"flight_id":[NSString safe_string:self.flightAddLineModel.flight_id],
                             @"sign_date":@(self.flightAddLineModel.sign_date),
-                            @"sign_time":self.flightAddLineModel.sign_time,
+                            @"sign_time":[NSString stringWithFormat:@"%@:00",self.flightAddLineModel.sign_time],
                             @"airline_number":self.flightAddLineModel.airline_number,
-                            @"leg_info":[self dataToJson:self.flightAddLineModel.leg_info],
-                            @"visa_id":@(self.flightAddLineModel.visaModel.visa_id),
-                            @"word_logo_id":@(self.flightAddLineModel.wordLogoModel.word_logo_id),
-                            @"duty_id":@(self.flightAddLineModel.dutyModel.duty_id),
+                            @"leg_info":[self.flightAddLineModel.leg_info componentsJoinedByString:@","],
+                            @"visa_id":[NSString safe_string:self.flightAddLineModel.visaModel.visa_id],
+                            @"word_logo_id":[NSString safe_string:self.flightAddLineModel.wordLogoModel.word_logo_id],
+                            @"duty_id":[NSString safe_string:self.flightAddLineModel.dutyModel.duty_id],
                             @"message":[NSString safe_string:self.flightAddLineModel.message],
-                            @"days_id":@(self.flightAddLineModel.daysModel.days_id),
+                            @"days_id":[NSString safe_string:self.flightAddLineModel.daysModel.days_id],
                             @"user_id":[UserModel sharedInstance].userId
                             };
-    [RequestPath flight_addlineView:self.view param:param success:^(NSDictionary *obj, NSInteger code, NSString *mes) {
-        [MBProgressHUD showSuccess:@"上传成功" ToView:self.view completeBlcok:^{
-            [self.navigationController popViewControllerAnimated:YES];
+    if (self.isEdit) {
+        //修改
+        NSMutableDictionary *editParam = [[NSMutableDictionary alloc]initWithDictionary:param];
+        [editParam setValue:[NSString safe_string:self.flightAddLineModel.flight_id] forKey:@"flight_id"];
+        [RequestPath flight_editFlightView:self.view param:param success:^(NSDictionary *obj, NSInteger code, NSString *mes) {
+            [MBProgressHUD showSuccess:@"修改成功" ToView:self.view completeBlcok:^{
+                [self.navigationController popViewControllerAnimated:YES];
+            }];
+        } failure:^(ErrorType errorType, NSString *mes) {
+            
         }];
-    } failure:^(ErrorType errorType, NSString *mes) {
-        
-    }];
-}
-///data转json
-- (NSString *)dataToJson:(id)theData {
-    NSError *error = nil;
-    NSData *jsonData = [NSJSONSerialization dataWithJSONObject:theData options:0 error:&error];
-    NSString *jsonString = [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
-    if ([jsonString length] > 0 && error == nil){
-        return jsonString;
-    }else{
-        return @"";
+    } else {
+        //上传
+        [RequestPath flight_addlineView:self.view param:param success:^(NSDictionary *obj, NSInteger code, NSString *mes) {
+            [MBProgressHUD showSuccess:@"上传成功" ToView:self.view completeBlcok:^{
+                [self.navigationController popViewControllerAnimated:YES];
+            }];
+        } failure:^(ErrorType errorType, NSString *mes) {
+            
+        }];
     }
 }
 #pragma mark -- UITableViewDelegate, UITableViewDataSource
@@ -118,7 +122,7 @@ static NSString * const CommonTableViewCell05ID = @"CommonTableViewCell05ID";
             case 0:
                 placeHolder = FLIGHT_SIGN_DATE;
                 pickerMode = UIDatePickerModeDate;
-                content = self.flightAddLineModel.date;
+                content = self.flightAddLineModel.sign_date_str;
                 break;
             case 1:
                 placeHolder = FLIGHT_SIGN_TIME;
@@ -149,14 +153,15 @@ static NSString * const CommonTableViewCell05ID = @"CommonTableViewCell05ID";
             if (indexPath.row == 0||indexPath.row == 1) {
                 XYPickerDateViewController *dateVC = [[XYPickerDateViewController alloc]init];
                 dateVC.pickerMode = pickerMode;
-                [dateVC reloadViewWithPickerDateBlock:^(NSString *date) {
+                [dateVC reloadViewWithPickerDateBlock:^(NSDate *date) {
                     if (indexPath.row == 0) {
-                        weakSelf.flightAddLineModel.date = date;
-                        weakSelf.flightAddLineModel.sign_date = [NSDate getDateStample:date formatType:FormatyyyyMd];
+                        weakSelf.flightAddLineModel.sign_date_str = [NSDate getDateString:date formatType:FormatyyyyMd];
+                        weakSelf.flightAddLineModel.sign_date = [NSDate getDateStample:weakSelf.flightAddLineModel.sign_date_str formatType:FormatyyyyMd];
+                        ((CommonTableViewCell01 *)cell).textField.text = weakSelf.flightAddLineModel.sign_date_str;
                     } else {
-                        weakSelf.flightAddLineModel.sign_time = date;
+                        weakSelf.flightAddLineModel.sign_time = [NSDate getDateString:date formatType:FormatHm];
+                        ((CommonTableViewCell01 *)cell).textField.text = weakSelf.flightAddLineModel.sign_time;
                     }
-                    ((CommonTableViewCell01 *)cell).textField.text = date;
                 }];
                 [weakSelf presentViewController:dateVC animated:YES completion:nil];
             } else {
@@ -231,7 +236,8 @@ static NSString * const CommonTableViewCell05ID = @"CommonTableViewCell05ID";
     if (!_footerView) {
         UIView *view = [[UIView alloc]initWithFrame:CGRectMake(0, 0, MAIN_SCREEN_WIDTH, 60)];
         view.backgroundColor = [UIColor color_FFFFFF];
-        UIButton *sureBtn = [UIButton buttonWithTitle:@"确定上传" font:SYSTEM_FONT_17 titleColor:[UIColor color_FFFFFF] backgroundImage:@"login_btn_bg"];
+        NSString *text = self.isEdit ? @"确定修改":@"确定上传";
+        UIButton *sureBtn = [UIButton buttonWithTitle:text font:SYSTEM_FONT_17 titleColor:[UIColor color_FFFFFF] backgroundImage:@"login_btn_bg"];
         [sureBtn addTarget:self action:@selector(sureBtnEvent:) forControlEvents:UIControlEventTouchUpInside];
         [view addSubview:sureBtn];
         [sureBtn mas_makeConstraints:^(MASConstraintMaker *make) {

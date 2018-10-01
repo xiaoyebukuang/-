@@ -9,8 +9,12 @@
 #import <Foundation/Foundation.h>
 @interface FlightFilterModel : NSObject
 
-//签到日期
-@property (nonatomic, copy) NSString *sign_date;
+//时间
+@property (nonatomic, strong) NSDate *sign_date;
+//签到日期str (2018-11-12)
+@property (nonatomic, copy) NSString *sign_date_str;
+//时间戳
+@property (nonatomic, assign) NSInteger sign_date_stample;
 //航班号
 @property (nonatomic, copy) NSString *airline_number;
 //签到时段

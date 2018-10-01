@@ -57,7 +57,7 @@
     }];
 }
 - (void)reloadWithModel:(FlightModel *)flightModel mailFlightViewBlock:(MailFlightViewBlock)mailFlightViewBlock {
-    NSArray *contentArr = @[flightModel.date,flightModel.sign_time,flightModel.number_days,flightModel.dutyModel.duty_name,flightModel.wordLogoModel.word_logo_name];
+    NSArray *contentArr = @[flightModel.sign_date_str,flightModel.sign_time,flightModel.number_days,flightModel.dutyModel.duty_name,flightModel.wordLogoModel.word_logo_name];
     [_contentView reloadUIWithTitleArr:contentArr];
     self.mailFlightViewBlock = mailFlightViewBlock;
 }

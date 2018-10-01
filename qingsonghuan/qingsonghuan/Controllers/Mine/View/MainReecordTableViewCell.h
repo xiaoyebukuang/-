@@ -7,7 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "FlightListModel.h"
+typedef void(^MainReecordEditBlock)(void);
+
+typedef void(^MainReecordDeleteBlock)(void);
 
 @interface MainReecordTableViewCell : UITableViewCell
+
+- (void)reloadUIWithMolde:(FlightModel *)model mainReecordEditBlock:(MainReecordEditBlock)editBlock mainReecordDeleteBlock:(MainReecordDeleteBlock)deleteBlock;
 
 @end

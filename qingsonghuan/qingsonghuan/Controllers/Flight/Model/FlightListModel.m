@@ -46,8 +46,9 @@
     if (self) {
         self.flight_id      = [NSString safe_string:dic[@"flight_id"]];
         self.sign_date      = [NSString safe_integer:dic[@"sign_date"]];
-        self.date           = [NSDate getDateStringWithDateStaple:self.sign_date formatType:FormatMd];
-        self.sign_time      = [NSString safe_string:dic[@"sign_time"]];
+        self.sign_date_str  = [NSDate getDateStringWithDateStaple:self.sign_date formatType:FormatMd];
+        NSString *data_time = [NSString safe_string:dic[@"sign_time"]];
+        self.sign_time      = [data_time substringToIndex:data_time.length-3];
         self.airline_number = [NSString safe_string:dic[@"airline_number"]];
         if ([dic[@"leg_info"] isKindOfClass:[NSArray class]]) {
             self.leg_info   = [NSArray arrayWithArray:dic[@"leg_info"]];
@@ -59,17 +60,40 @@
         self.visaModel      = [[VisaModel alloc]initWithDic:dic[@"visa"]];
         self.dutyModel      = [[DutyModel alloc]initWithDic:dic[@"duty"]];
         self.phone          = [NSString safe_string:dic[@"phone"]];
+    }
+    return self;
+}
+//获取航短信息展示
+- (void)setLeg_info:(NSArray *)leg_info {
+    _leg_info = leg_info;
+    self.leg_info_str = [_leg_info componentsJoinedByString:@"+"];
+}
+
+- (void)setDaysModel:(DaysModel *)daysModel {
+    _daysModel = daysModel;
+    if (![NSString isEmpty:self.airline_number]) {
         NSString *days = @"";
-        if (self.daysModel.days_id != 1) {
+        if (![_daysModel.days_id isEqualToString:@"1"]) {
             days = [NSString stringWithFormat:@"(%@)",self.daysModel.days_name];
         }
         self.number_days = [NSString stringWithFormat:@"%@%@",self.airline_number,days];
     }
-    return self;
 }
+- (void)setAirline_number:(NSString *)airline_number {
+    _airline_number = airline_number;
+    if (self.daysModel) {
+        NSString *days = @"";
+        if (![self.daysModel.days_id isEqualToString:@"1"]) {
+            days = [NSString stringWithFormat:@"(%@)",self.daysModel.days_name];
+        }
+        self.number_days = [NSString stringWithFormat:@"%@%@",_airline_number,days];
+    }
+}
+
+
 - (NSString *)checkAddLine {
     NSString *des;
-    if ([NSString isEmpty:self.date]) {
+    if ([NSString isEmpty:self.sign_date_str]) {
         des = @"请选择签到日期";
     } else if ([NSString isEmpty:self.sign_time]) {
         des = @"请选择签到时间";

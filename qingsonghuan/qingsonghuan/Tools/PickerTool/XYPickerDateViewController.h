@@ -8,7 +8,7 @@
 
 #import "BaseViewController.h"
 
-typedef void(^PickerDateBlock)(NSString *date);
+typedef void(^PickerDateBlock)(NSDate *date);
 
 @interface XYPickerDateViewController : BaseViewController
 

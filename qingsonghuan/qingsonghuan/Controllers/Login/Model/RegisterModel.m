@@ -8,6 +8,7 @@
 
 #import "RegisterModel.h"
 @implementation RegisterModel
+
 - (NSString *)checkReg {
     NSString *des;
     if (![NSString validatePhoneNumber:self.phone]) {

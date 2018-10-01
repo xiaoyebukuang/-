@@ -22,5 +22,9 @@
     }
     return self;
 }
-
+- (void)setSign_date:(NSDate *)sign_date {
+    self.sign_date_str = [NSDate getDateString:sign_date formatType:FormatyyyyMd];
+    _sign_date = [NSDate getDate:self.sign_date_str formatType:FormatyyyyMd];
+    self.sign_date_stample = [NSDate getDateStample:_sign_date];
+}
 @end
