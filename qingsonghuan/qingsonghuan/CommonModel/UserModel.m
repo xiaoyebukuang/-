@@ -55,4 +55,11 @@
     self.sign =     [NSString safe_string:dic[@"sign"]];
     [kApplicationDelegate setRootViewControoler];
 }
+
+- (void)signOut {
+    self.isLogin = NO;
+    self.userId =   @"";
+    self.sign =     @"";
+    [kApplicationDelegate setRootViewControoler];
+}
 @end

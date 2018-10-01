@@ -49,8 +49,8 @@
         self.date           = [NSDate getDateStringWithDateStaple:self.sign_date formatType:FormatMd];
         self.sign_time      = [NSString safe_string:dic[@"sign_time"]];
         self.airline_number = [NSString safe_string:dic[@"airline_number"]];
-        if ([dic isKindOfClass:[NSArray class]]) {
-            self.leg_info       = dic[@"leg_info"];
+        if ([dic[@"leg_info"] isKindOfClass:[NSArray class]]) {
+            self.leg_info   = [NSArray arrayWithArray:dic[@"leg_info"]];
         }
         self.wordLogoModel  = [[WordLogoModel alloc]initWithDic:dic[@"word_logo"]];
         self.message        = [NSString safe_string:dic[@"message"]];
@@ -58,7 +58,7 @@
         self.user_id        = [NSString safe_string:dic[@"user_id"]];
         self.visaModel      = [[VisaModel alloc]initWithDic:dic[@"visa"]];
         self.dutyModel      = [[DutyModel alloc]initWithDic:dic[@"duty"]];
-        self.user_id        = [NSString safe_string:dic[@"phone"]];
+        self.phone          = [NSString safe_string:dic[@"phone"]];
         NSString *days = @"";
         if (self.daysModel.days_id != 1) {
             days = [NSString stringWithFormat:@"(%@)",self.daysModel.days_name];
@@ -67,5 +67,25 @@
     }
     return self;
 }
-
+- (NSString *)checkAddLine {
+    NSString *des;
+    if ([NSString isEmpty:self.date]) {
+        des = @"请选择签到日期";
+    } else if ([NSString isEmpty:self.sign_time]) {
+        des = @"请选择签到时间";
+    } else if ([NSString isEmpty:self.airline_number]) {
+        des = @"请选择航班号";
+    } else if (self.daysModel == nil) {
+        des = @"请选择出差天数";
+    } else if (self.leg_info.count == 0) {
+        des = @"请输入航段信息";
+    } else if (self.visaModel == nil) {
+        des = @"请选择签证信息";
+    } else if (self.wordLogoModel == nil) {
+        des = @"请选择字母标识";
+    } else if (self.dutyModel == nil) {
+        des = @"请选择职位等级";
+    }
+    return des;
+}
 @end

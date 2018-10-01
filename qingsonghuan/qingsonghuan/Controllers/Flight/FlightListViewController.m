@@ -9,6 +9,8 @@
 #import "FlightListViewController.h"
 #import "MailListViewController.h"
 #import "FlightListTableViewCell.h"
+//个人中心
+#import "MineViewController.h"
 //筛选
 #import "FlightFilterViewController.h"
 //航班详情
@@ -43,7 +45,7 @@ static NSString * const FlightListTableViewCellID = @"FlightListTableViewCellID"
 @property (nonatomic, strong) FlightFilterModel *flightFilterModel;
 //源数据
 @property (nonatomic, strong) FlightListModel *flightListModel;
-
+//是否正在请求
 @property (nonatomic, assign) BOOL isRequest;
 @end
 
@@ -144,7 +146,8 @@ static NSString * const FlightListTableViewCellID = @"FlightListTableViewCellID"
 #pragma mark -- event
 //个人中心菜单
 - (void)leftNavigationBarEvent:(UIButton *)sender {
-    NSLog(@"个人中心");
+    MineViewController *mineVC = [[MineViewController alloc]init];
+    [self.navigationController pushViewController:mineVC animated:YES];
 }
 
 //筛选

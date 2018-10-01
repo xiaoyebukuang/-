@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		62FB6F85E8E2FA0D047B1B93 /* libPods-qingsonghuan.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4307095D2F6D8C5CFEA11FE7 /* libPods-qingsonghuan.a */; };
+		6526D16121614A020074D358 /* MainReecordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6526D16021614A020074D358 /* MainReecordViewController.m */; };
+		6526D16421614B8C0074D358 /* MainReecordTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6526D16321614B8C0074D358 /* MainReecordTableViewCell.m */; };
 		652C0D112158228300BD03FC /* XYNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = 652C0D102158228300BD03FC /* XYNetworking.m */; };
 		652C0D152159CB8800BD03FC /* FlightListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 652C0D142159CB8700BD03FC /* FlightListViewController.m */; };
 		652C0D192159CC3F00BD03FC /* UserModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 652C0D182159CC3F00BD03FC /* UserModel.m */; };
@@ -22,7 +24,6 @@
 		652FCC05215DD201009F41E8 /* FlightListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 652FCC04215DD201009F41E8 /* FlightListModel.m */; };
 		652FCC09215DF5B3009F41E8 /* RegisterTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 652FCC08215DF5B3009F41E8 /* RegisterTableViewCell.m */; };
 		652FCC0F215E089B009F41E8 /* RegisterModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 652FCC0E215E089B009F41E8 /* RegisterModel.m */; };
-		652FCC12215E9402009F41E8 /* FlightAddLineModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 652FCC11215E9402009F41E8 /* FlightAddLineModel.m */; };
 		652FCC15215F159A009F41E8 /* RegNeedInfoModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 652FCC13215F159A009F41E8 /* RegNeedInfoModel.m */; };
 		652FCC19215F1608009F41E8 /* XYAlertViewTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 652FCC18215F1608009F41E8 /* XYAlertViewTool.m */; };
 		652FCC1D215F5A75009F41E8 /* MailListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 652FCC1C215F5A75009F41E8 /* MailListViewController.m */; };
@@ -53,6 +54,8 @@
 		65D6BEC821609229002ABFDF /* MailFlightView.m in Sources */ = {isa = PBXBuildFile; fileRef = 65D6BEC721609229002ABFDF /* MailFlightView.m */; };
 		65D6BECB21609460002ABFDF /* XYTitleView.m in Sources */ = {isa = PBXBuildFile; fileRef = 65D6BECA21609460002ABFDF /* XYTitleView.m */; };
 		65D6BECE2160A03F002ABFDF /* MailReadModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 65D6BECD2160A03F002ABFDF /* MailReadModel.m */; };
+		65D6BED22160C154002ABFDF /* MineViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 65D6BED12160C154002ABFDF /* MineViewController.m */; };
+		65D6BED62160C6B0002ABFDF /* MineTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 65D6BED52160C6B0002ABFDF /* MineTableViewCell.m */; };
 		65F870F1215B7F3600DD1F59 /* FlightListTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 65F870F0215B7F3600DD1F59 /* FlightListTableViewCell.m */; };
 		65F870F7215B90DF00DD1F59 /* FlightFilterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 65F870F6215B90DF00DD1F59 /* FlightFilterViewController.m */; };
 		65F870FD215BB8E500DD1F59 /* CommonTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 65F870FC215BB8E500DD1F59 /* CommonTableViewCell.m */; };
@@ -65,6 +68,10 @@
 /* Begin PBXFileReference section */
 		4234196DFA256330D83651D7 /* Pods-qingsonghuan.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-qingsonghuan.debug.xcconfig"; path = "Pods/Target Support Files/Pods-qingsonghuan/Pods-qingsonghuan.debug.xcconfig"; sourceTree = "<group>"; };
 		4307095D2F6D8C5CFEA11FE7 /* libPods-qingsonghuan.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-qingsonghuan.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		6526D15F21614A020074D358 /* MainReecordViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MainReecordViewController.h; sourceTree = "<group>"; };
+		6526D16021614A020074D358 /* MainReecordViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MainReecordViewController.m; sourceTree = "<group>"; };
+		6526D16221614B8C0074D358 /* MainReecordTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MainReecordTableViewCell.h; sourceTree = "<group>"; };
+		6526D16321614B8C0074D358 /* MainReecordTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MainReecordTableViewCell.m; sourceTree = "<group>"; };
 		652C0D0F2158228300BD03FC /* XYNetworking.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XYNetworking.h; sourceTree = "<group>"; };
 		652C0D102158228300BD03FC /* XYNetworking.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XYNetworking.m; sourceTree = "<group>"; };
 		652C0D132159CB8700BD03FC /* FlightListViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FlightListViewController.h; sourceTree = "<group>"; };
@@ -94,8 +101,6 @@
 		652FCC08215DF5B3009F41E8 /* RegisterTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RegisterTableViewCell.m; sourceTree = "<group>"; };
 		652FCC0D215E089B009F41E8 /* RegisterModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RegisterModel.h; sourceTree = "<group>"; };
 		652FCC0E215E089B009F41E8 /* RegisterModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RegisterModel.m; sourceTree = "<group>"; };
-		652FCC10215E9402009F41E8 /* FlightAddLineModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FlightAddLineModel.h; sourceTree = "<group>"; };
-		652FCC11215E9402009F41E8 /* FlightAddLineModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FlightAddLineModel.m; sourceTree = "<group>"; };
 		652FCC13215F159A009F41E8 /* RegNeedInfoModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegNeedInfoModel.m; sourceTree = "<group>"; };
 		652FCC14215F159A009F41E8 /* RegNeedInfoModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegNeedInfoModel.h; sourceTree = "<group>"; };
 		652FCC17215F1608009F41E8 /* XYAlertViewTool.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XYAlertViewTool.h; sourceTree = "<group>"; };
@@ -158,6 +163,10 @@
 		65D6BECA21609460002ABFDF /* XYTitleView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XYTitleView.m; sourceTree = "<group>"; };
 		65D6BECC2160A03F002ABFDF /* MailReadModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MailReadModel.h; sourceTree = "<group>"; };
 		65D6BECD2160A03F002ABFDF /* MailReadModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MailReadModel.m; sourceTree = "<group>"; };
+		65D6BED02160C154002ABFDF /* MineViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MineViewController.h; sourceTree = "<group>"; };
+		65D6BED12160C154002ABFDF /* MineViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MineViewController.m; sourceTree = "<group>"; };
+		65D6BED42160C6B0002ABFDF /* MineTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MineTableViewCell.h; sourceTree = "<group>"; };
+		65D6BED52160C6B0002ABFDF /* MineTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MineTableViewCell.m; sourceTree = "<group>"; };
 		65F870EF215B7F3600DD1F59 /* FlightListTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FlightListTableViewCell.h; sourceTree = "<group>"; };
 		65F870F0215B7F3600DD1F59 /* FlightListTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FlightListTableViewCell.m; sourceTree = "<group>"; };
 		65F870F5215B90DF00DD1F59 /* FlightFilterViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FlightFilterViewController.h; sourceTree = "<group>"; };
@@ -346,13 +355,13 @@
 			isa = PBXGroup;
 			children = (
 				652C0D162159CC2F00BD03FC /* CommonModel */,
+				65D0CA7921521ECD00A3DB66 /* CommonView */,
 				652C0D0E2158217900BD03FC /* Network */,
 				65D0CA702151F06200A3DB66 /* Controllers */,
 				65D0CA692151EDFE00A3DB66 /* BaseViewControllers */,
 				652FCBF1215D3C8E009F41E8 /* Tools */,
 				65D0CA582151ECEE00A3DB66 /* Category */,
 				65D0CA532151ECDA00A3DB66 /* Macros */,
-				65D0CA7921521ECD00A3DB66 /* CommonView */,
 				65D0CA3D214F9AFD00A3DB66 /* AppDelegate.h */,
 				65D0CA3E214F9AFD00A3DB66 /* AppDelegate.m */,
 				65D0CA43214F9AFD00A3DB66 /* Main.storyboard */,
@@ -442,6 +451,7 @@
 		65D0CA702151F06200A3DB66 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				65D6BECF2160C141002ABFDF /* Mine */,
 				652FCC1A215F5A0D009F41E8 /* Mail */,
 				652C0D122159CAE000BD03FC /* Flight */,
 				65D0CA712151F07100A3DB66 /* Login */,
@@ -506,6 +516,29 @@
 			path = "UIButton+Helper";
 			sourceTree = "<group>";
 		};
+		65D6BECF2160C141002ABFDF /* Mine */ = {
+			isa = PBXGroup;
+			children = (
+				65D6BED32160C6A3002ABFDF /* View */,
+				65D6BED02160C154002ABFDF /* MineViewController.h */,
+				65D6BED12160C154002ABFDF /* MineViewController.m */,
+				6526D15F21614A020074D358 /* MainReecordViewController.h */,
+				6526D16021614A020074D358 /* MainReecordViewController.m */,
+			);
+			path = Mine;
+			sourceTree = "<group>";
+		};
+		65D6BED32160C6A3002ABFDF /* View */ = {
+			isa = PBXGroup;
+			children = (
+				65D6BED42160C6B0002ABFDF /* MineTableViewCell.h */,
+				65D6BED52160C6B0002ABFDF /* MineTableViewCell.m */,
+				6526D16221614B8C0074D358 /* MainReecordTableViewCell.h */,
+				6526D16321614B8C0074D358 /* MainReecordTableViewCell.m */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		65F870EE215B7F2800DD1F59 /* View */ = {
 			isa = PBXGroup;
 			children = (
@@ -528,8 +561,6 @@
 				65F87103215C874800DD1F59 /* FlightFilterModel.m */,
 				652FCC03215DD201009F41E8 /* FlightListModel.h */,
 				652FCC04215DD201009F41E8 /* FlightListModel.m */,
-				652FCC10215E9402009F41E8 /* FlightAddLineModel.h */,
-				652FCC11215E9402009F41E8 /* FlightAddLineModel.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -699,11 +730,14 @@
 				65F870F7215B90DF00DD1F59 /* FlightFilterViewController.m in Sources */,
 				65D0CA652151ECEE00A3DB66 /* MBProgressHUD+Helper.m in Sources */,
 				65D0CA82215233AC00A3DB66 /* RegisterViewController.m in Sources */,
+				65D6BED22160C154002ABFDF /* MineViewController.m in Sources */,
+				65D6BED62160C6B0002ABFDF /* MineTableViewCell.m in Sources */,
 				65D0CA98215489F700A3DB66 /* BaseMultiViewController.m in Sources */,
 				65F870FD215BB8E500DD1F59 /* CommonTableViewCell.m in Sources */,
 				652FCBFF215D3D63009F41E8 /* XYPickerHeaderView.m in Sources */,
 				652FCC21215F5AFB009F41E8 /* MailListTableViewCell.m in Sources */,
 				652FCC0F215E089B009F41E8 /* RegisterModel.m in Sources */,
+				6526D16121614A020074D358 /* MainReecordViewController.m in Sources */,
 				652C0D192159CC3F00BD03FC /* UserModel.m in Sources */,
 				65D0CA4D214F9B0000A3DB66 /* main.m in Sources */,
 				65D6BECE2160A03F002ABFDF /* MailReadModel.m in Sources */,
@@ -719,8 +753,8 @@
 				652FCC1D215F5A75009F41E8 /* MailListViewController.m in Sources */,
 				65D0CA682151ECEE00A3DB66 /* UIView+Helper.m in Sources */,
 				65F87113215CC6E600DD1F59 /* FlightListDetailTableViewCell.m in Sources */,
+				6526D16421614B8C0074D358 /* MainReecordTableViewCell.m in Sources */,
 				65D0CA852153439F00A3DB66 /* XYLineView.m in Sources */,
-				652FCC12215E9402009F41E8 /* FlightAddLineModel.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

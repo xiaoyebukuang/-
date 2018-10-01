@@ -32,5 +32,5 @@
 /** 签名 */
 @property (nonatomic, copy) NSString *sign;
 
-
+- (void)signOut;
 @end

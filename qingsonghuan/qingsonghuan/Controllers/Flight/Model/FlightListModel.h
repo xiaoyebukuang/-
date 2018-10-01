@@ -33,7 +33,7 @@
 @property (nonatomic, copy) NSString *date;
 //签到时间12:00:00
 @property (nonatomic, copy) NSString *sign_time;
-//airline_number
+//航班号
 @property (nonatomic, copy) NSString *airline_number;
 //航段信息[郑州，上海，南京]
 @property (nonatomic, strong) NSArray *leg_info;
@@ -54,6 +54,7 @@
 //航班号跟出差天数组合
 @property (nonatomic, copy) NSString *number_days;
 
+- (NSString *)checkAddLine;
 
 - (instancetype)initWithDic:(NSDictionary *)dic;
 

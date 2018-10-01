@@ -10,7 +10,8 @@
 #import "CommonTableViewCell.h"
 #import "XYPickerDateViewController.h"
 #import "XYPickerViewController.h"
-#import "FlightAddLineModel.h"
+
+
 static NSString * const CommonTableViewCell01ID = @"CommonTableViewCell01ID";
 static NSString * const CommonTableViewCell03ID = @"CommonTableViewCell03ID";
 static NSString * const CommonTableViewCell04ID = @"CommonTableViewCell04ID";
@@ -22,7 +23,7 @@ static NSString * const CommonTableViewCell05ID = @"CommonTableViewCell05ID";
 
 @property (nonatomic, strong) UITableView *submitTV;
 
-@property (nonatomic, strong) FlightAddLineModel *flightAddLineModel;
+
 
 @property (nonatomic, strong) UIView *footerView;
 
@@ -34,10 +35,13 @@ static NSString * const CommonTableViewCell05ID = @"CommonTableViewCell05ID";
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.title = @"上传航班";
-    self.flightAddLineModel = [[FlightAddLineModel alloc]init];
+    if (!self.flightAddLineModel) {
+        self.flightAddLineModel = [[FlightModel alloc]init];
+    }
     [self setupView];
     [self reuqestData];
 }
+
 - (void)setupView {
     [self.view addSubview:self.submitTV];
     [self.submitTV mas_makeConstraints:^(MASConstraintMaker *make) {

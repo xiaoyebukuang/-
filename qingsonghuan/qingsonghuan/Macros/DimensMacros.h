@@ -38,7 +38,7 @@
 /** 纵向适配比例 */
 #define HEIGHT_ADAPTER(y)       ceilf((y) * (MAIN_SCREEN_HEIGHT / 667.0))
 
-#define CELL_LEFT_APACE              20.0
+#define CELL_LEFT_APACE              15.0
 
 
 

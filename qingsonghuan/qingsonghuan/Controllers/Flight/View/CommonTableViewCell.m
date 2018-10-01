@@ -257,7 +257,7 @@ static NSInteger const COMMON_BTN_TAG = 329;
     self.clickBlcok = commonClickBlock;
     self.title.text = text;
     self.textField.text = content;
-    if (![NSString safe_string:days]) {
+    if (![NSString isEmpty:days]) {
         [self.workDayBtn setTitle:days forState:UIControlStateNormal];
         [self.workDayBtn setTitleColor:[UIColor color_333333] forState:UIControlStateNormal];
     }

@@ -7,7 +7,6 @@
 //
 
 #import "CustomNavigationViewController.h"
-#import "LoginViewController.h"
 @interface CustomNavigationViewController ()<UIGestureRecognizerDelegate,UINavigationControllerDelegate>
 
 @end
@@ -34,7 +33,9 @@
 
 #pragma mark -- UINavigationControllerDelegate
 - (void)navigationController:(UINavigationController *)navigationController willShowViewController:(UIViewController *)viewController animated:(BOOL)animated {
-    if ([viewController isKindOfClass: [LoginViewController class]]) {
+    NSArray *hidenControllers = @[@"LoginViewController",
+                                  @"MineViewController"];
+    if ([hidenControllers containsObject:NSStringFromClass(self.topViewController.class)]) {
         [self setNavigationBarHidden:YES animated:YES];
     } else {
         [self setNavigationBarHidden:NO animated:YES];
