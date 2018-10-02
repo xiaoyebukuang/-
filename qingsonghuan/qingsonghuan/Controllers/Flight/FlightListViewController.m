@@ -19,6 +19,8 @@
 #import "FlightSubmitViewController.h"
 //头部view
 #import "FlightHeaderView.h"
+//写站内信
+#import "MailWriteViewController.h"
 
 #import "MJRefreshControl.h"
 #import "FlightFilterModel.h"
@@ -190,8 +192,10 @@ static NSString * const FlightListTableViewCellID = @"FlightListTableViewCellID"
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     FlightListTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier: FlightListTableViewCellID];
     FlightModel *model = self.flightListModel.listArr[indexPath.row];
+    WeakSelf;
     [cell reloadViewWithModel:model index:indexPath.row flightMailBlcok:^{
-        NSLog(@"点击信封");
+        MailWriteViewController *mwVC = [[MailWriteViewController alloc]init];
+        [weakSelf.navigationController pushViewController:mwVC animated:YES];
     }];
     return cell;
 }

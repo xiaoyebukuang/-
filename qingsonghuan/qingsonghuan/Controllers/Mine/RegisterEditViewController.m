@@ -46,7 +46,6 @@ static NSString * const RegisterTableViewCell04ID = @"RegisterTableViewCell04ID"
 //请求数据
 - (void)requestData {
     [RequestPath user_getUserInfoView:self.view success:^(NSDictionary *obj, NSInteger code, NSString *mes) {
-        NSLog(@"%@",obj);
         //成功后处理数据
         self.registerModel = [[RegisterModel alloc]initWithDic:obj];
         [RequestPath user_regNeedInfoView:self.view success:^(NSDictionary *obj, NSInteger code, NSString *mes) {

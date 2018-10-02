@@ -259,7 +259,7 @@
                      success:(void (^)(NSDictionary *obj, NSInteger code, NSString *mes))success
                      failure:(void (^)(ErrorType errorType, NSString *mes))failure {
     [MBProgressHUD showToView:view];
-    [XYNetworking postWithUrlString:API_USER_GETUSERINF success:^(id obj, NSInteger code, NSString *mes) {
+    [XYNetworking postWithUrlString:API_USER_GETUSERINFO success:^(id obj, NSInteger code, NSString *mes) {
         if ([obj isKindOfClass:[NSDictionary class]]) {
             [MBProgressHUD hideHUDForView:view];
             success((NSDictionary *)obj, code, mes);
@@ -278,7 +278,7 @@
                       success:(void (^)(NSDictionary *obj, NSInteger code, NSString *mes))success
                       failure:(void (^)(ErrorType errorType, NSString *mes))failure {
     [MBProgressHUD showToView:view];
-    [XYNetworking postWithUrlString:API_USER_EDITUSERINFO success:^(id obj, NSInteger code, NSString *mes) {
+    [XYNetworking postWithUrlString:API_USER_EDITUSERINFO parameters:param success:^(id obj, NSInteger code, NSString *mes) {
         if ([obj isKindOfClass:[NSDictionary class]]) {
             [MBProgressHUD hideHUDForView:view];
             success((NSDictionary *)obj, code, mes);

@@ -11,6 +11,7 @@
 #import "MailFlightView.h"
 #import "MailReadModel.h"
 #import "FlightListDetailViewController.h"
+#import "MailWriteViewController.h"
 @interface MailReadViewController ()
 
 @property (nonatomic, strong) UIScrollView *scrollView;
@@ -94,7 +95,11 @@
         }];
     }];
 }
-
+#pragma mark -- event
+- (void)mailWriteBtnEvent:(UIButton *)sender {
+    MailWriteViewController *mwVC = [[MailWriteViewController alloc]init];
+    [self.navigationController pushViewController:mwVC animated:YES];
+}
 #pragma mark -- setup
 - (UIScrollView *)scrollView {
     if (!_scrollView) {
@@ -138,6 +143,7 @@
         }];
         
         UIButton *mail = [UIButton buttonWithBGImage:@"filter_detail_btn_bg" image:@"filter_detail_mail" title:@"站内信" font:SYSTEM_FONT_17 textColor:[UIColor color_FFFFFF]];
+        [mail addTarget:self action:@selector(mailWriteBtnEvent:) forControlEvents:UIControlEventTouchUpInside];
         [view addSubview:mail];
         [mail mas_makeConstraints:^(MASConstraintMaker *make) {
             make.right.top.bottom.equalTo(view);

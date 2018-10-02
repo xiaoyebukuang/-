@@ -8,6 +8,7 @@
 
 #import "FlightListDetailViewController.h"
 #import "FlightListDetailTableViewCell.h"
+#import "MailWriteViewController.h"
 
 static NSString * const FlightListDetailTableViewCellID = @"FlightListDetailTableViewCellID";
 /**
@@ -53,6 +54,11 @@ static NSString * const FlightListDetailTableViewCellID = @"FlightListDetailTabl
     _flightModel = flightModel;
     self.contentArr = @[flightModel.sign_date_str,flightModel.sign_time,flightModel.number_days,flightModel.leg_info_str,flightModel.visaModel.visa_name,flightModel.wordLogoModel.word_logo_name,flightModel.dutyModel.duty_name,flightModel.message];
 }
+#pragma mark -- event
+- (void)mailWriteBtnEvent:(UIButton *)sender {
+    MailWriteViewController *mwVC = [[MailWriteViewController alloc]init];
+    [self.navigationController pushViewController:mwVC animated:YES];
+}
 
 #pragma mark -- UITableViewDelegate, UITableViewDataSource
 
@@ -90,6 +96,7 @@ static NSString * const FlightListDetailTableViewCellID = @"FlightListDetailTabl
         }];
         
         UIButton *mail = [UIButton buttonWithBGImage:@"filter_detail_btn_bg" image:@"filter_detail_mail" title:@"站内信" font:SYSTEM_FONT_17 textColor:[UIColor color_FFFFFF]];
+        [mail addTarget:self action:@selector(mailWriteBtnEvent:) forControlEvents:UIControlEventTouchUpInside];
         [view addSubview:mail];
         [mail mas_makeConstraints:^(MASConstraintMaker *make) {
             make.right.top.bottom.equalTo(view);

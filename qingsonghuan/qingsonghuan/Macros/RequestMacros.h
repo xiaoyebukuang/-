@@ -38,7 +38,7 @@
 //13.删除一条航班信息
 #define API_FLIGHT_DELFLIGHT           [NSString stringWithFormat:@"%@/flight/delFlight",BASE_URL]
 //14.获取当前用户个人信息
-#define API_USER_GETUSERINF            [NSString stringWithFormat:@"%@/user/getUserInf",BASE_URL]
+#define API_USER_GETUSERINFO            [NSString stringWithFormat:@"%@/user/getUserInfo",BASE_URL]
 //15.个人信息修改
 #define API_USER_EDITUSERINFO          [NSString stringWithFormat:@"%@/user/editUserInfo",BASE_URL]
 

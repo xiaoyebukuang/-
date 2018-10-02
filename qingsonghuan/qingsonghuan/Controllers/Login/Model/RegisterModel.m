@@ -14,13 +14,14 @@
         self.phone = [NSString safe_string:dic[@"phone"]];
         SexModel *sexModel = [[SexModel alloc]init];
         NSInteger sex = [NSString safe_integer:dic[@"sex"]];
-        if (sex == 0) {
-            sexModel.sex_id = @"0";
+        if (sex == 1) {
+            sexModel.sex_id = @"1";
             sexModel.sex_name = @"男";
         } else {
-            sexModel.sex_id = @"1";
+            sexModel.sex_id = @"2";
             sexModel.sex_name = @"女";
         }
+        self.sexModel = sexModel;
         self.work_number = [NSString safe_string:dic[@"work_number"]];
         if ([dic[@"airline"] isKindOfClass:[NSDictionary class]]) {
             self.airlineModel = [[AirlineModel alloc]initWithDic:dic[@"airline"]];
