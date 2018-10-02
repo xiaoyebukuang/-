@@ -91,6 +91,35 @@
         [weakSelf.navigationController pushViewController:mainReecordVC animated:YES];
     };
 }
+#pragma mark -- event
+//发送站内信
+- (void)submitBtnEvent:(UIButton *)sender {
+    NSString *des;
+    if (!self.sendModel) {
+        des = @"请选择您与对方互换的航班";
+    } else if ([NSString isEmpty:self.textView.text]) {
+        des = @"请输入内容";
+    }
+    if (des) {
+        [MBProgressHUD showError:des ToView:self.view];
+        return;
+    }
+    if (self.sendModel && self.receiveModel) {
+        NSDictionary *param = @{
+                                @"receive_uid":self.receiveModel.user_id,
+                                @"send_flight_id":self.sendModel.flight_id,
+                                @"receive_flight_id":self.receiveModel.flight_id,
+                                @"content":self.textView.text
+                                };
+        [RequestPath letter_mesSendView:self.view param:param success:^(NSDictionary *obj, NSInteger code, NSString *mes) {
+            [MBProgressHUD showSuccess:@"发送成功" ToView:self.view completeBlcok:^{
+                [self.navigationController popViewControllerAnimated:YES];
+            }];
+        } failure:^(ErrorType errorType, NSString *mes) {
+            
+        }];
+    }
+}
 #pragma mark -- MainReecordViewControllerDelegate
 - (void)selectFlightModel:(FlightModel *)model {
     self.sendModel = model;
@@ -154,6 +183,7 @@
     if (!_footerView) {
         UIView *view = [[UIView alloc]init];
         UIButton *submitBtn = [UIButton buttonWithBGImage:@"mail_submit_btn" title:@"发 送" font:SYSTEM_FONT_17 textColor:[UIColor color_FFFFFF]];
+        [submitBtn addTarget:self action:@selector(submitBtnEvent:) forControlEvents:UIControlEventTouchUpInside];
         [view addSubview:submitBtn];
         [submitBtn mas_makeConstraints:^(MASConstraintMaker *make) {
             make.edges.equalTo(view);

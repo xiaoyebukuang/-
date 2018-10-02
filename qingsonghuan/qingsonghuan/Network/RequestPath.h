@@ -120,6 +120,13 @@
                       success:(void (^)(NSDictionary *obj, NSInteger code, NSString *mes))success
                       failure:(void (^)(ErrorType errorType, NSString *mes))failure;
 
+/**
+ 16.发送站内信
+ */
++ (void)letter_mesSendView:(UIView *)view
+                     param:(NSDictionary *)param
+                   success:(void (^)(NSDictionary *obj, NSInteger code, NSString *mes))success
+                   failure:(void (^)(ErrorType errorType, NSString *mes))failure;
 
 
 @end

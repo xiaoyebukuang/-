@@ -291,4 +291,24 @@
         failure(errorType, mes);
     }];
 }
+
+//16.发送站内信
++ (void)letter_mesSendView:(UIView *)view
+                     param:(NSDictionary *)param
+                   success:(void (^)(NSDictionary *obj, NSInteger code, NSString *mes))success
+                   failure:(void (^)(ErrorType errorType, NSString *mes))failure {
+    [MBProgressHUD showToView:view];
+    [XYNetworking postWithUrlString:API_LETTER_MESSEND parameters:param success:^(id obj, NSInteger code, NSString *mes) {
+        if ([obj isKindOfClass:[NSDictionary class]]) {
+            [MBProgressHUD hideHUDForView:view];
+            success((NSDictionary *)obj, code, mes);
+        } else {
+            failure(ErrorTypeReqestNone, mes);
+            [MBProgressHUD showError:mes ToView:view];
+        }
+    } failure:^(ErrorType errorType, NSString *mes) {
+        [MBProgressHUD showError:mes ToView:view];
+        failure(errorType, mes);
+    }];
+}
 @end
