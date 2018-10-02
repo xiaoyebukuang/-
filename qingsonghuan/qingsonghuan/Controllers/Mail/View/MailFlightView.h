@@ -10,12 +10,20 @@
 #import "FlightListModel.h"
 typedef void(^MailFlightViewBlock)(void);
 
+typedef void(^MailAddFlightViewBlock)(void);
+
 @interface MailFlightView : UIView
 
 @property (nonatomic, strong) UIColor *bgColor;
 
 @property (nonatomic, copy) NSString *title;
 
-- (void)reloadWithModel:(FlightModel *)flightModel mailFlightViewBlock:(MailFlightViewBlock)mailFlightViewBlock;
+@property (nonatomic, strong)FlightModel *flightModel;
+
+@property (nonatomic, copy) MailFlightViewBlock mailFlightViewBlock;
+
+@property (nonatomic, copy) MailAddFlightViewBlock mailAddFlightViewBlock;
+
+@property (nonatomic, assign) BOOL isEditFlight;
 
 @end

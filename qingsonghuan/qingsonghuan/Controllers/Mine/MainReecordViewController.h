@@ -7,7 +7,16 @@
 //
 
 #import "BaseMultiViewController.h"
+#import "FlightListModel.h"
+
+@protocol MainReecordViewControllerDelegate <NSObject>
+
+- (void)selectFlightModel:(FlightModel *)model;
+
+@end
 
 @interface MainReecordViewController : BaseMultiViewController
+
+@property (nonatomic, weak) id<MainReecordViewControllerDelegate>delegate;
 
 @end

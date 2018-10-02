@@ -41,7 +41,7 @@ static NSString * const FlightListDetailTableViewCellID = @"FlightListDetailTabl
         [self.view addSubview:self.footerView];
         [self.footerView mas_makeConstraints:^(MASConstraintMaker *make) {
             make.left.width.bottom.equalTo(self.view);
-            make.height.mas_equalTo(60);
+            make.height.mas_equalTo(50);
         }];
         [self.view addSubview:self.flightDetailTV];
         [self.flightDetailTV mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -57,6 +57,8 @@ static NSString * const FlightListDetailTableViewCellID = @"FlightListDetailTabl
 #pragma mark -- event
 - (void)mailWriteBtnEvent:(UIButton *)sender {
     MailWriteViewController *mwVC = [[MailWriteViewController alloc]init];
+    mwVC.receiveModel = self.flightModel;
+    mwVC.isEditFlight = YES;
     [self.navigationController pushViewController:mwVC animated:YES];
 }
 

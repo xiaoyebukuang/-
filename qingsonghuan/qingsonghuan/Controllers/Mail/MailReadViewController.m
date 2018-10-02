@@ -42,7 +42,7 @@
     [self.view addSubview:self.footerView];
     [self.footerView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.width.bottom.equalTo(self.view);
-        make.height.mas_equalTo(60);
+        make.height.mas_equalTo(50);
     }];
     [self.view addSubview:self.scrollView];
     [self.scrollView mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -67,27 +67,36 @@
         make.top.equalTo(self.topMailFlightView.mas_bottom);
         make.bottom.equalTo(self.scrollView);
     }];
+    WeakSelf;
+    self.topMailFlightView.mailFlightViewBlock = ^{
+        if (weakSelf.mailReadModel.receiveModel) {
+            FlightListDetailViewController *VC = [[FlightListDetailViewController alloc]init];
+            VC.flightModel = weakSelf.mailReadModel.receiveModel;
+            VC.readMail = YES;
+            [weakSelf.navigationController pushViewController:VC animated:YES];
+        }
+    };
+    self.bottomMailFlightView.mailFlightViewBlock = ^{
+        if (weakSelf.mailReadModel.sendModel) {
+            FlightListDetailViewController *VC = [[FlightListDetailViewController alloc]init];
+            VC.flightModel = weakSelf.mailReadModel.sendModel;
+            VC.readMail = YES;
+            [weakSelf.navigationController pushViewController:VC animated:YES];
+        }
+    };
 }
 //读站内信
 - (void)getLetterMesSee {
     [RequestPath letter_messeeView:self.view param:@{@"letter_id": [NSString safe_string:self.letter_id]} success:^(NSDictionary *obj, NSInteger code, NSString *mes) {
         //发送读站内信通知
         [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_MAIL_READ object:nil];
-        WeakSelf;
+        
         self.mailReadModel = [[MailReadModel alloc]initWithDic:obj];
         self.headerView.readModel = self.mailReadModel;
-        [self.topMailFlightView reloadWithModel:self.mailReadModel.receiveModel mailFlightViewBlock:^{
-            FlightListDetailViewController *VC = [[FlightListDetailViewController alloc]init];
-            VC.flightModel = weakSelf.mailReadModel.receiveModel;
-            VC.readMail = YES;
-            [weakSelf.navigationController pushViewController:VC animated:YES];
-        }];
-        [self.bottomMailFlightView reloadWithModel:self.mailReadModel.sendModel mailFlightViewBlock:^{
-            FlightListDetailViewController *VC = [[FlightListDetailViewController alloc]init];
-            VC.flightModel = weakSelf.mailReadModel.sendModel;
-            VC.readMail = YES;
-            [weakSelf.navigationController pushViewController:VC animated:YES];
-        }];
+        //自己的航班
+        self.topMailFlightView.flightModel = self.mailReadModel.receiveModel;
+        //对方的航班
+        self.bottomMailFlightView.flightModel = self.mailReadModel.sendModel;
     } failure:^(ErrorType errorType, NSString *mes) {
         WeakSelf;
         [self showErrorView:^{
@@ -98,6 +107,9 @@
 #pragma mark -- event
 - (void)mailWriteBtnEvent:(UIButton *)sender {
     MailWriteViewController *mwVC = [[MailWriteViewController alloc]init];
+    mwVC.receiveModel = self.mailReadModel.sendModel;
+    mwVC.sendModel = self.mailReadModel.receiveModel;
+    mwVC.isEditFlight = NO;
     [self.navigationController pushViewController:mwVC animated:YES];
 }
 #pragma mark -- setup

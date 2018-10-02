@@ -8,7 +8,6 @@
 
 #import "MainReecordViewController.h"
 #import "MainReecordTableViewCell.h"
-#import "FlightListModel.h"
 #import "MJRefreshControl.h"
 #import "FlightSubmitViewController.h"
 
@@ -30,13 +29,6 @@ static NSString * const MainReecordTableViewCellID = @"MainReecordTableViewCellI
 @end
 
 @implementation MainReecordViewController
-
-- (void)viewWillAppear:(BOOL)animated {
-    [super viewWillAppear:animated];
-    if (self.flightListModel.listArr.count > 0) {
-        NSLog(@"%@",self.flightListModel.listArr[0].sign_date_str);
-    }
-}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -133,6 +125,13 @@ static NSString * const MainReecordTableViewCellID = @"MainReecordTableViewCellI
         [weakSelf delFlight:indexPath];
     }];
     return cell;
+}
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    FlightModel *model = self.flightListModel.listArr[indexPath.row];
+    if ([self.delegate respondsToSelector:@selector(selectFlightModel:)]) {
+        [self.delegate selectFlightModel:model];
+        [self.navigationController popViewControllerAnimated:YES];
+    }
 }
 #pragma mark -- setup
 - (UITableView *)reecordTableView{

@@ -17,8 +17,7 @@
 
 @property (nonatomic, strong) XYTitleView *contentView;
 
-@property (nonatomic, copy) MailFlightViewBlock mailFlightViewBlock;
-
+@property (nonatomic, strong) UIButton *addFlightBtn;
 @end
 
 @implementation MailFlightView
@@ -37,12 +36,21 @@
         make.top.equalTo(self).offset(35);
     }];
     
+    [self addSubview:self.addFlightBtn];
+    self.addFlightBtn.hidden = YES;
+    [self.addFlightBtn mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.centerY.equalTo(self.titleLabel);
+        make.right.equalTo(self).offset(-CELL_LEFT_APACE);
+        make.width.height.mas_equalTo(30);
+    }];
+    
     [self addSubview:self.titleView];
     [self.titleView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(self);
         make.top.equalTo(self.titleLabel.mas_bottom).offset(25);
         make.height.mas_equalTo(30);
     }];
+    
     [self addSubview:self.lineImageV];
     [self.lineImageV mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.width.equalTo(self);
@@ -56,14 +64,25 @@
         make.bottom.equalTo(self).offset(-25);
     }];
 }
-- (void)reloadWithModel:(FlightModel *)flightModel mailFlightViewBlock:(MailFlightViewBlock)mailFlightViewBlock {
-    NSArray *contentArr = @[flightModel.sign_date_str,flightModel.sign_time,flightModel.number_days,flightModel.dutyModel.duty_name,flightModel.wordLogoModel.word_logo_name];
-    [_contentView reloadUIWithTitleArr:contentArr];
-    self.mailFlightViewBlock = mailFlightViewBlock;
+- (void)setIsEditFlight:(BOOL)isEditFlight {
+    _isEditFlight  = isEditFlight;
+    self.addFlightBtn.hidden = !isEditFlight;
+}
+- (void)setFlightModel:(FlightModel *)flightModel {
+    if (flightModel) {
+        _flightModel = flightModel;
+        NSArray *contentArr = @[flightModel.sign_date_str,flightModel.sign_time,flightModel.number_days,flightModel.dutyModel.duty_name,flightModel.wordLogoModel.word_logo_name];
+        [self.contentView reloadUIWithTitleArr:contentArr];
+    }
 }
 - (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
     if (self.mailFlightViewBlock) {
         self.mailFlightViewBlock();
+    }
+}
+- (void)addFlightBtnEvent:(UIButton *)sender {
+    if (self.mailAddFlightViewBlock) {
+        self.mailAddFlightViewBlock();
     }
 }
 #pragma mark -- setup
@@ -97,6 +116,13 @@
         _contentView = [[XYTitleView alloc]init];        
     }
     return _contentView;
+}
+- (UIButton *)addFlightBtn {
+    if (!_addFlightBtn) {
+        _addFlightBtn = [UIButton buttonWithBGImage:@"mail_add_btn"];
+        [_addFlightBtn addTarget:self action:@selector(addFlightBtnEvent:) forControlEvents:UIControlEventTouchUpInside];
+    }
+    return _addFlightBtn;
 }
 
 @end

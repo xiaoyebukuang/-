@@ -195,6 +195,8 @@ static NSString * const FlightListTableViewCellID = @"FlightListTableViewCellID"
     WeakSelf;
     [cell reloadViewWithModel:model index:indexPath.row flightMailBlcok:^{
         MailWriteViewController *mwVC = [[MailWriteViewController alloc]init];
+        mwVC.receiveModel = model;
+        mwVC.isEditFlight = YES;
         [weakSelf.navigationController pushViewController:mwVC animated:YES];
     }];
     return cell;
