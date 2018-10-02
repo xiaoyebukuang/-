@@ -39,6 +39,8 @@ typedef void(^RegisterTVBlock)(NSString *obj);
 
 @interface RegisterTableViewCell03 : RegisterTableViewCell
 
+@property (nonatomic, assign) BOOL arrowSlect;
+
 @end
 
 typedef void(^RegisterTimeBlock)(void);

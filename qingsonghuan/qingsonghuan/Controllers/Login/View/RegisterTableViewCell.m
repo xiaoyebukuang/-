@@ -98,6 +98,7 @@ static CGFloat const LOGIN_WIDTH_SIZE = 50.0;
     _content = content;
     self.textField.text = content;
 }
+
 #pragma mark -- XYTextFieldDelegate
 //输入框修改
 - (void)textChange:(NSString *)text {
@@ -168,6 +169,11 @@ static CGFloat const LOGIN_WIDTH_SIZE = 50.0;
 }
 @end
 @implementation RegisterTableViewCell03
+- (void)setArrowSlect:(BOOL)arrowSlect {
+    _arrowSlect = arrowSlect;
+    self.textField.secureTextEntry = arrowSlect;
+    self.arrowBtn.selected = arrowSlect;
+}
 - (void)reloadData:(NSString *)content logo:(NSString *)logo placeholder:(NSString *)placeholder textFieldType:(UITextFieldType)fieldType registerTVBlock:(RegisterTVBlock)registerBlock {
     [super reloadData:content logo:logo placeholder:placeholder textFieldType:fieldType registerTVBlock:registerBlock];
     self.control.hidden = YES;

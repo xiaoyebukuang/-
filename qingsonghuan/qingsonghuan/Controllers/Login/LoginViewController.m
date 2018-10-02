@@ -101,7 +101,7 @@ static NSString * const RegisterTableViewCell03ID = @"RegisterTableViewCell03ID"
     NSString *cellID;
     if (indexPath.row == 0) {
         cellID = RegisterTableViewCell01ID;
-    } else if (indexPath.row == 1 || indexPath.row == 2) {
+    } else if (indexPath.row == 1) {
         cellID = RegisterTableViewCell03ID;
     }
     cell = [tableView dequeueReusableCellWithIdentifier: cellID];
@@ -113,6 +113,9 @@ static NSString * const RegisterTableViewCell03ID = @"RegisterTableViewCell03ID"
             weakSelf.registerModel.password = obj;
         }
     }];
+    if (indexPath.row == 1) {
+        ((RegisterTableViewCell03 *)cell).arrowSlect = YES;
+    }
     return cell;
 }
 #pragma mark -- setup
