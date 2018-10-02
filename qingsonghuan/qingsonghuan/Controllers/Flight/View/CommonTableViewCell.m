@@ -7,6 +7,7 @@
 //
 
 #import "CommonTableViewCell.h"
+#import "XYTextView.h"
 @interface CommonTableViewCell()
 @property (nonatomic, strong) UILabel *title;
 @end
@@ -430,9 +431,9 @@ static NSInteger const CITY_BTN_TAG = 213;
 }
 @end
 
-@interface CommonTableViewCell05()<UITextViewDelegate>
+@interface CommonTableViewCell05()<XYTextViewDelegate>
 
-@property (nonatomic, strong) UITextView *textView;
+@property (nonatomic, strong) XYTextView *textView;
 
 @end
 
@@ -441,7 +442,7 @@ static NSInteger const CITY_BTN_TAG = 213;
     [super setupView];
     self.title.text = @"";
     [self addSubview:self.textView];
-    self.textView.delegate = self;
+    self.textView.xy_delegate = self;
     [self.textView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.right.equalTo(self).offset(-CELL_LEFT_APACE);
         make.top.equalTo(self.title);
@@ -457,15 +458,16 @@ static NSInteger const CITY_BTN_TAG = 213;
     self.textView.text = content;
     self.clickBlcok = commonClickBlock;
 }
-#pragma mark -- UITextViewDelegate
-- (void)textViewDidChange:(UITextView *)textView {
+#pragma mark -- XYTextViewDelegate
+- (void)xy_textViewDidChange:(NSString *)text {
     if (self.clickBlcok) {
-        self.clickBlcok(textView.text);
+        self.clickBlcok(text);
     }
 }
-- (UITextView *)textView {
+- (XYTextView *)textView {
     if (!_textView) {
-        _textView = [[UITextView alloc]init];
+        _textView = [[XYTextView alloc]init];
+        _textView.placeHolder = @"请输入内容";
         _textView.textColor = [UIColor color_333333];
     }
     return _textView;

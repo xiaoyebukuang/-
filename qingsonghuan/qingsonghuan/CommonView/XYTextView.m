@@ -36,7 +36,9 @@
 }
 #pragma mark -- UITextViewDelegate
 - (void)textViewDidChange:(UITextView *)textView {
-    NSLog(@"%@",textView.text);
+    if ([self.xy_delegate respondsToSelector:@selector(xy_textViewDidChange:)]) {
+        [self.xy_delegate xy_textViewDidChange:textView.text];
+    }
     self.placeHolderLabel.hidden = ![NSString isEmpty:textView.text];
 }
 - (UILabel *)placeHolderLabel {

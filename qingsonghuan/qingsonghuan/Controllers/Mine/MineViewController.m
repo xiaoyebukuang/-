@@ -10,6 +10,7 @@
 #import "MineTableViewCell.h"
 #import "MainReecordViewController.h"
 #import "RegisterEditViewController.h"
+#import "MineConnectionViewController.h"
 static NSString * const MineTableViewCellID = @"MineTableViewCellID";
 
 @interface MineViewController ()<UITableViewDelegate, UITableViewDataSource>
@@ -75,6 +76,12 @@ static NSString * const MineTableViewCellID = @"MineTableViewCellID";
         RegisterEditViewController *registerVC = [[RegisterEditViewController alloc]init];
         [self.navigationController pushViewController:registerVC animated:YES];
     }
+    if (indexPath.row == 2) {
+        MineConnectionViewController *connectVC = [[MineConnectionViewController alloc]init];
+        [self.navigationController pushViewController:connectVC animated:YES];
+    }
+    
+    
 
 }
 #pragma mark -- setup

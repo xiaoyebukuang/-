@@ -7,8 +7,15 @@
 //
 
 #import <UIKit/UIKit.h>
+@class XYTextView;
+@protocol XYTextViewDelegate <NSObject>
 
+- (void)xy_textViewDidChange:(NSString *)text;
+
+@end
 @interface XYTextView : UITextView
+
+@property (nonatomic, weak) id<XYTextViewDelegate>xy_delegate;
 
 @property (nonatomic, copy) NSString *placeHolder;
 

@@ -79,14 +79,17 @@
             break;
     }
 }
-
+- (void)setPlaceholder:(NSString *)placeholder {
+    [super setPlaceholder:placeholder];
+    [self setValue:[UIColor color_999999] forKeyPath:@"_placeholderLabel.textColor"];
+}
 - (void)setupView{
     self.delegate = self;
     self.autocorrectionType = UITextAutocorrectionTypeNo;
     self.font = SYSTEM_FONT_15;
     self.borderStyle = UITextBorderStyleNone;
     self.textColor = [UIColor color_333333];
-    [self setValue:[UIColor color_ABABAB] forKeyPath:@"_placeholderLabel.textColor"];
+    [self setValue:[UIColor color_999999] forKeyPath:@"_placeholderLabel.textColor"];
     [self addTarget:self action:@selector(changeFieldValue:) forControlEvents:UIControlEventEditingChanged];
 }
 

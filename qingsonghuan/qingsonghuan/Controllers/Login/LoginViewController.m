@@ -9,7 +9,7 @@
 #import "LoginViewController.h"
 #import "RegisterViewController.h"
 #import "ForgetViewController.h"
-
+#import "MineConnectionViewController.h"
 #import "RegisterTableViewCell.h"
 #import "RegisterModel.h"
 
@@ -79,6 +79,12 @@ static NSString * const RegisterTableViewCell03ID = @"RegisterTableViewCell03ID"
     ForgetViewController *vc = [[ForgetViewController alloc]init];
     [self.navigationController pushViewController:vc animated:YES];    
 }
+//问题
+- (void)problemBtnEvent:(UIButton *)sender {
+    MineConnectionViewController *vc = [[MineConnectionViewController alloc]init];
+    [self.navigationController pushViewController:vc animated:YES];
+}
+
 
 #pragma mark -- UITableViewDelegate, UITableViewDataSource
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
@@ -145,6 +151,7 @@ static NSString * const RegisterTableViewCell03ID = @"RegisterTableViewCell03ID"
 }
 - (UIView *)loginFooterView {
     if (!_loginFooterView) {
+        CGFloat space = 10.0;
         UIView *view = [[UIView alloc]initWithFrame:CGRectMake(0, 0, MAIN_SCREEN_WIDTH, 180)];
         view.backgroundColor = [UIColor color_FFFFFF];
         //登录
@@ -157,33 +164,55 @@ static NSString * const RegisterTableViewCell03ID = @"RegisterTableViewCell03ID"
             make.height.mas_offset(50);
             make.top.equalTo(view).offset(60);
         }];
-        //分割线
-        UIView *sView = [[UIView alloc]init];
-        sView.backgroundColor = [UIColor color_99D3F8];
-        [view addSubview:sView];
-        [sView mas_makeConstraints:^(MASConstraintMaker *make) {
+        
+        UIView *btnView = [[UIView alloc]init];
+        [view addSubview:btnView];
+        [btnView mas_makeConstraints:^(MASConstraintMaker *make) {
             make.top.equalTo(loginBtn.mas_bottom).offset(10);
-            make.width.mas_equalTo(0.5);
-            make.height.mas_equalTo(15);
-            make.centerX.equalTo(view);
+            make.centerX.equalTo(loginBtn);
+            make.height.mas_equalTo(30);
         }];
         //账号注册
         UIButton *registerBtn = [UIButton buttonWithTitle:@"账号注册>" font:SYSTEM_FONT_13 titleColor:[UIColor color_99D3F8]];
         [registerBtn addTarget:self action:@selector(registerBtnEvent:) forControlEvents:UIControlEventTouchUpInside];
-        [view addSubview:registerBtn];
+        [btnView addSubview:registerBtn];
         [registerBtn mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.centerY.equalTo(sView);
-            make.height.mas_equalTo(20);
-            make.width.mas_equalTo(80);
-            make.right.equalTo(sView.mas_left);
+            make.top.left.height.equalTo(btnView);
+        }];
+        //分割线01
+        UIView *sView01 = [[UIView alloc]init];
+        sView01.backgroundColor = [UIColor color_99D3F8];
+        [btnView addSubview:sView01];
+        [sView01 mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.height.mas_equalTo(15);
+            make.width.mas_equalTo(0.5);
+            make.centerY.equalTo(btnView);
+            make.left.equalTo(registerBtn.mas_right).offset(space);
         }];
         //忘记密码
         UIButton *forgetBtn = [UIButton buttonWithTitle:@"忘记密码>" font:SYSTEM_FONT_13 titleColor:[UIColor color_99D3F8]];
         [forgetBtn addTarget:self action:@selector(forgetBtnEvent:) forControlEvents:UIControlEventTouchUpInside];
-        [view addSubview:forgetBtn];
+        [btnView addSubview:forgetBtn];
         [forgetBtn mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.width.top.height.equalTo(registerBtn);
-            make.left.equalTo(sView.mas_right);
+            make.centerY.height.equalTo(registerBtn);
+            make.left.equalTo(sView01.mas_right).offset(space);
+        }];
+        //分割线01
+        UIView *sView02 = [[UIView alloc]init];
+        sView02.backgroundColor = [UIColor color_99D3F8];
+        [btnView addSubview:sView02];
+        [sView02 mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.centerY.width.height.equalTo(sView01);
+            make.left.equalTo(forgetBtn.mas_right).offset(space);
+        }];
+        //忘记密码
+        UIButton *problemBtn = [UIButton buttonWithTitle:@"问题>" font:SYSTEM_FONT_13 titleColor:[UIColor color_99D3F8]];
+        [problemBtn addTarget:self action:@selector(problemBtnEvent:) forControlEvents:UIControlEventTouchUpInside];
+        [btnView addSubview:problemBtn];
+        [problemBtn mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.centerY.height.equalTo(registerBtn);
+            make.left.equalTo(sView02.mas_right).offset(space);
+            make.right.equalTo(btnView);
         }];
         _loginFooterView = view;
     }
