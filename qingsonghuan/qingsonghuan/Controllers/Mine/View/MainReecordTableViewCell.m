@@ -48,17 +48,17 @@
     
     [self.contentView addSubview:self.bgView];
     [self.bgView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.equalTo(self.contentView).mas_equalTo(CELL_LEFT_APACE);
-        make.right.equalTo(self).mas_equalTo(-CELL_LEFT_APACE);
-        make.top.equalTo(self.contentView).mas_equalTo(CELL_LEFT_APACE);
-        make.bottom.equalTo(self.contentView);
+        make.left.equalTo(self.contentView).offset(CELL_LEFT_APACE);
+        make.right.equalTo(self).offset(-CELL_LEFT_APACE);
+        make.top.equalTo(self.contentView);
+        make.bottom.equalTo(self.contentView).offset(-CELL_LEFT_APACE);
     }];
     //签证日期
     UILabel *dateLabel = [[UILabel alloc]initWithText:@"签证日期:" font:SYSTEM_FONT_13 textColor:[UIColor color_666666]];
     [self.bgView addSubview:dateLabel];
     [dateLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.equalTo(self.bgView).mas_equalTo(CELL_LEFT_APACE);
-        make.top.equalTo(self.bgView).mas_equalTo(CELL_LEFT_APACE);
+        make.left.equalTo(self.bgView).offset(CELL_LEFT_APACE);
+        make.top.equalTo(self.bgView).offset(CELL_LEFT_APACE);
         make.width.mas_equalTo(70);
     }];
     [self.bgView addSubview:self.date];

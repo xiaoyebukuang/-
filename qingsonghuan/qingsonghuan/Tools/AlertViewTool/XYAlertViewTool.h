@@ -16,5 +16,7 @@ typedef void(^AlertBlock)(NSString *obj, BOOL sure);
 
 + (void)showFieldView:(AlertBlock)alertBlock;
 
++ (void) showTitle:(NSString *)title;
+
 
 @end

@@ -44,7 +44,13 @@
     }
     return self;
 }
+- (void)dealloc {
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
 - (void)setUpUI {
+    // 接收键盘显示隐藏的通知
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillShow:) name:UIKeyboardWillShowNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillHidden:) name:UIKeyboardWillHideNotification object:nil];
     self.frame = [UIScreen mainScreen].bounds;
     self.backgroundColor = [UIColor colorWithWhite:0.5 alpha:0.5];
     [UIView animateWithDuration:0.1 animations:^{
@@ -52,11 +58,12 @@
     }];
     //------- 弹窗主内容 -------//
     [self addSubview:self.contentView];
-    [self.contentView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.center.equalTo(self);
-        make.width.mas_equalTo(285);
-        make.height.mas_equalTo(150);
-    }];
+    self.contentView.frame = CGRectMake((MAIN_SCREEN_WIDTH - 285)/2, (MAIN_SCREEN_HEIGHT - 150)/2, 285, 150);
+//    [self.contentView mas_makeConstraints:^(MASConstraintMaker *make) {
+//        make.center.equalTo(self);
+//        make.width.mas_equalTo(285);
+//        make.height.mas_equalTo(150);
+//    }];
     // 标题
     [self.contentView addSubview:self.titleLabel];
     self.titleLabel.text = self.title;
@@ -137,6 +144,39 @@
 /** 移除此弹窗 */
 - (void)dismiss{
     [self removeFromSuperview];
+}
+/**
+ *  键盘将要显示
+ *
+ *  @param notification 通知
+ */
+-(void)keyboardWillShow:(NSNotification *)notification {
+    NSDictionary *userInfo = [notification userInfo];
+    NSValue *value = [userInfo objectForKey:UIKeyboardFrameEndUserInfoKey];
+    CGFloat keyBoardEndHeight = value.CGRectValue.size.height;
+    NSNumber *duration = [userInfo objectForKey:UIKeyboardAnimationDurationUserInfoKey];
+    NSNumber *curve = [userInfo objectForKey:UIKeyboardAnimationCurveUserInfoKey];
+    [UIView animateWithDuration:duration.doubleValue animations:^{
+        [UIView setAnimationBeginsFromCurrentState:YES];
+        [UIView setAnimationCurve:[curve intValue]];
+        self.contentView.top = (MAIN_SCREEN_HEIGHT - keyBoardEndHeight - 150)/2;
+    }];
+}
+/**
+ *  键盘将要隐藏
+ *
+ *  @param notification 通知
+ */
+-(void)keyboardWillHidden:(NSNotification *)notification
+{
+    NSDictionary *userInfo = [notification userInfo];
+    NSNumber *duration = [userInfo objectForKey:UIKeyboardAnimationDurationUserInfoKey];
+    NSNumber *curve = [userInfo objectForKey:UIKeyboardAnimationCurveUserInfoKey];
+    [UIView animateWithDuration:duration.doubleValue animations:^{
+        [UIView setAnimationBeginsFromCurrentState:YES];
+        [UIView setAnimationCurve:[curve intValue]];
+        self.contentView.top = (MAIN_SCREEN_HEIGHT - 150)/2;
+    }];
 }
 #pragma mark -- setup
 - (UIView *)contentView {

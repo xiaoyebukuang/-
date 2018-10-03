@@ -63,6 +63,7 @@ static NSString * const RegisterTableViewCell03ID = @"RegisterTableViewCell03ID"
         [MBProgressHUD showError:des ToView:self.view];
         return;
     }
+    [self.view endEditing:YES];
     [RequestPath user_loginView:self.view param:@{@"phone":self.registerModel.phone,@"password":self.registerModel.password} success:^(NSDictionary *obj, NSInteger code, NSString *mes) {
        [[UserModel sharedInstance] reloadWithDic:obj];
     } failure:^(ErrorType errorType, NSString *mes) {

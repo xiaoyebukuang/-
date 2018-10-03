@@ -241,13 +241,8 @@
                      failure:(void (^)(ErrorType errorType, NSString *mes))failure {
     [MBProgressHUD showToView:view];
     [XYNetworking postWithUrlString:API_FLIGHT_DELFLIGHT parameters:param success:^(id obj, NSInteger code, NSString *mes) {
-        if ([obj isKindOfClass:[NSDictionary class]]) {
-            [MBProgressHUD hideHUDForView:view];
-            success((NSDictionary *)obj, code, mes);
-        } else {
-            failure(ErrorTypeReqestNone, mes);
-            [MBProgressHUD showError:mes ToView:view];
-        }
+        [MBProgressHUD hideHUDForView:view];
+        success((NSDictionary *)obj, code, mes);
     } failure:^(ErrorType errorType, NSString *mes) {
         [MBProgressHUD showError:mes ToView:view];
         failure(errorType, mes);

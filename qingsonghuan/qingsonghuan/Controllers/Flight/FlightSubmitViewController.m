@@ -190,6 +190,7 @@ static NSString * const CommonTableViewCell05ID = @"CommonTableViewCell05ID";
     } else if (indexPath.row == 2) {
         cell = [tableView dequeueReusableCellWithIdentifier: CommonTableViewCell03ID];
         [((CommonTableViewCell03 *)cell) reloadViewTitle:titleArr[indexPath.row] content:self.flightAddLineModel.airline_number days:self.flightAddLineModel.daysModel.days_name daysClickBlock:^{
+            [weakSelf.view endEditing:YES];
             XYPickerViewController *pickerVC = [[XYPickerViewController alloc]init];
             [pickerVC reloadViewWithArr:regModle.daysModelArr pickerBlock:^(id model) {
                 if (model) {

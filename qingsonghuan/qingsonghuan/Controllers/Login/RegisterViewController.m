@@ -70,7 +70,8 @@ static NSString * const RegisterTableViewCell04ID = @"RegisterTableViewCell04ID"
                             @"password":self.registerModel.password,
                             @"password_confirm":self.registerModel.password_confirm,
                             @"code":self.registerModel.code,
-                            @"iden":[NSString safe_string:self.registerModel.sendCodeModel.iden]
+                            @"iden":[NSString safe_string:self.registerModel.sendCodeModel.iden],
+                            @"equipment":@"ios"
                             };
     [RequestPath user_registerView:self.view Param:param success:^(id obj, NSInteger code, NSString *mes) {
         [MBProgressHUD showSuccess:@"注册成功" ToView:self.view completeBlcok:^{
