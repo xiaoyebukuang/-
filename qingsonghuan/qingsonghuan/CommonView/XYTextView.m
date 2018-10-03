@@ -30,6 +30,10 @@
     }
     return self;
 }
+- (void)setText:(NSString *)text {
+    [super setText:text];
+    self.placeHolderLabel.hidden = ![NSString isEmpty:text];
+}
 
 - (void)setPlaceHolder:(NSString *)placeHolder {
     self.placeHolderLabel.text = placeHolder;

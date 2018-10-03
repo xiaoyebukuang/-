@@ -51,6 +51,7 @@
         make.left.bottom.width.equalTo(self.view);
         make.height.mas_equalTo(50);
     }];
+    
 }
 
 - (void)submitBtnEvent:(UIButton *)sender {
@@ -65,6 +66,13 @@
         return;
     }
     //发送请求
+    [RequestPath advice_addAdviceView:self.view param:@{@"phone":self.textField.text,@"advice_info":self.textView.text} success:^(NSDictionary *obj, NSInteger code, NSString *mes) {
+        [MBProgressHUD showSuccess:@"发送成功" ToView:self.view completeBlcok:^{
+            [self.navigationController popViewControllerAnimated:YES];
+        }];
+    } failure:^(ErrorType errorType, NSString *mes) {
+        
+    }];
     
 }
 #pragma mark -- setup
@@ -109,6 +117,7 @@
 - (XYTextField *)textField {
     if (!_textField) {
         _textField = [[XYTextField alloc]initWithType:UITextFieldTel placeHolder:@"请留下手机号码，以便我们回复您！"];
+        _textField.text = [UserModel sharedInstance].phone;
     }
     return _textField;
 }

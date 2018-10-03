@@ -216,7 +216,7 @@ static CGFloat const LOGIN_WIDTH_SIZE = 50.0;
 }
 - (void)startTimer {
     if (!_timer) {
-        self.timeCount = 10;
+        self.timeCount = 60;
         //定时器开始执行的延时时间
         NSTimeInterval delayTime = 1.0f;
         //定时器间隔时间
@@ -236,6 +236,23 @@ static CGFloat const LOGIN_WIDTH_SIZE = 50.0;
         });
         // 启动计时器
         dispatch_resume(_timer);
+    }
+}
+- (void)setTimeCount:(NSInteger)timeCount {
+    if (timeCount == 0) {
+        dispatch_source_cancel(self.timer);
+        self.timer = nil;
+        self.timeBtn.enabled = YES;
+    } else {
+        _timeCount = timeCount;
+        self.timeBtn.enabled = NO;
+        [self.timeBtn setTitle:[NSString stringWithFormat:@"%lds后重新发送",_timeCount] forState:UIControlStateDisabled];
+    }
+}
+- (void)dealloc {
+    if (self.timer) {
+        dispatch_source_cancel(self.timer);
+        self.timer = nil;
     }
 }
 @end

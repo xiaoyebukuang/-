@@ -311,4 +311,23 @@
         failure(errorType, mes);
     }];
 }
+//17.添加建议
++ (void)advice_addAdviceView:(UIView *)view
+                       param:(NSDictionary *)param
+                     success:(void (^)(NSDictionary *obj, NSInteger code, NSString *mes))success
+                     failure:(void (^)(ErrorType errorType, NSString *mes))failure {
+    [MBProgressHUD showToView:view];
+    [XYNetworking postWithUrlString:API_ADVICE_ADDADVIC parameters:param success:^(id obj, NSInteger code, NSString *mes) {
+        if ([obj isKindOfClass:[NSDictionary class]]) {
+            [MBProgressHUD hideHUDForView:view];
+            success((NSDictionary *)obj, code, mes);
+        } else {
+            failure(ErrorTypeReqestNone, mes);
+            [MBProgressHUD showError:mes ToView:view];
+        }
+    } failure:^(ErrorType errorType, NSString *mes) {
+        [MBProgressHUD showError:mes ToView:view];
+        failure(errorType, mes);
+    }];
+}
 @end

@@ -72,6 +72,8 @@
 #define USER_USERID                     @"userId"
 //签名
 #define USER_SIGN                       @"sign"
+//电话
+#define USER_PHONE                      @"phone"
 
 
 

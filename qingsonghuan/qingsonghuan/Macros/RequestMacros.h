@@ -43,6 +43,8 @@
 #define API_USER_EDITUSERINFO          [NSString stringWithFormat:@"%@/user/editUserInfo",BASE_URL]
 //16.发送站内信
 #define API_LETTER_MESSEND             [NSString stringWithFormat:@"%@/letter/mesSend",BASE_URL]
+//17.添加建议
+#define API_ADVICE_ADDADVIC            [NSString stringWithFormat:@"%@/advice/addAdvice",BASE_URL]
 
 
 

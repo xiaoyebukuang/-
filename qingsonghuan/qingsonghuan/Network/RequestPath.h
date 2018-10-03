@@ -127,6 +127,13 @@
                      param:(NSDictionary *)param
                    success:(void (^)(NSDictionary *obj, NSInteger code, NSString *mes))success
                    failure:(void (^)(ErrorType errorType, NSString *mes))failure;
+/**
+ 17.添加建议
+ */
++ (void)advice_addAdviceView:(UIView *)view
+                       param:(NSDictionary *)param
+                     success:(void (^)(NSDictionary *obj, NSInteger code, NSString *mes))success
+                     failure:(void (^)(ErrorType errorType, NSString *mes))failure;
 
 
 @end

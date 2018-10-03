@@ -31,6 +31,9 @@
 @property (nonatomic, copy) NSString *userId;
 /** 签名 */
 @property (nonatomic, copy) NSString *sign;
+/** 电话 */
+@property (nonatomic, copy) NSString *phone;
+
 
 - (void)signOut;
 @end

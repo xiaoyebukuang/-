@@ -47,12 +47,22 @@
     NSString* sign = [[NSUserDefaults standardUserDefaults]stringForKey:USER_SIGN];
     return [NSString safe_string:sign];
 }
+/** 签名 */
+- (void)setPhone:(NSString *)phone {
+    [[NSUserDefaults standardUserDefaults]setObject:phone forKey:USER_PHONE];
+    [[NSUserDefaults standardUserDefaults]synchronize];
+}
+- (NSString *)phone{
+    NSString* phone = [[NSUserDefaults standardUserDefaults]stringForKey:USER_PHONE];
+    return [NSString safe_string:phone];
+}
 
 
 - (void)reloadWithDic:(NSDictionary *)dic {
     self.isLogin = YES;
     self.userId =   [NSString safe_string:dic[@"userId"]];
     self.sign =     [NSString safe_string:dic[@"sign"]];
+    self.phone  =   [NSString safe_string:dic[@"phone"]];
     [kApplicationDelegate setRootViewControoler];
 }
 
@@ -60,6 +70,7 @@
     self.isLogin = NO;
     self.userId =   @"";
     self.sign =     @"";
+    self.phone =    @"";
     [kApplicationDelegate setRootViewControoler];
 }
 @end
