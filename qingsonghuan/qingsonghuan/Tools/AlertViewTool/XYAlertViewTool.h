@@ -12,11 +12,13 @@
 
 typedef void(^AlertBlock)(NSString *obj, BOOL sure);
 
+typedef void(^AlertSureBlock)(void);
+
 @interface XYAlertViewTool : UIView
 
 + (void)showFieldView:(AlertBlock)alertBlock;
 
-+ (void) showTitle:(NSString *)title;
++ (void)showTitle:(NSString *)title message:(NSString *)message alertSureBlock:(AlertSureBlock)alertSureBlock;
 
 
 @end

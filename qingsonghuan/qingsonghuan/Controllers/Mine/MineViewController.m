@@ -50,7 +50,10 @@ static NSString * const MineTableViewCellID = @"MineTableViewCellID";
 
 #pragma mark -- event
 - (void)signOutBtnEvent:(UIButton *)sender {
-    [[UserModel sharedInstance] signOut];
+    [XYAlertViewTool showTitle:@"提示" message:@"是否退出" alertSureBlock:^{
+        [[UserModel sharedInstance] signOut];
+    }];
+    
 }
 - (void)backBtnEvent:(UIButton *)sender {
     [self.navigationController popViewControllerAnimated:YES];
