@@ -103,6 +103,9 @@ static NSTimeInterval const timeInterval = 20.0;
                 if ([NSString safe_integer:status[@"code"]] == 1) {
                     //请求成功
                     success(responseObject[@"data"],[NSString safe_integer:status[@"code"]],status[@"mes"]);
+                } else if ([NSString safe_integer:status[@"code"]] == 6000) {
+                    [[UserModel sharedInstance]signOut];
+                    [MBProgressHUD showError:status[@"mes"]];
                 } else {
                     failure(ErrorTypeRequestFailed, status[@"mes"]);
                 }

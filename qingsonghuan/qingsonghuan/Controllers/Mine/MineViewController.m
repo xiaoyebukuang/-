@@ -44,7 +44,7 @@ static NSString * const MineTableViewCellID = @"MineTableViewCellID";
     [self.view addSubview:self.headerView];
     [self.headerView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.width.top.equalTo(self.view);
-        make.height.mas_offset(64);
+        make.height.mas_offset(NAV_BAR_HEIGHT);
     }];
 }
 
@@ -91,7 +91,7 @@ static NSString * const MineTableViewCellID = @"MineTableViewCellID";
         UILabel *title = [[UILabel alloc]initWithText:@"个人中心" font:SYSTEM_FONT_20 textColor:[UIColor color_FFFFFF]];
         [view addSubview:title];
         [title mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.top.equalTo(view).offset(20);
+            make.top.equalTo(view).offset(NAV_STA_HEIGHT);
             make.bottom.equalTo(view);
             make.centerX.equalTo(view);
         }];
