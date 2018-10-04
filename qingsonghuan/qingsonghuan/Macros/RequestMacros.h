@@ -11,6 +11,9 @@
 
 #define BASE_URL                @"http://47.75.167.95"
 
+
+//TODO: APP接口
+
 //1.注册页信息 ( 航空公司,子公司,职务,签证 )
 #define API_USER_REGNEEDINFO           [NSString stringWithFormat:@"%@/user/regNeedInfo",BASE_URL]
 //2.发送手机验证码
@@ -45,6 +48,24 @@
 #define API_LETTER_MESSEND             [NSString stringWithFormat:@"%@/letter/mesSend",BASE_URL]
 //17.添加建议
 #define API_ADVICE_ADDADVIC            [NSString stringWithFormat:@"%@/advice/addAdvice",BASE_URL]
+
+
+
+
+
+//TODO: 后台接口
+//1.注册人数统计
+#define API_STATISTICS_USERSTA         [NSString stringWithFormat:@"%@/statistics/userStatistics",BASE_URL]
+//2.根据设备统计人数
+#define API_STATISTICS_EQUIPMENTSTA    [NSString stringWithFormat:@"%@/statistics/equipmentStatistics",BASE_URL]
+//3.建议列表
+#define API_STATISTICS_GETADVICELIST   [NSString stringWithFormat:@"%@/statistics/getAdviceList",BASE_URL]
+//4.用户列表
+#define API_STATISTICS_GETUSERLIST     [NSString stringWithFormat:@"%@/statistics/getUserList",BASE_URL]
+
+
+
+
 
 
 

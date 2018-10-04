@@ -25,7 +25,7 @@
 #import "MJRefreshControl.h"
 #import "FlightFilterModel.h"
 #import "FlightListModel.h"
-
+#import "ManagerViewController.h"
 
 static NSString * const FlightListTableViewCellID = @"FlightListTableViewCellID";
 /**
@@ -185,6 +185,12 @@ static NSString * const FlightListTableViewCellID = @"FlightListTableViewCellID"
     FlightSubmitViewController *submitVC = [[FlightSubmitViewController alloc]init];
     [self.navigationController pushViewController:submitVC animated:YES];
 }
+//管理员
+- (void)managerBtnEvent:(UIButton *)sender {
+    ManagerViewController *mangerVC = [[ManagerViewController alloc]init];
+    [self.navigationController pushViewController:mangerVC animated:YES];
+}
+
 #pragma mark -- UITableViewDelegate, UITableViewDataSource
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     return self.flightListModel.listArr.count;
@@ -218,6 +224,15 @@ static NSString * const FlightListTableViewCellID = @"FlightListTableViewCellID"
     if (!_footerView) {
         UIView *view = [[UIView alloc]init];
         view.backgroundColor = [UIColor color_99D3F8];
+        
+        UIButton *managerBtn = [UIButton buttonWithTitle:@"管理员" font:SYSTEM_BOLD_FONT(17) titleColor:[UIColor color_84BBDE] backgroundImage:@"flight_submit"];
+        [managerBtn addTarget:self action:@selector(managerBtnEvent:) forControlEvents:UIControlEventTouchUpInside];
+        [view addSubview:managerBtn];
+        [managerBtn mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.top.equalTo(view).offset(10);
+            make.left.equalTo(view).offset(20);
+        }];
+        
         UIButton *submitBtn = [UIButton buttonWithTitle:@"我要上传" font:SYSTEM_BOLD_FONT(17) titleColor:[UIColor color_84BBDE] backgroundImage:@"flight_submit"];
         [submitBtn addTarget:self action:@selector(submitBtnEvent:) forControlEvents:UIControlEventTouchUpInside];
         [view addSubview:submitBtn];

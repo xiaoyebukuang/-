@@ -10,7 +10,7 @@
 #import "XYNetworking.h"
 @interface RequestPath : NSObject
 
-
+//TODO: APP接口
 /**
  1.注册页信息 ( 航空公司,子公司,职务,签证 )
  */
@@ -135,5 +135,34 @@
                      success:(void (^)(NSDictionary *obj, NSInteger code, NSString *mes))success
                      failure:(void (^)(ErrorType errorType, NSString *mes))failure;
 
+
+//TODO: 后台接口
+/**
+ 1.注册人数统计
+ */
++ (void)statistics_userStaView:(UIView *)view
+                         param:(NSDictionary *)param
+                       success:(void (^)(NSArray *obj, NSInteger code, NSString *mes))success
+                       failure:(void (^)(ErrorType errorType, NSString *mes))failure;
+
+/**
+ 2.根据设备统计人数
+ */
++ (void)statistics_equipmentStaView:(UIView *)view
+                              param:(NSDictionary *)param
+                            success:(void (^)(NSArray *obj, NSInteger code, NSString *mes))success
+                            failure:(void (^)(ErrorType errorType, NSString *mes))failure;
+/**
+ 3.建议列表
+ */
++ (void)statistics_getAdviceListParam:(NSDictionary *)param
+                              success:(void (^)(NSDictionary *obj, NSInteger code, NSString *mes))success
+                              failure:(void (^)(ErrorType errorType, NSString *mes))failure;
+/**
+ 4.用户列表
+ */
++ (void)statistics_getUserListParam:(NSDictionary *)param
+                              success:(void (^)(NSDictionary *obj, NSInteger code, NSString *mes))success
+                              failure:(void (^)(ErrorType errorType, NSString *mes))failure;
 
 @end

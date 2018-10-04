@@ -29,10 +29,22 @@
 		652FCC1D215F5A75009F41E8 /* MailListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 652FCC1C215F5A75009F41E8 /* MailListViewController.m */; };
 		652FCC21215F5AFB009F41E8 /* MailListTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 652FCC20215F5AFB009F41E8 /* MailListTableViewCell.m */; };
 		652FCC25215F5E39009F41E8 /* MailListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 652FCC24215F5E39009F41E8 /* MailListModel.m */; };
+		655FA5CB21662350009625B0 /* ManagerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 655FA5CA21662350009625B0 /* ManagerViewController.m */; };
+		655FA5CF21667678009625B0 /* ManagerTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 655FA5CE21667678009625B0 /* ManagerTableViewCell.m */; };
+		655FA5D221667854009625B0 /* RegNumberViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 655FA5D121667854009625B0 /* RegNumberViewController.m */; };
+		655FA5D5216679A6009625B0 /* ManagerCommonTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 655FA5D4216679A6009625B0 /* ManagerCommonTableViewCell.m */; };
+		655FA5D921667C11009625B0 /* ManagerCommonModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 655FA5D821667C11009625B0 /* ManagerCommonModel.m */; };
+		655FA5DC21668320009625B0 /* DeviceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 655FA5DB21668320009625B0 /* DeviceViewController.m */; };
+		655FA5DF2166867E009625B0 /* DeviceTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 655FA5DE2166867E009625B0 /* DeviceTableViewCell.m */; };
+		655FA5E22166885F009625B0 /* AdviceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 655FA5E12166885F009625B0 /* AdviceViewController.m */; };
+		655FA5E5216688A1009625B0 /* AdviceTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 655FA5E4216688A1009625B0 /* AdviceTableViewCell.m */; };
+		655FA5E821668BB7009625B0 /* AdviceListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 655FA5E721668BB7009625B0 /* AdviceListModel.m */; };
+		655FA5EB2166906B009625B0 /* AdviceDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 655FA5EA2166906B009625B0 /* AdviceDetailViewController.m */; };
+		655FA5EE2166937B009625B0 /* UserListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 655FA5ED2166937B009625B0 /* UserListViewController.m */; };
+		655FA5F12166941E009625B0 /* UserListTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 655FA5F02166941E009625B0 /* UserListTableViewCell.m */; };
+		655FA5F421669976009625B0 /* UserListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 655FA5F321669976009625B0 /* UserListModel.m */; };
 		65D0CA3F214F9AFD00A3DB66 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 65D0CA3E214F9AFD00A3DB66 /* AppDelegate.m */; };
-		65D0CA45214F9AFD00A3DB66 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 65D0CA43214F9AFD00A3DB66 /* Main.storyboard */; };
 		65D0CA47214F9B0000A3DB66 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 65D0CA46214F9B0000A3DB66 /* Assets.xcassets */; };
-		65D0CA4A214F9B0000A3DB66 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 65D0CA48214F9B0000A3DB66 /* LaunchScreen.storyboard */; };
 		65D0CA4D214F9B0000A3DB66 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 65D0CA4C214F9B0000A3DB66 /* main.m */; };
 		65D0CA652151ECEE00A3DB66 /* MBProgressHUD+Helper.m in Sources */ = {isa = PBXBuildFile; fileRef = 65D0CA5B2151ECEE00A3DB66 /* MBProgressHUD+Helper.m */; };
 		65D0CA662151ECEE00A3DB66 /* NSString+Helper.m in Sources */ = {isa = PBXBuildFile; fileRef = 65D0CA5D2151ECEE00A3DB66 /* NSString+Helper.m */; };
@@ -60,6 +72,7 @@
 		65F28A4B2163198F00C229B1 /* MailWriteViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 65F28A4A2163198F00C229B1 /* MailWriteViewController.m */; };
 		65F28A4E21631BA300C229B1 /* XYTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 65F28A4D21631BA300C229B1 /* XYTextView.m */; };
 		65F28A5121636F2E00C229B1 /* MineConnectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 65F28A5021636F2E00C229B1 /* MineConnectionViewController.m */; };
+		65F28A532164D72300C229B1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 65F28A522164D72300C229B1 /* Main.storyboard */; };
 		65F870F1215B7F3600DD1F59 /* FlightListTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 65F870F0215B7F3600DD1F59 /* FlightListTableViewCell.m */; };
 		65F870F7215B90DF00DD1F59 /* FlightFilterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 65F870F6215B90DF00DD1F59 /* FlightFilterViewController.m */; };
 		65F870FD215BB8E500DD1F59 /* CommonTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 65F870FC215BB8E500DD1F59 /* CommonTableViewCell.m */; };
@@ -115,12 +128,38 @@
 		652FCC20215F5AFB009F41E8 /* MailListTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MailListTableViewCell.m; sourceTree = "<group>"; };
 		652FCC23215F5E39009F41E8 /* MailListModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MailListModel.h; sourceTree = "<group>"; };
 		652FCC24215F5E39009F41E8 /* MailListModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MailListModel.m; sourceTree = "<group>"; };
+		655FA5C921662350009625B0 /* ManagerViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ManagerViewController.h; sourceTree = "<group>"; };
+		655FA5CA21662350009625B0 /* ManagerViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ManagerViewController.m; sourceTree = "<group>"; };
+		655FA5CD21667678009625B0 /* ManagerTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ManagerTableViewCell.h; sourceTree = "<group>"; };
+		655FA5CE21667678009625B0 /* ManagerTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ManagerTableViewCell.m; sourceTree = "<group>"; };
+		655FA5D021667854009625B0 /* RegNumberViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RegNumberViewController.h; sourceTree = "<group>"; };
+		655FA5D121667854009625B0 /* RegNumberViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RegNumberViewController.m; sourceTree = "<group>"; };
+		655FA5D3216679A6009625B0 /* ManagerCommonTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ManagerCommonTableViewCell.h; sourceTree = "<group>"; };
+		655FA5D4216679A6009625B0 /* ManagerCommonTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ManagerCommonTableViewCell.m; sourceTree = "<group>"; };
+		655FA5D721667C11009625B0 /* ManagerCommonModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ManagerCommonModel.h; sourceTree = "<group>"; };
+		655FA5D821667C11009625B0 /* ManagerCommonModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ManagerCommonModel.m; sourceTree = "<group>"; };
+		655FA5DA21668320009625B0 /* DeviceViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DeviceViewController.h; sourceTree = "<group>"; };
+		655FA5DB21668320009625B0 /* DeviceViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DeviceViewController.m; sourceTree = "<group>"; };
+		655FA5DD2166867E009625B0 /* DeviceTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DeviceTableViewCell.h; sourceTree = "<group>"; };
+		655FA5DE2166867E009625B0 /* DeviceTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DeviceTableViewCell.m; sourceTree = "<group>"; };
+		655FA5E02166885F009625B0 /* AdviceViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AdviceViewController.h; sourceTree = "<group>"; };
+		655FA5E12166885F009625B0 /* AdviceViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AdviceViewController.m; sourceTree = "<group>"; };
+		655FA5E3216688A1009625B0 /* AdviceTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AdviceTableViewCell.h; sourceTree = "<group>"; };
+		655FA5E4216688A1009625B0 /* AdviceTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AdviceTableViewCell.m; sourceTree = "<group>"; };
+		655FA5E621668BB7009625B0 /* AdviceListModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AdviceListModel.h; sourceTree = "<group>"; };
+		655FA5E721668BB7009625B0 /* AdviceListModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AdviceListModel.m; sourceTree = "<group>"; };
+		655FA5E92166906B009625B0 /* AdviceDetailViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AdviceDetailViewController.h; sourceTree = "<group>"; };
+		655FA5EA2166906B009625B0 /* AdviceDetailViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AdviceDetailViewController.m; sourceTree = "<group>"; };
+		655FA5EC2166937B009625B0 /* UserListViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UserListViewController.h; sourceTree = "<group>"; };
+		655FA5ED2166937B009625B0 /* UserListViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UserListViewController.m; sourceTree = "<group>"; };
+		655FA5EF2166941E009625B0 /* UserListTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UserListTableViewCell.h; sourceTree = "<group>"; };
+		655FA5F02166941E009625B0 /* UserListTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UserListTableViewCell.m; sourceTree = "<group>"; };
+		655FA5F221669976009625B0 /* UserListModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UserListModel.h; sourceTree = "<group>"; };
+		655FA5F321669976009625B0 /* UserListModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UserListModel.m; sourceTree = "<group>"; };
 		65D0CA3A214F9AFD00A3DB66 /* qingsonghuan.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = qingsonghuan.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		65D0CA3D214F9AFD00A3DB66 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		65D0CA3E214F9AFD00A3DB66 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		65D0CA44214F9AFD00A3DB66 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		65D0CA46214F9B0000A3DB66 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		65D0CA49214F9B0000A3DB66 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		65D0CA4B214F9B0000A3DB66 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		65D0CA4C214F9B0000A3DB66 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		65D0CA542151ECDA00A3DB66 /* UtilsMacros.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UtilsMacros.h; sourceTree = "<group>"; };
@@ -179,6 +218,7 @@
 		65F28A4D21631BA300C229B1 /* XYTextView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XYTextView.m; sourceTree = "<group>"; };
 		65F28A4F21636F2E00C229B1 /* MineConnectionViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MineConnectionViewController.h; sourceTree = "<group>"; };
 		65F28A5021636F2E00C229B1 /* MineConnectionViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MineConnectionViewController.m; sourceTree = "<group>"; };
+		65F28A522164D72300C229B1 /* Main.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		65F870EF215B7F3600DD1F59 /* FlightListTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FlightListTableViewCell.h; sourceTree = "<group>"; };
 		65F870F0215B7F3600DD1F59 /* FlightListTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FlightListTableViewCell.m; sourceTree = "<group>"; };
 		65F870F5215B90DF00DD1F59 /* FlightFilterViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FlightFilterViewController.h; sourceTree = "<group>"; };
@@ -347,6 +387,57 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
+		655FA5C821662340009625B0 /* Manager */ = {
+			isa = PBXGroup;
+			children = (
+				655FA5D621667BFB009625B0 /* Model */,
+				655FA5CC2166766A009625B0 /* View */,
+				655FA5C921662350009625B0 /* ManagerViewController.h */,
+				655FA5CA21662350009625B0 /* ManagerViewController.m */,
+				655FA5D021667854009625B0 /* RegNumberViewController.h */,
+				655FA5D121667854009625B0 /* RegNumberViewController.m */,
+				655FA5DA21668320009625B0 /* DeviceViewController.h */,
+				655FA5DB21668320009625B0 /* DeviceViewController.m */,
+				655FA5E02166885F009625B0 /* AdviceViewController.h */,
+				655FA5E12166885F009625B0 /* AdviceViewController.m */,
+				655FA5E92166906B009625B0 /* AdviceDetailViewController.h */,
+				655FA5EA2166906B009625B0 /* AdviceDetailViewController.m */,
+				655FA5EC2166937B009625B0 /* UserListViewController.h */,
+				655FA5ED2166937B009625B0 /* UserListViewController.m */,
+			);
+			path = Manager;
+			sourceTree = "<group>";
+		};
+		655FA5CC2166766A009625B0 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				655FA5CD21667678009625B0 /* ManagerTableViewCell.h */,
+				655FA5CE21667678009625B0 /* ManagerTableViewCell.m */,
+				655FA5D3216679A6009625B0 /* ManagerCommonTableViewCell.h */,
+				655FA5D4216679A6009625B0 /* ManagerCommonTableViewCell.m */,
+				655FA5DD2166867E009625B0 /* DeviceTableViewCell.h */,
+				655FA5DE2166867E009625B0 /* DeviceTableViewCell.m */,
+				655FA5E3216688A1009625B0 /* AdviceTableViewCell.h */,
+				655FA5E4216688A1009625B0 /* AdviceTableViewCell.m */,
+				655FA5EF2166941E009625B0 /* UserListTableViewCell.h */,
+				655FA5F02166941E009625B0 /* UserListTableViewCell.m */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		655FA5D621667BFB009625B0 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				655FA5D721667C11009625B0 /* ManagerCommonModel.h */,
+				655FA5D821667C11009625B0 /* ManagerCommonModel.m */,
+				655FA5E621668BB7009625B0 /* AdviceListModel.h */,
+				655FA5E721668BB7009625B0 /* AdviceListModel.m */,
+				655FA5F221669976009625B0 /* UserListModel.h */,
+				655FA5F321669976009625B0 /* UserListModel.m */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		65D0CA31214F9AFC00A3DB66 = {
 			isa = PBXGroup;
 			children = (
@@ -378,9 +469,8 @@
 				65D0CA702151F06200A3DB66 /* Controllers */,
 				65D0CA3D214F9AFD00A3DB66 /* AppDelegate.h */,
 				65D0CA3E214F9AFD00A3DB66 /* AppDelegate.m */,
-				65D0CA43214F9AFD00A3DB66 /* Main.storyboard */,
 				65D0CA46214F9B0000A3DB66 /* Assets.xcassets */,
-				65D0CA48214F9B0000A3DB66 /* LaunchScreen.storyboard */,
+				65F28A522164D72300C229B1 /* Main.storyboard */,
 				65D0CA4B214F9B0000A3DB66 /* Info.plist */,
 				65D0CA4C214F9B0000A3DB66 /* main.m */,
 			);
@@ -465,6 +555,7 @@
 		65D0CA702151F06200A3DB66 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				655FA5C821662340009625B0 /* Manager */,
 				65D6BECF2160C141002ABFDF /* Mine */,
 				652FCC1A215F5A0D009F41E8 /* Mail */,
 				652C0D122159CAE000BD03FC /* Flight */,
@@ -662,9 +753,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				65D0CA4A214F9B0000A3DB66 /* LaunchScreen.storyboard in Resources */,
 				65D0CA47214F9B0000A3DB66 /* Assets.xcassets in Resources */,
-				65D0CA45214F9AFD00A3DB66 /* Main.storyboard in Resources */,
+				65F28A532164D72300C229B1 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -727,6 +817,7 @@
 				65D0CA6C2151EEE000A3DB66 /* BaseViewController.m in Sources */,
 				652C0D21215A351D00BD03FC /* RequestPath.m in Sources */,
 				65F87104215C874800DD1F59 /* FlightFilterModel.m in Sources */,
+				655FA5F421669976009625B0 /* UserListModel.m in Sources */,
 				652FCBF0215D35BA009F41E8 /* XYErrorView.m in Sources */,
 				65D6BEC521606F08002ABFDF /* MailReadlHeaderView.m in Sources */,
 				65D0CA662151ECEE00A3DB66 /* NSString+Helper.m in Sources */,
@@ -737,19 +828,24 @@
 				652FCBFB215D3D3E009F41E8 /* XYPickerDateViewController.m in Sources */,
 				65D6BEC821609229002ABFDF /* MailFlightView.m in Sources */,
 				65D0CA95215487CE00A3DB66 /* UILabel+Helper.m in Sources */,
+				655FA5D5216679A6009625B0 /* ManagerCommonTableViewCell.m in Sources */,
 				65D0CA9C21548AB100A3DB66 /* UIButton+Helper.m in Sources */,
 				65D6BEBF215FDE12002ABFDF /* MailReadViewController.m in Sources */,
+				655FA5EB2166906B009625B0 /* AdviceDetailViewController.m in Sources */,
 				65D0CA742151F08200A3DB66 /* LoginViewController.m in Sources */,
 				652FCBFC215D3D3E009F41E8 /* XYPickerViewController.m in Sources */,
 				652FCC05215DD201009F41E8 /* FlightListModel.m in Sources */,
 				652FCC02215DC3E6009F41E8 /* FlightHeaderView.m in Sources */,
 				65D0CA9F2154B80D00A3DB66 /* ForgetViewController.m in Sources */,
 				65D0CA7F21521F7600A3DB66 /* XYTextField.m in Sources */,
+				655FA5DF2166867E009625B0 /* DeviceTableViewCell.m in Sources */,
 				65D6BECB21609460002ABFDF /* XYTitleView.m in Sources */,
 				65F28A4E21631BA300C229B1 /* XYTextView.m in Sources */,
 				65F87116215CD69200DD1F59 /* FlightSubmitViewController.m in Sources */,
 				65F870F7215B90DF00DD1F59 /* FlightFilterViewController.m in Sources */,
 				65D0CA652151ECEE00A3DB66 /* MBProgressHUD+Helper.m in Sources */,
+				655FA5DC21668320009625B0 /* DeviceViewController.m in Sources */,
+				655FA5D921667C11009625B0 /* ManagerCommonModel.m in Sources */,
 				65D0CA82215233AC00A3DB66 /* RegisterViewController.m in Sources */,
 				65F28A4B2163198F00C229B1 /* MailWriteViewController.m in Sources */,
 				65D6BED22160C154002ABFDF /* MineViewController.m in Sources */,
@@ -766,42 +862,31 @@
 				652FCC15215F159A009F41E8 /* RegNeedInfoModel.m in Sources */,
 				65F28A5121636F2E00C229B1 /* MineConnectionViewController.m in Sources */,
 				652C0D112158228300BD03FC /* XYNetworking.m in Sources */,
+				655FA5E5216688A1009625B0 /* AdviceTableViewCell.m in Sources */,
+				655FA5EE2166937B009625B0 /* UserListViewController.m in Sources */,
 				65D0CA3F214F9AFD00A3DB66 /* AppDelegate.m in Sources */,
 				65D0CA6F2151EF0B00A3DB66 /* CustomNavigationViewController.m in Sources */,
 				652FCC09215DF5B3009F41E8 /* RegisterTableViewCell.m in Sources */,
+				655FA5D221667854009625B0 /* RegNumberViewController.m in Sources */,
 				65F87110215CC5FB00DD1F59 /* FlightListDetailViewController.m in Sources */,
+				655FA5CF21667678009625B0 /* ManagerTableViewCell.m in Sources */,
 				652C0D29215A871900BD03FC /* SendCodeModel.m in Sources */,
 				652FCC19215F1608009F41E8 /* XYAlertViewTool.m in Sources */,
+				655FA5F12166941E009625B0 /* UserListTableViewCell.m in Sources */,
 				65D0CA8921536D6E00A3DB66 /* UIColor+Helper.m in Sources */,
 				652FCC1D215F5A75009F41E8 /* MailListViewController.m in Sources */,
 				65D0CA682151ECEE00A3DB66 /* UIView+Helper.m in Sources */,
 				65F87113215CC6E600DD1F59 /* FlightListDetailTableViewCell.m in Sources */,
 				6526D16421614B8C0074D358 /* MainReecordTableViewCell.m in Sources */,
+				655FA5E821668BB7009625B0 /* AdviceListModel.m in Sources */,
+				655FA5E22166885F009625B0 /* AdviceViewController.m in Sources */,
 				65D0CA852153439F00A3DB66 /* XYLineView.m in Sources */,
 				65F28A4821628B8E00C229B1 /* RegisterEditViewController.m in Sources */,
+				655FA5CB21662350009625B0 /* ManagerViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXVariantGroup section */
-		65D0CA43214F9AFD00A3DB66 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				65D0CA44214F9AFD00A3DB66 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-		65D0CA48214F9B0000A3DB66 /* LaunchScreen.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				65D0CA49214F9B0000A3DB66 /* Base */,
-			);
-			name = LaunchScreen.storyboard;
-			sourceTree = "<group>";
-		};
-/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		65D0CA4E214F9B0000A3DB66 /* Debug */ = {
@@ -920,15 +1005,15 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 2RNL836XEW;
+				DEVELOPMENT_TEAM = S6WDL2GZYL;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/qingsonghuan/Macros/PrefixHeader.pch";
 				INFOPLIST_FILE = qingsonghuan/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.nongfaziran.nongfaziran;
+				PRODUCT_BUNDLE_IDENTIFIER = com.shengda.MingDuoHotelApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = 1;
 			};
@@ -940,15 +1025,15 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 2RNL836XEW;
+				DEVELOPMENT_TEAM = S6WDL2GZYL;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/qingsonghuan/Macros/PrefixHeader.pch";
 				INFOPLIST_FILE = qingsonghuan/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.nongfaziran.nongfaziran;
+				PRODUCT_BUNDLE_IDENTIFIER = com.shengda.MingDuoHotelApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = 1;
 			};

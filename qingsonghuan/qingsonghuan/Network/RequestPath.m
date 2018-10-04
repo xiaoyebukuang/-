@@ -11,6 +11,7 @@
 
 
 @implementation RequestPath
+//TODO: APP接口
 //1.注册页信息 ( 航空公司,子公司,职务,签证 )
 + (void)user_regNeedInfoView:(UIView *)view
                      success:(void (^)(NSDictionary *obj, NSInteger code, NSString *mes))success
@@ -325,4 +326,79 @@
         failure(errorType, mes);
     }];
 }
+
+//TODO: 后台接口
+/**
+ 1.注册人数统计
+ */
++ (void)statistics_userStaView:(UIView *)view
+                         param:(NSDictionary *)param
+                       success:(void (^)(NSArray *obj, NSInteger code, NSString *mes))success
+                       failure:(void (^)(ErrorType errorType, NSString *mes))failure {
+    [MBProgressHUD showToView:view];
+    [XYNetworking postWithUrlString:API_STATISTICS_USERSTA parameters:param success:^(id obj, NSInteger code, NSString *mes) {
+        if ([obj isKindOfClass:[NSArray class]]) {
+            [MBProgressHUD hideHUDForView:view];
+            success((NSArray *)obj, code, mes);
+        } else {
+            failure(ErrorTypeReqestNone, mes);
+            [MBProgressHUD showError:mes ToView:view];
+        }
+    } failure:^(ErrorType errorType, NSString *mes) {
+        [MBProgressHUD showError:mes ToView:view];
+        failure(errorType, mes);
+    }];
+}
+//2.根据设备统计人数
++ (void)statistics_equipmentStaView:(UIView *)view
+                              param:(NSDictionary *)param
+                            success:(void (^)(NSArray *obj, NSInteger code, NSString *mes))success
+                            failure:(void (^)(ErrorType errorType, NSString *mes))failure; {
+    [MBProgressHUD showToView:view];
+    [XYNetworking postWithUrlString:API_STATISTICS_EQUIPMENTSTA parameters:param success:^(id obj, NSInteger code, NSString *mes) {
+        if ([obj isKindOfClass:[NSArray class]]) {
+            [MBProgressHUD hideHUDForView:view];
+            success((NSArray *)obj, code, mes);
+        } else {
+            failure(ErrorTypeReqestNone, mes);
+            [MBProgressHUD showError:mes ToView:view];
+        }
+    } failure:^(ErrorType errorType, NSString *mes) {
+        [MBProgressHUD showError:mes ToView:view];
+        failure(errorType, mes);
+    }];
+}
+//3.建议列表
++ (void)statistics_getAdviceListParam:(NSDictionary *)param
+                             success:(void (^)(NSDictionary *obj, NSInteger code, NSString *mes))success
+                             failure:(void (^)(ErrorType errorType, NSString *mes))failure {
+    [XYNetworking postWithUrlString:API_STATISTICS_GETADVICELIST parameters:param success:^(id obj, NSInteger code, NSString *mes) {
+        if ([obj isKindOfClass:[NSDictionary class]]) {
+            success((NSDictionary *)obj, code, mes);
+        } else {
+            [MBProgressHUD showError:mes];
+            failure(ErrorTypeReqestNone, mes);
+        }
+    } failure:^(ErrorType errorType, NSString *mes) {
+        [MBProgressHUD showError:mes];
+        failure(errorType, mes);
+    }];
+}
+//4.用户列表
++ (void)statistics_getUserListParam:(NSDictionary *)param
+                            success:(void (^)(NSDictionary *obj, NSInteger code, NSString *mes))success
+                            failure:(void (^)(ErrorType errorType, NSString *mes))failure {
+    [XYNetworking postWithUrlString:API_STATISTICS_GETUSERLIST parameters:param success:^(id obj, NSInteger code, NSString *mes) {
+        if ([obj isKindOfClass:[NSDictionary class]]) {
+            success((NSDictionary *)obj, code, mes);
+        } else {
+            [MBProgressHUD showError:mes];
+            failure(ErrorTypeReqestNone, mes);
+        }
+    } failure:^(ErrorType errorType, NSString *mes) {
+        [MBProgressHUD showError:mes];
+        failure(errorType, mes);
+    }];
+}
+
 @end
