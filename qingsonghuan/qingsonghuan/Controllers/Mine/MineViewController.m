@@ -11,6 +11,7 @@
 #import "MainReecordViewController.h"
 #import "RegisterEditViewController.h"
 #import "MineConnectionViewController.h"
+#import "NoticeViewController.h"
 static NSString * const MineTableViewCellID = @"MineTableViewCellID";
 
 @interface MineViewController ()<UITableViewDelegate, UITableViewDataSource>
@@ -61,12 +62,12 @@ static NSString * const MineTableViewCellID = @"MineTableViewCellID";
 
 #pragma mark -- UITableViewDelegate, UITableViewDataSource
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    return 4;
+    return 5;
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     MineTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier: MineTableViewCellID];
-    NSArray *logo = @[@"main_reecord",@"main_revise",@"main_connection",@"main_about"];
-    NSArray *titles = @[@"上传记录",@"修改信息",@"联系我们",@"关于"];
+    NSArray *logo = @[@"main_reecord",@"main_revise",@"main_connection",@"mine_notice",@"main_about"];
+    NSArray *titles = @[@"上传记录",@"修改信息",@"联系我们",@"公告",@"关于"];
     [cell reloadViewLogo:logo[indexPath.row] title:titles[indexPath.row]];
     return cell;
 }
@@ -83,9 +84,10 @@ static NSString * const MineTableViewCellID = @"MineTableViewCellID";
         MineConnectionViewController *connectVC = [[MineConnectionViewController alloc]init];
         [self.navigationController pushViewController:connectVC animated:YES];
     }
-    
-    
-
+    if (indexPath.row == 3) {
+        NoticeViewController *noticeVC = [[NoticeViewController alloc]init];
+        [self.navigationController pushViewController:noticeVC animated:YES];
+    }
 }
 #pragma mark -- setup
 - (UIView *)headerView {

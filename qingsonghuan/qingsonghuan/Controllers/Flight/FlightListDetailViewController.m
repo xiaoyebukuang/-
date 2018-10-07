@@ -61,7 +61,14 @@ static NSString * const FlightListDetailTableViewCellID = @"FlightListDetailTabl
     mwVC.isEditFlight = YES;
     [self.navigationController pushViewController:mwVC animated:YES];
 }
-
+//拨打电话
+- (void)telBtnEvent:(UIButton *)sender {
+    NSString *mes = [NSString stringWithFormat:@"您是否拨打电话\n%@",self.flightModel.phone];
+    [XYAlertViewTool showTitle:@"提示" message:mes alertSureBlock:^{
+        NSString *tel = [NSString stringWithFormat:@"tel://%@",self.flightModel.phone];
+        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:tel]];
+    }];
+}
 #pragma mark -- UITableViewDelegate, UITableViewDataSource
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
@@ -91,6 +98,7 @@ static NSString * const FlightListDetailTableViewCellID = @"FlightListDetailTabl
     if (!_footerView) {
         UIView *view = [[UIView alloc]init];
         UIButton *tel = [UIButton buttonWithBGImage:@"filter_detail_btn_bg" image:@"filter_detail_tel" title:@"拨号" font:SYSTEM_FONT_17 textColor:[UIColor color_FFFFFF]];
+        [tel addTarget:self action:@selector(telBtnEvent:) forControlEvents:UIControlEventTouchUpInside];
         [view addSubview:tel];
         [tel mas_makeConstraints:^(MASConstraintMaker *make) {
             make.left.top.bottom.equalTo(view);

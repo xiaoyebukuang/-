@@ -43,6 +43,7 @@
 		655FA5EE2166937B009625B0 /* UserListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 655FA5ED2166937B009625B0 /* UserListViewController.m */; };
 		655FA5F12166941E009625B0 /* UserListTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 655FA5F02166941E009625B0 /* UserListTableViewCell.m */; };
 		655FA5F421669976009625B0 /* UserListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 655FA5F321669976009625B0 /* UserListModel.m */; };
+		655FA5F721672160009625B0 /* NoticeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 655FA5F621672160009625B0 /* NoticeViewController.m */; };
 		65D0CA3F214F9AFD00A3DB66 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 65D0CA3E214F9AFD00A3DB66 /* AppDelegate.m */; };
 		65D0CA47214F9B0000A3DB66 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 65D0CA46214F9B0000A3DB66 /* Assets.xcassets */; };
 		65D0CA4D214F9B0000A3DB66 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 65D0CA4C214F9B0000A3DB66 /* main.m */; };
@@ -156,6 +157,8 @@
 		655FA5F02166941E009625B0 /* UserListTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UserListTableViewCell.m; sourceTree = "<group>"; };
 		655FA5F221669976009625B0 /* UserListModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UserListModel.h; sourceTree = "<group>"; };
 		655FA5F321669976009625B0 /* UserListModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UserListModel.m; sourceTree = "<group>"; };
+		655FA5F521672160009625B0 /* NoticeViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NoticeViewController.h; sourceTree = "<group>"; };
+		655FA5F621672160009625B0 /* NoticeViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NoticeViewController.m; sourceTree = "<group>"; };
 		65D0CA3A214F9AFD00A3DB66 /* qingsonghuan.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = qingsonghuan.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		65D0CA3D214F9AFD00A3DB66 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		65D0CA3E214F9AFD00A3DB66 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -635,6 +638,8 @@
 				65F28A4721628B8E00C229B1 /* RegisterEditViewController.m */,
 				65F28A4F21636F2E00C229B1 /* MineConnectionViewController.h */,
 				65F28A5021636F2E00C229B1 /* MineConnectionViewController.m */,
+				655FA5F521672160009625B0 /* NoticeViewController.h */,
+				655FA5F621672160009625B0 /* NoticeViewController.m */,
 			);
 			path = Mine;
 			sourceTree = "<group>";
@@ -841,6 +846,7 @@
 				655FA5DF2166867E009625B0 /* DeviceTableViewCell.m in Sources */,
 				65D6BECB21609460002ABFDF /* XYTitleView.m in Sources */,
 				65F28A4E21631BA300C229B1 /* XYTextView.m in Sources */,
+				655FA5F721672160009625B0 /* NoticeViewController.m in Sources */,
 				65F87116215CD69200DD1F59 /* FlightSubmitViewController.m in Sources */,
 				65F870F7215B90DF00DD1F59 /* FlightFilterViewController.m in Sources */,
 				65D0CA652151ECEE00A3DB66 /* MBProgressHUD+Helper.m in Sources */,

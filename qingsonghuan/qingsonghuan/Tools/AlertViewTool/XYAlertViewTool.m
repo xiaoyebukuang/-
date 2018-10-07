@@ -95,18 +95,20 @@
         make.centerX.equalTo(self.contentView);
         make.top.equalTo(self.contentView).offset(20);
     }];
-    [self.contentView addSubview:self.messageLabel];
-    self.messageLabel.text = self.message;
-    [self.messageLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.centerX.equalTo(self.contentView);
-        make.top.equalTo(self.titleLabel.mas_bottom).offset(20);
-        make.left.equalTo(self.contentView).offset(20);
-        make.right.equalTo(self.contentView).offset(-20);
-    }];
+    
     [self.contentView addSubview:self.btnBgView];
     [self.btnBgView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.right.bottom.equalTo(self.contentView);
         make.height.mas_equalTo(44);
+    }];
+    
+    [self.contentView addSubview:self.messageLabel];
+    self.messageLabel.text = self.message;
+    [self.messageLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.centerX.equalTo(self.contentView);
+        make.top.equalTo(self.titleLabel.mas_bottom).offset(10);
+        make.left.equalTo(self.contentView).offset(20);
+        make.right.equalTo(self.contentView).offset(-20);
     }];
 }
 - (void)setUpUI {
@@ -216,6 +218,7 @@
 - (UILabel *)messageLabel {
     if (!_messageLabel) {
         _messageLabel = [[UILabel alloc]initWithText:@"" font:SYSTEM_FONT_15 textColor:[UIColor color_666666]];
+        _messageLabel.numberOfLines = 0;
         _messageLabel.textAlignment = NSTextAlignmentCenter;
     }
     return _messageLabel;

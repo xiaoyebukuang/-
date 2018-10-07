@@ -93,7 +93,7 @@
         
         self.mailReadModel = [[MailReadModel alloc]initWithDic:obj];
         self.headerView.readModel = self.mailReadModel;
-        //自己的航班
+        //自己的航班  即收件人
         self.topMailFlightView.flightModel = self.mailReadModel.receiveModel;
         //对方的航班
         self.bottomMailFlightView.flightModel = self.mailReadModel.sendModel;
@@ -105,12 +105,21 @@
     }];
 }
 #pragma mark -- event
+//写信
 - (void)mailWriteBtnEvent:(UIButton *)sender {
     MailWriteViewController *mwVC = [[MailWriteViewController alloc]init];
     mwVC.receiveModel = self.mailReadModel.sendModel;
     mwVC.sendModel = self.mailReadModel.receiveModel;
     mwVC.isEditFlight = NO;
     [self.navigationController pushViewController:mwVC animated:YES];
+}
+//拨号
+- (void)telBtnEvent:(UIButton *)sender {
+    NSString *mes = [NSString stringWithFormat:@"您是否拨打电话\n%@",self.mailReadModel.sendModel.phone];
+    [XYAlertViewTool showTitle:@"提示" message:mes alertSureBlock:^{
+        NSString *tel = [NSString stringWithFormat:@"tel://%@",self.mailReadModel.sendModel.phone];
+        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:tel]];
+    }];
 }
 #pragma mark -- setup
 - (UIScrollView *)scrollView {
@@ -148,6 +157,7 @@
     if (!_footerView) {
         UIView *view = [[UIView alloc]init];
         UIButton *tel = [UIButton buttonWithBGImage:@"filter_detail_btn_bg" image:@"filter_detail_tel" title:@"拨号" font:SYSTEM_FONT_17 textColor:[UIColor color_FFFFFF]];
+        [tel addTarget:self action:@selector(telBtnEvent:) forControlEvents:UIControlEventTouchUpInside];
         [view addSubview:tel];
         [tel mas_makeConstraints:^(MASConstraintMaker *make) {
             make.left.top.bottom.equalTo(view);
