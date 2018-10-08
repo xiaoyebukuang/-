@@ -22,7 +22,6 @@ static NSString * const ManagerCommonTableViewCellID = @"ManagerCommonTableViewC
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.title = @"注册人数统计";
     self.listArr = [[NSMutableArray alloc]init];
     [self setupView];
     [self statisticsUserStaRequedt];
@@ -35,7 +34,25 @@ static NSString * const ManagerCommonTableViewCellID = @"ManagerCommonTableViewC
 }
 
 - (void)statisticsUserStaRequedt {
-    [RequestPath statistics_userStaView:self.view param:@{@"phone":[UserModel sharedInstance].phone} success:^(NSArray *obj, NSInteger code, NSString *mes) {
+    NSString *url;
+    switch (self.type) {
+        case ManagerTypeUser:
+            self.title = @"注册人数统计";
+            url = API_STATISTICS_USERSTA;
+            break;
+        case ManagerTypeFlight:
+            self.title = @"上传航班统计";
+            url = API_STATISTICS_FLIGHTSTA;
+            break;
+        case ManagerTypeLetter:
+            self.title = @"站内信统计";
+            url = API_STATISTICS_LETTERSTA;
+            break;
+        default:
+            break;
+    }
+    NSDictionary *param = @{@"phone":[UserModel sharedInstance].phone};
+    [RequestPath statistics_StaView:self.view url:url param:param success:^(NSArray *obj, NSInteger code, NSString *mes) {
         for (NSDictionary *subDic in obj) {
             if ([subDic isKindOfClass:[NSDictionary class]]) {
                 ManagerCommonModel *model = [[ManagerCommonModel alloc]initWithDic:subDic];

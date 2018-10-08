@@ -48,12 +48,25 @@ static NSString * const ManagerTableViewCellID = @"ManagerTableViewCellID";
     //注册人数统计
     if (indexPath.row == 0) {
         RegNumberViewController *regNumVC = [[RegNumberViewController alloc]init];
+        regNumVC.type = ManagerTypeUser;
         [self.navigationController pushViewController:regNumVC animated:YES];
     }
     //设备分布统计
     if (indexPath.row == 1) {
         DeviceViewController *deviceVC = [[DeviceViewController alloc]init];
         [self.navigationController pushViewController:deviceVC animated:YES];
+    }
+    //上传航班统计
+    if (indexPath.row == 2) {
+        RegNumberViewController *regNumVC = [[RegNumberViewController alloc]init];
+        regNumVC.type = ManagerTypeFlight;
+        [self.navigationController pushViewController:regNumVC animated:YES];
+    }
+    //站内信统计
+    if (indexPath.row == 3) {
+        RegNumberViewController *regNumVC = [[RegNumberViewController alloc]init];
+        regNumVC.type = ManagerTypeLetter;
+        [self.navigationController pushViewController:regNumVC animated:YES];
     }
     //意见反馈
     if (indexPath.row == 5) {

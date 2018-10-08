@@ -346,14 +346,18 @@
 
 //TODO: 后台接口
 /**
- 1.注册人数统计
+ 1.
+ ①、注册人数统计
+ ②、航班统计
+ ③、站内信统计
  */
-+ (void)statistics_userStaView:(UIView *)view
-                         param:(NSDictionary *)param
-                       success:(void (^)(NSArray *obj, NSInteger code, NSString *mes))success
-                       failure:(void (^)(ErrorType errorType, NSString *mes))failure {
++ (void)statistics_StaView:(UIView *)view
+                       url:(NSString *)url
+                     param:(NSDictionary *)param
+                   success:(void (^)(NSArray *obj, NSInteger code, NSString *mes))success
+                   failure:(void (^)(ErrorType errorType, NSString *mes))failure {
     [MBProgressHUD showToView:view];
-    [XYNetworking postWithUrlString:API_STATISTICS_USERSTA parameters:param success:^(id obj, NSInteger code, NSString *mes) {
+    [XYNetworking postWithUrlString:url parameters:param success:^(id obj, NSInteger code, NSString *mes) {
         if ([obj isKindOfClass:[NSArray class]]) {
             [MBProgressHUD hideHUDForView:view];
             success((NSArray *)obj, code, mes);
