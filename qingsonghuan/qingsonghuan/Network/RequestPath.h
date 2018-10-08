@@ -135,6 +135,15 @@
                      success:(void (^)(NSDictionary *obj, NSInteger code, NSString *mes))success
                      failure:(void (^)(ErrorType errorType, NSString *mes))failure;
 
+/**
+ 18.获取公告列表
+ */
++ (void)announcement_getListParam:(NSDictionary *)param
+                          success:(void (^)(NSDictionary *obj, NSInteger code, NSString *mes))success
+                          failure:(void (^)(ErrorType errorType, NSString *mes))failure;
+
+
+
 
 //TODO: 后台接口
 /**

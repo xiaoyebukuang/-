@@ -48,7 +48,8 @@
 #define API_LETTER_MESSEND             [NSString stringWithFormat:@"%@/letter/mesSend",BASE_URL]
 //17.添加建议
 #define API_ADVICE_ADDADVIC            [NSString stringWithFormat:@"%@/advice/addAdvice",BASE_URL]
-
+//18.获取公告列表
+#define API_ANNOUNCEMENT_LIST          [NSString stringWithFormat:@"%@/announcement/getList",BASE_URL]
 
 
 

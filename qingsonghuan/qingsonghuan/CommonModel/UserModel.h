@@ -33,7 +33,8 @@
 @property (nonatomic, copy) NSString *sign;
 /** 电话 */
 @property (nonatomic, copy) NSString *phone;
-
+/** 管理员权限 */
+@property (nonatomic, assign) BOOL identity;
 
 - (void)signOut;
 @end

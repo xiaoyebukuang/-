@@ -327,6 +327,23 @@
     }];
 }
 
+//18.获取公告列表
++ (void)announcement_getListParam:(NSDictionary *)param
+                          success:(void (^)(NSDictionary *obj, NSInteger code, NSString *mes))success
+                          failure:(void (^)(ErrorType errorType, NSString *mes))failure{
+    [XYNetworking postWithUrlString:API_ANNOUNCEMENT_LIST parameters:param success:^(id obj, NSInteger code, NSString *mes) {
+        if ([obj isKindOfClass:[NSDictionary class]]) {
+            success((NSDictionary *)obj, code, mes);
+        } else {
+            [MBProgressHUD showError:mes];
+            failure(ErrorTypeReqestNone, mes);
+        }
+    } failure:^(ErrorType errorType, NSString *mes) {
+        [MBProgressHUD showError:mes];
+        failure(errorType, mes);
+    }];
+}
+
 //TODO: 后台接口
 /**
  1.注册人数统计

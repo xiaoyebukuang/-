@@ -74,6 +74,8 @@
 #define USER_SIGN                       @"sign"
 //电话
 #define USER_PHONE                      @"phone"
+//管理员权限
+#define USER_IDENTITY                   @"identity"
 
 
 

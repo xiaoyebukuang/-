@@ -73,6 +73,11 @@
         make.height.mas_equalTo(0.5);
     }];
 }
+- (void)reloadDataWithNoticeModel:(NoticeModel *)noticeModel {
+    self.titleLabel.text = noticeModel.title;
+    self.messageLabel.text = noticeModel.content;
+    self.timeLabel.text = noticeModel.timeStr;
+}
 #pragma mark -- serup
 - (UIImageView *)noticeLogo {
     if (!_noticeLogo) {

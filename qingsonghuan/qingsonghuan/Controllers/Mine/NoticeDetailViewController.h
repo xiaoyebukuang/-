@@ -7,7 +7,7 @@
 //
 
 #import "BaseMultiViewController.h"
-
+#import "NoticeListModel.h"
 @interface NoticeDetailViewController : BaseMultiViewController
-
+@property (nonatomic, strong) NoticeModel *noticeModel;
 @end

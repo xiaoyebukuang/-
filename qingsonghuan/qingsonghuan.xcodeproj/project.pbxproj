@@ -46,6 +46,7 @@
 		655FA5F721672160009625B0 /* NoticeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 655FA5F621672160009625B0 /* NoticeViewController.m */; };
 		655FA5FA216B20CB009625B0 /* NoticeDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 655FA5F9216B20CB009625B0 /* NoticeDetailViewController.m */; };
 		655FA5FD216B2167009625B0 /* NoticeTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 655FA5FC216B2167009625B0 /* NoticeTableViewCell.m */; };
+		655FA60B216BA8B8009625B0 /* NoticeListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 655FA60A216BA8B8009625B0 /* NoticeListModel.m */; };
 		65D0CA3F214F9AFD00A3DB66 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 65D0CA3E214F9AFD00A3DB66 /* AppDelegate.m */; };
 		65D0CA47214F9B0000A3DB66 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 65D0CA46214F9B0000A3DB66 /* Assets.xcassets */; };
 		65D0CA4D214F9B0000A3DB66 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 65D0CA4C214F9B0000A3DB66 /* main.m */; };
@@ -165,6 +166,8 @@
 		655FA5F9216B20CB009625B0 /* NoticeDetailViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NoticeDetailViewController.m; sourceTree = "<group>"; };
 		655FA5FB216B2167009625B0 /* NoticeTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NoticeTableViewCell.h; sourceTree = "<group>"; };
 		655FA5FC216B2167009625B0 /* NoticeTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NoticeTableViewCell.m; sourceTree = "<group>"; };
+		655FA609216BA8B8009625B0 /* NoticeListModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NoticeListModel.h; sourceTree = "<group>"; };
+		655FA60A216BA8B8009625B0 /* NoticeListModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NoticeListModel.m; sourceTree = "<group>"; };
 		65D0CA3A214F9AFD00A3DB66 /* qingsonghuan.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = qingsonghuan.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		65D0CA3D214F9AFD00A3DB66 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		65D0CA3E214F9AFD00A3DB66 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -447,6 +450,15 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
+		655FA608216BA8AA009625B0 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				655FA609216BA8B8009625B0 /* NoticeListModel.h */,
+				655FA60A216BA8B8009625B0 /* NoticeListModel.m */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		65D0CA31214F9AFC00A3DB66 = {
 			isa = PBXGroup;
 			children = (
@@ -635,6 +647,7 @@
 		65D6BECF2160C141002ABFDF /* Mine */ = {
 			isa = PBXGroup;
 			children = (
+				655FA608216BA8AA009625B0 /* Model */,
 				65D6BED32160C6A3002ABFDF /* View */,
 				65D6BED02160C154002ABFDF /* MineViewController.h */,
 				65D6BED12160C154002ABFDF /* MineViewController.m */,
@@ -879,6 +892,7 @@
 				652FCC15215F159A009F41E8 /* RegNeedInfoModel.m in Sources */,
 				65F28A5121636F2E00C229B1 /* MineConnectionViewController.m in Sources */,
 				652C0D112158228300BD03FC /* XYNetworking.m in Sources */,
+				655FA60B216BA8B8009625B0 /* NoticeListModel.m in Sources */,
 				655FA5E5216688A1009625B0 /* AdviceTableViewCell.m in Sources */,
 				655FA5EE2166937B009625B0 /* UserListViewController.m in Sources */,
 				65D0CA3F214F9AFD00A3DB66 /* AppDelegate.m in Sources */,

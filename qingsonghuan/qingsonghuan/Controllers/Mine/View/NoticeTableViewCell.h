@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import "NoticeListModel.h"
 @interface NoticeTableViewCell : UITableViewCell
-
+- (void)reloadDataWithNoticeModel:(NoticeModel *)noticeModel;
 @end
