@@ -25,20 +25,23 @@
 
 @interface ManagerUserModel : NSObject
 //用户id
-@property (nonatomic, strong) NSString *user_id;
+@property (nonatomic, copy) NSString *user_id;
+//用户手机号
+@property (nonatomic, copy) NSString *phone;
 //登机证号
-@property (nonatomic, strong) NSString *work_number;
+@property (nonatomic, copy) NSString *work_number;
 //性别
-@property (nonatomic, strong) NSString *sex;
+@property (nonatomic, copy) NSString *sex;
 //航空公司
-@property (nonatomic, strong) NSString *airline_name;
+@property (nonatomic, copy) NSString *airline_name;
 //分子公司
-@property (nonatomic, strong) NSString *subsidiary_name;
+@property (nonatomic, copy) NSString *subsidiary_name;
 //职务等级
-@property (nonatomic, strong) NSString *duty_name;
+@property (nonatomic, copy) NSString *duty_name;
 //签证类型
-@property (nonatomic, strong) NSString *visa_name;
-
+@property (nonatomic, copy) NSString *visa_name;
+//状态
+@property (nonatomic, assign) BOOL status;
 
 - (instancetype)initWithDic:(NSDictionary *)dic;
 

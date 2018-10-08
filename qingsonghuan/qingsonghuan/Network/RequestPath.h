@@ -165,4 +165,13 @@
                               success:(void (^)(NSDictionary *obj, NSInteger code, NSString *mes))success
                               failure:(void (^)(ErrorType errorType, NSString *mes))failure;
 
+/**
+ 5.删除，注销，取消注销接口(0正常，1禁用，2删除)
+ */
++ (void)statistics_editUserStatusView:(UIView *)view
+                                param:(NSDictionary *)param
+                              success:(void (^)(NSDictionary *obj, NSInteger code, NSString *mes))success
+                              failure:(void (^)(ErrorType errorType, NSString *mes))failure;
+
+
 @end

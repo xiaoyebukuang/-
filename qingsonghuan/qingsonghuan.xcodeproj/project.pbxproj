@@ -44,6 +44,8 @@
 		655FA5F12166941E009625B0 /* UserListTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 655FA5F02166941E009625B0 /* UserListTableViewCell.m */; };
 		655FA5F421669976009625B0 /* UserListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 655FA5F321669976009625B0 /* UserListModel.m */; };
 		655FA5F721672160009625B0 /* NoticeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 655FA5F621672160009625B0 /* NoticeViewController.m */; };
+		655FA5FA216B20CB009625B0 /* NoticeDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 655FA5F9216B20CB009625B0 /* NoticeDetailViewController.m */; };
+		655FA5FD216B2167009625B0 /* NoticeTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 655FA5FC216B2167009625B0 /* NoticeTableViewCell.m */; };
 		65D0CA3F214F9AFD00A3DB66 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 65D0CA3E214F9AFD00A3DB66 /* AppDelegate.m */; };
 		65D0CA47214F9B0000A3DB66 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 65D0CA46214F9B0000A3DB66 /* Assets.xcassets */; };
 		65D0CA4D214F9B0000A3DB66 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 65D0CA4C214F9B0000A3DB66 /* main.m */; };
@@ -159,6 +161,10 @@
 		655FA5F321669976009625B0 /* UserListModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UserListModel.m; sourceTree = "<group>"; };
 		655FA5F521672160009625B0 /* NoticeViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NoticeViewController.h; sourceTree = "<group>"; };
 		655FA5F621672160009625B0 /* NoticeViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NoticeViewController.m; sourceTree = "<group>"; };
+		655FA5F8216B20CB009625B0 /* NoticeDetailViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NoticeDetailViewController.h; sourceTree = "<group>"; };
+		655FA5F9216B20CB009625B0 /* NoticeDetailViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NoticeDetailViewController.m; sourceTree = "<group>"; };
+		655FA5FB216B2167009625B0 /* NoticeTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NoticeTableViewCell.h; sourceTree = "<group>"; };
+		655FA5FC216B2167009625B0 /* NoticeTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NoticeTableViewCell.m; sourceTree = "<group>"; };
 		65D0CA3A214F9AFD00A3DB66 /* qingsonghuan.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = qingsonghuan.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		65D0CA3D214F9AFD00A3DB66 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		65D0CA3E214F9AFD00A3DB66 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -640,6 +646,8 @@
 				65F28A5021636F2E00C229B1 /* MineConnectionViewController.m */,
 				655FA5F521672160009625B0 /* NoticeViewController.h */,
 				655FA5F621672160009625B0 /* NoticeViewController.m */,
+				655FA5F8216B20CB009625B0 /* NoticeDetailViewController.h */,
+				655FA5F9216B20CB009625B0 /* NoticeDetailViewController.m */,
 			);
 			path = Mine;
 			sourceTree = "<group>";
@@ -651,6 +659,8 @@
 				65D6BED52160C6B0002ABFDF /* MineTableViewCell.m */,
 				6526D16221614B8C0074D358 /* MainReecordTableViewCell.h */,
 				6526D16321614B8C0074D358 /* MainReecordTableViewCell.m */,
+				655FA5FB216B2167009625B0 /* NoticeTableViewCell.h */,
+				655FA5FC216B2167009625B0 /* NoticeTableViewCell.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -845,6 +855,7 @@
 				65D0CA7F21521F7600A3DB66 /* XYTextField.m in Sources */,
 				655FA5DF2166867E009625B0 /* DeviceTableViewCell.m in Sources */,
 				65D6BECB21609460002ABFDF /* XYTitleView.m in Sources */,
+				655FA5FA216B20CB009625B0 /* NoticeDetailViewController.m in Sources */,
 				65F28A4E21631BA300C229B1 /* XYTextView.m in Sources */,
 				655FA5F721672160009625B0 /* NoticeViewController.m in Sources */,
 				65F87116215CD69200DD1F59 /* FlightSubmitViewController.m in Sources */,
@@ -876,6 +887,7 @@
 				655FA5D221667854009625B0 /* RegNumberViewController.m in Sources */,
 				65F87110215CC5FB00DD1F59 /* FlightListDetailViewController.m in Sources */,
 				655FA5CF21667678009625B0 /* ManagerTableViewCell.m in Sources */,
+				655FA5FD216B2167009625B0 /* NoticeTableViewCell.m in Sources */,
 				652C0D29215A871900BD03FC /* SendCodeModel.m in Sources */,
 				652FCC19215F1608009F41E8 /* XYAlertViewTool.m in Sources */,
 				655FA5F12166941E009625B0 /* UserListTableViewCell.m in Sources */,

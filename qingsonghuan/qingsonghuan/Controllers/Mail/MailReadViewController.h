@@ -10,6 +10,6 @@
 
 @interface MailReadViewController : BaseMultiViewController
 
-@property (nonatomic, strong) NSString *letter_id;
+@property (nonatomic, copy) NSString *letter_id;
 
 @end

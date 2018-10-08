@@ -71,6 +71,14 @@ static NSString * const UserListTableViewCellID = @"UserListTableViewCellID";
         [MJRefreshControl endRefresh:self.userListTableV];
     }];
 }
+- (void)operationUser:(NSInteger)status indexPath:(NSIndexPath *)indexPath {
+    NSLog(@"%ld",(long)status);
+    [RequestPath statistics_editUserStatusView:self.view param:@{@"user_id":[UserModel sharedInstance].userId,@"status":@(status)} success:^(NSDictionary *obj, NSInteger code, NSString *mes) {
+        NSLog(@"%@",obj);
+    } failure:^(ErrorType errorType, NSString *mes) {
+        
+    }];
+}
 
 #pragma mark -- UITableViewDelegate, UITableViewDataSource
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
@@ -81,9 +89,9 @@ static NSString * const UserListTableViewCellID = @"UserListTableViewCellID";
     WeakSelf;
     ManagerUserModel *model = self.userListModel.listArr[indexPath.row];
     [cell reloadUIWithMolde:model userListCancelBlock:^{
-        NSLog(@"注销");
+        [weakSelf operationUser:(model.status ?  0:1 ) indexPath:indexPath];
     } userListDeleteBlock:^{
-        NSLog(@"删除");
+        [weakSelf operationUser:2 indexPath:indexPath];
     }];
     return cell;
 }

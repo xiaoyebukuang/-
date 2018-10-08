@@ -62,7 +62,8 @@
 #define API_STATISTICS_GETADVICELIST   [NSString stringWithFormat:@"%@/statistics/getAdviceList",BASE_URL]
 //4.用户列表
 #define API_STATISTICS_GETUSERLIST     [NSString stringWithFormat:@"%@/statistics/getUserList",BASE_URL]
-
+//5.删除，注销，取消注销接口
+#define API_STATISTICS_EDITUSERSTATUS  [NSString stringWithFormat:@"%@/statistics/editUserStatus",BASE_URL]
 
 
 

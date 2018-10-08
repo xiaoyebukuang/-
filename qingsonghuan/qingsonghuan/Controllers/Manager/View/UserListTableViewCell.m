@@ -27,6 +27,8 @@
 //登机证号
 @property (nonatomic, strong) UILabel *workNumber;
 
+@property (nonatomic, strong) UIButton *cancelBtn;
+
 @property (nonatomic, copy) UserListCancelBlock cancelBlock;
 @property (nonatomic, copy) UserListDeleteBlock deleteBlock;
 @end
@@ -170,10 +172,8 @@
         make.right.equalTo(line02.mas_left);
     }];
     
-    UIButton *cancle = [UIButton buttonWithTitle:@"注销" font:SYSTEM_FONT_15 titleColor:[UIColor color_33B1FE]];
-    [cancle addTarget:self action:@selector(cancleBtnEvent:) forControlEvents:UIControlEventTouchUpInside];
-    [self.bgView addSubview:cancle];
-    [cancle mas_makeConstraints:^(MASConstraintMaker *make) {
+    [self.bgView addSubview:self.cancelBtn];
+    [self.cancelBtn mas_makeConstraints:^(MASConstraintMaker *make) {
         make.bottom.right.equalTo(self.bgView);
         make.top.equalTo(line02);
         make.left.equalTo(line02.mas_right);
@@ -184,13 +184,13 @@
         self.deleteBlock();
     }
 }
-- (void)cancleBtnEvent:(UIButton *)sender {
+- (void)cancelBtnEvent:(UIButton *)sender {
     if (self.cancelBlock) {
         self.cancelBlock();
     }
 }
 - (void)reloadUIWithMolde:(ManagerUserModel *)model userListCancelBlock:(UserListCancelBlock)cancelBlock userListDeleteBlock:(UserListDeleteBlock)deleteBlock {
-    self.phone.text = model.user_id;
+    self.phone.text = model.phone;
     self.workNumber.text = model.work_number;
     self.sex.text = [model.sex isEqualToString:@"1"] ? @"男":@"女";
     self.airlineName.text = model.airline_name;
@@ -199,6 +199,7 @@
     self.visaName.text = model.visa_name;
     self.cancelBlock = cancelBlock;
     self.deleteBlock = deleteBlock;
+    [self.cancelBtn setTitle:(model.status ? @"已注销":@"注销") forState:UIControlStateNormal];
 }
 #pragma mark -- setup
 - (UIView *)bgView {
@@ -264,5 +265,12 @@
     return _workNumber;
 }
 
+- (UIButton *)cancelBtn {
+    if (!_cancelBtn) {
+        _cancelBtn = [UIButton buttonWithTitle:@"注销" font:SYSTEM_FONT_15 titleColor:[UIColor color_33B1FE]];
+        [_cancelBtn addTarget:self action:@selector(cancelBtnEvent:) forControlEvents:UIControlEventTouchUpInside];
+    }
+    return _cancelBtn;
+}
 
 @end

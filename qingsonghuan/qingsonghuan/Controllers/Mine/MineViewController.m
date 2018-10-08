@@ -35,7 +35,7 @@ static NSString * const MineTableViewCellID = @"MineTableViewCellID";
 - (void)setupView {
     [self.view addSubview:self.mineTableView];
     [self.mineTableView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.right.top.bottom.equalTo(self.view);
+        make.edges.equalTo(self.view);
     }];
     if (@available(iOS 11.0,*)) {
         self.mineTableView.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;
