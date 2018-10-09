@@ -19,6 +19,7 @@
 - (instancetype)init {
     self = [super init];
     if (self) {
+        self.backgroundColor = [UIColor clearColor];
         self.font = SYSTEM_FONT_15;
         self.textColor = [UIColor color_333333];
         self.delegate = self;

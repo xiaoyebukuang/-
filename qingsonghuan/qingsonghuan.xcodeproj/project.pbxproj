@@ -49,6 +49,7 @@
 		655FA60B216BA8B8009625B0 /* NoticeListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 655FA60A216BA8B8009625B0 /* NoticeListModel.m */; };
 		6570811B216CA2EE002F9AD0 /* UserListScreenViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6570811A216CA2EE002F9AD0 /* UserListScreenViewController.m */; };
 		6570811E216CA3C8002F9AD0 /* UserListScreenModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 6570811D216CA3C8002F9AD0 /* UserListScreenModel.m */; };
+		65708121216CAAB4002F9AD0 /* PublishNoticeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 65708120216CAAB4002F9AD0 /* PublishNoticeViewController.m */; };
 		65D0CA3F214F9AFD00A3DB66 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 65D0CA3E214F9AFD00A3DB66 /* AppDelegate.m */; };
 		65D0CA47214F9B0000A3DB66 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 65D0CA46214F9B0000A3DB66 /* Assets.xcassets */; };
 		65D0CA4D214F9B0000A3DB66 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 65D0CA4C214F9B0000A3DB66 /* main.m */; };
@@ -174,6 +175,8 @@
 		6570811A216CA2EE002F9AD0 /* UserListScreenViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UserListScreenViewController.m; sourceTree = "<group>"; };
 		6570811C216CA3C8002F9AD0 /* UserListScreenModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UserListScreenModel.h; sourceTree = "<group>"; };
 		6570811D216CA3C8002F9AD0 /* UserListScreenModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UserListScreenModel.m; sourceTree = "<group>"; };
+		6570811F216CAAB4002F9AD0 /* PublishNoticeViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PublishNoticeViewController.h; sourceTree = "<group>"; };
+		65708120216CAAB4002F9AD0 /* PublishNoticeViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PublishNoticeViewController.m; sourceTree = "<group>"; };
 		65D0CA3A214F9AFD00A3DB66 /* qingsonghuan.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = qingsonghuan.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		65D0CA3D214F9AFD00A3DB66 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		65D0CA3E214F9AFD00A3DB66 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -416,6 +419,8 @@
 				655FA5D121667854009625B0 /* RegNumberViewController.m */,
 				655FA5DA21668320009625B0 /* DeviceViewController.h */,
 				655FA5DB21668320009625B0 /* DeviceViewController.m */,
+				6570811F216CAAB4002F9AD0 /* PublishNoticeViewController.h */,
+				65708120216CAAB4002F9AD0 /* PublishNoticeViewController.m */,
 				655FA5E02166885F009625B0 /* AdviceViewController.h */,
 				655FA5E12166885F009625B0 /* AdviceViewController.m */,
 				655FA5E92166906B009625B0 /* AdviceDetailViewController.h */,
@@ -898,6 +903,7 @@
 				652FCC21215F5AFB009F41E8 /* MailListTableViewCell.m in Sources */,
 				652FCC0F215E089B009F41E8 /* RegisterModel.m in Sources */,
 				6526D16121614A020074D358 /* MainReecordViewController.m in Sources */,
+				65708121216CAAB4002F9AD0 /* PublishNoticeViewController.m in Sources */,
 				652C0D192159CC3F00BD03FC /* UserModel.m in Sources */,
 				65D0CA4D214F9B0000A3DB66 /* main.m in Sources */,
 				65D6BECE2160A03F002ABFDF /* MailReadModel.m in Sources */,

@@ -69,6 +69,8 @@
 #define API_STATISTICS_FLIGHTSTA       [NSString stringWithFormat:@"%@/statistics/flightStatistics",BASE_URL]
 //7.站内信统计
 #define API_STATISTICS_LETTERSTA       [NSString stringWithFormat:@"%@/statistics/letterStatistics",BASE_URL]
+//8.添加公告
+#define API_STATISTICS_ADDANNOUNCE     [NSString stringWithFormat:@"%@/statistics/add_announcement",BASE_URL]
 
 
 

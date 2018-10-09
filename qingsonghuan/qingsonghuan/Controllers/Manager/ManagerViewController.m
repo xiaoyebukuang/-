@@ -12,6 +12,7 @@
 #import "DeviceViewController.h"
 #import "AdviceViewController.h"
 #import "UserListViewController.h"
+#import "PublishNoticeViewController.h"
 static NSString * const ManagerTableViewCellID = @"ManagerTableViewCellID";
 
 @interface ManagerViewController ()<UITableViewDelegate,UITableViewDataSource>
@@ -67,6 +68,11 @@ static NSString * const ManagerTableViewCellID = @"ManagerTableViewCellID";
         RegNumberViewController *regNumVC = [[RegNumberViewController alloc]init];
         regNumVC.type = ManagerTypeLetter;
         [self.navigationController pushViewController:regNumVC animated:YES];
+    }
+    //发布公告
+    if (indexPath.row == 4) {
+        PublishNoticeViewController *publishVC = [[PublishNoticeViewController alloc]init];
+        [self.navigationController pushViewController:publishVC animated:YES];
     }
     //意见反馈
     if (indexPath.row == 5) {

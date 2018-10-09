@@ -23,8 +23,6 @@ static NSString * const CommonTableViewCell05ID = @"CommonTableViewCell05ID";
 
 @property (nonatomic, strong) UITableView *submitTV;
 
-
-
 @property (nonatomic, strong) UIView *footerView;
 
 

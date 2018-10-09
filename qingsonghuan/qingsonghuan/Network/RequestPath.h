@@ -187,5 +187,17 @@
                               success:(void (^)(NSDictionary *obj, NSInteger code, NSString *mes))success
                               failure:(void (^)(ErrorType errorType, NSString *mes))failure;
 
+/**
+ 8.添加公告
+ */
++ (void)statistics_addAnnouncementView:(UIView *)view
+                                 param:(NSDictionary *)param
+                               success:(void (^)(NSDictionary *obj, NSInteger code, NSString *mes))success
+                               failure:(void (^)(ErrorType errorType, NSString *mes))failure;
+
+//8.添加公告
+#define API_STATISTICS_ADDANNOUNCE     [NSString stringWithFormat:@"%@/statistics/add_announcement",BASE_URL]
+
+
 
 @end
