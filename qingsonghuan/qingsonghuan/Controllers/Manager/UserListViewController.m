@@ -10,7 +10,8 @@
 #import "UserListTableViewCell.h"
 #import "MJRefreshControl.h"
 #import "UserListModel.h"
-
+#import "UserListScreenModel.h"
+#import "UserListScreenViewController.h"
 static NSString * const UserListTableViewCellID = @"UserListTableViewCellID";
 
 @interface UserListViewController ()<UITableViewDelegate, UITableViewDataSource>
@@ -21,6 +22,14 @@ static NSString * const UserListTableViewCellID = @"UserListTableViewCellID";
 //是否正在请求
 @property (nonatomic, assign) BOOL isRequest;
 
+@property (nonatomic, strong) UIButton *screenBtn;
+
+
+//筛选
+@property (nonatomic, strong) UserListScreenModel *userListScreenModel;
+//筛选页面
+@property (nonatomic, strong) UserListScreenViewController *screenVC;
+
 @end
 
 @implementation UserListViewController
@@ -29,7 +38,9 @@ static NSString * const UserListTableViewCellID = @"UserListTableViewCellID";
     [super viewDidLoad];
     self.title = @"用户列表";
     self.userListModel = [[UserListModel alloc]init];
+    self.userListScreenModel = [[UserListScreenModel alloc]init];
     [self setupView];
+    [self setNavigationBar];
     [self setupData];
 }
 - (void)setupView {
@@ -37,6 +48,12 @@ static NSString * const UserListTableViewCellID = @"UserListTableViewCellID";
     [self.userListTableV mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.right.top.bottom.equalTo(self.view);
     }];
+}
+- (void)setNavigationBar {
+    UIBarButtonItem *rightButtonItem = [[UIBarButtonItem alloc]initWithCustomView:self.screenBtn];
+    UIBarButtonItem *rightNagetiveSpacer = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemFixedSpace target:nil action:nil];
+    rightNagetiveSpacer.width = -10;
+    self.navigationItem.rightBarButtonItems = @[rightButtonItem, rightNagetiveSpacer];
 }
 - (void)setupData {
     WeakSelf;
@@ -47,6 +64,7 @@ static NSString * const UserListTableViewCellID = @"UserListTableViewCellID";
     }];
     [MJRefreshControl beginRefresh:self.userListTableV];
 }
+//列表数据
 - (void)getUserInfo:(BOOL)refresh {
     
     if (self.isRequest) {
@@ -56,7 +74,9 @@ static NSString * const UserListTableViewCellID = @"UserListTableViewCellID";
     NSDictionary *param = @{
                             @"page": refresh ? @(1):@(self.userListModel.page + 1),
                             @"limit":@(20),
-                            @"user_id":[UserModel sharedInstance].userId
+                            @"user_id":[UserModel sharedInstance].userId,
+                            @"user_phone":self.userListScreenModel.user_phone,
+                            @"work_number":self.userListScreenModel.work_number
                             };
     [RequestPath statistics_getUserListParam:param success:^(NSDictionary *obj, NSInteger code, NSString *mes) {
         self.isRequest = NO;
@@ -71,13 +91,48 @@ static NSString * const UserListTableViewCellID = @"UserListTableViewCellID";
         [MJRefreshControl endRefresh:self.userListTableV];
     }];
 }
+//删除 注销 取消注销
 - (void)operationUser:(NSInteger)status indexPath:(NSIndexPath *)indexPath {
-    NSLog(@"%ld",(long)status);
-    [RequestPath statistics_editUserStatusView:self.view param:@{@"user_id":[UserModel sharedInstance].userId,@"status":@(status)} success:^(NSDictionary *obj, NSInteger code, NSString *mes) {
-        NSLog(@"%@",obj);
+    ManagerUserModel *model = self.userListModel.listArr[indexPath.row];
+    [RequestPath statistics_editUserStatusView:self.view param:@{@"user_id":model.user_id,@"status":@(status)} success:^(NSDictionary *obj, NSInteger code, NSString *mes) {
+        if (status == 0||status == 1) {
+            //取消注销
+            model.status = status;
+            self.userListModel.listArr[indexPath.row] = model;
+            [self.userListTableV reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationNone];
+        } else {
+            [self.userListModel.listArr removeObjectAtIndex:indexPath.row];
+            [self.userListTableV deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
+        }
+        [MBProgressHUD showSuccess:@"操作成功" ToView:self.view];
     } failure:^(ErrorType errorType, NSString *mes) {
         
     }];
+}
+#pragma mark -- event
+//筛选
+- (void)rightBtnNavigationBarEvent:(UIButton *)sender {
+    if (sender.selected) {
+        [self.screenVC dismiss];
+        sender.selected = !sender.selected;
+    } else {
+        [self presentScreenVC];
+        sender.selected = !sender.selected;
+    }
+}
+- (void)presentScreenVC {
+    if (self.screenVC) {
+        self.screenVC = nil;
+    }
+    WeakSelf;
+    self.screenVC = [[UserListScreenViewController alloc]initWithUserListScreenModel:self.userListScreenModel userListScreenBlock:^(UserListScreenModel *userListScreenModel) {
+        weakSelf.userListScreenModel = userListScreenModel;
+        [weakSelf rightBtnNavigationBarEvent:self.screenBtn];
+        [MJRefreshControl beginRefresh:weakSelf.userListTableV];
+    }];
+    [self addChildViewController:self.screenVC];
+    [self.view addSubview:self.screenVC.view];
+    [self.screenVC show];
 }
 
 #pragma mark -- UITableViewDelegate, UITableViewDataSource
@@ -109,5 +164,13 @@ static NSString * const UserListTableViewCellID = @"UserListTableViewCellID";
     }
     return _userListTableV;
 }
-
+//筛选按钮
+- (UIButton *)screenBtn {
+    if (!_screenBtn) {
+        _screenBtn = [UIButton buttonWithImage:@"flight_search" title:@"筛选" selectTitel:@"取消" titleColor:[UIColor color_FFFFFF] font:SYSTEM_FONT_17];
+        _screenBtn.frame = CGRectMake(0, 0, 60, 40);
+        [_screenBtn addTarget:self action:@selector(rightBtnNavigationBarEvent:) forControlEvents:UIControlEventTouchUpInside];
+    }
+    return _screenBtn;
+}
 @end

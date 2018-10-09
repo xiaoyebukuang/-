@@ -181,15 +181,6 @@
         make.top.equalTo(line02);
         make.left.equalTo(line02.mas_right);
     }];
-    
-    self.date.text = @"2018-10-23";
-    self.airlineNumber.text = @"1243(+1)";
-    self.wordLogo.text = @"G";
-    self.legInfo.text = @"上海+北京+杭州";
-    
-    self.time.text = @"12:00";
-    self.visa.text = @"双签";
-    self.duty.text = @"乘务长";
 }
 - (void)editBtnEvent:(UIButton *)sender {
     if (self.editBlock) {

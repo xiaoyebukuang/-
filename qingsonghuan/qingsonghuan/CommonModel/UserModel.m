@@ -57,18 +57,18 @@
     return [NSString safe_string:phone];
 }
 /** 管理员权限 */
-- (void)setIdentity:(BOOL)identity {
-    [[NSUserDefaults standardUserDefaults]setBool:identity forKey:USER_IDENTITY];
+- (void)setIdentity:(NSInteger)identity {
+    [[NSUserDefaults standardUserDefaults]setInteger:identity forKey:USER_IDENTITY];
     [[NSUserDefaults standardUserDefaults]synchronize];
 }
-- (BOOL)identity {
-    BOOL identity = [[NSUserDefaults standardUserDefaults]boolForKey:USER_IDENTITY];
+- (NSInteger)identity {
+    NSInteger identity = [[NSUserDefaults standardUserDefaults]integerForKey:USER_IDENTITY];
     return identity;
 }
 
 - (void)reloadWithDic:(NSDictionary *)dic {
     self.isLogin = YES;
-    self.identity = [NSString safe_bool:dic[@"identity"]];
+    self.identity = [NSString safe_integer:dic[@"identity"]];
     self.userId =   [NSString safe_string:dic[@"userId"]];
     self.sign =     [NSString safe_string:dic[@"sign"]];
     self.phone  =   [NSString safe_string:dic[@"phone"]];
@@ -77,7 +77,7 @@
 
 - (void)signOut {
     self.isLogin = NO;
-    self.identity = NO;
+    self.identity = 1;
     self.userId =   @"";
     self.sign =     @"";
     self.phone =    @"";

@@ -63,8 +63,8 @@
 #define API_STATISTICS_GETADVICELIST   [NSString stringWithFormat:@"%@/statistics/getAdviceList",BASE_URL]
 //4.用户列表
 #define API_STATISTICS_GETUSERLIST     [NSString stringWithFormat:@"%@/statistics/getUserList",BASE_URL]
-//5.删除，注销，取消注销接口
-#define API_STATISTICS_EDITUSERSTATUS  [NSString stringWithFormat:@"%@/statistics/editUserStatus",BASE_URL]
+//5.用户注销删除接口
+#define API_STATISTICS_EDITUSERSTATUS  [NSString stringWithFormat:@"%@/user/editUserStatus",BASE_URL]
 //6.航班统计
 #define API_STATISTICS_FLIGHTSTA       [NSString stringWithFormat:@"%@/statistics/flightStatistics",BASE_URL]
 //7.站内信统计

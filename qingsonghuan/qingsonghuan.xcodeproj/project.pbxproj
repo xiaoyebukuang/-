@@ -47,6 +47,8 @@
 		655FA5FA216B20CB009625B0 /* NoticeDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 655FA5F9216B20CB009625B0 /* NoticeDetailViewController.m */; };
 		655FA5FD216B2167009625B0 /* NoticeTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 655FA5FC216B2167009625B0 /* NoticeTableViewCell.m */; };
 		655FA60B216BA8B8009625B0 /* NoticeListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 655FA60A216BA8B8009625B0 /* NoticeListModel.m */; };
+		6570811B216CA2EE002F9AD0 /* UserListScreenViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6570811A216CA2EE002F9AD0 /* UserListScreenViewController.m */; };
+		6570811E216CA3C8002F9AD0 /* UserListScreenModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 6570811D216CA3C8002F9AD0 /* UserListScreenModel.m */; };
 		65D0CA3F214F9AFD00A3DB66 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 65D0CA3E214F9AFD00A3DB66 /* AppDelegate.m */; };
 		65D0CA47214F9B0000A3DB66 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 65D0CA46214F9B0000A3DB66 /* Assets.xcassets */; };
 		65D0CA4D214F9B0000A3DB66 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 65D0CA4C214F9B0000A3DB66 /* main.m */; };
@@ -168,6 +170,10 @@
 		655FA5FC216B2167009625B0 /* NoticeTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NoticeTableViewCell.m; sourceTree = "<group>"; };
 		655FA609216BA8B8009625B0 /* NoticeListModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NoticeListModel.h; sourceTree = "<group>"; };
 		655FA60A216BA8B8009625B0 /* NoticeListModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NoticeListModel.m; sourceTree = "<group>"; };
+		65708119216CA2EE002F9AD0 /* UserListScreenViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UserListScreenViewController.h; sourceTree = "<group>"; };
+		6570811A216CA2EE002F9AD0 /* UserListScreenViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UserListScreenViewController.m; sourceTree = "<group>"; };
+		6570811C216CA3C8002F9AD0 /* UserListScreenModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UserListScreenModel.h; sourceTree = "<group>"; };
+		6570811D216CA3C8002F9AD0 /* UserListScreenModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UserListScreenModel.m; sourceTree = "<group>"; };
 		65D0CA3A214F9AFD00A3DB66 /* qingsonghuan.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = qingsonghuan.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		65D0CA3D214F9AFD00A3DB66 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		65D0CA3E214F9AFD00A3DB66 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -416,6 +422,8 @@
 				655FA5EA2166906B009625B0 /* AdviceDetailViewController.m */,
 				655FA5EC2166937B009625B0 /* UserListViewController.h */,
 				655FA5ED2166937B009625B0 /* UserListViewController.m */,
+				65708119216CA2EE002F9AD0 /* UserListScreenViewController.h */,
+				6570811A216CA2EE002F9AD0 /* UserListScreenViewController.m */,
 			);
 			path = Manager;
 			sourceTree = "<group>";
@@ -446,6 +454,8 @@
 				655FA5E721668BB7009625B0 /* AdviceListModel.m */,
 				655FA5F221669976009625B0 /* UserListModel.h */,
 				655FA5F321669976009625B0 /* UserListModel.m */,
+				6570811C216CA3C8002F9AD0 /* UserListScreenModel.h */,
+				6570811D216CA3C8002F9AD0 /* UserListScreenModel.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -853,9 +863,11 @@
 				652FCBF5215D3C99009F41E8 /* MJRefreshControl.m in Sources */,
 				652C0D152159CB8800BD03FC /* FlightListViewController.m in Sources */,
 				65F870F1215B7F3600DD1F59 /* FlightListTableViewCell.m in Sources */,
+				6570811B216CA2EE002F9AD0 /* UserListScreenViewController.m in Sources */,
 				652FCBFB215D3D3E009F41E8 /* XYPickerDateViewController.m in Sources */,
 				65D6BEC821609229002ABFDF /* MailFlightView.m in Sources */,
 				65D0CA95215487CE00A3DB66 /* UILabel+Helper.m in Sources */,
+				6570811E216CA3C8002F9AD0 /* UserListScreenModel.m in Sources */,
 				655FA5D5216679A6009625B0 /* ManagerCommonTableViewCell.m in Sources */,
 				65D0CA9C21548AB100A3DB66 /* UIButton+Helper.m in Sources */,
 				65D6BEBF215FDE12002ABFDF /* MailReadViewController.m in Sources */,

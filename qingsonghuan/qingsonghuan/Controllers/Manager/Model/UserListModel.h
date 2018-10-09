@@ -40,7 +40,7 @@
 @property (nonatomic, copy) NSString *duty_name;
 //签证类型
 @property (nonatomic, copy) NSString *visa_name;
-//状态
+//状态    0正常，1禁用
 @property (nonatomic, assign) BOOL status;
 
 - (instancetype)initWithDic:(NSDictionary *)dic;

@@ -34,7 +34,7 @@
 /** 电话 */
 @property (nonatomic, copy) NSString *phone;
 /** 管理员权限 */
-@property (nonatomic, assign) BOOL identity;
+@property (nonatomic, assign) NSInteger identity;
 
 - (void)signOut;
 @end

@@ -227,7 +227,7 @@ static NSString * const FlightListTableViewCellID = @"FlightListTableViewCellID"
         
         UIButton *managerBtn = [UIButton buttonWithTitle:@"管理员" font:SYSTEM_BOLD_FONT(17) titleColor:[UIColor color_84BBDE] backgroundImage:@"flight_submit"];
         [managerBtn addTarget:self action:@selector(managerBtnEvent:) forControlEvents:UIControlEventTouchUpInside];
-        managerBtn.hidden = ![UserModel sharedInstance].identity;
+        managerBtn.hidden = !([UserModel sharedInstance].identity == 9);
         [view addSubview:managerBtn];
         [managerBtn mas_makeConstraints:^(MASConstraintMaker *make) {
             make.top.equalTo(view).offset(10);
