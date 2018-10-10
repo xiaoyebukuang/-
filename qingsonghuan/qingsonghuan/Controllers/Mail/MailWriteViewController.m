@@ -11,13 +11,11 @@
 #import "MailFlightView.h"
 #import "FlightListDetailViewController.h"
 #import "MainReecordViewController.h"
-@interface MailWriteViewController ()<MainReecordViewControllerDelegate>
+@interface MailWriteViewController ()<MainReecordViewControllerDelegate,UIScrollViewDelegate>
 
 @property (nonatomic, strong) UIScrollView *scrollView;
 
 @property (nonatomic, strong) UIView *headerView;
-
-@property (nonatomic, strong) UIView *footerView;
 
 @property (nonatomic, strong) XYTextView *textView;
 
@@ -34,17 +32,22 @@
     [super viewDidLoad];
     self.title = @"写站内信";
     [self setupUI];
+    [self setNavigationBar];
+}
+- (void)setNavigationBar {
+    UIButton *submitBtn = [UIButton buttonWithTitle:@"发送" font:SYSTEM_FONT_17 titleColor:[UIColor color_FFFFFF]];
+    submitBtn.frame = CGRectMake(0, 0, 44, 44);
+    [submitBtn addTarget:self action:@selector(submitBtnEvent:) forControlEvents:UIControlEventTouchUpInside];
+    UIBarButtonItem *rightButtonItem = [[UIBarButtonItem alloc]initWithCustomView:submitBtn];
+    UIBarButtonItem *rightNagetiveSpacer = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemFixedSpace target:nil action:nil];
+    rightNagetiveSpacer.width = -10;
+    self.navigationItem.rightBarButtonItems = @[rightButtonItem, rightNagetiveSpacer];
 }
 - (void)setupUI {
-    [self.view addSubview:self.footerView];
-    [self.footerView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.width.bottom.equalTo(self.view);
-        make.height.mas_equalTo(50);
-    }];
     [self.view addSubview:self.scrollView];
+    self.scrollView.delegate = self;
     [self.scrollView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.width.top.equalTo(self.view);
-        make.bottom.equalTo(self.footerView.mas_top);
+        make.edges.equalTo(self.view);
     }];
     
     [self.scrollView addSubview:self.headerView];
@@ -120,6 +123,10 @@
         }];
     }
 }
+#pragma mark -- UIScrollViewDelegate
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView {
+    [self.view endEditing:YES];
+}
 #pragma mark -- MainReecordViewControllerDelegate
 - (void)selectFlightModel:(FlightModel *)model {
     self.sendModel = model;
@@ -178,18 +185,5 @@
         _textView.placeHolder = @"请输入内容";
     }
     return _textView;
-}
-- (UIView *)footerView {
-    if (!_footerView) {
-        UIView *view = [[UIView alloc]init];
-        UIButton *submitBtn = [UIButton buttonWithBGImage:@"mail_submit_btn" title:@"发 送" font:SYSTEM_FONT_17 textColor:[UIColor color_FFFFFF]];
-        [submitBtn addTarget:self action:@selector(submitBtnEvent:) forControlEvents:UIControlEventTouchUpInside];
-        [view addSubview:submitBtn];
-        [submitBtn mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.edges.equalTo(view);
-        }];
-        _footerView = view;
-    }
-    return _footerView;
 }
 @end

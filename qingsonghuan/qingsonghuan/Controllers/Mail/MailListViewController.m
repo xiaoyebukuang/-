@@ -253,6 +253,7 @@ static NSString * const MailListTableViewCellID = @"MailListTableViewCellID";
 - (UIButton *)editBtn {
     if (!_editBtn) {
         _editBtn = [UIButton buttonWithTitle:@"编辑" selectTitle:@"取消" font:SYSTEM_FONT_17 titleColor:[UIColor color_FFFFFF]];
+        _editBtn.frame = CGRectMake(0, 0, 44, 44);
         [_editBtn addTarget:self action:@selector(editBtnEvent:) forControlEvents:UIControlEventTouchUpInside];
     }
     return _editBtn;
