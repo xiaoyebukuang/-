@@ -188,9 +188,11 @@
     }
 }
 - (void)deleteBtnEvent:(UIButton *)sender {
-    if (self.deleteBlock) {
-        self.deleteBlock();
-    }
+    [XYAlertViewTool showTitle:@"提示" message:@"是否删除" alertSureBlock:^{
+        if (self.deleteBlock) {
+            self.deleteBlock();
+        }
+    }];
 }
 - (void)reloadUIWithMolde:(FlightModel *)model mainReecordEditBlock:(MainReecordEditBlock)editBlock mainReecordDeleteBlock:(MainReecordDeleteBlock)deleteBlock {
     

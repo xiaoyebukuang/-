@@ -160,6 +160,7 @@
 /** 弹出此弹窗 */
 - (void)show{
     UIWindow *keyWindow = [UIApplication sharedApplication].keyWindow;
+    [keyWindow endEditing:YES];
     [keyWindow addSubview:self];
 }
 #pragma mark - 移除此弹窗

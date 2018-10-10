@@ -76,7 +76,7 @@
             self.numberCount = 5;
             self.keyboardType = UIKeyboardTypeDefault;
             self.borderStyle = UITextBorderStyleRoundedRect;
-            [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(textViewEditChanged:) name:UITextFieldTextDidChangeNotification object:nil];
+            [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(textViewEditChanged:) name:UITextFieldTextDidChangeNotification object:self];
         }
             break;
         default:
