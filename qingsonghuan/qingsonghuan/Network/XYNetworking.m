@@ -127,6 +127,10 @@ static NSTimeInterval const timeInterval = 20.0;
     [request setValue:model.userId forHTTPHeaderField:@"USERID"];
     [request setValue:model.sign forHTTPHeaderField:@"SIGN"];
     [request setValue:[NSString stringWithFormat:@"%f",[NSDate getDateStample:[NSDate date]]] forHTTPHeaderField:@"TIME"];
+    NSLog(@"key---------------------key");
+    NSLog(@"USERID = %@",model.userId);
+    NSLog(@"SIGN = %@",model.sign);
+    NSLog(@"TIME = %@",[NSString stringWithFormat:@"%f",[NSDate getDateStample:[NSDate date]]]);
     return request;
 }
 

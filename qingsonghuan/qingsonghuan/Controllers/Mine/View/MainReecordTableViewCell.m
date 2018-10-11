@@ -13,7 +13,7 @@
 @property (nonatomic, strong) UIView *bgView;
 //签到日期
 @property (nonatomic, strong) UILabel *date;
-//航班号
+//航班号码
 @property (nonatomic, strong) UILabel *airlineNumber;
 //字母标识
 @property (nonatomic, strong) UILabel *wordLogo;
@@ -66,7 +66,7 @@
         make.left.equalTo(dateLabel.mas_right);
         make.centerY.equalTo(dateLabel);
     }];
-    //航班号
+    //航班号码
     UILabel *airlineNumberLabel = [[UILabel alloc]initWithText:@"航班号码:" font:SYSTEM_FONT_13 textColor:[UIColor color_666666]];
     [self.bgView addSubview:airlineNumberLabel];
     [airlineNumberLabel mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -228,7 +228,7 @@
     }
     return _date;
 }
-//航班号
+//航班号码
 - (UILabel *)airlineNumber {
     if (!_airlineNumber) {
         _airlineNumber = [[UILabel alloc]initWithText:@"" font:SYSTEM_FONT_13 textColor:[UIColor color_666666]];

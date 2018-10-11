@@ -138,11 +138,15 @@
     } else if ([NSString isEmpty:self.sign_time]) {
         des = @"请选择签到时间";
     } else if ([NSString isEmpty:self.airline_number]) {
-        des = @"请选择航班号";
+        des = @"请选择航班号码";
+    } else if (!(self.airline_number.length >=3 && self.airline_number.length <= 4)) {
+        des = @"航班号码格式不正确";
     } else if (self.daysModel == nil) {
         des = @"请选择出差天数";
     } else if (self.leg_info.count == 0) {
         des = @"请输入航段信息";
+    } else if (self.leg_info.count < 2) {
+        des = @"航段信息最少两段";
     } else if (self.visaModel == nil) {
         des = @"请选择签证信息";
     } else if (self.wordLogoModel == nil) {

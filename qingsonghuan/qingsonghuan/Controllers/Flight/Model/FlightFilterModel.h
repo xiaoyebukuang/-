@@ -15,7 +15,7 @@
 @property (nonatomic, copy) NSString *sign_date_str;
 //时间戳
 @property (nonatomic, assign) NSInteger sign_date_stample;
-//航班号
+//航班号码
 @property (nonatomic, copy) NSString *airline_number;
 //签到时段
 @property (nonatomic, strong) SignModel *signModel;

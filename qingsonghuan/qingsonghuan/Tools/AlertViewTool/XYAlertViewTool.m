@@ -40,7 +40,7 @@
     [tool show];
 }
 + (void)showFieldView:(AlertBlock)alertBlock {
-    XYAlertViewTool *tool = [[XYAlertViewTool alloc]initWithTitle:@"城市名称" alertBlock:alertBlock leftButtonTitle:@"取消" rightButtonTitle:@"确定"];
+    XYAlertViewTool *tool = [[XYAlertViewTool alloc]initWithTitle:@"城市或机场" alertBlock:alertBlock leftButtonTitle:@"取消" rightButtonTitle:@"确定"];
     [tool show];
 }
 

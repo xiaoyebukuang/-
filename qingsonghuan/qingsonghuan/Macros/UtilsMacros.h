@@ -61,7 +61,7 @@
 
 #define FLIGHT_SIGN_DATE                @"请选择签到日期"
 #define FLIGHT_SIGN_TIME                @"请选择签到时间"
-#define FLIGHT_AIR_NUMBER               @"请输入航班号"
+#define FLIGHT_AIR_NUMBER               @"请输入航班号码"
 #define FLIGHT_WORD_SIGN                @"请选择字母标识"
 
 
