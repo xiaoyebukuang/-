@@ -138,7 +138,8 @@ static NSString * const FlightListTableViewCellID = @"FlightListTableViewCellID"
                             @"visa_id":[NSString safe_string:self.flightFilterModel.visaModel.visa_id],
                             @"word_logo_id":[NSString safe_string:self.flightFilterModel.wordLogoModel.word_logo_id],
                             @"duty_id":[NSString safe_string:self.flightFilterModel.dutyModel.duty_id],
-                            @"airline_number":[NSString safe_string:self.flightFilterModel.airline_number]
+                            @"airline_number":[NSString safe_string:self.flightFilterModel.airline_number],
+                            @"leg_info":[NSString safe_string:self.flightFilterModel.first_leg]
                             };
     [RequestPath flight_getListFlightParam:param success:^(NSDictionary *obj, NSInteger code, NSString *mes) {
         self.isRequest = NO;

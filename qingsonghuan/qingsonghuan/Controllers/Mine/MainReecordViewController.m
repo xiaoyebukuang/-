@@ -118,7 +118,7 @@ static NSString * const MainReecordTableViewCellID = @"MainReecordTableViewCellI
     [cell reloadUIWithMolde:model mainReecordEditBlock:^{
         weakSelf.indexPath = indexPath;
         FlightSubmitViewController *VC = [[FlightSubmitViewController alloc]init];
-        VC.flightAddLineModel = model;
+        [VC reloadData:model];
         VC.isEdit = YES;
         [weakSelf.navigationController pushViewController:VC animated:YES];
     } mainReecordDeleteBlock:^{

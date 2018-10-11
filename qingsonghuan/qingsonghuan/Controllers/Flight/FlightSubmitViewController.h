@@ -8,12 +8,11 @@
 
 #import "BaseMultiViewController.h"
 #import "FlightListModel.h"
-
 @interface FlightSubmitViewController : BaseMultiViewController
-
-@property (nonatomic, strong) FlightModel *flightAddLineModel;
 
 //是否修改
 @property (nonatomic, assign) BOOL isEdit;
+
+- (void)reloadData:(FlightModel *)flightModel;
 
 @end

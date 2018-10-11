@@ -151,8 +151,6 @@
         des = @"请选择签证信息";
     } else if (self.wordLogoModel == nil) {
         des = @"请选择字母标识";
-    } else if (self.dutyModel == nil) {
-        des = @"请选择职位等级";
     }
     return des;
 }

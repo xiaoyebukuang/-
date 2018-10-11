@@ -12,6 +12,7 @@
 #import "XYPickerViewController.h"
 
 
+
 static NSString * const CommonTableViewCell01ID = @"CommonTableViewCell01ID";
 static NSString * const CommonTableViewCell03ID = @"CommonTableViewCell03ID";
 static NSString * const CommonTableViewCell04ID = @"CommonTableViewCell04ID";
@@ -25,13 +26,13 @@ static NSString * const CommonTableViewCell05ID = @"CommonTableViewCell05ID";
 
 @property (nonatomic, strong) UIView *footerView;
 
+@property (nonatomic, strong) FlightModel *flightAddLineModel;
 
 @end
 
 @implementation FlightSubmitViewController
-
-- (void)setFlightAddLineModel:(FlightModel *)flightAddLineModel {
-    _flightAddLineModel = [[FlightModel alloc]initWithModel:flightAddLineModel];
+- (void)reloadData:(FlightModel *)flightModel {
+    self.flightAddLineModel = [[FlightModel alloc]initWithModel:flightModel];
 }
 
 - (void)viewDidLoad {
