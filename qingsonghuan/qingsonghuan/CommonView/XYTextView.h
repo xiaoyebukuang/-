@@ -19,4 +19,6 @@
 
 @property (nonatomic, copy) NSString *placeHolder;
 
+@property (nonatomic, assign) NSInteger maxCount;
+
 @end

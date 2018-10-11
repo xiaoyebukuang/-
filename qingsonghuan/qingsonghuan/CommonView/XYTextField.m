@@ -68,7 +68,7 @@
         case UITextFieldFlight:
         {
             self.numberCount = 4;
-            self.keyboardType = UIKeyboardTypeNumberPad;
+            self.keyboardType = UIKeyboardTypeASCIICapable;
         }
             break;
         case UITextFieldCity:
@@ -146,7 +146,6 @@
     switch (self.filedType) {
             case UITextFieldTel:
             case UITextFieldCode:
-            case UITextFieldFlight:
         {
             NSUInteger length = string.length;
             for (int loopIndex = 0; loopIndex < length; loopIndex ++) {
@@ -162,6 +161,7 @@
             break;
         case UITextFieldPassword:
         case UITextFieldCard:
+        case UITextFieldFlight:
         {
             NSUInteger length = [string lengthOfBytesUsingEncoding:NSUTF8StringEncoding];
             for (int loopIndex = 0; loopIndex < length; loopIndex ++) {

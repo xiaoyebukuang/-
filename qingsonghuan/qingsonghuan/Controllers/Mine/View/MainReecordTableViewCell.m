@@ -188,7 +188,7 @@
     }
 }
 - (void)deleteBtnEvent:(UIButton *)sender {
-    [UIAlertViewTool showTitle:@"提示" message:@"是否删除" alertBlock:^(NSString *mes, NSInteger index) {
+    [UIAlertViewTool showTitle:@"提示" message:@"是否要删除该航班信息" alertBlock:^(NSString *mes, NSInteger index) {
         if (index == 1) {
             if (self.deleteBlock) {
                 self.deleteBlock();

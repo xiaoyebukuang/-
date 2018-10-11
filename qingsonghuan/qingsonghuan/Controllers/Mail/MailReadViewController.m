@@ -166,7 +166,7 @@
             make.width.mas_equalTo(MAIN_SCREEN_WIDTH/2 - 2);
         }];
         
-        UIButton *mail = [UIButton buttonWithBGImage:@"filter_detail_btn_bg" image:@"filter_detail_mail" title:@"站内信" font:SYSTEM_FONT_17 textColor:[UIColor color_FFFFFF]];
+        UIButton *mail = [UIButton buttonWithBGImage:@"filter_detail_btn_bg" image:@"filter_detail_mail" title:@"回复" font:SYSTEM_FONT_17 textColor:[UIColor color_FFFFFF]];
         [mail addTarget:self action:@selector(mailWriteBtnEvent:) forControlEvents:UIControlEventTouchUpInside];
         [view addSubview:mail];
         [mail mas_makeConstraints:^(MASConstraintMaker *make) {

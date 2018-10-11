@@ -77,7 +77,6 @@ static NSString * const CommonTableViewCell05ID = @"CommonTableViewCell05ID";
                             @"leg_info":[self.flightAddLineModel.leg_info componentsJoinedByString:@","],
                             @"visa_id":[NSString safe_string:self.flightAddLineModel.visaModel.visa_id],
                             @"word_logo_id":[NSString safe_string:self.flightAddLineModel.wordLogoModel.word_logo_id],
-                            @"duty_id":[NSString safe_string:self.flightAddLineModel.dutyModel.duty_id],
                             @"message":[NSString safe_string:self.flightAddLineModel.message],
                             @"days_id":[NSString safe_string:self.flightAddLineModel.daysModel.days_id],
                             @"user_id":[UserModel sharedInstance].userId
@@ -108,14 +107,14 @@ static NSString * const CommonTableViewCell05ID = @"CommonTableViewCell05ID";
 }
 #pragma mark -- UITableViewDelegate, UITableViewDataSource
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    return 8;
+    return 7;
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-    NSArray *titleArr = @[@"签到日期:",@"签到时间:",@"航班号码:",@"航段信息:",@"签证信息:",@"字母标识:",@"职务等级:",@"留言信息:"];
+    NSArray *titleArr = @[@"签到日期:",@"签到时间:",@"航班号码:",@"航段信息:",@"签证信息:",@"字母标识:",@"留言信息:"];
     CommonTableViewCell *cell;
     WeakSelf;
     RegNeedInfoModel *regModle = [RegNeedInfoModel sharedInstance];
-    if (indexPath.row == 0||indexPath.row == 1||indexPath.row == 4||indexPath.row == 5||indexPath.row == 6) {
+    if (indexPath.row == 0||indexPath.row == 1||indexPath.row == 4||indexPath.row == 5) {
         NSString *placeHolder;
         UIDatePickerMode pickerMode = UIDatePickerModeDate;
         NSString *content;
@@ -140,11 +139,6 @@ static NSString * const CommonTableViewCell05ID = @"CommonTableViewCell05ID";
                 placeHolder = FLIGHT_WORD_SIGN;
                 arr = regModle.wordLogoArr;
                 content = self.flightAddLineModel.wordLogoModel.word_logo_name;
-                break;
-            case 6:
-                placeHolder = LOGIN_POST_PLACEHOLDER;
-                arr = regModle.dutyModelArr;
-                content = self.flightAddLineModel.dutyModel.duty_name;
                 break;
             default:
                 break;
@@ -176,9 +170,6 @@ static NSString * const CommonTableViewCell05ID = @"CommonTableViewCell05ID";
                         } else if (indexPath.row == 5) {
                             weakSelf.flightAddLineModel.wordLogoModel = (WordLogoModel *)model;
                             ((CommonTableViewCell01 *)cell).textField.text = ((WordLogoModel *)model).word_logo_name;
-                        } else {
-                            weakSelf.flightAddLineModel.dutyModel = (DutyModel *)model;
-                            ((CommonTableViewCell01 *)cell).textField.text = ((DutyModel *)model).duty_name;
                         }
                     }
                 }];
