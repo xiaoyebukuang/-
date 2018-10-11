@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		62FB6F85E8E2FA0D047B1B93 /* libPods-qingsonghuan.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4307095D2F6D8C5CFEA11FE7 /* libPods-qingsonghuan.a */; };
+		650D7F31216F59F70081D5AD /* UIAlertViewToolModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 650D7F2E216F59F70081D5AD /* UIAlertViewToolModel.m */; };
+		650D7F32216F59F70081D5AD /* UIAlertViewTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 650D7F30216F59F70081D5AD /* UIAlertViewTool.m */; };
 		6526D16121614A020074D358 /* MainReecordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6526D16021614A020074D358 /* MainReecordViewController.m */; };
 		6526D16421614B8C0074D358 /* MainReecordTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6526D16321614B8C0074D358 /* MainReecordTableViewCell.m */; };
 		652C0D112158228300BD03FC /* XYNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = 652C0D102158228300BD03FC /* XYNetworking.m */; };
@@ -25,7 +27,6 @@
 		652FCC09215DF5B3009F41E8 /* RegisterTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 652FCC08215DF5B3009F41E8 /* RegisterTableViewCell.m */; };
 		652FCC0F215E089B009F41E8 /* RegisterModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 652FCC0E215E089B009F41E8 /* RegisterModel.m */; };
 		652FCC15215F159A009F41E8 /* RegNeedInfoModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 652FCC13215F159A009F41E8 /* RegNeedInfoModel.m */; };
-		652FCC19215F1608009F41E8 /* XYAlertViewTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 652FCC18215F1608009F41E8 /* XYAlertViewTool.m */; };
 		652FCC1D215F5A75009F41E8 /* MailListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 652FCC1C215F5A75009F41E8 /* MailListViewController.m */; };
 		652FCC21215F5AFB009F41E8 /* MailListTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 652FCC20215F5AFB009F41E8 /* MailListTableViewCell.m */; };
 		652FCC25215F5E39009F41E8 /* MailListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 652FCC24215F5E39009F41E8 /* MailListModel.m */; };
@@ -113,6 +114,10 @@
 /* Begin PBXFileReference section */
 		4234196DFA256330D83651D7 /* Pods-qingsonghuan.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-qingsonghuan.debug.xcconfig"; path = "Pods/Target Support Files/Pods-qingsonghuan/Pods-qingsonghuan.debug.xcconfig"; sourceTree = "<group>"; };
 		4307095D2F6D8C5CFEA11FE7 /* libPods-qingsonghuan.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-qingsonghuan.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		650D7F2D216F59F70081D5AD /* UIAlertViewTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIAlertViewTool.h; sourceTree = "<group>"; };
+		650D7F2E216F59F70081D5AD /* UIAlertViewToolModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIAlertViewToolModel.m; sourceTree = "<group>"; };
+		650D7F2F216F59F70081D5AD /* UIAlertViewToolModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIAlertViewToolModel.h; sourceTree = "<group>"; };
+		650D7F30216F59F70081D5AD /* UIAlertViewTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIAlertViewTool.m; sourceTree = "<group>"; };
 		6526D15F21614A020074D358 /* MainReecordViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MainReecordViewController.h; sourceTree = "<group>"; };
 		6526D16021614A020074D358 /* MainReecordViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MainReecordViewController.m; sourceTree = "<group>"; };
 		6526D16221614B8C0074D358 /* MainReecordTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MainReecordTableViewCell.h; sourceTree = "<group>"; };
@@ -148,8 +153,6 @@
 		652FCC0E215E089B009F41E8 /* RegisterModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RegisterModel.m; sourceTree = "<group>"; };
 		652FCC13215F159A009F41E8 /* RegNeedInfoModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegNeedInfoModel.m; sourceTree = "<group>"; };
 		652FCC14215F159A009F41E8 /* RegNeedInfoModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegNeedInfoModel.h; sourceTree = "<group>"; };
-		652FCC17215F1608009F41E8 /* XYAlertViewTool.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XYAlertViewTool.h; sourceTree = "<group>"; };
-		652FCC18215F1608009F41E8 /* XYAlertViewTool.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XYAlertViewTool.m; sourceTree = "<group>"; };
 		652FCC1B215F5A75009F41E8 /* MailListViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MailListViewController.h; sourceTree = "<group>"; };
 		652FCC1C215F5A75009F41E8 /* MailListViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MailListViewController.m; sourceTree = "<group>"; };
 		652FCC1F215F5AFB009F41E8 /* MailListTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MailListTableViewCell.h; sourceTree = "<group>"; };
@@ -312,6 +315,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		650D7F2C216F59F70081D5AD /* UIAlertViewTool */ = {
+			isa = PBXGroup;
+			children = (
+				650D7F2D216F59F70081D5AD /* UIAlertViewTool.h */,
+				650D7F30216F59F70081D5AD /* UIAlertViewTool.m */,
+				650D7F2F216F59F70081D5AD /* UIAlertViewToolModel.h */,
+				650D7F2E216F59F70081D5AD /* UIAlertViewToolModel.m */,
+			);
+			path = UIAlertViewTool;
+			sourceTree = "<group>";
+		};
 		652C0D0E2158217900BD03FC /* Network */ = {
 			isa = PBXGroup;
 			children = (
@@ -365,7 +379,7 @@
 		652FCBF1215D3C8E009F41E8 /* Tools */ = {
 			isa = PBXGroup;
 			children = (
-				652FCC16215F15F5009F41E8 /* AlertViewTool */,
+				650D7F2C216F59F70081D5AD /* UIAlertViewTool */,
 				652FCBF6215D3D24009F41E8 /* PickerTool */,
 				652FCBF2215D3C99009F41E8 /* MJRefreshControl */,
 			);
@@ -401,15 +415,6 @@
 				652FCC08215DF5B3009F41E8 /* RegisterTableViewCell.m */,
 			);
 			path = View;
-			sourceTree = "<group>";
-		};
-		652FCC16215F15F5009F41E8 /* AlertViewTool */ = {
-			isa = PBXGroup;
-			children = (
-				652FCC17215F1608009F41E8 /* XYAlertViewTool.h */,
-				652FCC18215F1608009F41E8 /* XYAlertViewTool.m */,
-			);
-			path = AlertViewTool;
 			sourceTree = "<group>";
 		};
 		652FCC1A215F5A0D009F41E8 /* Mail */ = {
@@ -1040,6 +1045,7 @@
 				652C0D192159CC3F00BD03FC /* UserModel.m in Sources */,
 				65D0CA4D214F9B0000A3DB66 /* main.m in Sources */,
 				65D6BECE2160A03F002ABFDF /* MailReadModel.m in Sources */,
+				650D7F32216F59F70081D5AD /* UIAlertViewTool.m in Sources */,
 				652FCC15215F159A009F41E8 /* RegNeedInfoModel.m in Sources */,
 				65708128216DF08D002F9AD0 /* GuidePageViewController.m in Sources */,
 				65F28A5121636F2E00C229B1 /* MineConnectionViewController.m in Sources */,
@@ -1054,8 +1060,8 @@
 				65F87110215CC5FB00DD1F59 /* FlightListDetailViewController.m in Sources */,
 				655FA5CF21667678009625B0 /* ManagerTableViewCell.m in Sources */,
 				655FA5FD216B2167009625B0 /* NoticeTableViewCell.m in Sources */,
+				650D7F31216F59F70081D5AD /* UIAlertViewToolModel.m in Sources */,
 				652C0D29215A871900BD03FC /* SendCodeModel.m in Sources */,
-				652FCC19215F1608009F41E8 /* XYAlertViewTool.m in Sources */,
 				655FA5F12166941E009625B0 /* UserListTableViewCell.m in Sources */,
 				65D0CA8921536D6E00A3DB66 /* UIColor+Helper.m in Sources */,
 				652FCC1D215F5A75009F41E8 /* MailListViewController.m in Sources */,

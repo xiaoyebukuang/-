@@ -55,11 +55,17 @@ static NSString * const FlightListTableViewCellID = @"FlightListTableViewCellID"
 
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
+    [self letter_isMesRequest];
+}
+- (void)letter_isMesRequest {
     [RequestPath letter_isMessuccess:^(NSDictionary *obj, NSInteger code, NSString *mes) {
         self.headerView.tipNumber = [NSString safe_float:obj[@"mes_num"]];
     } failure:^(ErrorType errorType, NSString *mes) {
         
     }];
+}
+- (void)dealloc {
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 - (void)viewDidLoad {
@@ -69,6 +75,8 @@ static NSString * const FlightListTableViewCellID = @"FlightListTableViewCellID"
     [self setNavigationBar];
     [self setupView];
     [self setupData];
+    // app启动或者app从后台进入前台都会调用这个方法
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(letter_isMesRequest) name:UIApplicationDidBecomeActiveNotification object:nil];
 }
 - (void)setNavigationBar {
     UIButton *leftBtn = [UIButton buttonWithImage:@"flight_menu"];

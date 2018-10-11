@@ -399,9 +399,13 @@ static NSInteger const CITY_BTN_TAG = 213;
 }
 #pragma mark -- event
 - (void)addCityEvent:(UIButton *)sender {
-    [XYAlertViewTool showFieldView:^(NSString *obj, BOOL sure) {
-        if (sure) {
-            [self.contentArr addObject:obj];
+    [UIAlertViewTool showFieldTitle:@"城市或机场" placeHolder:@"请输入城市或机场名称" titlesArr:@[@"取消",@"确定"] alertBlock:^(NSString *mes, NSInteger index) {
+        if (index == 1) {
+            if ([NSString isEmpty:mes]) {
+                [MBProgressHUD showError:@"请输入城市名称"];
+                return;
+            }
+            [self.contentArr addObject:mes];
             if (self.clickBlcok) {
                 self.clickBlcok(self.contentArr);
             }

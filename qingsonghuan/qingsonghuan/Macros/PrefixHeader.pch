@@ -34,7 +34,7 @@
 /** 三方库 */
 #import "MBProgressHUD+Helper.h"
 #import <Masonry.h>
-#import "XYAlertViewTool.h"
+#import "UIAlertViewTool.h"
 
 
 

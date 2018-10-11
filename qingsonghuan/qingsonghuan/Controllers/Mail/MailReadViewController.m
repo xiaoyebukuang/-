@@ -116,9 +116,11 @@
 //拨号
 - (void)telBtnEvent:(UIButton *)sender {
     NSString *mes = [NSString stringWithFormat:@"您是否拨打电话\n%@",self.mailReadModel.sendModel.phone];
-    [XYAlertViewTool showTitle:@"提示" message:mes alertSureBlock:^{
-        NSString *tel = [NSString stringWithFormat:@"tel://%@",self.mailReadModel.sendModel.phone];
-        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:tel]];
+    [UIAlertViewTool showTitle:@"提示" message:mes alertBlock:^(NSString *mes, NSInteger index) {
+        if (index == 1) {
+            NSString *tel = [NSString stringWithFormat:@"tel://%@",self.mailReadModel.sendModel.phone];
+            [[UIApplication sharedApplication] openURL:[NSURL URLWithString:tel]];
+        }
     }];
 }
 #pragma mark -- setup

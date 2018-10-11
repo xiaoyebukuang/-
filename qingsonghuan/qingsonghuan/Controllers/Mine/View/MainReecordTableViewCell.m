@@ -188,9 +188,11 @@
     }
 }
 - (void)deleteBtnEvent:(UIButton *)sender {
-    [XYAlertViewTool showTitle:@"提示" message:@"是否删除" alertSureBlock:^{
-        if (self.deleteBlock) {
-            self.deleteBlock();
+    [UIAlertViewTool showTitle:@"提示" message:@"是否删除" alertBlock:^(NSString *mes, NSInteger index) {
+        if (index == 1) {
+            if (self.deleteBlock) {
+                self.deleteBlock();
+            }
         }
     }];
 }
