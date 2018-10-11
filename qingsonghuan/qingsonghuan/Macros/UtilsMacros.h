@@ -63,6 +63,7 @@
 #define FLIGHT_SIGN_TIME                @"请选择签到时间"
 #define FLIGHT_AIR_NUMBER               @"请输入航班号码"
 #define FLIGHT_WORD_SIGN                @"请选择字母标识"
+#define FLIGHT_FIRST_LEG                @"如 虹桥 浦东"
 
 
 //用户信息宏定义

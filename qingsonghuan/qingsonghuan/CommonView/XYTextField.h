@@ -14,7 +14,8 @@ typedef NS_ENUM(NSInteger, UITextFieldType) {
     UITextFieldCode,            //验证码，限制数字，6位
     UITextFieldCard,            //登机证号，限制字符+数字 2个字符+5个数字
     UITextFieldFlight,          //航班号码，限制数字，3-4个数字
-    UITextFieldCity             //城市名称，5个字符
+    UITextFieldCity,            //城市名称，5个汉子
+    UITextFieldLeg              //上海机场名称，2个汉子
 };
 
 @protocol XYTextFieldDelegate <NSObject>

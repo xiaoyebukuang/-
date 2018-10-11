@@ -83,10 +83,10 @@ static NSString * const CommonTableViewCell02ID = @"CommonTableViewCell02ID";
 
 #pragma mark -- UITableViewDelegate, UITableViewDataSource
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    return 6;
+    return 7;
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-    NSArray *titleArr = @[@"签到日期:",@"航班号码:",@"签到时段:",@"签证信息:",@"字母标识:",@"职务等级:"];
+    NSArray *titleArr = @[@"签到日期:",@"航班号码:",@"始发机场:",@"签到时段:",@"签证信息:",@"字母标识:",@"职务等级:"];
     CommonTableViewCell *cell;
     WeakSelf;
     if (indexPath.row == 0) {
@@ -106,23 +106,28 @@ static NSString * const CommonTableViewCell02ID = @"CommonTableViewCell02ID";
         [(CommonTableViewCell01 *)cell reloadViewWithText:titleArr[indexPath.row] placeHolder:FLIGHT_AIR_NUMBER content:self.filterModel.airline_number enabled:YES textFieldType:UITextFieldFlight commonClickBlock:^(id obj) {
             weakSelf.filterModel.airline_number = (NSString *)obj;
         }];
+    } else if (indexPath.row == 2) {
+        cell = (CommonTableViewCell01 *)[tableView dequeueReusableCellWithIdentifier: CommonTableViewCell01ID];
+        [(CommonTableViewCell01 *)cell reloadViewWithText:titleArr[indexPath.row] placeHolder:FLIGHT_FIRST_LEG content:self.filterModel.first_leg enabled:YES textFieldType:UITextFieldLeg commonClickBlock:^(id obj) {
+            weakSelf.filterModel.first_leg = (NSString *)obj;
+        }];
     } else {
         id obj;
         id model;
         switch (indexPath.row) {
-            case 2:
+            case 3:
                 obj = [RegNeedInfoModel sharedInstance].signModelArr;
                 model = self.filterModel.signModel;
                 break;
-            case 3:
+            case 4:
                 obj = [RegNeedInfoModel sharedInstance].visaModelArr;
                 model = self.filterModel.visaModel;
                 break;
-            case 4:
+            case 5:
                 obj = [RegNeedInfoModel sharedInstance].wordLogoArr;
                 model = self.filterModel.wordLogoModel;
                 break;
-            case 5:
+            case 6:
                 obj = [RegNeedInfoModel sharedInstance].dutyModelArr;
                 model = self.filterModel.dutyModel;
                 break;
@@ -132,13 +137,13 @@ static NSString * const CommonTableViewCell02ID = @"CommonTableViewCell02ID";
         cell = (CommonTableViewCell02 *)[tableView dequeueReusableCellWithIdentifier: CommonTableViewCell02ID];
         [(CommonTableViewCell02 *)cell reloadViewWithText:titleArr[indexPath.row]  content:obj selectModel:model  commonClickBlock:^(id obj) {
             [weakSelf.view endEditing:YES];
-            if (indexPath.row == 2) {
+            if (indexPath.row == 3) {
                 weakSelf.filterModel.signModel = obj;
-            } else if (indexPath.row == 3) {
-                weakSelf.filterModel.visaModel = obj;
             } else if (indexPath.row == 4) {
-                weakSelf.filterModel.wordLogoModel = obj;
+                weakSelf.filterModel.visaModel = obj;
             } else if (indexPath.row == 5) {
+                weakSelf.filterModel.wordLogoModel = obj;
+            } else if (indexPath.row == 6) {
                 weakSelf.filterModel.dutyModel = obj;
             }
         }];

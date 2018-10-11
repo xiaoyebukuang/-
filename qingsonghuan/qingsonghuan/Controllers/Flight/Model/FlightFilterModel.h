@@ -25,6 +25,8 @@
 @property (nonatomic, strong) WordLogoModel *wordLogoModel;
 //职务等级
 @property (nonatomic, strong) DutyModel *dutyModel;
+//始发航班
+@property (nonatomic, copy)NSString *first_leg;
 
 - (instancetype)initWithModel:(FlightFilterModel *)filterModel;
 

@@ -79,6 +79,13 @@
             [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(textViewEditChanged:) name:UITextFieldTextDidChangeNotification object:self];
         }
             break;
+        case UITextFieldLeg:
+        {
+            self.numberCount = 2;
+            self.keyboardType = UIKeyboardTypeDefault;
+            [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(textViewEditChanged:) name:UITextFieldTextDidChangeNotification object:self];
+        }
+            break;
         default:
             break;
     }
