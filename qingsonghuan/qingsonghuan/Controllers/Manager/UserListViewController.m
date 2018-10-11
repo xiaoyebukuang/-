@@ -74,7 +74,7 @@ static NSString * const UserListTableViewCellID = @"UserListTableViewCellID";
     NSDictionary *param = @{
                             @"page": refresh ? @(1):@(self.userListModel.page + 1),
                             @"limit":@(20),
-                            @"user_id":[UserModel sharedInstance].userId,
+                            @"phone":[UserModel sharedInstance].phone,
                             @"user_phone":self.userListScreenModel.user_phone,
                             @"work_number":self.userListScreenModel.work_number
                             };

@@ -18,7 +18,7 @@
 
 @property (nonatomic, strong) UIButton *mailBtn;
 //红点提示
-@property (nonatomic, strong) UIImageView *tips;
+@property (nonatomic, strong) UIButton *tips;
 
 @property (nonatomic, strong) UILabel *mailTitle;
 
@@ -38,7 +38,7 @@
 - (void)setUpView {
     [self addSubview:self.logo];
     [self.logo mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(self).offset(30);
+        make.top.equalTo(self).offset(15);
         make.left.equalTo(self).offset(30);
     }];
     [self addSubview:self.detail];
@@ -78,8 +78,17 @@
         make.left.right.bottom.equalTo(self);
     }];
 }
-- (void)hiddenTips:(BOOL)hidden {
-    self.tips.hidden = hidden;
+- (void)setTipNumber:(NSInteger)tipNumber {
+    _tipNumber = tipNumber;
+    if (tipNumber <= 0) {
+        self.tips.hidden = YES;
+    } else if (tipNumber < 100 ) {
+        self.tips.hidden = NO;
+        [self.tips setTitle:[NSString stringWithFormat:@"%ld",tipNumber] forState:UIControlStateNormal];
+    } else {
+        self.tips.hidden = NO;
+        [self.tips setTitle:@"99+" forState:UIControlStateNormal];
+    }
 }
 #pragma mark -- event
 //站内信
@@ -116,9 +125,9 @@
     }
     return _mailBtn;
 }
-- (UIImageView *)tips {
+- (UIButton *)tips {
     if (!_tips) {
-        _tips = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"flight_tips"]];
+        _tips = [UIButton buttonWithBGImage:@"flight_tips" title:@"" font:SYSTEM_FONT_13 textColor:[UIColor color_99D3F8]];
     }
     return _tips;
 }

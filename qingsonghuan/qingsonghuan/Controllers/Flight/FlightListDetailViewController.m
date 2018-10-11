@@ -75,7 +75,7 @@ static NSString * const FlightListDetailTableViewCellID = @"FlightListDetailTabl
     return self.contentArr.count;
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-    NSArray *titleArr = @[@"签到日期:",@"签到时间:",@"航班号:",@"航段信息:",@"签证信息:",@"字母标识:",@"职务等级:",@"留言信息:"];
+    NSArray *titleArr = @[@"签到日期:",@"签到时间:",@"航班号码:",@"航段信息:",@"签证信息:",@"字母标识:",@"职务等级:",@"留言信息:"];
     FlightListDetailTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier: FlightListDetailTableViewCellID];
     [cell reloadViewWithIndex:indexPath.row title:titleArr[indexPath.row] content:self.contentArr[indexPath.row]];
     return cell;

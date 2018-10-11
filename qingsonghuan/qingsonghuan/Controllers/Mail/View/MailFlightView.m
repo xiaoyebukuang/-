@@ -101,7 +101,7 @@
 - (XYTitleView *)titleView {
     if (!_titleView) {
         _titleView = [[XYTitleView alloc]init];
-        [_titleView reloadUIWithTitleArr:@[@"签到日期",@"签到时间",@"航班号",@"职位等级",@"字母标识"]];
+        [_titleView reloadUIWithTitleArr:@[@"签到日期",@"签到时间",@"航班号码",@"职位等级",@"字母标识"]];
     }
     return _titleView;
 }

@@ -78,5 +78,8 @@
 #define USER_IDENTITY                   @"identity"
 
 
+//保存的版本号
+#define VERSION_NUMBER                     @"version_number"
+
 
 #endif /* UtilsMacros_h */

@@ -67,7 +67,7 @@
         make.centerY.equalTo(dateLabel);
     }];
     //航班号
-    UILabel *airlineNumberLabel = [[UILabel alloc]initWithText:@"航班号:" font:SYSTEM_FONT_13 textColor:[UIColor color_666666]];
+    UILabel *airlineNumberLabel = [[UILabel alloc]initWithText:@"航班号码:" font:SYSTEM_FONT_13 textColor:[UIColor color_666666]];
     [self.bgView addSubview:airlineNumberLabel];
     [airlineNumberLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.width.left.equalTo(dateLabel);

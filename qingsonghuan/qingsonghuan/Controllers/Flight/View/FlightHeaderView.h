@@ -14,6 +14,6 @@ typedef void(^FlightHeaderViewBlock)(void);
 
 @property (nonatomic, copy) FlightHeaderViewBlock flightHeaderBlock;
 
-- (void)hiddenTips:(BOOL)hidden;
+@property (nonatomic, assign) NSInteger tipNumber;
 
 @end

@@ -56,7 +56,7 @@ static NSString * const FlightListTableViewCellID = @"FlightListTableViewCellID"
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
     [RequestPath letter_isMessuccess:^(NSDictionary *obj, NSInteger code, NSString *mes) {
-        [self.headerView hiddenTips: ([NSString safe_float:obj[@"mes_num"]] == 0)];
+        self.headerView.tipNumber = [NSString safe_float:obj[@"mes_num"]];
     } failure:^(ErrorType errorType, NSString *mes) {
         
     }];
@@ -88,7 +88,7 @@ static NSString * const FlightListTableViewCellID = @"FlightListTableViewCellID"
     [self.view addSubview:self.headerView];
     [self.headerView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.width.top.equalTo(self.view);
-        make.height.mas_equalTo(168);
+        make.height.mas_equalTo(140);
     }];
     [self.view addSubview:self.footerView];
     [self.footerView mas_makeConstraints:^(MASConstraintMaker *make) {

@@ -86,7 +86,7 @@ static NSString * const CommonTableViewCell02ID = @"CommonTableViewCell02ID";
     return 6;
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-    NSArray *titleArr = @[@"签到日期:",@"航班号:",@"签到时段:",@"签证信息:",@"字母标识:",@"职务等级:"];
+    NSArray *titleArr = @[@"签到日期:",@"航班号码:",@"签到时段:",@"签证信息:",@"字母标识:",@"职务等级:"];
     CommonTableViewCell *cell;
     WeakSelf;
     if (indexPath.row == 0) {

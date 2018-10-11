@@ -13,8 +13,8 @@
 /** iphone判断 */
 #define IS_IPHONE_4         (fabs((double)[[UIScreen mainScreen]bounds].size.height - (double)480) < DBL_EPSILON)
 #define IS_IPHONE_5         (fabs((double)[[UIScreen mainScreen]bounds].size.height - (double)568) < DBL_EPSILON)
-#define IS_IPHONE_6         (fabs((double)[[UIScreen mainScreen]bounds].size.height - (double)667) < DBL_EPSILON)
-#define IS_IPHONE_6_PLUS    (fabs((double)[[UIScreen mainScreen]bounds].size.height - (double)736) < DBL_EPSILON)
+#define IS_IPHONE_678         (fabs((double)[[UIScreen mainScreen]bounds].size.height - (double)667) < DBL_EPSILON)
+#define IS_IPHONE_678_PLUS    (fabs((double)[[UIScreen mainScreen]bounds].size.height - (double)736) < DBL_EPSILON)
 #define IS_IPHONE_X         ([UIScreen instancesRespondToSelector:@selector(currentMode)]?CGSizeEqualToSize(CGSizeMake(1125, 2436),[[UIScreen mainScreen]currentMode].size) :NO)
 /** 屏幕 rect */
 #define MAIN_SCREEN_BOUNDS      ([UIScreen mainScreen].bounds)

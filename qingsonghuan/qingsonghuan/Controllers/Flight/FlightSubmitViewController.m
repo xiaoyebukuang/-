@@ -111,7 +111,7 @@ static NSString * const CommonTableViewCell05ID = @"CommonTableViewCell05ID";
     return 8;
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-    NSArray *titleArr = @[@"签到日期:",@"签到时间:",@"航班号:",@"航段信息:",@"签证信息:",@"字母标识:",@"职务等级:",@"留言信息:"];
+    NSArray *titleArr = @[@"签到日期:",@"签到时间:",@"航班号码:",@"航段信息:",@"签证信息:",@"字母标识:",@"职务等级:",@"留言信息:"];
     CommonTableViewCell *cell;
     WeakSelf;
     RegNeedInfoModel *regModle = [RegNeedInfoModel sharedInstance];

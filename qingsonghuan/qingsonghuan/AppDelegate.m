@@ -10,6 +10,7 @@
 #import "CustomNavigationViewController.h"
 #import "LoginViewController.h"
 #import "FlightListViewController.h"
+#import "GuidePageViewController.h"
 //三方键盘
 #import <IQKeyboardManager.h>
 @interface AppDelegate ()
@@ -34,7 +35,16 @@
 
 
 - (void)setRootViewControoler {
-    if ([UserModel sharedInstance].isLogin) {
+    //保存的版本号
+    NSString *onAVersion = [[NSUserDefaults standardUserDefaults] stringForKey:VERSION_NUMBER];
+    //当前的版本号
+    NSString *currentVersion = [[NSBundle mainBundle] infoDictionary][@"CFBundleShortVersionString"];
+    if (![onAVersion isEqualToString:currentVersion]) {
+        [[NSUserDefaults standardUserDefaults]setObject:currentVersion forKey:VERSION_NUMBER];
+        [[NSUserDefaults standardUserDefaults]synchronize];
+        GuidePageViewController *guidePVC = [[GuidePageViewController alloc]init];
+        self.window.rootViewController = guidePVC;
+    } else if ([UserModel sharedInstance].isLogin) {
         FlightListViewController *flightLVC = [[FlightListViewController alloc]init];
         CustomNavigationViewController *nvc = [[CustomNavigationViewController alloc]initWithRootViewController:flightLVC];
         self.window.rootViewController = nvc;
