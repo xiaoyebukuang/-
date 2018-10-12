@@ -84,7 +84,7 @@
         self.tips.hidden = YES;
     } else if (tipNumber < 100 ) {
         self.tips.hidden = NO;
-        [self.tips setTitle:[NSString stringWithFormat:@"%ld",tipNumber] forState:UIControlStateNormal];
+        [self.tips setTitle:[NSString stringWithFormat:@"%ld",(long)tipNumber] forState:UIControlStateNormal];
     } else {
         self.tips.hidden = NO;
         [self.tips setTitle:@"99+" forState:UIControlStateNormal];

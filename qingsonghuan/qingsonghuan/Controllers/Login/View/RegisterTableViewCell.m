@@ -246,7 +246,7 @@ static CGFloat const LOGIN_WIDTH_SIZE = 50.0;
     } else {
         _timeCount = timeCount;
         self.timeBtn.enabled = NO;
-        [self.timeBtn setTitle:[NSString stringWithFormat:@"%lds后重新发送",_timeCount] forState:UIControlStateDisabled];
+        [self.timeBtn setTitle:[NSString stringWithFormat:@"%lds后重新发送",(long)_timeCount] forState:UIControlStateDisabled];
     }
 }
 - (void)dealloc {

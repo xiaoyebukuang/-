@@ -466,7 +466,7 @@ static NSInteger const CITY_BTN_TAG = 213;
 - (void)setMaxCount:(NSInteger)maxCount {
     _maxCount = maxCount;
     self.textView.maxCount = maxCount;
-    self.numberLabel.text = [NSString stringWithFormat:@"%ld/%ld",self.textView.text.length,(long)self.maxCount];
+    self.numberLabel.text = [NSString stringWithFormat:@"%lu/%ld",(unsigned long)self.textView.text.length,(long)self.maxCount];
 }
 - (void)setHiddenNumber:(BOOL)hiddenNumber {
     _hiddenNumber = hiddenNumber;
@@ -487,7 +487,7 @@ static NSInteger const CITY_BTN_TAG = 213;
 }
 #pragma mark -- XYTextViewDelegate
 - (void)xy_textViewDidChange:(NSString *)text {
-    self.numberLabel.text = [NSString stringWithFormat:@"%ld/%ld",text.length,(long)self.maxCount];
+    self.numberLabel.text = [NSString stringWithFormat:@"%lu/%ld",(unsigned long)text.length,(long)self.maxCount];
     if (self.clickBlcok) {
         self.clickBlcok(text);
     }
