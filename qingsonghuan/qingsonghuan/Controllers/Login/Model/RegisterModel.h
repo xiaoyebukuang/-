@@ -17,8 +17,6 @@
 @property (nonatomic, strong) SubsidiaryModel *subsidiaryModel;
 //职务等级
 @property (nonatomic, strong) DutyModel *dutyModel;
-//签证类型
-@property (nonatomic, strong) VisaModel *visaModel;
 //登机证号
 @property (nonatomic, copy) NSString *work_number;
 //性别

@@ -200,6 +200,8 @@ static NSString * const CommonTableViewCell05ID = @"CommonTableViewCell05ID";
         }];
     } else {
         cell = [tableView dequeueReusableCellWithIdentifier: CommonTableViewCell05ID];
+        ((CommonTableViewCell05 *)cell).maxCount = 50;
+        ((CommonTableViewCell05 *)cell).hiddenNumber = NO;
         [((CommonTableViewCell05 *)cell) reloadViewTitle:titleArr[indexPath.row] content:self.flightAddLineModel.message commonClickBlock:^(id obj) {
             weakSelf.flightAddLineModel.message = (NSString *)obj;
         }];

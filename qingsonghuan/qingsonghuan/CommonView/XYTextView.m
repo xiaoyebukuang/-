@@ -21,6 +21,7 @@
     if (self) {
         self.backgroundColor = [UIColor clearColor];
         self.font = SYSTEM_FONT_15;
+        self.maxCount = NSIntegerMax;
         self.textColor = [UIColor color_333333];
         self.delegate = self;
         [self addSubview:self.placeHolderLabel];
@@ -41,9 +42,6 @@
 }
 #pragma mark -- UITextViewDelegate
 - (void)textViewDidChange:(UITextView *)textView {
-    if ([self.xy_delegate respondsToSelector:@selector(xy_textViewDidChange:)]) {
-        [self.xy_delegate xy_textViewDidChange:textView.text];
-    }
     self.placeHolderLabel.hidden = ![NSString isEmpty:textView.text];
     //限制输入字符数
     NSString *toBeString = textView.text;
@@ -65,6 +63,9 @@
         if(toBeString.length > self.maxCount) {
             textView.text= [toBeString substringToIndex:self.maxCount];
         }
+    }
+    if ([self.xy_delegate respondsToSelector:@selector(xy_textViewDidChange:)]) {
+        [self.xy_delegate xy_textViewDidChange:textView.text];
     }
 }
 - (UILabel *)placeHolderLabel {

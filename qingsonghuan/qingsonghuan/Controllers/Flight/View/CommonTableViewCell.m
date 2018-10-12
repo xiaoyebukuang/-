@@ -20,10 +20,10 @@
     return self;
 }
 - (void)setupView {
-    [self addSubview:self.title];
+    [self.contentView addSubview:self.title];
     [self.title mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.equalTo(self).offset(CELL_LEFT_APACE);
-        make.top.equalTo(self).offset(10);
+        make.left.equalTo(self.contentView).offset(CELL_LEFT_APACE);
+        make.top.equalTo(self.contentView).offset(10);
         make.height.mas_offset(30);
         make.width.mas_equalTo(70);
     }];
@@ -53,15 +53,15 @@
 @implementation CommonTableViewCell01
 - (void)setupView {
     [super setupView];
-    [self addSubview:self.textField];
+    [self.contentView addSubview:self.textField];
     [self.textField mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(self.title.mas_right);
-        make.right.equalTo(self).offset(-CELL_LEFT_APACE);
-        make.centerY.equalTo(self);
+        make.right.equalTo(self.contentView).offset(-CELL_LEFT_APACE);
+        make.centerY.equalTo(self.contentView);
         make.height.mas_offset(30);
         make.centerY.equalTo(self.title);
     }];
-    [self addSubview:self.control];
+    [self.contentView addSubview:self.control];
     [self.control mas_makeConstraints:^(MASConstraintMaker *make) {
         make.edges.equalTo(self.textField);
     }];
@@ -125,11 +125,11 @@ static NSInteger const COMMON_BTN_TAG = 329;
 
 - (void)setupView {
     [super setupView];
-    [self addSubview:self.btnView];
+    [self.contentView addSubview:self.btnView];
     [self.btnView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(self.title.mas_right);
-        make.right.equalTo(self).offset(-CELL_LEFT_APACE);
-        make.top.bottom.equalTo(self);
+        make.right.equalTo(self.contentView).offset(-CELL_LEFT_APACE);
+        make.top.bottom.equalTo(self.contentView);
     }];
 }
 - (void)reloadViewWithText:(NSString *)text
@@ -234,19 +234,19 @@ static NSInteger const COMMON_BTN_TAG = 329;
 @implementation CommonTableViewCell03
 - (void)setupView {
     [super setupView];
-    [self addSubview:self.textField];
+    [self.contentView addSubview:self.textField];
     self.textField.xyDelegate = self;
     [self.textField mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(self.title.mas_right);
-        make.right.equalTo(self).offset(-CELL_LEFT_APACE);
-        make.centerY.equalTo(self);
+        make.right.equalTo(self.contentView).offset(-CELL_LEFT_APACE);
+        make.centerY.equalTo(self.contentView);
         make.height.mas_offset(30);
     }];
-    [self addSubview:self.workDayBtn];
+    [self.contentView addSubview:self.workDayBtn];
     [self.workDayBtn mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.right.equalTo(self).offset(-CELL_LEFT_APACE);
+        make.right.equalTo(self.contentView).offset(-CELL_LEFT_APACE);
         make.top.equalTo(self.title);
-        make.centerY.equalTo (self);
+        make.centerY.equalTo(self.contentView);
     }];
 }
 - (void)reloadViewTitle:(NSString *)text
@@ -312,20 +312,20 @@ static NSInteger const CITY_BTN_TAG = 213;
 - (void)setupView {
     [super setupView];
     self.contentArr = [[NSMutableArray alloc]init];
-    [self addSubview:self.addCity];
+    [self.contentView addSubview:self.addCity];
     [self.addCity mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.right.equalTo(self).offset(-CELL_LEFT_APACE);
+        make.right.equalTo(self.contentView).offset(-CELL_LEFT_APACE);
         make.top.equalTo(self.title);
         make.height.mas_offset(30);
         make.width.mas_offset(30);
     }];
-    [self addSubview:self.bgView];
+    [self.contentView addSubview:self.bgView];
     [self.bgView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(self.title.mas_right);
         make.width.mas_equalTo(MAIN_SCREEN_WIDTH - 2*CELL_LEFT_APACE - 100);
         make.top.equalTo(self.title);
         make.height.mas_offset(30);
-        make.bottom.equalTo(self).offset(-10);
+        make.bottom.equalTo(self.contentView).offset(-10);
     }];
 }
 - (void)reloadViewTitle:(NSString *)text
@@ -439,21 +439,44 @@ static NSInteger const CITY_BTN_TAG = 213;
 
 @property (nonatomic, strong) XYTextView *textView;
 
+@property (nonatomic, strong) UILabel *numberLabel;
+
 @end
 
 @implementation CommonTableViewCell05
 - (void)setupView {
     [super setupView];
     self.title.text = @"";
-    [self addSubview:self.textView];
+    [self.contentView addSubview:self.textView];
     self.textView.xy_delegate = self;
     [self.textView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.right.equalTo(self).offset(-CELL_LEFT_APACE);
+        make.right.equalTo(self.contentView).offset(-CELL_LEFT_APACE);
         make.top.equalTo(self.title);
         make.left.equalTo(self.title.mas_right);
         make.height.mas_offset(100);
-        make.bottom.equalTo(self).offset(-10);
+        make.bottom.equalTo(self.contentView).offset(-10);
     }];
+    [self.contentView addSubview:self.numberLabel];
+    [self.numberLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.right.equalTo(self.contentView).offset(-CELL_LEFT_APACE);
+        make.centerY.equalTo(self.title);
+        make.width.mas_equalTo(50);
+    }];
+}
+- (void)setMaxCount:(NSInteger)maxCount {
+    _maxCount = maxCount;
+    self.textView.maxCount = maxCount;
+    self.numberLabel.text = [NSString stringWithFormat:@"%ld/%ld",self.textView.text.length,(long)self.maxCount];
+}
+- (void)setHiddenNumber:(BOOL)hiddenNumber {
+    _hiddenNumber = hiddenNumber;
+    self.numberLabel.hidden = hiddenNumber;
+    [self.textView mas_updateConstraints:^(MASConstraintMaker *make) {
+        make.right.equalTo(self.contentView).offset(-CELL_LEFT_APACE - (hiddenNumber ? 0 : 50));
+    }];
+    if (hiddenNumber) {
+        self.maxCount = NSIntegerMax;
+    }
 }
 - (void)reloadViewTitle:(NSString *)text
                 content:(NSString *)content
@@ -464,6 +487,7 @@ static NSInteger const CITY_BTN_TAG = 213;
 }
 #pragma mark -- XYTextViewDelegate
 - (void)xy_textViewDidChange:(NSString *)text {
+    self.numberLabel.text = [NSString stringWithFormat:@"%ld/%ld",text.length,(long)self.maxCount];
     if (self.clickBlcok) {
         self.clickBlcok(text);
     }
@@ -475,5 +499,12 @@ static NSInteger const CITY_BTN_TAG = 213;
         _textView.textColor = [UIColor color_333333];
     }
     return _textView;
+}
+- (UILabel *)numberLabel {
+    if (!_numberLabel) {
+        _numberLabel = [[UILabel alloc]initWithText:@"" font:SYSTEM_FONT_13 textColor:[UIColor color_999999]];
+        _numberLabel.textAlignment = NSTextAlignmentCenter;
+    }
+    return _numberLabel;
 }
 @end

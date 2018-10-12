@@ -109,4 +109,13 @@ typedef void(^DaysClickBlock)(void);
                 content:(NSString *)content
          commonClickBlock:(CommonClickBlock)commonClickBlock;
 
+
+/**
+ 限制输入最大个数
+ */
+@property (nonatomic, assign) NSInteger maxCount;
+
+@property (nonatomic, assign) BOOL hiddenNumber;
+
+
 @end

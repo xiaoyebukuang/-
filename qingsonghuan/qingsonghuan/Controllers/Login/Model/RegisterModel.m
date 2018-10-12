@@ -32,18 +32,6 @@
         if ([dic[@"duty"] isKindOfClass:[NSDictionary class]]) {
             self.dutyModel = [[DutyModel alloc]initWithDic:dic[@"duty"]];
         }
-        if ([dic[@"visa"] isKindOfClass:[NSDictionary class]]) {
-            self.visaModel = [[VisaModel alloc]initWithDic:dic[@"visa"]];
-        }
-        //user_id    [string]    是    用户id    展开
-//        //密码
-//        @property (nonatomic, copy) NSString *password;
-//        //确认密码
-//        @property (nonatomic, copy) NSString *password_confirm;
-//        //手机验证码
-//        @property (nonatomic, copy) NSString *code;
-//        //验证码Model
-//        @property (nonatomic, strong) SendCodeModel *sendCodeModel;
     }
     return self;
 }
@@ -57,8 +45,6 @@
         des = @"请选择所属分子公司";
     } else if (self.dutyModel == nil) {
         des = @"请选择职务等级";
-    } else if (self.visaModel == nil) {
-        des = @"请选择签证类型";
     } else if ([NSString isEmpty:self.work_number]) {
         des = @"请输入登记证号";
     } else if (self.sexModel == nil) {

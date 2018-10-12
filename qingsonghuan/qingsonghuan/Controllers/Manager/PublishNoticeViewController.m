@@ -114,6 +114,7 @@ static NSString * const CommonTableViewCell05ID = @"CommonTableViewCell05ID";
         }];
     } else {
         cell = [tableView dequeueReusableCellWithIdentifier: CommonTableViewCell05ID];
+        ((CommonTableViewCell05 *)cell).hiddenNumber = YES;
         [((CommonTableViewCell05 *)cell) reloadViewTitle:titleArr[indexPath.row] content:@"" commonClickBlock:^(id obj) {
             weakSelf.messageStr = (NSString *)obj;
         }];
