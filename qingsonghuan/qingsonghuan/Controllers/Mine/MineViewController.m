@@ -12,6 +12,8 @@
 #import "RegisterEditViewController.h"
 #import "MineConnectionViewController.h"
 #import "NoticeViewController.h"
+#import "AboutViewController.h"
+
 static NSString * const MineTableViewCellID = @"MineTableViewCellID";
 
 @interface MineViewController ()<UITableViewDelegate, UITableViewDataSource>
@@ -22,6 +24,7 @@ static NSString * const MineTableViewCellID = @"MineTableViewCellID";
 @property (nonatomic, strong) UIView *headerView;
 
 @property (nonatomic, strong) UITableView *mineTableView;
+
 
 @end
 
@@ -90,26 +93,11 @@ static NSString * const MineTableViewCellID = @"MineTableViewCellID";
         [self.navigationController pushViewController:noticeVC animated:YES];
     }
     if (indexPath.row == 4) {
-//        JSHAREMessage *message = [JSHAREMessage message];
-//        message.text = @"JShare SDK 支持主流社交平台、帮助开发者轻松实现社会化功能！";
-//        message.platform = JSHAREPlatformWechatSession;
-//        message.mediaType = JSHAREText;
-//        [JSHAREService share:message handler:^(JSHAREState state, NSError *error) {
-//            NSLog(@"分享回调");
-//        }];
-        
-        JSHAREMessage *message = [JSHAREMessage message];
-        NSString *imageURL = @"http://img2.3lian.com/2014/f5/63/d/23.jpg";
-        NSURL *imageU = [NSURL URLWithString:imageURL];
-        NSData *imageData = [NSData dataWithContentsOfURL:imageU];
-        message.mediaType = JSHAREImage;
-        message.platform = JSHAREPlatformWechatSession;
-        message.image = imageData;
-        [JSHAREService share:message handler:^(JSHAREState state, NSError *error) {
-            NSLog(@"%@",error);
-        }];
+        AboutViewController *aboutVC = [[AboutViewController alloc]init];
+        [self.navigationController pushViewController:aboutVC animated:YES];
     }
 }
+
 #pragma mark -- setup
 - (UIView *)headerView {
     if (!_headerView) {

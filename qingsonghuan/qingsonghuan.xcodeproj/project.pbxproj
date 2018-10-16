@@ -103,6 +103,8 @@
 		65F28A5121636F2E00C229B1 /* MineConnectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 65F28A5021636F2E00C229B1 /* MineConnectionViewController.m */; };
 		65F28A532164D72300C229B1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 65F28A522164D72300C229B1 /* Main.storyboard */; };
 		65F2D8B121758FC000A11DD1 /* WebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 65F2D8B021758FC000A11DD1 /* WebViewController.m */; };
+		65F2D8B42175B93300A11DD1 /* ShareView.m in Sources */ = {isa = PBXBuildFile; fileRef = 65F2D8B32175B93300A11DD1 /* ShareView.m */; };
+		65F2D8B72175BD2200A11DD1 /* AboutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 65F2D8B62175BD2200A11DD1 /* AboutViewController.m */; };
 		65F870F1215B7F3600DD1F59 /* FlightListTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 65F870F0215B7F3600DD1F59 /* FlightListTableViewCell.m */; };
 		65F870F7215B90DF00DD1F59 /* FlightFilterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 65F870F6215B90DF00DD1F59 /* FlightFilterViewController.m */; };
 		65F870FD215BB8E500DD1F59 /* CommonTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 65F870FC215BB8E500DD1F59 /* CommonTableViewCell.m */; };
@@ -289,6 +291,10 @@
 		65F28A522164D72300C229B1 /* Main.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		65F2D8AF21758FC000A11DD1 /* WebViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WebViewController.h; sourceTree = "<group>"; };
 		65F2D8B021758FC000A11DD1 /* WebViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WebViewController.m; sourceTree = "<group>"; };
+		65F2D8B22175B93300A11DD1 /* ShareView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShareView.h; sourceTree = "<group>"; };
+		65F2D8B32175B93300A11DD1 /* ShareView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShareView.m; sourceTree = "<group>"; };
+		65F2D8B52175BD2200A11DD1 /* AboutViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AboutViewController.h; sourceTree = "<group>"; };
+		65F2D8B62175BD2200A11DD1 /* AboutViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AboutViewController.m; sourceTree = "<group>"; };
 		65F870EF215B7F3600DD1F59 /* FlightListTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FlightListTableViewCell.h; sourceTree = "<group>"; };
 		65F870F0215B7F3600DD1F59 /* FlightListTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FlightListTableViewCell.m; sourceTree = "<group>"; };
 		65F870F5215B90DF00DD1F59 /* FlightFilterViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FlightFilterViewController.h; sourceTree = "<group>"; };
@@ -799,6 +805,8 @@
 				655FA5F621672160009625B0 /* NoticeViewController.m */,
 				655FA5F8216B20CB009625B0 /* NoticeDetailViewController.h */,
 				655FA5F9216B20CB009625B0 /* NoticeDetailViewController.m */,
+				65F2D8B52175BD2200A11DD1 /* AboutViewController.h */,
+				65F2D8B62175BD2200A11DD1 /* AboutViewController.m */,
 			);
 			path = Mine;
 			sourceTree = "<group>";
@@ -806,6 +814,8 @@
 		65D6BED32160C6A3002ABFDF /* View */ = {
 			isa = PBXGroup;
 			children = (
+				65F2D8B22175B93300A11DD1 /* ShareView.h */,
+				65F2D8B32175B93300A11DD1 /* ShareView.m */,
 				65D6BED42160C6B0002ABFDF /* MineTableViewCell.h */,
 				65D6BED52160C6B0002ABFDF /* MineTableViewCell.m */,
 				6526D16221614B8C0074D358 /* MainReecordTableViewCell.h */,
@@ -1063,11 +1073,13 @@
 				65D0CA6F2151EF0B00A3DB66 /* CustomNavigationViewController.m in Sources */,
 				652FCC09215DF5B3009F41E8 /* RegisterTableViewCell.m in Sources */,
 				655FA5D221667854009625B0 /* RegNumberViewController.m in Sources */,
+				65F2D8B42175B93300A11DD1 /* ShareView.m in Sources */,
 				65F87110215CC5FB00DD1F59 /* FlightListDetailViewController.m in Sources */,
 				655FA5CF21667678009625B0 /* ManagerTableViewCell.m in Sources */,
 				655FA5FD216B2167009625B0 /* NoticeTableViewCell.m in Sources */,
 				650D7F31216F59F70081D5AD /* UIAlertViewToolModel.m in Sources */,
 				652C0D29215A871900BD03FC /* SendCodeModel.m in Sources */,
+				65F2D8B72175BD2200A11DD1 /* AboutViewController.m in Sources */,
 				655FA5F12166941E009625B0 /* UserListTableViewCell.m in Sources */,
 				65D0CA8921536D6E00A3DB66 /* UIColor+Helper.m in Sources */,
 				652FCC1D215F5A75009F41E8 /* MailListViewController.m in Sources */,
