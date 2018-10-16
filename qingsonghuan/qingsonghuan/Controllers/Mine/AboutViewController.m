@@ -38,12 +38,11 @@ static NSString * const ManagerTableViewCellID = @"ManagerTableViewCellID";
 - (void)shareLinkWithPlatform:(JSHAREPlatform)platform {
     JSHAREMessage *message = [JSHAREMessage message];
     message.mediaType = JSHARELink;
-    message.url = @"https://www.jiguang.cn/";
-    message.text = @"JShare SDK支持主流社交平台、帮助开发者轻松实现社会化功能！";
-    message.title = @"欢迎使用极光社会化组件JShare";
+    message.url = @"https://www.baidu.com";
+    message.text = @"欢迎使用轻松换";
+    message.title = @"轻松换";
     message.platform = platform;
-    NSString *imageURL = @"http://img2.3lian.com/2014/f5/63/d/23.jpg";
-    NSData *imageData = [NSData dataWithContentsOfURL:[NSURL URLWithString:imageURL]];
+    NSData *imageData = [NSData dataWithContentsOfURL:[NSURL URLWithString:API_SHARE]];
     message.image = imageData;
     [JSHAREService share:message handler:^(JSHAREState state, NSError *error) {
         NSLog(@"%@",error);
@@ -84,8 +83,9 @@ static NSString * const ManagerTableViewCellID = @"ManagerTableViewCellID";
 
 - (ShareView *)shareView {
     if (!_shareView) {
+        WeakSelf;
         _shareView = [ShareView getFactoryShareViewWithCallBack:^(JSHAREPlatform platform, JSHAREMediaType type) {
-            [self shareLinkWithPlatform:platform];
+            [weakSelf shareLinkWithPlatform:platform];
         }];
         [[[[UIApplication sharedApplication] windows] firstObject] addSubview:_shareView];
     }

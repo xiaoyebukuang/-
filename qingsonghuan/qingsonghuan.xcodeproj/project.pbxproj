@@ -295,6 +295,7 @@
 		65F2D8B32175B93300A11DD1 /* ShareView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShareView.m; sourceTree = "<group>"; };
 		65F2D8B52175BD2200A11DD1 /* AboutViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AboutViewController.h; sourceTree = "<group>"; };
 		65F2D8B62175BD2200A11DD1 /* AboutViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AboutViewController.m; sourceTree = "<group>"; };
+		65F2D8B82175D2E300A11DD1 /* qingsonghuan.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = qingsonghuan.entitlements; sourceTree = "<group>"; };
 		65F870EF215B7F3600DD1F59 /* FlightListTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FlightListTableViewCell.h; sourceTree = "<group>"; };
 		65F870F0215B7F3600DD1F59 /* FlightListTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FlightListTableViewCell.m; sourceTree = "<group>"; };
 		65F870F5215B90DF00DD1F59 /* FlightFilterViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FlightFilterViewController.h; sourceTree = "<group>"; };
@@ -619,6 +620,7 @@
 		65D0CA3C214F9AFD00A3DB66 /* qingsonghuan */ = {
 			isa = PBXGroup;
 			children = (
+				65F2D8B82175D2E300A11DD1 /* qingsonghuan.entitlements */,
 				65D0CA532151ECDA00A3DB66 /* Macros */,
 				652C0D0E2158217900BD03FC /* Network */,
 				652FCBF1215D3C8E009F41E8 /* Tools */,
@@ -903,6 +905,11 @@
 				TargetAttributes = {
 					65D0CA39214F9AFD00A3DB66 = {
 						CreatedOnToolsVersion = 9.3;
+						SystemCapabilities = {
+							com.apple.Push = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -1213,6 +1220,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_ENTITLEMENTS = qingsonghuan/qingsonghuan.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = S6WDL2GZYL;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/qingsonghuan/Macros/PrefixHeader.pch";
@@ -1234,6 +1242,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_ENTITLEMENTS = qingsonghuan/qingsonghuan.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = S6WDL2GZYL;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/qingsonghuan/Macros/PrefixHeader.pch";

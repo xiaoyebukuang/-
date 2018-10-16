@@ -8,6 +8,8 @@
 
 #import "UserModel.h"
 #import "AppDelegate.h"
+// 引入 JPush 功能所需头文件
+#import "JPUSHService.h"
 @implementation UserModel
 + (UserModel *)sharedInstance {
     static UserModel *instance;
@@ -72,6 +74,15 @@
     self.userId =   [NSString safe_string:dic[@"userId"]];
     self.sign =     [NSString safe_string:dic[@"sign"]];
     self.phone  =   [NSString safe_string:dic[@"phone"]];
+    NSString *tags = [NSString safe_string:dic[@"tags"]];
+    NSArray *tagsArr = [tags componentsSeparatedByString:@","];
+    NSSet *setArr = [NSSet setWithArray:tagsArr];
+    [JPUSHService setTags:setArr completion:^(NSInteger iResCode, NSSet *iTags, NSInteger seq) {
+        NSLog(@"推送成功%@",iTags);
+    } seq:1];
+    [JPUSHService setAlias:self.userId completion:^(NSInteger iResCode, NSString *iAlias, NSInteger seq) {
+        NSLog(@"设置别名成功%@",iAlias);
+    } seq:1];
     [kApplicationDelegate setRootViewControoler];
 }
 
@@ -81,6 +92,12 @@
     self.userId =   @"";
     self.sign =     @"";
     self.phone =    @"";
+    [JPUSHService cleanTags:^(NSInteger iResCode, NSSet *iTags, NSInteger seq) {
+        NSLog(@"删除tags成功%@",iTags);
+    } seq:1];
+    [JPUSHService deleteAlias:^(NSInteger iResCode, NSString *iAlias, NSInteger seq) {
+        NSLog(@"删除Alias成功%@",iAlias);
+    } seq:1];
     [kApplicationDelegate setRootViewControoler];
 }
 @end

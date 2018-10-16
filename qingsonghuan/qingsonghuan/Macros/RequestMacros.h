@@ -52,6 +52,9 @@
 #define API_ANNOUNCEMENT_LIST          [NSString stringWithFormat:@"%@/announcement/getList",BASE_URL]
 
 
+//19.分享
+#define API_SHARE                      [NSString stringWithFormat:@"%@/Static/ios/ios.png",BASE_URL]
+
 
 
 //TODO: 后台接口

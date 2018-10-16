@@ -81,8 +81,8 @@ static NSString * const RegisterTableViewCell04ID = @"RegisterTableViewCell04ID"
                             @"iden":[NSString safe_string:self.registerModel.sendCodeModel.iden]
                             };
     [RequestPath user_editUserInfoView:self.view param:param success:^(NSDictionary *obj, NSInteger code, NSString *mes) {
-        [MBProgressHUD showSuccess:@"修改成功" ToView:self.view completeBlcok:^{
-            [self.navigationController popViewControllerAnimated:YES];
+        [MBProgressHUD showSuccess:@"修改成功，请重新登录" ToView:self.view completeBlcok:^{
+            [[UserModel sharedInstance]signOut];
         }];
     } failure:^(ErrorType errorType, NSString *mes) {
         
