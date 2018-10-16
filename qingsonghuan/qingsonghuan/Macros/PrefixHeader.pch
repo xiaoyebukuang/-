@@ -18,6 +18,7 @@
 #import "XYTextField.h"
 #import "XYLineView.h"
 #import "XYTitleView.h"
+#import "UIAlertViewTool.h"
 /** 公共Model */
 #import "UserModel.h"
 #import "RegNeedInfoModel.h"
@@ -34,7 +35,11 @@
 /** 三方库 */
 #import "MBProgressHUD+Helper.h"
 #import <Masonry.h>
-#import "UIAlertViewTool.h"
+//极光
+//引入JSHARE 功能所需头文件
+#import "JSHAREService.h"
+//如果需要使用 idfa 功能所需要引入的头文件（可选）
+#import <AdSupport/AdSupport.h>
 
 
 

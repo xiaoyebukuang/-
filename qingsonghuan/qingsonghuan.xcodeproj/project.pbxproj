@@ -102,6 +102,7 @@
 		65F28A4E21631BA300C229B1 /* XYTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 65F28A4D21631BA300C229B1 /* XYTextView.m */; };
 		65F28A5121636F2E00C229B1 /* MineConnectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 65F28A5021636F2E00C229B1 /* MineConnectionViewController.m */; };
 		65F28A532164D72300C229B1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 65F28A522164D72300C229B1 /* Main.storyboard */; };
+		65F2D8B121758FC000A11DD1 /* WebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 65F2D8B021758FC000A11DD1 /* WebViewController.m */; };
 		65F870F1215B7F3600DD1F59 /* FlightListTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 65F870F0215B7F3600DD1F59 /* FlightListTableViewCell.m */; };
 		65F870F7215B90DF00DD1F59 /* FlightFilterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 65F870F6215B90DF00DD1F59 /* FlightFilterViewController.m */; };
 		65F870FD215BB8E500DD1F59 /* CommonTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 65F870FC215BB8E500DD1F59 /* CommonTableViewCell.m */; };
@@ -286,6 +287,8 @@
 		65F28A4F21636F2E00C229B1 /* MineConnectionViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MineConnectionViewController.h; sourceTree = "<group>"; };
 		65F28A5021636F2E00C229B1 /* MineConnectionViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MineConnectionViewController.m; sourceTree = "<group>"; };
 		65F28A522164D72300C229B1 /* Main.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+		65F2D8AF21758FC000A11DD1 /* WebViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WebViewController.h; sourceTree = "<group>"; };
+		65F2D8B021758FC000A11DD1 /* WebViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WebViewController.m; sourceTree = "<group>"; };
 		65F870EF215B7F3600DD1F59 /* FlightListTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FlightListTableViewCell.h; sourceTree = "<group>"; };
 		65F870F0215B7F3600DD1F59 /* FlightListTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FlightListTableViewCell.m; sourceTree = "<group>"; };
 		65F870F5215B90DF00DD1F59 /* FlightFilterViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FlightFilterViewController.h; sourceTree = "<group>"; };
@@ -729,6 +732,8 @@
 				65D0CA81215233AC00A3DB66 /* RegisterViewController.m */,
 				65D0CA9D2154B80C00A3DB66 /* ForgetViewController.h */,
 				65D0CA9E2154B80D00A3DB66 /* ForgetViewController.m */,
+				65F2D8AF21758FC000A11DD1 /* WebViewController.h */,
+				65F2D8B021758FC000A11DD1 /* WebViewController.m */,
 			);
 			path = Login;
 			sourceTree = "<group>";
@@ -1005,6 +1010,7 @@
 				652FCC25215F5E39009F41E8 /* MailListModel.m in Sources */,
 				652FCBF5215D3C99009F41E8 /* MJRefreshControl.m in Sources */,
 				652C0D152159CB8800BD03FC /* FlightListViewController.m in Sources */,
+				65F2D8B121758FC000A11DD1 /* WebViewController.m in Sources */,
 				65F870F1215B7F3600DD1F59 /* FlightListTableViewCell.m in Sources */,
 				6570811B216CA2EE002F9AD0 /* UserListScreenViewController.m in Sources */,
 				652FCBFB215D3D3E009F41E8 /* XYPickerDateViewController.m in Sources */,
@@ -1204,7 +1210,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.shengda.MingDuoHotelApp;
+				PRODUCT_BUNDLE_IDENTIFIER = com.qingsonghuan.qingsonghuan;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = 1;
 			};
@@ -1225,7 +1231,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.shengda.MingDuoHotelApp;
+				PRODUCT_BUNDLE_IDENTIFIER = com.qingsonghuan.qingsonghuan;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = 1;
 			};

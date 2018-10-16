@@ -25,15 +25,14 @@
     [IQKeyboardManager sharedManager].enable = YES;
     [IQKeyboardManager sharedManager].shouldResignOnTouchOutside = YES;
     [IQKeyboardManager sharedManager].enableAutoToolbar = NO;
-    
     self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
     self.window.backgroundColor = [UIColor whiteColor];
     [self setRootViewControoler];
     [self.window makeKeyAndVisible];
+    //分享
+    [self setShare];
     return YES;
 }
-
-
 - (void)setRootViewControoler {
     //保存的版本号
     NSString *onAVersion = [[NSUserDefaults standardUserDefaults] stringForKey:VERSION_NUMBER];
@@ -54,6 +53,22 @@
         self.window.rootViewController = nvc;
     }
 }
+
+- (void)setShare {
+    JSHARELaunchConfig *config = [[JSHARELaunchConfig alloc] init];
+    config.appKey = @"3c5d49272c65ca82245f7bcc";
+    config.WeChatAppId = @"wx09a3fbca2cb1a0ac";
+    config.WeChatAppSecret = @"544013c869141a48c6d1f31a5569f76f";;
+    [JSHAREService setupWithConfig:config];
+    [JSHAREService setDebug:YES];
+}
+//目前适用所有 iOS 系统
+- (BOOL)application:(UIApplication *)application handleOpenURL:(NSURL *)url{
+    [JSHAREService handleOpenUrl:url];
+    return YES;
+}
+
+
 
 
 - (void)applicationWillResignActive:(UIApplication *)application {

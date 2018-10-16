@@ -10,6 +10,7 @@
 #import "XYPickerViewController.h"
 #import "RegisterTableViewCell.h"
 #import "RegisterModel.h"
+#import "WebViewController.h"
 
 static NSString * const RegisterTableViewCell01ID = @"RegisterTableViewCell01ID";
 static NSString * const RegisterTableViewCell02ID = @"RegisterTableViewCell02ID";
@@ -79,6 +80,10 @@ static NSString * const RegisterTableViewCell04ID = @"RegisterTableViewCell04ID"
     } failure:^(ErrorType errorType, NSString *mes) {
         
     }];
+}
+- (void)agreeBtnEvent:(UIButton *)sender {
+    WebViewController *webVC = [[WebViewController alloc]init];
+    [self.navigationController pushViewController:webVC animated:YES];
 }
 #pragma mark -- UITableViewDelegate, UITableViewDataSource
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
@@ -217,6 +222,33 @@ static NSString * const RegisterTableViewCell04ID = @"RegisterTableViewCell04ID"
             make.centerX.equalTo(view);
         }];
         _registerFooterView = view;
+        
+        
+        NSString* str = @"使用即为同意《轻松换协议与条款》";
+        NSRange range1 = [str rangeOfString:@"使用即为同意"];
+        NSRange range2 = [str rangeOfString:@"《轻松换协议与条款》"];
+        NSMutableAttributedString*attribute = [[NSMutableAttributedString alloc] initWithString:str];
+        [attribute beginEditing];
+        [attribute addAttributes: @{NSForegroundColorAttributeName:[UIColor color_999999]}range: range1];
+        [attribute addAttributes: @{NSForegroundColorAttributeName:[UIColor color_99D3F8]}range: range2];
+        [attribute endEditing];
+        UILabel* userAgreeLabel = [[UILabel alloc]init];
+        userAgreeLabel.attributedText = attribute;
+        userAgreeLabel.font = SYSTEM_FONT_13;
+        userAgreeLabel.textAlignment = NSTextAlignmentCenter;
+        [view addSubview:userAgreeLabel];
+        [userAgreeLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.left.width.bottom.equalTo(view);
+            make.height.mas_equalTo(30);
+        }];
+        
+        UIButton *agreeBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+        [agreeBtn addTarget:self action:@selector(agreeBtnEvent:) forControlEvents:UIControlEventTouchUpInside];
+        [view addSubview:agreeBtn];
+        [agreeBtn mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.edges.equalTo(userAgreeLabel);
+        }];
+        
     }
     return _registerFooterView;
 }
