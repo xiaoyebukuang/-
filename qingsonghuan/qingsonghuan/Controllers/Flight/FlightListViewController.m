@@ -77,6 +77,8 @@ static NSString * const FlightListTableViewCellID = @"FlightListTableViewCellID"
     [self setupData];
     // app启动或者app从后台进入前台都会调用这个方法
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(letter_isMesRequest) name:UIApplicationDidBecomeActiveNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(letter_isMesRequest) name:NOTIFICATION_MAIL_SEND object:nil];
+    
 }
 - (void)setNavigationBar {
     UIButton *leftBtn = [UIButton buttonWithImage:@"flight_menu"];

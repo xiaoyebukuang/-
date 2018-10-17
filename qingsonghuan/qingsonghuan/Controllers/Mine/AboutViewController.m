@@ -38,7 +38,7 @@ static NSString * const ManagerTableViewCellID = @"ManagerTableViewCellID";
 - (void)shareLinkWithPlatform:(JSHAREPlatform)platform {
     JSHAREMessage *message = [JSHAREMessage message];
     message.mediaType = JSHARELink;
-    message.url = @"https://www.baidu.com";
+    message.url = @"https://fir.im/y7ul";
     message.text = @"欢迎使用轻松换";
     message.title = @"轻松换";
     message.platform = platform;

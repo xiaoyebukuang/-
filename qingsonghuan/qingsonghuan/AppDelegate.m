@@ -11,6 +11,12 @@
 #import "LoginViewController.h"
 #import "FlightListViewController.h"
 #import "GuidePageViewController.h"
+/** 公告 */
+#import "NoticeListModel.h"
+#import "NoticeDetailViewController.h"
+/** 站内信 */
+#import "MailListModel.h"
+#import "MailReadViewController.h"
 //三方键盘
 #import <IQKeyboardManager.h>
 // 引入 JPush 功能所需头文件
@@ -100,14 +106,65 @@
 }
 
 #pragma mark -- 接受通知
-- (void)getNotificationWithDic:(NSDictionary *)dic {
-    NSLog(@"%@",dic[@"key"]);
+- (void)getNotificationWithDic:(NSDictionary *)dic isShowAlert:(BOOL)isShow{
     NSData *jsonData = [[NSString safe_string:dic[@"key"]] dataUsingEncoding:NSUTF8StringEncoding];
     NSError *err;
     NSDictionary *tempDic = [NSJSONSerialization JSONObjectWithData:jsonData
                                                         options:NSJSONReadingMutableContainers
                                                           error:&err];
-    NSLog(@"tempDic = %@",tempDic);
+    if ([tempDic[@"data"] isKindOfClass:[NSDictionary class]]) {
+        NSDictionary *subDic = tempDic[@"data"];
+        if ([subDic[@"alert"] isKindOfClass:[NSDictionary class]]) {
+            NSInteger type = [NSString safe_integer:subDic[@"type"]];
+            switch (type) {
+                case 1:
+                {
+                    //站内信
+                    MailModel *mailModel = [[MailModel alloc]initWithDic:subDic[@"alert"]];
+                    [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_MAIL_SEND object:nil];
+                    if (isShow) {
+                        [UIAlertViewTool showTitle:@"站内信" message:mailModel.content alertBlock:^(NSString *mes, NSInteger index) {
+                            if (index == 1) {
+                                MailReadViewController *mailReadVC = [[MailReadViewController alloc]init];
+                                mailReadVC.letter_id = mailModel.letter_id;
+                                CustomNavigationViewController *nv = (CustomNavigationViewController *)self.window.rootViewController;
+                                [nv pushViewController:mailReadVC animated:YES];
+                            }
+                        }];
+                    } else {
+                        MailReadViewController *mailReadVC = [[MailReadViewController alloc]init];
+                        mailReadVC.letter_id = mailModel.letter_id;
+                        CustomNavigationViewController *nv = (CustomNavigationViewController *)self.window.rootViewController;
+                        [nv pushViewController:mailReadVC animated:YES];
+                    }
+                }
+                    break;
+                case 2:
+                {
+                    //公告
+                    NoticeModel *noticeModel = [[NoticeModel alloc]initWithDic:subDic[@"alert"]];
+                    if (isShow) {
+                        [UIAlertViewTool showTitle:noticeModel.title message:noticeModel.content alertBlock:^(NSString *mes, NSInteger index) {
+                            if (index == 1) {
+                                NoticeDetailViewController *noticeDetailVC = [[NoticeDetailViewController alloc]init];
+                                noticeDetailVC.noticeModel = noticeModel;
+                                CustomNavigationViewController *nv = (CustomNavigationViewController *)self.window.rootViewController;
+                                [nv pushViewController:noticeDetailVC animated:YES];
+                            }
+                        }];
+                    } else {
+                        NoticeDetailViewController *noticeDetailVC = [[NoticeDetailViewController alloc]init];
+                        noticeDetailVC.noticeModel = noticeModel;
+                        CustomNavigationViewController *nv = (CustomNavigationViewController *)self.window.rootViewController;
+                        [nv pushViewController:noticeDetailVC animated:YES];
+                    }
+                }
+                    break;
+                default:
+                    break;
+            }
+        }
+    }
 }
 
 /** 注册 APNs 成功并上报 DeviceToken */
@@ -121,25 +178,25 @@
     NSLog(@"did Fail To Register For Remote Notifications With Error: %@", error);
 }
 #pragma mark- JPUSHRegisterDelegate
-// iOS 10 Support
+// iOS 10 Support 1111111
 - (void)jpushNotificationCenter:(UNUserNotificationCenter *)center willPresentNotification:(UNNotification *)notification withCompletionHandler:(void (^)(NSInteger))completionHandler  API_AVAILABLE(ios(10.0)){
     // Required
     NSDictionary * userInfo = notification.request.content.userInfo;
     if([notification.request.trigger isKindOfClass:[UNPushNotificationTrigger class]]) {
         [JPUSHService handleRemoteNotification:userInfo];
-        [self getNotificationWithDic:userInfo];
+        [self getNotificationWithDic:userInfo isShowAlert:YES];
     }
-    completionHandler(UNNotificationPresentationOptionAlert);
+//    completionHandler(UNNotificationPresentationOptionAlert);
     // 需要执行这个方法，选择是否提醒用户，有 Badge、Sound、Alert 三种类型可以选择设置
 }
 
-// iOS 10 Support
+// iOS 10 Supportr 2222222
 - (void)jpushNotificationCenter:(UNUserNotificationCenter *)center didReceiveNotificationResponse:(UNNotificationResponse *)response withCompletionHandler:(void (^)(void))completionHandler  API_AVAILABLE(ios(10.0)){
     // Required
     NSDictionary * userInfo = response.notification.request.content.userInfo;
     if([response.notification.request.trigger isKindOfClass:[UNPushNotificationTrigger class]]) {
         [JPUSHService handleRemoteNotification:userInfo];
-        [self getNotificationWithDic:userInfo];
+        [self getNotificationWithDic:userInfo isShowAlert:NO];
     }
     completionHandler();  // 系统要求执行这个方法
 }
@@ -147,7 +204,7 @@
 - (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo fetchCompletionHandler:(void (^)(UIBackgroundFetchResult))completionHandler {
     // Required, iOS 7 Support
     [JPUSHService handleRemoteNotification:userInfo];
-    [self getNotificationWithDic:userInfo];
+    [self getNotificationWithDic:userInfo isShowAlert:YES];
     completionHandler(UIBackgroundFetchResultNewData);
 }
 //推送数目标签

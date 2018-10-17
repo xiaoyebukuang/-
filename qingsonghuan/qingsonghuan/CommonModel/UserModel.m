@@ -78,10 +78,8 @@
     NSArray *tagsArr = [tags componentsSeparatedByString:@","];
     NSSet *setArr = [NSSet setWithArray:tagsArr];
     [JPUSHService setTags:setArr completion:^(NSInteger iResCode, NSSet *iTags, NSInteger seq) {
-        NSLog(@"推送成功%@",iTags);
     } seq:1];
     [JPUSHService setAlias:self.userId completion:^(NSInteger iResCode, NSString *iAlias, NSInteger seq) {
-        NSLog(@"设置别名成功%@",iAlias);
     } seq:1];
     [kApplicationDelegate setRootViewControoler];
 }
@@ -93,10 +91,8 @@
     self.sign =     @"";
     self.phone =    @"";
     [JPUSHService cleanTags:^(NSInteger iResCode, NSSet *iTags, NSInteger seq) {
-        NSLog(@"删除tags成功%@",iTags);
     } seq:1];
     [JPUSHService deleteAlias:^(NSInteger iResCode, NSString *iAlias, NSInteger seq) {
-        NSLog(@"删除Alias成功%@",iAlias);
     } seq:1];
     [kApplicationDelegate setRootViewControoler];
 }
