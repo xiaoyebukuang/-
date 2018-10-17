@@ -50,12 +50,10 @@
 #define API_ADVICE_ADDADVIC            [NSString stringWithFormat:@"%@/advice/addAdvice",BASE_URL]
 //18.获取公告列表
 #define API_ANNOUNCEMENT_LIST          [NSString stringWithFormat:@"%@/announcement/getList",BASE_URL]
-
-
 //19.分享
 #define API_SHARE                      [NSString stringWithFormat:@"%@/Static/ios/ios.png",BASE_URL]
-
-
+//20.用户协议
+#define API_USER_AGREEMENT             [NSString stringWithFormat:@"%@/Static/agreement.html",BASE_URL]
 
 //TODO: 后台接口
 //1.注册人数统计

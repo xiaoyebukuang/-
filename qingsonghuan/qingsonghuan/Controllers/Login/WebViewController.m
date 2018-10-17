@@ -23,6 +23,7 @@
     [self.webView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.edges.equalTo(self.view);
     }];
+    [self.webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:API_USER_AGREEMENT]]];
 }
 - (UIWebView *)webView {
     if (!_webView) {
