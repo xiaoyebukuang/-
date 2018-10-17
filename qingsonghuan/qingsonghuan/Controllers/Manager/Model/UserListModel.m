@@ -49,7 +49,6 @@
         self.airline_name =     [NSString safe_string:dic[@"airline_name"]];
         self.subsidiary_name =  [NSString safe_string:dic[@"subsidiary_name"]];
         self.duty_name =        [NSString safe_string:dic[@"duty_name"]];
-        self.visa_name =        [NSString safe_string:dic[@"visa_name"]];
         self.phone =            [NSString safe_string:dic[@"phone"]];
         self.status =           [NSString safe_bool:dic[@"status"]];
     }

@@ -14,8 +14,6 @@
 @property (nonatomic, strong) UILabel *phone;
 //分子公司
 @property (nonatomic, strong) UILabel *subsidiaryName;
-//签证
-@property (nonatomic, strong) UILabel *visaName;
 //性别
 @property (nonatomic, strong) UILabel *sex;
 
@@ -78,25 +76,12 @@
         make.centerY.equalTo(subsidiaryNameLabel);
     }];
     
-    //签证类型
-    UILabel *visaNameLabel = [[UILabel alloc]initWithText:@"签证类型:" font:SYSTEM_FONT_13 textColor:[UIColor color_666666]];
-    [self.bgView addSubview:visaNameLabel];
-    [visaNameLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.width.left.equalTo(phoneLabel);
-        make.top.equalTo(subsidiaryNameLabel.mas_bottom).offset(cell_heght_space);
-    }];
-    [self.bgView addSubview:self.visaName];
-    [self.visaName mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.equalTo(self.phone);
-        make.centerY.equalTo(visaNameLabel);
-    }];
-    
     //性别
     UILabel *sexLabel = [[UILabel alloc]initWithText:@"性别:" font:SYSTEM_FONT_13 textColor:[UIColor color_666666]];
     [self.bgView addSubview:sexLabel];
     [sexLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.width.left.equalTo(phoneLabel);
-        make.top.equalTo(visaNameLabel.mas_bottom).offset(cell_heght_space);
+        make.top.equalTo(subsidiaryNameLabel.mas_bottom).offset(cell_heght_space);
     }];
     
     [self.bgView addSubview:self.sex];
@@ -136,7 +121,7 @@
     [self.bgView addSubview:workNumberLabel];
     [workNumberLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.width.left.equalTo(airlineNameLabel);
-        make.centerY.equalTo(visaNameLabel);
+        make.centerY.equalTo(sexLabel);
     }];
     [self.bgView addSubview:self.workNumber];
     [self.workNumber mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -200,7 +185,6 @@
     self.airlineName.text = model.airline_name;
     self.subsidiaryName.text = model.subsidiary_name;
     self.dutyName.text = model.duty_name;
-    self.visaName.text = model.visa_name;
     self.cancelBlock = cancelBlock;
     self.deleteBlock = deleteBlock;
     [self.cancelBtn setTitle:(model.status ? @"已注销":@"注销") forState:UIControlStateNormal];
@@ -231,13 +215,6 @@
         _subsidiaryName = [[UILabel alloc]initWithText:@"" font:SYSTEM_FONT_13 textColor:[UIColor color_666666]];
     }
     return _subsidiaryName;
-}
-//字母标识
-- (UILabel *)visaName {
-    if (!_visaName) {
-        _visaName = [[UILabel alloc]initWithText:@"" font:SYSTEM_FONT_13 textColor:[UIColor color_666666]];
-    }
-    return _visaName;
 }
 //性别
 - (UILabel *)sex {
