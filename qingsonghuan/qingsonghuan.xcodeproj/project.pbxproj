@@ -1225,7 +1225,7 @@
 				DEVELOPMENT_TEAM = S6WDL2GZYL;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/qingsonghuan/Macros/PrefixHeader.pch";
 				INFOPLIST_FILE = qingsonghuan/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1247,7 +1247,7 @@
 				DEVELOPMENT_TEAM = S6WDL2GZYL;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/qingsonghuan/Macros/PrefixHeader.pch";
 				INFOPLIST_FILE = qingsonghuan/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

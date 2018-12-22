@@ -45,7 +45,7 @@ static NSString * const ManagerTableViewCellID = @"ManagerTableViewCellID";
     NSData *imageData = [NSData dataWithContentsOfURL:[NSURL URLWithString:API_SHARE]];
     message.image = imageData;
     [JSHAREService share:message handler:^(JSHAREState state, NSError *error) {
-        NSLog(@"%@",error);
+        
     }];
 }
 #pragma mark -- UITableViewDelegate, UITableViewDataSource
