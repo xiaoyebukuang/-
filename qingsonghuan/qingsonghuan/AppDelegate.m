@@ -48,7 +48,23 @@
     [self setShare];
     //推送
     [self setPushWithOptions:launchOptions];
+    //版本更新
+    [self dataGetcfg];
     return YES;
+}
+/** 版本更新 */
+- (void)dataGetcfg {
+    NSString *currentVersion = [[NSBundle mainBundle] infoDictionary][@"CFBundleShortVersionString"];
+    [RequestPath data_getcfgParam:@{@"version":currentVersion} success:^(NSDictionary *obj, NSInteger code, NSString *mes) {
+        BOOL status = [NSString safe_bool:obj[@"status"]];
+        if (status) {
+            [UIAlertViewTool showTitle:@"提示" message:@"请前去App Store 更新" titlesArr:@[@"确定"] alertBlock:^(NSString *mes, NSInteger index) {
+                exit(1);
+            }];
+        }
+    } failure:^(ErrorType errorType, NSString *mes) {
+        
+    }];
 }
 - (void)setRootViewControoler {
     //保存的版本号
@@ -101,7 +117,7 @@
     // 如需继续使用 pushConfig.plist 文件声明 appKey 等配置内容，请依旧使用 [JPUSHService setupWithOption:launchOptions] 方式初始化。
     [JPUSHService setupWithOption:launchOptions appKey:@"3c5d49272c65ca82245f7bcc"
                           channel:@"App Store"
-                 apsForProduction:NO
+                 apsForProduction:YES
             advertisingIdentifier:nil];
 }
 

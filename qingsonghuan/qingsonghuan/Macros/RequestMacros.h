@@ -9,7 +9,7 @@
 #ifndef RequestMacros_h
 #define RequestMacros_h
 
-#define BASE_URL                @"http://47.75.167.95"
+#define BASE_URL                @"http://47.100.239.210"
 
 
 //TODO: APP接口
@@ -54,6 +54,9 @@
 #define API_SHARE                      [NSString stringWithFormat:@"%@/Static/ios/ios.png",BASE_URL]
 //20.用户协议
 #define API_USER_AGREEMENT             [NSString stringWithFormat:@"%@/Static/agreement.html",BASE_URL]
+//21.更新
+#define API_DATA_GETCFG                [NSString stringWithFormat:@"%@/data/getcfg",BASE_URL]
+
 
 //TODO: 后台接口
 //1.注册人数统计

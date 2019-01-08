@@ -1222,7 +1222,7 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_ENTITLEMENTS = qingsonghuan/qingsonghuan.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = S6WDL2GZYL;
+				DEVELOPMENT_TEAM = 975HT8A38Y;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/qingsonghuan/Macros/PrefixHeader.pch";
 				INFOPLIST_FILE = qingsonghuan/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
@@ -1244,7 +1244,7 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_ENTITLEMENTS = qingsonghuan/qingsonghuan.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = S6WDL2GZYL;
+				DEVELOPMENT_TEAM = 975HT8A38Y;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/qingsonghuan/Macros/PrefixHeader.pch";
 				INFOPLIST_FILE = qingsonghuan/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;

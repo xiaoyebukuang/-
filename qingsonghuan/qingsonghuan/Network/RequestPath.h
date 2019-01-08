@@ -142,6 +142,14 @@
                           success:(void (^)(NSDictionary *obj, NSInteger code, NSString *mes))success
                           failure:(void (^)(ErrorType errorType, NSString *mes))failure;
 
+/**
+ 20.获取版本
+ */
++ (void)data_getcfgParam:(NSDictionary *)param
+                 success:(void (^)(NSDictionary *obj, NSInteger code, NSString *mes))success
+                 failure:(void (^)(ErrorType errorType, NSString *mes))failure;
+
+
 
 
 

@@ -51,7 +51,7 @@ static NSString * const MailListTableViewCellID = @"MailListTableViewCellID";
     [self setupUI];
     [self setNavigationBar];
     [self setupData];
-     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(hasReadMail) name:NOTIFICATION_MAIL_READ object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(hasReadMail) name:NOTIFICATION_MAIL_READ object:nil];
 }
 - (void)dealloc {
     [[NSNotificationCenter defaultCenter]removeObserver:self];

@@ -92,6 +92,7 @@
         success(obj,code,mes);
     } failure:^(ErrorType errorType, NSString *mes) {
         failure(ErrorTypeReqestNone, mes);
+        [MBProgressHUD showError:mes ToView:view];
     }];
 }
 //5.登录
@@ -343,6 +344,20 @@
         failure(errorType, mes);
     }];
 }
+//20.获取版本
++ (void)data_getcfgParam:(NSDictionary *)param
+                 success:(void (^)(NSDictionary *obj, NSInteger code, NSString *mes))success
+                 failure:(void (^)(ErrorType errorType, NSString *mes))failure {
+    [XYNetworking postWithUrlString:API_DATA_GETCFG parameters:param success:^(id obj, NSInteger code, NSString *mes) {
+        if ([obj isKindOfClass:[NSDictionary class]]) {
+            success((NSDictionary *)obj, code, mes);
+        }
+    } failure:^(ErrorType errorType, NSString *mes) {
+        failure(errorType, mes);
+    }];
+}
+
+
 
 //TODO: 后台接口
 /**

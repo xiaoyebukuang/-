@@ -50,6 +50,7 @@ static NSString * const ManagerTableViewCellID = @"ManagerTableViewCellID";
 }
 #pragma mark -- UITableViewDelegate, UITableViewDataSource
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
+    return 1;
     return self.listArr.count;
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
