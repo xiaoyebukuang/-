@@ -57,7 +57,7 @@
     NSString *currentVersion = [[NSBundle mainBundle] infoDictionary][@"CFBundleShortVersionString"];
     [RequestPath data_getcfgParam:@{@"version":currentVersion} success:^(NSDictionary *obj, NSInteger code, NSString *mes) {
         BOOL status = [NSString safe_bool:obj[@"status"]];
-        if (status) {
+        if (!status) {
             [UIAlertViewTool showTitle:@"提示" message:@"请前去App Store 更新" titlesArr:@[@"确定"] alertBlock:^(NSString *mes, NSInteger index) {
                 exit(1);
             }];

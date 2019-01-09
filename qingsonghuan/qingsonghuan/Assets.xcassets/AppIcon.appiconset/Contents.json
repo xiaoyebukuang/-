@@ -9,49 +9,49 @@
     {
       "size" : "20x20",
       "idiom" : "iphone",
-      "filename" : "ios启动标60*60.png",
+      "filename" : "60x60.png",
       "scale" : "3x"
     },
     {
       "size" : "29x29",
       "idiom" : "iphone",
-      "filename" : "ios启动标58*58.png",
+      "filename" : "58X58.png",
       "scale" : "2x"
     },
     {
       "size" : "29x29",
       "idiom" : "iphone",
-      "filename" : "ios启动标87*87.png",
+      "filename" : "87X87.png",
       "scale" : "3x"
     },
     {
       "size" : "40x40",
       "idiom" : "iphone",
-      "filename" : "ios启动标80*80.png",
+      "filename" : "80X80.png",
       "scale" : "2x"
     },
     {
       "size" : "40x40",
       "idiom" : "iphone",
-      "filename" : "ios启动标120*120-1.png",
+      "filename" : "120X120.png",
       "scale" : "3x"
     },
     {
       "size" : "60x60",
       "idiom" : "iphone",
-      "filename" : "ios启动标120*120.png",
+      "filename" : "120X120-1.png",
       "scale" : "2x"
     },
     {
       "size" : "60x60",
       "idiom" : "iphone",
-      "filename" : "ios启动标180*180.png",
+      "filename" : "180X180.png",
       "scale" : "3x"
     },
     {
       "size" : "1024x1024",
       "idiom" : "ios-marketing",
-      "filename" : "ios启动标1024*1024.png",
+      "filename" : "1024x1024.png",
       "scale" : "1x"
     }
   ],
