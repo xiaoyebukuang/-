@@ -40,16 +40,16 @@
     [IQKeyboardManager sharedManager].enable = YES;
     [IQKeyboardManager sharedManager].shouldResignOnTouchOutside = YES;
     [IQKeyboardManager sharedManager].enableAutoToolbar = NO;
-    self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
-    self.window.backgroundColor = [UIColor whiteColor];
-    [self setRootViewControoler];
-    [self.window makeKeyAndVisible];
     //分享
     [self setShare];
     //推送
     [self setPushWithOptions:launchOptions];
     //版本更新
     [self dataGetcfg];
+    self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
+    self.window.backgroundColor = [UIColor whiteColor];
+    [self setRootViewControoler];
+    [self.window makeKeyAndVisible];
     return YES;
 }
 /** 版本更新 */
@@ -57,15 +57,21 @@
     NSString *currentVersion = [[NSBundle mainBundle] infoDictionary][@"CFBundleShortVersionString"];
     [RequestPath data_getcfgParam:@{@"version":currentVersion} success:^(NSDictionary *obj, NSInteger code, NSString *mes) {
         BOOL status = [NSString safe_bool:obj[@"status"]];
-        if (!status) {
-            [UIAlertViewTool showTitle:@"提示" message:@"请前去App Store 更新" titlesArr:@[@"确定"] alertBlock:^(NSString *mes, NSInteger index) {
-                exit(1);
-            }];
-        }
+        [self pushAppStore:status];
     } failure:^(ErrorType errorType, NSString *mes) {
         
     }];
 }
+- (void)pushAppStore:(BOOL)status {
+    if (status) {
+        [UIAlertViewTool showTitle:@"提示" message:@"请前去App Store 更新" titlesArr:@[@"确定"] alertBlock:^(NSString *mes, NSInteger index) {
+            [[UIApplication sharedApplication] openURL:[NSURL URLWithString:API_APP_STORE]];
+            [self pushAppStore:status];
+        }];
+    }
+}
+
+
 - (void)setRootViewControoler {
     //保存的版本号
     NSString *onAVersion = [[NSUserDefaults standardUserDefaults] stringForKey:VERSION_NUMBER];

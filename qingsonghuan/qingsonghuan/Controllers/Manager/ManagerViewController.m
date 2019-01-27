@@ -84,7 +84,6 @@ static NSString * const ManagerTableViewCellID = @"ManagerTableViewCellID";
         UserListViewController *userListVC = [[UserListViewController alloc]init];
         [self.navigationController pushViewController:userListVC animated:YES];
     }
-    
 }
 #pragma mark -- setup
 - (UITableView *)managerTableView{

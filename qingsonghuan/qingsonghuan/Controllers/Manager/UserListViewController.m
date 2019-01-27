@@ -102,7 +102,7 @@ static NSString * const UserListTableViewCellID = @"UserListTableViewCellID";
             [self.userListTableV reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationNone];
         } else {
             [self.userListModel.listArr removeObjectAtIndex:indexPath.row];
-            [self.userListTableV deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
+            [self.userListTableV reloadData];
         }
         [MBProgressHUD showSuccess:@"操作成功" ToView:self.view];
     } failure:^(ErrorType errorType, NSString *mes) {

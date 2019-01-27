@@ -94,7 +94,7 @@ static NSString * const MainReecordTableViewCellID = @"MainReecordTableViewCellI
     [RequestPath flight_delFlightView:self.view param:param success:^(NSDictionary *obj, NSInteger code, NSString *mes) {
         [MBProgressHUD showSuccess:@"删除成功" ToView:self.view];
         [self.flightListModel.listArr removeObjectAtIndex:indexPath.row];
-        [self.reecordTableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
+        [self.reecordTableView reloadData];
     } failure:^(ErrorType errorType, NSString *mes) {
         
     }];

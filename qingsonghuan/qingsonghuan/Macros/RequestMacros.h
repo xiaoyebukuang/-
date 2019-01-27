@@ -77,7 +77,7 @@
 #define API_STATISTICS_ADDANNOUNCE     [NSString stringWithFormat:@"%@/statistics/add_announcement",BASE_URL]
 
 
-
+#define API_APP_STORE                  @"https://itunes.apple.com/us/app/easychange/id1448156287?l=zh&ls=1&mt=8"
 
 
 #endif /* RequestMacros_h */

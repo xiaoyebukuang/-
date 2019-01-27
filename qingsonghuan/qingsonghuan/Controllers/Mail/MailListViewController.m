@@ -131,7 +131,7 @@ static NSString * const MailListTableViewCellID = @"MailListTableViewCellID";
     }
     [RequestPath letter_mesdelView:self.view param:@{@"letter_id":letter_id} success:^(NSDictionary *obj, NSInteger code, NSString *mes) {
         [self.mailListModel.listArr removeObjectsInArray:self.deleteArr];
-        [self.mailListTableV deleteRowsAtIndexPaths:self.indexPathArr withRowAnimation:UITableViewRowAnimationFade];
+        [self.mailListTableV reloadData];
         self.today_del = self.deleteArr.count + self.today_del;
         [self.deleteArr removeAllObjects];
         [self.indexPathArr removeAllObjects];
