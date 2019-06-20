@@ -38,7 +38,7 @@ static NSString * const ManagerTableViewCellID = @"ManagerTableViewCellID";
 - (void)shareLinkWithPlatform:(JSHAREPlatform)platform {
     JSHAREMessage *message = [JSHAREMessage message];
     message.mediaType = JSHARELink;
-    message.url = @"https://fir.im/y7ul";
+    message.url = API_APP_STORE;
     message.text = @"欢迎使用轻松换";
     message.title = @"轻松换";
     message.platform = platform;
@@ -50,7 +50,6 @@ static NSString * const ManagerTableViewCellID = @"ManagerTableViewCellID";
 }
 #pragma mark -- UITableViewDelegate, UITableViewDataSource
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    return 1;
     return self.listArr.count;
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{

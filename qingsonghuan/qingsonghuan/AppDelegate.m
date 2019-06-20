@@ -63,7 +63,7 @@
     }];
 }
 - (void)pushAppStore:(BOOL)status {
-    if (status) {
+    if (!status) {
         [UIAlertViewTool showTitle:@"提示" message:@"请前去App Store 更新" titlesArr:@[@"确定"] alertBlock:^(NSString *mes, NSInteger index) {
             [[UIApplication sharedApplication] openURL:[NSURL URLWithString:API_APP_STORE]];
             [self pushAppStore:status];
